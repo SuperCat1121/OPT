@@ -100,13 +100,14 @@ function checkData(flag){
 	<input type="hidden" name="command" value="login" />
 		<div class=id_area>	
 			<span class="input_box">
-			<input type="text" placeholder="아이디" name="id" onkeyup="checkData('id');" class="id_pw" style="width: 250px; height: 25px;" ><span id="idCheck" style="display:none" class="idchk_span"></span>
+			<input type="text" placeholder="아이디" name="id" onkeyup="checkData('id');" class="id_pw"  ><span id="idCheck" style="display:none" class="idchk_span"></span>
 			</span>
 		</div>
 			<div class="pw_area">
 				
-				<input type="text" placeholder="비밀번호" name="pw" onkeyup="checkData('pw');" class="id_pw" style="width: 250px; height: 25px;"><span id="pwCheck" style="display:none" class="idchk_span"></span>
+				<input type="text" placeholder="비밀번호" name="pw" onkeyup="checkData('pw');" class="id_pw" ><span id="pwCheck" style="display:none" class="idchk_span"></span>
 			</div>
+			
 			
 			<% 
 				if(res.equals("fail")){
@@ -117,13 +118,16 @@ function checkData(flag){
 			}
 			%>	 
 			
-				
-				<input type="submit" value="login" class="login_btn"/> 
-				<input type="button" value="regist" onclick="" />
-	
-	</form>
-	</fieldset>
-	</div>
+			<div class="checks etrans">
+  			<input type="checkbox" id="ex_chk3"> 
+ 			 <label for="ex_chk3">아이디저장</label> 
+			</div>
+			
+				<input type="submit" value="로그인" class="login_btn"/> 
+				<input type="button" value="회원가입" onclick="" class="regist_btn"/>
+			</form>
+			</fieldset>
+			</div>
 
 </body>
 </html>

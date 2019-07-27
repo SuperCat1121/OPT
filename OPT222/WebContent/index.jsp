@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	zzzzzzzzz
+	
 	
 	
 	<a href="login.jsp">login</a>
