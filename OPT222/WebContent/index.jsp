@@ -22,11 +22,10 @@
 		<div class="Menu">
 			<ul class="topmenu">
 
-			<li><a href="main3.html" title="OPT 메인으로 이동"><img alt="main"
-				src="image/logo.png" width=110px; height=50px;></a> <a href="">OPT</a></li>
+			<li><a href="main3.html" title="OPT 메인으로 이동"><img alt="main"src="image/logo.png" width=110px; height=50px;></a> <a href="">OPT</a></li>
 			<li><a href="">PT받기</a> <a href="">FOOD</a></li>
 			<li><a href="">고객지원</a></li> 
-			<li><a	href=""><img alt="search" src="image/button_search.png"width="30px" height="30px"></a></li>
+			<li><a	href=""><img alt="search" src="../main_image/button_search.png"width="30px" height="30px"></a></li>
 			<li><a href="login.jsp">로그인</a></li>
 		</ul>
 		</div>
@@ -66,7 +65,6 @@
 		</section>
 	</div>
 	
-	<jsp:include page="footer.jsp">
-	
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

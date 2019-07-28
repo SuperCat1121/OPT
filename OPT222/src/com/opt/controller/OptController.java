@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,15 +31,11 @@ public class OptController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[ " + command + " ]");
 		OPTBiz biz = new OPTBizImpl();
-		PrintWriter out = response.getWriter();
-
 		if(command.equals("login")) {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
-			System.out.println("id >> " + id);
-			System.out.println("pw >> " + pw);
+			String hidden_chk = request.getParameter("hidden_chk");	//체크시 on 안되면 null
 			MemberDto login = biz.login(id, pw);
-			
 			
 			
 			if(login == null && id.equals("") && pw.equals("")) {
@@ -56,10 +53,25 @@ public class OptController extends HttpServlet {
 				
 				if(login.getOpt_role().equals("admin")) {
 					dispatch(request, response, "admin.jsp");
-					System.out.println("어드민");
 				}else if(login.getOpt_role().equals("user")) {
+					
+					
+					if(hidden_chk.equals("Y")) {
+					    
+					    Cookie c = new Cookie("idSave", id) ;
+					    
+					    c.setMaxAge(60*60*24) ; // 쿠키 유효기간을 설정한다. 초단위 : 60*60*24= 1일
+					    
+					    response.addCookie(c) ; // 응답헤더에 쿠키를 추가한다.
+					}else {
+					    Cookie c = new Cookie("idSave", "") ;
+					    c.setMaxAge(60*60*24) ;
+					    response.addCookie(c) ;
+					}
+					
 					dispatch(request, response, "user.jsp");
 					System.out.println("회원");
+					//결제페이지 추가
 				}
 			}else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");

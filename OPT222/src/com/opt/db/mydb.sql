@@ -67,6 +67,23 @@ INSERT INTO OPT_MEMBER VALUES(
     SYSDATE
 );
 
+
+INSERT INTO OPT_MEMBER VALUES(
+    MEMBERSEQ.NEXTVAL,
+    'ijw9209',
+    '123123',
+    '이재웅',
+    '1992/09/01',
+    '경기도 고양시 덕양구',
+    '010-1234-5678',
+    'ijw9209@naver.com',
+    'Y',
+    'male',
+    'user',
+    500,
+    SYSDATE
+);
+DELETE FROM OPT_MEMBER WHERE OPT_NO_SEQ = 22;
 SELECT * FROM OPT_MEMBER;
 
 --------------------------------------------------------------------------------------------------------------------------------

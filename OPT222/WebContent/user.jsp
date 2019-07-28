@@ -34,7 +34,7 @@
 		</dl>
 		<dl class="opt_point" style="cursor: pointer;" onclick="">
 			<dt>포인트</dt>
-			<dd><b class="num">0</b>포인트</dd>
+			<dd><b class="num">${memdto.opt_point }</b> 포인트</dd>
 		</dl>
 		</div>
 		</div>
