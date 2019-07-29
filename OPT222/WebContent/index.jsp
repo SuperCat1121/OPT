@@ -8,5 +8,7 @@
 </head>
 <body>
 	<a href="login.jsp">login</a>
+	<br>
+	<a href="opt.do?command=admin">관리자 페이지로!!</a>
 </body>
 </html>

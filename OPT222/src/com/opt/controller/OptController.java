@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
 import com.opt.dao.OPTDao;
+import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 
 
@@ -65,7 +66,13 @@ public class OptController extends HttpServlet {
 				dispatch(request, response, "login.jsp?res=fail");
 			}
 		} else if(command.equals("admin")) {
-			
+			List<ItemDto> itemList = biz.itemList();
+			List<MemberDto> userList = biz.selectList();
+			System.out.println(userList.get(0).getOpt_name());
+			System.out.println(itemList.get(0).getItem_name());
+			request.setAttribute("itemList", itemList);
+			request.setAttribute("userList", userList);
+			dispatch(request, response, "admin.jsp");
 		}
 		
 	}

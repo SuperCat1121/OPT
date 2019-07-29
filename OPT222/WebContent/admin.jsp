@@ -1,6 +1,7 @@
 <%@page import="com.opt.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,9 +32,6 @@
 	
 </style>
 </head>
-<%
-	MemberDto dto = (MemberDto)session.getAttribute("dto");
-%>
 <body>
 		
 	<h1>admin님 환영합니다</h1>
@@ -43,6 +41,18 @@
 		<article class="firstline">
 			판매진행현황
 			<table border="1">
+				<tr>
+					<th>유저리스트</th>
+					<c:forEach items="${userList}" var="MemberDto">
+						<td><c:out value="z"/></td>
+					</c:forEach>
+				</tr>
+				<tr>
+					<th>상품리스트</th>
+					<c:forEach items="${itemList}" var="ItemDto">
+						<td><c:out value="${ItemDto.item_name}"/></td>
+					</c:forEach>
+				</tr>
 				<tr>
 					<td>
 						<input type="button" value="입금확인중">
@@ -102,5 +112,11 @@
 			판매차트
 		</article>
 	</section>
+	<nav>
+		<a href="#">유저관리</a>
+		<a href="#">상품관리</a>
+		<a href="#">내 정보</a>
+		
+	</nav>
 </body>
 </html>

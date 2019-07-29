@@ -5,7 +5,8 @@
 	<properties resource="com/opt/db/db.properties"></properties>
 
 	<typeAliases>
-		<typeAlias type="com.opt.dto.MemberDto" alias="dto" />
+		<typeAlias type="com.opt.dto.MemberDto" alias="MemberDto" />
+		<typeAlias type="com.opt.dto.ItemDto" alias="ItemDto"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
