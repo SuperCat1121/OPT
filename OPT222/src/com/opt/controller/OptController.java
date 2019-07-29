@@ -73,6 +73,10 @@ public class OptController extends HttpServlet {
 			int day = cal.get(Calendar.DATE);
 			int monthSales = 0;
 			int todaySales = 0;
+			int twoMonth = 0;
+			int oneMonth = 0;
+			int twoDay = 0;
+			int oneDay = 0;
 			int alertItemCount = 0;
 			List<ItemDto> itemList = biz.itemList();
 			List<MemberDto> userList = biz.selectList();
@@ -84,6 +88,18 @@ public class OptController extends HttpServlet {
 				}
 				if(dto.getPay_regdate().getDate() == day) {
 					todaySales++;
+				}
+				if(dto.getPay_regdate().getMonth()+1 == month-2) {
+					twoMonth++;
+				}
+				if(dto.getPay_regdate().getMonth()+1 == month-1) {
+					oneMonth++;
+				}
+				if(dto.getPay_regdate().getDate() == day-2 && dto.getPay_regdate().getMonth()+1 == month) {
+					twoDay++;
+				}
+				if(dto.getPay_regdate().getDate() == day-1 && dto.getPay_regdate().getMonth()+1 == month) {
+					oneDay++;
 				}
 			}
 			// 재고부족 현황
@@ -97,6 +113,14 @@ public class OptController extends HttpServlet {
 			request.setAttribute("monthSales", monthSales);
 			request.setAttribute("todaySales", todaySales);
 			request.setAttribute("alertItemCount", alertItemCount);
+			request.setAttribute("month", month);
+			request.setAttribute("day", day);
+			System.out.println("2달 전 : " + twoMonth);
+			System.out.println("1달 전 : " + oneMonth);
+			System.out.println("2일 전 : " + twoDay);
+			System.out.println("1일 전 : " + oneDay);
+			System.out.println("오늘 : " + todaySales);
+			System.out.println("이번 달 : " + monthSales);
 			dispatch(request, response, "admin.jsp");
 		}
 		

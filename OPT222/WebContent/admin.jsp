@@ -1,3 +1,5 @@
+<%@page import="com.opt.biz.OPTBizImpl"%>
+<%@page import="com.opt.biz.OPTBiz"%>
 <%@page import="com.opt.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,28 +11,57 @@
 <title>Insert title here</title>
 <style type="text/css">
 	html {
-		width : 100%;
-		height : 100%;
+		width: 100%;
+		height: 100%;
 	}
 
 	body {
-		width : 100%;
-		height : 100%;
-		margin : 0px;
-		padding : 0px;
-		border : 0px;
+		width: 100%;
+		height: 100%;
+		margin: 0px;
+		padding: 0px;
+		border: 0px;
+	}
+	
+	h1 {
+		margin: 0px;
+		padding: 0px;
 	}
 	
 	section {
-		margin : 0 atuo;
+		margin: 0 atuo;
+		background: lime;
 	}
 	
 	.firstline {
-		width : 400px;
-		display : inline-block;
+		width: 350px;
+		height: 350px;
+		display: inline-block;
+	}
+	
+	nav {
+		float: right;
+		margin-right: 160px;
+	}
+	
+	.bar {
+		display: inline-block;
+		background: orange;
+		margin-left: 5px;
 	}
 	
 </style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("span").hover(function() {
+			$("#itemCountWarning").toggle();
+		},function() {
+			$("#itemCountWarning").toggle();
+		});
+	});
+	
+</script>
 </head>
 <body>
 		
@@ -53,20 +84,6 @@
 						<td><c:out value="${ItemDto.item_name}"/></td>
 					</c:forEach>
 				</tr>
-				<tr>
-					<td>
-						<input type="button" value="입금확인중">
-						<input type="button" value="주문점수">
-						<input type="button" value="발주확인">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="button" value="출고처리">
-						<input type="button" value="출고지연">
-						<input type="button" value="출고완료">
-					</td>
-				</tr>
 			</table>
 		</article>
 		<article class="firstline">
@@ -84,7 +101,7 @@
 						<img src="#">
 					</td>
 					<td>
-						재고부족<br>
+						<span>재고부족</span><br>
 						<c:out value="${alertItemCount}건"></c:out>
 						<img src="#">
 					</td>
@@ -92,13 +109,46 @@
 			</table>
 		</article>
 		<article>
-			판매차트
+			판매차트<br>
+			<% int[] arr = {1, 2}; %>
+			<script src="http://d3js.org/d3.v3.min.js"></script>
+			<script type="text/javascript">
+				window.onload = function() {
+					var monthData = [${month}-2, ${month}-1, ${month}];
+					var dayData = [${day}-2, ${day}-1, ${day}];
+					alert(monthSales);
+					d3.select("body").selectAll("d")
+					.data(data)
+					.enter()
+					.append("div")
+					.style("height",function(d) {
+						return d+"px";
+					})
+					.style("width",function(d) {
+						return "20px";
+					})
+					.attr("class", "bar");
+				}
+			</script>
+			<svg></svg>
 		</article>
 	</section>
 	<nav>
-		<a href="#">유저관리</a>
-		<a href="#">상품관리</a>
-		<a href="#">내 정보</a>
+		<table border="1">
+			<tr>
+				<th>INDEX</th>
+			</tr>
+			<tr>
+				<td><a href="#">유저관리</a></td>
+			</tr>
+			<tr>
+				<td><a href="#">상품관리</a></td>
+			</tr>
+			<tr>
+				<td><a href="#">내 정보</a></td>
+			</tr>
+		</table>
 	</nav>
+	<div id="itemCountWarning" style="display: none;">재고가 5개 이하인 상품들의 개수입니다</div>
 </body>
 </html>
