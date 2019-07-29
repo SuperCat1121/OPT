@@ -63,8 +63,6 @@ public class OptController extends HttpServlet {
 				}
 			}else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");
-				
-				
 			}
 		}
 		
