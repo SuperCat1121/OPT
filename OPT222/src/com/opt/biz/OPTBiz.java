@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
+import com.opt.dto.PaymentDto;
 
 public interface OPTBiz {
 	public List<MemberDto> selectList();
@@ -13,4 +14,5 @@ public interface OPTBiz {
 	public int delete(int opt_no_seq);
 	public MemberDto login(String id, String pw);
 	public List<ItemDto> itemList();
+	public List<PaymentDto> paymentList();
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
+import com.opt.dto.PaymentDto;
 
 public class OPTDao extends SqlMapConfig {
 
@@ -45,6 +46,16 @@ public class OPTDao extends SqlMapConfig {
 		
 		session = getsqlSessionFactory().openSession(false);
 		list = session.selectList(namespace + "itemList");
+		
+		return list;
+	}
+	
+	public List<PaymentDto> paymentList() {
+		SqlSession session = null;
+		List<PaymentDto> list = new ArrayList<PaymentDto>();
+		
+		session = getsqlSessionFactory().openSession(false);
+		list = session.selectList(namespace + "paymentList");
 		
 		return list;
 	}

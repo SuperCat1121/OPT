@@ -20,9 +20,9 @@
 		ORDER BY ITEM_NUM_SEQ
 	</select>
 	
-	<select id="payList" resultType="PayDto">
+	<select id="paymentList" resultType="PaymentDto">
 		SELECT *
-		FROM OPT_PAY
+		FROM OPT_PAYMENT
 		ORDER BY PAY_SEQ
 	</select>
 

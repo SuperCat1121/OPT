@@ -44,7 +44,7 @@
 				<tr>
 					<th>유저리스트</th>
 					<c:forEach items="${userList}" var="MemberDto">
-						<td><c:out value="z"/></td>
+						<td><c:out value="${MemberDto.opt_name}"/></td>
 					</c:forEach>
 				</tr>
 				<tr>
@@ -75,35 +75,18 @@
 				<tr>
 					<td>
 						TODAY<br>
-						<img src="">
+						<c:out value="${todaySales}건"></c:out>
+						<img src="#">
 					</td>
 					<td>
 						MONTH<br>
-						<img src="">
+						<c:out value="${monthSales}건"></c:out>
+						<img src="#">
 					</td>
 					<td>
 						재고부족<br>
-						<img src="">
-					</td>
-					<td>
-						주문현황<br>
-						<img src="">
-					</td>
-				</tr>
-			</table>
-		</article>
-		<article>
-			클레임현황<br>
-			<table>
-				<tr>
-					<td>
-						취소요청
-					</td>
-					<td>
-						반품요청
-					</td>
-					<td>
-						교환요청
+						<c:out value="${alertItemCount}건"></c:out>
+						<img src="#">
 					</td>
 				</tr>
 			</table>

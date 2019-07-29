@@ -7,6 +7,13 @@ public class ItemDto {
 	private int item_views_no;
 	private String item_content;
 	private String item_url;
+	private int item_count;
+	public int getItem_count() {
+		return item_count;
+	}
+	public void setItem_count(int item_count) {
+		this.item_count = item_count;
+	}
 	public int getItem_num() {
 		return item_num;
 	}

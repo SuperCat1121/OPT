@@ -2,6 +2,7 @@ package com.opt.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,7 @@ import com.opt.biz.OPTBizImpl;
 import com.opt.dao.OPTDao;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
+import com.opt.dto.PaymentDto;
 
 
 @WebServlet("/opt.do")
@@ -66,12 +68,35 @@ public class OptController extends HttpServlet {
 				dispatch(request, response, "login.jsp?res=fail");
 			}
 		} else if(command.equals("admin")) {
+			Calendar cal = Calendar.getInstance();
+			int month = cal.get(Calendar.MONTH) + 1;
+			int day = cal.get(Calendar.DATE);
+			int monthSales = 0;
+			int todaySales = 0;
+			int alertItemCount = 0;
 			List<ItemDto> itemList = biz.itemList();
 			List<MemberDto> userList = biz.selectList();
-			System.out.println(userList.get(0).getOpt_name());
-			System.out.println(itemList.get(0).getItem_name());
+			List<PaymentDto> paymentList = biz.paymentList();
+			// 월별 판매건수 / 일일 판매건수
+			for(PaymentDto dto : paymentList) {
+				if(dto.getPay_regdate().getMonth()+1 == month) {
+					monthSales++;
+				}
+				if(dto.getPay_regdate().getDate() == day) {
+					todaySales++;
+				}
+			}
+			// 재고부족 현황
+			for(ItemDto dto : itemList) {
+				if(dto.getItem_count() < 5) {
+					alertItemCount++;
+				}
+			}
 			request.setAttribute("itemList", itemList);
 			request.setAttribute("userList", userList);
+			request.setAttribute("monthSales", monthSales);
+			request.setAttribute("todaySales", todaySales);
+			request.setAttribute("alertItemCount", alertItemCount);
 			dispatch(request, response, "admin.jsp");
 		}
 		

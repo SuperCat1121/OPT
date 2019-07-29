@@ -5,6 +5,7 @@ import java.util.List;
 import com.opt.dao.OPTDao;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
+import com.opt.dto.PaymentDto;
 
 public class OPTBizImpl implements OPTBiz {
 
@@ -45,4 +46,8 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.itemList();
 	}
 
+	@Override
+	public List<PaymentDto> paymentList() {
+		return dao.paymentList();
+	}
 }

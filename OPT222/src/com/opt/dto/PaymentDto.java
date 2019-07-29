@@ -1,5 +1,7 @@
 package com.opt.dto;
 
+import java.sql.Date;
+
 public class PaymentDto {
 	private int opt_no_seq;
 	private int item_num;
@@ -9,6 +11,13 @@ public class PaymentDto {
 	private String pay_phone;
 	private String pay_memo;
 	private int pay_count;
+	private Date pay_regdate;
+	public Date getPay_regdate() {
+		return pay_regdate;
+	}
+	public void setPay_regdate(Date pay_regdate) {
+		this.pay_regdate = pay_regdate;
+	}
 	public int getOpt_no_seq() {
 		return opt_no_seq;
 	}
