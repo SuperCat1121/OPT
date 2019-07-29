@@ -19,5 +19,11 @@
 		FROM OPT_ITEM
 		ORDER BY ITEM_NUM_SEQ
 	</select>
+	
+	<select id="payList" resultType="PayDto">
+		SELECT *
+		FROM OPT_PAY
+		ORDER BY PAY_SEQ
+	</select>
 
 </mapper>

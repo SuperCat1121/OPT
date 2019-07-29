@@ -86,7 +86,7 @@
 						<img src="">
 					</td>
 					<td>
-						판매상품<br>
+						주문현황<br>
 						<img src="">
 					</td>
 				</tr>
@@ -116,7 +116,6 @@
 		<a href="#">유저관리</a>
 		<a href="#">상품관리</a>
 		<a href="#">내 정보</a>
-		
 	</nav>
 </body>
 </html>
