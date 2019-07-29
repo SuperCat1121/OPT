@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.opt.dao.OPTDao;
 import com.opt.dto.MemberDto;
+import com.opt.dto.OrderListDto;
 
 public class OPTBizImpl implements OPTBiz {
 
@@ -39,4 +40,20 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.login(id, pw);
 	}
 
+	@Override
+	public int pay_count(int num) {
+		// TODO Auto-generated method stub
+		return dao.pay_count(num);
+	}
+
+	@Override
+	public int coupon_count(int num) {
+		// TODO Auto-generated method stub
+		return dao.coupon_count(num);
+	}
+	public List<OrderListDto> orderList(int no){
+		
+		return dao.orderList(no);
+	}
+	
 }

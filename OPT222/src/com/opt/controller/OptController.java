@@ -2,6 +2,7 @@ package com.opt.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,7 @@ import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
 import com.opt.dao.OPTDao;
 import com.opt.dto.MemberDto;
+import com.opt.dto.OrderListDto;
 
 
 @WebServlet("/opt.do")
@@ -68,8 +70,14 @@ public class OptController extends HttpServlet {
 					    c.setMaxAge(60*60*24) ;
 					    response.addCookie(c) ;
 					}
+					int pay_count = biz.pay_count(login.getOpt_no_seq());
+					int coupon_count = biz.coupon_count(login.getOpt_no_seq());
 					
-					dispatch(request, response, "user.jsp");
+					List<OrderListDto> list = new ArrayList<OrderListDto>();
+					list = biz.orderList(login.getOpt_no_seq());
+					
+					session.setAttribute("orderdto", list);
+					dispatch(request, response, "user.jsp?pay_count="+pay_count+"&coupon_count="+coupon_count);
 					System.out.println("회원");
 					//결제페이지 추가
 				}

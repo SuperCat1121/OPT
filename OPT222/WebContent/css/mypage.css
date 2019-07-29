@@ -27,6 +27,65 @@ setion {
 a {
 	text-decoration: none;
 }
+/* 사이드바 */
+.sidenav {
+			height:100%;
+			width: 0;
+			position: fixed;
+			z-index:1;
+			top: 0;
+			left: 0;
+			background-color: rgb(0,154,200);
+			overflow-x: hidden;
+			transition:0.5s ease-in-out;
+			padding-top: 60px;
+		}
+		.sidenav a {
+			padding: 8px 8px 8px 32px;
+			text-decoration: none;
+			font-size: 25px;
+			color: #fff;
+			display: block;
+			transition: 0.2s ease-in-out;
+		}
+		.sidenav a:hover, .offcanvas a:focus {
+			color: #000;
+		}
+		.closebtn {
+			position: absolute;
+			top: 0;
+			right: 25px;
+			font-size: 36px !important;
+			margin-left: 50px;
+		}
+		.openmenu:hover {
+			color:rgb(0,154,200);
+			transition:0.5s ease-in-out;
+		}
+		.openmenu {
+			font-size: 25px;
+			cursor:pointer;
+			transition:0.5s ease-in-out;
+		}
+		.openmenu > i {
+			font-size: 30px;
+		}
+		/* 미디어쿼리 적용 */
+		@media screen and (max-height:450px) {
+			.sidenav {
+				padding-top:15px;
+			}
+			.sidenav a {
+				font-size: 18px;
+			}
+		}
+		.openmenu_btn{
+		    position: relative;
+    		left: 11%;
+    		height: 50px;
+    	}
+
+/* 마이페이지 콘텐츠 */
 .page_title {
     padding: 60px 0 50px;
     text-align: center;
@@ -35,9 +94,9 @@ a {
 	width: 1200px;
     margin: 0 auto;
     padding-bottom: 80px;
+    padding-left: 15%;
 }    
 .mypage_welcome{
-	padding-left: 35px;
     height: 380px;
 }
 .welcom_name{
@@ -56,12 +115,13 @@ a {
 }
 .welcom_box {
     padding: 40px 40px 0;
-    background: #f7f7f7;
+    background: #ebebeb;
     height: 300px;
     font-size: 24px;
     font-weight: 300;
     color: #000;
-    width: 450px;
+    width: 80%;
+    float: left;
 }
 .link {
     color: #333;
@@ -132,4 +192,41 @@ a {
 	
 	font-size: 20px;
 
+}
+.opt_pay{
+	padding-left: 36px;
+}
+.opt_pay dt:before{
+	width: 27px;
+	content: '';
+    display: inline-block;
+    height: 23px;
+    margin: -3px 5px 0 0;
+    background: url(../user_img/ico_mypage.png) no-repeat 0 -77px;
+    vertical-align: middle;
+
+}
+.opt_pay dt{
+	position: relative;
+    float: left;
+    width: 35%;
+    color: #333;
+    font-size: 20px;
+}
+.opt_pay dd{
+	    font-size: 20px;
+}
+.order_list_title{
+	height: 50px;
+    border-bottom: 1px dashed #d2d2d2;
+    width: 84%;
+}
+table{
+	width: 67%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
 }

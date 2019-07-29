@@ -6,6 +6,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.opt.dto.MemberDto" alias="dto" />
+		<typeAlias type="com.opt.dto.OrderListDto" alias="orderdto"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
