@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 
 public class OPTDao extends SqlMapConfig {
@@ -32,9 +33,19 @@ public class OPTDao extends SqlMapConfig {
 		SqlSession session = null;
 		List<MemberDto> list = new ArrayList<MemberDto>();
 
-		session = getsqlSessionFactory().openSession();
+		session = getsqlSessionFactory().openSession(false);
 		list = session.selectList(namespace + "selectList");
 
+		return list;
+	}
+	
+	public List<ItemDto> itemList() {
+		SqlSession session = null;
+		List<ItemDto> list = new ArrayList<ItemDto>();
+		
+		session = getsqlSessionFactory().openSession(false);
+		list = session.selectList(namespace + "itemList");
+		
 		return list;
 	}
 	

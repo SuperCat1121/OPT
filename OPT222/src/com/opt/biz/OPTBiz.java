@@ -2,6 +2,7 @@ package com.opt.biz;
 
 import java.util.List;
 
+import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 
 public interface OPTBiz {
@@ -11,4 +12,5 @@ public interface OPTBiz {
 	public int update(MemberDto dto);
 	public int delete(int opt_no_seq);
 	public MemberDto login(String id, String pw);
+	public List<ItemDto> itemList();
 }

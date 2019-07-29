@@ -64,13 +64,14 @@ public class OptController extends HttpServlet {
 			}else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");
 			}
+		} else if(command.equals("admin")) {
+			
 		}
 		
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	public void dispatch(HttpServletRequest request, HttpServletResponse response,String url) throws ServletException, IOException {

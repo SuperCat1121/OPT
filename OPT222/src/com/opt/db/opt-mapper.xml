@@ -8,5 +8,10 @@
 	 WHERE OPT_ID = #{id} AND OPT_PW = #{pw}
 	</select>
 	
+	<select id="itemList" resultType="dto">
+		SELECT *
+		FROM OPT_ITEM
+		ORDER BY ITEM_NUM;
+	</select>
 
 </mapper>

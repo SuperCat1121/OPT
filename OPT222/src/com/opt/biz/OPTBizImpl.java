@@ -3,6 +3,7 @@ package com.opt.biz;
 import java.util.List;
 
 import com.opt.dao.OPTDao;
+import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 
 public class OPTBizImpl implements OPTBiz {
@@ -37,6 +38,11 @@ public class OPTBizImpl implements OPTBiz {
 	@Override
 	public MemberDto login(String id, String pw) {
 		return dao.login(id, pw);
+	}
+	
+	@Override
+	public List<ItemDto> itemList() {
+		return dao.itemList();
 	}
 
 }
