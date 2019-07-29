@@ -73,11 +73,22 @@ public class OptController extends HttpServlet {
 			int day = cal.get(Calendar.DATE);
 			int monthSales = 0;
 			int todaySales = 0;
+			
+			// 2달전 판매 건수
 			int twoMonth = 0;
+			
+			// 1달전 판매 건수
 			int oneMonth = 0;
+			
+			// 2일전 판매 건수
 			int twoDay = 0;
+			
+			// 1일전 판매 건수
 			int oneDay = 0;
+			
+			// 재고가 5개 미만인 상품들의 개수
 			int alertItemCount = 0;
+			
 			List<ItemDto> itemList = biz.itemList();
 			List<MemberDto> userList = biz.selectList();
 			List<PaymentDto> paymentList = biz.paymentList();
