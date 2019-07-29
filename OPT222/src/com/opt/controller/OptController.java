@@ -80,6 +80,8 @@ public class OptController extends HttpServlet {
 					dispatch(request, response, "user.jsp?pay_count="+pay_count+"&coupon_count="+coupon_count);
 					System.out.println("회원");
 					//결제페이지 추가
+					
+					
 				}
 			}else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");
