@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,13 +15,26 @@
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 
 <script type="text/javascript">
-function openNav() {
-	document.getElementById('mysidenav').style.width = '250px';
-}
+
 function closeNav() {
 	document.getElementById('mysidenav').style.width = '0';
 }
+function AddComma(data_value) {
 
+	return Number(data_value).toLocaleString('en');
+
+	}
+
+
+
+$(document).ready(function(){
+	$(".side_menu_nav").mouseenter(function(){
+		$("#mysidenav").width('250px');
+	});
+	$(".side_menu_nav").mouseleave(function(){
+		$("#mysidenav").width('0px');
+	});
+});
 
 </script>
 </head>
@@ -30,19 +44,19 @@ function closeNav() {
 		<h2>마이페이지</h2>
 	</div>
 	
+	<nav class="side_menu_nav">
 	<div id="mysidenav" class="sidenav">
 		<a href="#" class="closebtn" onclick='closeNav()'>x</a>
 		<a href="#">운송장번호 조회</a>
 		<a href="#">마이쪽지함</a>
-		<a href="#">장바구니</a>
 		<a href="#">일정관리</a>
 		<a href="#">장바구니</a>
 		<a href="#">내쿠폰함</a>
 		<a href="#">고객센터</a>
 	</div>
 	<div class="openmenu_btn">
-	<span class="openmenu" onclick='openNav()'><i class="fa fa-angle-double-left fa-5" aria-hidden="true"></i> 마이 메뉴</span>
 	</div>
+	</nav>
 	<div class="mypage_content">
 		<div class="mypage_welcome">
 		<div class="welcom_box">
@@ -75,7 +89,7 @@ function closeNav() {
 		
 		</div>
 		<div class="order_list_title">
-			<h2>주문 내역</h2>
+			<h2>최근 주문 내역</h2>
 		</div>
 		<div class="order_list">
 			<table summary="번호 주문일자 상품명 결제금액">
@@ -111,10 +125,10 @@ function closeNav() {
 		<c:otherwise>
 			<c:forEach items="${orderdto }" var="dto">
 					<tr>
-						<td>${dto.r }</td>
-						<td>${dto.pay_date }</td>					
-						<td>${dto.name }</td>
-						<td>${dto.pay_all }</td>
+						<td><div class="td_content">${dto.r }</div></td>
+						<td><div class="td_content">${dto.pay_date }</div></td>					
+						<td><div class="td_content">${dto.name }</div></td>
+						<td><div class="td_content"><fmt:formatNumber value="${dto.pay_all }" pattern="#,##0" />원</div></td>
 					</tr>
 			</c:forEach>
 			</c:otherwise>
@@ -122,6 +136,9 @@ function closeNav() {
 		</tbody>	
 			</table>
 		</div>
+	</div>
+	<div>
+	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

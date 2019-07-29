@@ -1,5 +1,5 @@
 
-body{
+html,body{
 	margin:0;
 	padding:0;
 	border:0;
@@ -9,6 +9,7 @@ body{
     font-weight: 400;
     line-height: 1;
     letter-spacing: -1px;
+    height: 100%;
 }
 
 ul,li{
@@ -28,6 +29,13 @@ a {
 	text-decoration: none;
 }
 /* 사이드바 */
+.side_menu_nav{
+	float: left;
+    width: 15%;
+    height: 780px;
+    position: absolute;
+    top: 0px;
+}
 .sidenav {
 			height:100%;
 			width: 0;
@@ -35,10 +43,11 @@ a {
 			z-index:1;
 			top: 0;
 			left: 0;
-			background-color: rgb(0,154,200);
+			background-color: #7c7c7c;
 			overflow-x: hidden;
 			transition:0.5s ease-in-out;
 			padding-top: 60px;
+			
 		}
 		.sidenav a {
 			padding: 8px 8px 8px 32px;
@@ -58,18 +67,8 @@ a {
 			font-size: 36px !important;
 			margin-left: 50px;
 		}
-		.openmenu:hover {
-			color:rgb(0,154,200);
-			transition:0.5s ease-in-out;
-		}
-		.openmenu {
-			font-size: 25px;
-			cursor:pointer;
-			transition:0.5s ease-in-out;
-		}
-		.openmenu > i {
-			font-size: 30px;
-		}
+		
+		
 		/* 미디어쿼리 적용 */
 		@media screen and (max-height:450px) {
 			.sidenav {
@@ -79,11 +78,7 @@ a {
 				font-size: 18px;
 			}
 		}
-		.openmenu_btn{
-		    position: relative;
-    		left: 11%;
-    		height: 50px;
-    	}
+		
 
 /* 마이페이지 콘텐츠 */
 .page_title {
@@ -218,15 +213,34 @@ a {
 }
 .order_list_title{
 	height: 50px;
-    border-bottom: 1px dashed #d2d2d2;
     width: 84%;
 }
 table{
-	width: 67%;
+	width: 85%;
     border-collapse: collapse;
     border-spacing: 0;
     table-layout: fixed;
     word-wrap: break-word;
     word-break: keep-all;
+
 }
+.order_list table tr th{
+	padding: 18px 0;
+    border-top: 1px solid #666;
+    border-bottom: none;
+    background-color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.th_title, .td_content{
+color: #575757;
+}
+.order_list table tr td{
+	padding: 18px 0;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 14px;
+}
+.td_content{
+    text-align: center;
 }
