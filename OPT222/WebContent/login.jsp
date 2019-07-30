@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 <%
 	String res = request.getParameter("res");
@@ -105,6 +106,11 @@ function checkData(flag){
 		<legend class="blind">로그인</legend>
 		<form action="opt.do" method="post" onsubmit="return check()" name="fr">
 			<input type="hidden" name="command" value="login" />
+<%
+	String my = request.getParameter("mypageFlag");
+%>			
+			
+			<input type="hidden" name="mypageFlag" value="<%=my%>">
 			<input type="hidden" name="hidden_chk" value=""/>
 			<div class=id_area>	
 				<span class="input_box">

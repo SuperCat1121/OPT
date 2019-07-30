@@ -33,12 +33,20 @@ public class OptController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[ " + command + " ]");
 		OPTBiz biz = new OPTBizImpl();
+		
+		if(command.equals("logout")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			dispatch(request, response, "index.jsp");
+		}
+		
 		if(command.equals("login")) {
+			
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
+			
 			String hidden_chk = request.getParameter("hidden_chk");	//체크시 on 안되면 null
 			MemberDto login = biz.login(id, pw);
-			
 			
 			if(login == null && id.equals("") && pw.equals("")) {
 				response.sendRedirect("opt.do?command=login");
@@ -57,36 +65,53 @@ public class OptController extends HttpServlet {
 					dispatch(request, response, "admin.jsp");
 				}else if(login.getOpt_role().equals("user")) {
 					
-					
 					if(hidden_chk.equals("Y")) {
 					    
 					    Cookie c = new Cookie("idSave", id) ;
-					    
 					    c.setMaxAge(60*60*24) ; // 쿠키 유효기간을 설정한다. 초단위 : 60*60*24= 1일
-					    
 					    response.addCookie(c) ; // 응답헤더에 쿠키를 추가한다.
 					}else {
 					    Cookie c = new Cookie("idSave", "") ;
 					    c.setMaxAge(60*60*24) ;
 					    response.addCookie(c) ;
 					}
-					int pay_count = biz.pay_count(login.getOpt_no_seq());
-					int coupon_count = biz.coupon_count(login.getOpt_no_seq());
+					if((Integer.parseInt(request.getParameter("mypageFlag"))) == 0) {
+						
+						dispatch(request, response, "index.jsp?res=login");
+						
+					} else {
+						response.sendRedirect("opt.do?command=mypage");
+					}
 					
-					List<OrderListDto> list = new ArrayList<OrderListDto>();
-					list = biz.orderList(login.getOpt_no_seq());
-					
-					session.setAttribute("orderdto", list);
-					dispatch(request, response, "user.jsp?pay_count="+pay_count+"&coupon_count="+coupon_count);
 					System.out.println("회원");
-					//결제페이지 추가
 					
+					//회원정보수정
+					if(command.equals("registchange")) {
+						
+						dispatch(request, response, "regist_change_enter.jsp");
+						
+					}
+					
+					//결제페이지 추가
 					
 				}
 			}else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");
+			}
+		} else if(command.equals("mypage")) {
+			HttpSession session = request.getSession();
+			if(session.getAttribute("memdto") == null) {
+				response.sendRedirect("login.jsp?mypageFlag=1");
+			} else {
+				MemberDto memdto = (MemberDto)session.getAttribute("memdto");
+				int pay_count = biz.pay_count(memdto.getOpt_no_seq());
+				int coupon_count = biz.coupon_count(memdto.getOpt_no_seq());
 				
+				List<OrderListDto> orderList = new ArrayList<OrderListDto>();
+				orderList = biz.orderList(memdto.getOpt_no_seq());
 				
+				session.setAttribute("orderdto", orderList);
+				dispatch(request, response, "user.jsp?pay_count="+pay_count+"&coupon_count="+coupon_count);
 			}
 		}
 		

@@ -19,13 +19,6 @@
 function closeNav() {
 	document.getElementById('mysidenav').style.width = '0';
 }
-function AddComma(data_value) {
-
-	return Number(data_value).toLocaleString('en');
-
-	}
-
-
 
 $(document).ready(function(){
 	$(".side_menu_nav").mouseenter(function(){
@@ -46,13 +39,15 @@ $(document).ready(function(){
 	
 	<nav class="side_menu_nav">
 	<div id="mysidenav" class="sidenav">
+		<div style="width : 250px;">
 		<a href="#" class="closebtn" onclick='closeNav()'>x</a>
-		<a href="#">운송장번호 조회</a>
+		<a href="location.href='opt.do?command='">운송장번호 조회</a>
 		<a href="#">마이쪽지함</a>
 		<a href="#">일정관리</a>
 		<a href="#">장바구니</a>
 		<a href="#">내쿠폰함</a>
 		<a href="#">고객센터</a>
+		</div>
 	</div>
 	<div class="openmenu_btn">
 	</div>
@@ -67,7 +62,7 @@ $(document).ready(function(){
 		
 		<dd>
 		<p></p>
-			<a href="" class="link">개인정보 수정</a>
+			<a href="opt.do?command=registchange" class="link">개인정보 수정</a>
 			<a href="" class="link">일정관리</a>
 		</dd>	
 		</dl>
