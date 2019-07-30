@@ -9,48 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	html {
-		width: 100%;
-		height: 100%;
-	}
-
-	body {
-		width: 100%;
-		height: 100%;
-		margin: 0px;
-		padding: 0px;
-		border: 0px;
-	}
-	
-	h1 {
-		margin: 0px;
-		padding: 0px;
-	}
-	
-	section {
-		margin: 0 atuo;
-		background: lime;
-	}
-	
-	.firstline {
-		width: 350px;
-		height: 350px;
-		display: inline-block;
-	}
-	
-	nav {
-		float: right;
-		margin-right: 160px;
-	}
-	
-	.bar {
-		display: inline-block;
-		background: orange;
-		margin-left: 5px;
-	}
-	
-</style>
+<link href="css/admin.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -68,6 +27,24 @@
 	<h1>admin님 환영합니다</h1>
 	
 	<hr>
+	
+	<div class="nav">
+		<table border="1">
+			<tr>
+				<th>INDEX</th>
+			</tr>
+			<tr>
+				<td><a href="#">유저관리</a></td>
+			</tr>
+			<tr>
+				<td><a href="#">상품관리</a></td>
+			</tr>
+			<tr>
+				<td><a href="#">내 정보</a></td>
+			</tr>
+		</table>
+	</div>
+	<div class="content_area">
 	<section>
 		<article class="firstline">
 			판매진행현황
@@ -116,39 +93,77 @@
 				window.onload = function() {
 					var monthData = [${month}-2, ${month}-1, ${month}];
 					var dayData = [${day}-2, ${day}-1, ${day}];
-					alert(monthSales);
-					d3.select("body").selectAll("d")
-					.data(data)
-					.enter()
-					.append("div")
-					.style("height",function(d) {
+					var Data = [10, 50, 100, 150];
+					var rect = d3.select("#month").selectAll();
+					var rect2 = d3.select("#day").selectAll();
+					
+					rect.data(Data).enter()
+					.append("rect")
+					.attr("height",function(d) {
 						return d+"px";
 					})
-					.style("width",function(d) {
-						return "20px";
+					.attr("width", function(d) {
+						return "25px";
+					})
+					.attr("x", function(d, i) {
+						return i*35;
+					})
+					.attr("y", function(d, i) {
+						return 300-d;
 					})
 					.attr("class", "bar");
+					
+					rect2.data(monthData).enter()
+					.append("rect")
+					.attr("height", function(d) {
+						return d*12+"px";
+					})
+					.attr("width", function(d) {
+						return "25px";
+					})
+					.attr("x", function(d, i) {
+						return i*35;
+					})
+					.attr("y", function(d, i) {
+						return 600-d*12;
+					})
+					.attr("class", "bar");
+					// 글자 출력
+					rect2.data(monthData).enter()
+					.append("text")
+					.attr("x", function(d, i) {
+						return i*35+10;
+					})
+					.attr("y", function(d) {
+						return 600-d;
+					})
+					.style("font-size", "12pt")
+					.text(function(d){
+						return d;
+					});
+					
+					
+					rect2.data(monthData).enter()
+					.append("text")
+					.attr("x", function(d, i) {
+						return i*35;
+					})
+					.attr("y", function(d) {
+						return 610;
+					})
+					.style("font-size", "8pt")
+					.text(function(d, i) {
+						return ["2달전", "1달전", "이번달"][i];
+					});
 				}
 			</script>
 			<svg></svg>
 		</article>
+		
 	</section>
-	<nav>
-		<table border="1">
-			<tr>
-				<th>INDEX</th>
-			</tr>
-			<tr>
-				<td><a href="#">유저관리</a></td>
-			</tr>
-			<tr>
-				<td><a href="#">상품관리</a></td>
-			</tr>
-			<tr>
-				<td><a href="#">내 정보</a></td>
-			</tr>
-		</table>
-	</nav>
 	<div id="itemCountWarning" style="display: none;">재고가 5개 이하인 상품들의 개수입니다</div>
+	<svg id="month" style="width:300; height:300;"></svg>
+	<svg id="day" style="width:700; height:700;"></svg>
+	</div>
 </body>
 </html>
