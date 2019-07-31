@@ -46,7 +46,7 @@ public class OptController extends HttpServlet {
 
 			String hidden_chk = request.getParameter("hidden_chk");	//체크시 on 안되면 null
 			MemberDto login = biz.login(id, pw);
-			System.out.println(login);
+			System.out.println(login.getOpt_role());
 			if(login == null && id.equals("") && pw.equals("")) {
 				response.sendRedirect("opt.do?command=login");
 			} else if(login == null && !id.equals("") && !pw.equals("")) {
