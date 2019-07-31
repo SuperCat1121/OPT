@@ -23,7 +23,14 @@
 </script>
 </head>
 <body>
-		
+	<!--
+	<c:if test="${memdto.opt_role ne 'admin'}">
+		<script type="text/javascript">
+		alert("잘못된 접근입니다.");
+		document.location.href = "index.jsp";
+		</script>
+	</c:if>
+	-->
 	<h1>admin님 환영합니다</h1>
 	
 	<hr>
@@ -45,8 +52,7 @@
 		</table>
 	</div>
 	<div class="content_area">
-	<section>
-		<article class="firstline">
+		<div class="">
 			판매진행현황
 			<table border="1">
 				<tr>
@@ -62,8 +68,8 @@
 					</c:forEach>
 				</tr>
 			</table>
-		</article>
-		<article class="firstline">
+		</div>
+		<div class="">
 			판매실적/판매현황
 			<table border="1">
 				<tr>
@@ -84,86 +90,109 @@
 					</td>
 				</tr>
 			</table>
-		</article>
-		<article>
-			판매차트<br>
-			<% int[] arr = {1, 2}; %>
-			<script src="http://d3js.org/d3.v3.min.js"></script>
-			<script type="text/javascript">
-				window.onload = function() {
-					var monthData = [${month}-2, ${month}-1, ${month}];
-					var dayData = [${day}-2, ${day}-1, ${day}];
-					var Data = [10, 50, 100, 150];
-					var rect = d3.select("#month").selectAll();
-					var rect2 = d3.select("#day").selectAll();
-					
-					rect.data(Data).enter()
-					.append("rect")
-					.attr("height",function(d) {
-						return d+"px";
-					})
-					.attr("width", function(d) {
-						return "25px";
-					})
-					.attr("x", function(d, i) {
-						return i*35;
-					})
-					.attr("y", function(d, i) {
-						return 300-d;
-					})
-					.attr("class", "bar");
-					
-					rect2.data(monthData).enter()
-					.append("rect")
-					.attr("height", function(d) {
-						return d*12+"px";
-					})
-					.attr("width", function(d) {
-						return "25px";
-					})
-					.attr("x", function(d, i) {
-						return i*35;
-					})
-					.attr("y", function(d, i) {
-						return 600-d*12;
-					})
-					.attr("class", "bar");
-					// 글자 출력
-					rect2.data(monthData).enter()
-					.append("text")
-					.attr("x", function(d, i) {
-						return i*35+10;
-					})
-					.attr("y", function(d) {
-						return 600-d;
-					})
-					.style("font-size", "12pt")
-					.text(function(d){
-						return d;
-					});
-					
-					
-					rect2.data(monthData).enter()
-					.append("text")
-					.attr("x", function(d, i) {
-						return i*35;
-					})
-					.attr("y", function(d) {
-						return 610;
-					})
-					.style("font-size", "8pt")
-					.text(function(d, i) {
-						return ["2달전", "1달전", "이번달"][i];
-					});
-				}
-			</script>
-			<svg></svg>
-		</article>
+		</div>
+		<div class="">
+		판매차트<br>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var dayData = [${twoDaySales}, ${oneDaySales}, ${todaySales}];
+				var monthData = [${twoMonthSales}, ${oneMonthSales}, ${monthSales}];
+				var day = d3.select("#day").selectAll();
+				var month = d3.select("#month").selectAll();
+				// 사각형 그래프 그리기 (2일전,1일전,오늘)
+				day.data(dayData).enter()
+				.append("rect")
+				.attr("height",function(d) {
+					return d*10+"px";
+				})
+				.attr("width", function(d) {
+					return "30px";
+				})
+				.attr("x", function(d, i) {
+					return i*35;
+				})
+				.attr("y", function(d, i) {
+					return 100-d*10;
+				})
+				.attr("class", "bar");
+				// 사각형 그래프 그리기 (2달전,1달전,이번달)
+				month.data(monthData).enter()
+				.append("rect")
+				.attr("height", function(d) {
+					return d*10+"px";
+				})
+				.attr("width", function(d) {
+					return "30px";
+				})
+				.attr("x", function(d, i) {
+					return i*35;
+				})
+				.attr("y", function(d, i) {
+					return 100-d*10;
+				})
+				.attr("class", "bar");
+				// 그래프 데이터 출력
+				day.data(dayData).enter()
+				.append("text")
+				.attr("x", function(d, i) {
+					return i*35+9;
+				})
+				.attr("y", function(d) {
+					return 90;
+				})
+				.style("font-size", "12pt")
+				.text(function(d){
+					return d;
+				});
+				// 그래프 데이터 출력
+				month.data(monthData).enter()
+				.append("text")
+				.attr("x", function(d, i) {
+					return i*35+9;
+				})
+				.attr("y", function(d) {
+					return 90;
+				})
+				.style("font-size", "12pt")
+				.text(function(d){
+					return d;
+				});
+				// 그래프 레이블 출력
+				day.data(dayData).enter()
+				.append("text")
+				.attr("x", function(d, i) {
+					return i*35;
+				})
+				.attr("y", function(d) {
+					return 120;
+				})
+				.style("font-size", "8pt")
+				.text(function(d, i){
+					return ["2일전", "1일전", "오늘"][i];
+				});
+				// 그래프 레이블 출력
+				month.data(monthData).enter()
+				.append("text")
+				.attr("x", function(d, i) {
+					return i*35;
+				})
+				.attr("y", function(d) {
+					return 120;
+				})
+				.style("font-size", "8pt")
+				.text(function(d, i) {
+					return ["2달전", "1달전", "이번달"][i];
+				});
+			}
+		</script>
+		</div>
+		<div id="itemCountWarning" style="display: none;">재고가 5개 이하인 상품들의 개수입니다</div>
+		<div id="graph">
+			<svg id="day" style="width:110; height:125;"></svg>
+			<svg id="month" style="width:110; height:125;"></svg>
+		</div>
 		
-	</section>
-	<div id="itemCountWarning" style="display: none;">재고가 5개 이하인 상품들의 개수입니다</div>
-	<svg id="month" style="width:300; height:300;"></svg>
-	<svg id="day" style="width:700; height:700;"></svg>
 	</div>
 </body>
 </html>

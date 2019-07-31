@@ -16,38 +16,20 @@
 		padding: 0px;
 	}
 	
-	section {
-		margin: 0 atuo;
-		background: white;
-		width: 100%;
-		height: 350px;
-	}
-	
-	.firstline {
-		width: 40%;
-		height: 350px;
-		display: inline-block;
-	}
-	
-	nav {
-		float: right;
-		margin-right: 160px;
+	.nav {
+		position: fixed;
+    	width: 200px;
+		right: 100px;
+		top: 300px;
 	}
 	
 	.bar {
 		fill: orange;
 	}
 	
-	svg {
-		display: inline;
-	}
 	.content_area {
-		    width: 75%;
+		width: 75%;
 	    margin: 0 auto;
-	}	
-	section {
-		 height: 350px;
-		 text-align: center;
 	}
 	
 	

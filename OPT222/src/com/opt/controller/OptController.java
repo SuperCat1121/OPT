@@ -42,21 +42,14 @@ public class OptController extends HttpServlet {
 			System.out.println("pw >> " + pw);
 			MemberDto login = biz.login(id, pw);
 			
-			
-			
 			if(login == null && id.equals("") && pw.equals("")) {
 				response.sendRedirect("opt.do?command=login");
-			}else if(login == null && !id.equals("") && !pw.equals("")) {
-				
+			}else if(login == null && !id.equals("") && !pw.equals("")) {	
 				dispatch(request, response, "login.jsp?res=fail");
-			
 			}else if(login.getOpt_enabled().equals("Y")){
-				
 				HttpSession session = request.getSession();
 				session.setAttribute("memdto", login);
-				
 				session.setMaxInactiveInterval(3600);
-				
 				if(login.getOpt_role().equals("admin")) {
 					dispatch(request, response, "admin.jsp");
 					System.out.println("어드민");
@@ -75,16 +68,16 @@ public class OptController extends HttpServlet {
 			int todaySales = 0;
 			
 			// 2달전 판매 건수
-			int twoMonth = 0;
+			int twoMonthSales = 0;
 			
 			// 1달전 판매 건수
-			int oneMonth = 0;
+			int oneMonthSales = 0;
 			
 			// 2일전 판매 건수
-			int twoDay = 0;
+			int twoDaySales = 0;
 			
 			// 1일전 판매 건수
-			int oneDay = 0;
+			int oneDaySales = 0;
 			
 			// 재고가 5개 미만인 상품들의 개수
 			int alertItemCount = 0;
@@ -101,16 +94,16 @@ public class OptController extends HttpServlet {
 					todaySales++;
 				}
 				if(dto.getPay_regdate().getMonth()+1 == month-2) {
-					twoMonth++;
+					twoMonthSales++;
 				}
 				if(dto.getPay_regdate().getMonth()+1 == month-1) {
-					oneMonth++;
+					oneMonthSales++;
 				}
 				if(dto.getPay_regdate().getDate() == day-2 && dto.getPay_regdate().getMonth()+1 == month) {
-					twoDay++;
+					twoDaySales++;
 				}
 				if(dto.getPay_regdate().getDate() == day-1 && dto.getPay_regdate().getMonth()+1 == month) {
-					oneDay++;
+					oneDaySales++;
 				}
 			}
 			// 재고부족 현황
@@ -119,17 +112,23 @@ public class OptController extends HttpServlet {
 					alertItemCount++;
 				}
 			}
-			request.setAttribute("itemList", itemList);
-			request.setAttribute("userList", userList);
-			request.setAttribute("monthSales", monthSales);
-			request.setAttribute("todaySales", todaySales);
-			request.setAttribute("alertItemCount", alertItemCount);
-			request.setAttribute("month", month);
-			request.setAttribute("day", day);
-			System.out.println("2달 전 : " + twoMonth);
-			System.out.println("1달 전 : " + oneMonth);
-			System.out.println("2일 전 : " + twoDay);
-			System.out.println("1일 전 : " + oneDay);
+			request.setAttribute("itemList", itemList);           // 상품 목록
+			request.setAttribute("userList", userList);           // 유저 목록
+			
+			request.setAttribute("monthSales", monthSales);       // 이번달 판매량
+			request.setAttribute("oneMonthSales", oneMonthSales); // 1달전 판매량
+			request.setAttribute("twoMonthSales", twoMonthSales); // 2달전 판매량
+			
+			request.setAttribute("todaySales", todaySales);       // 오늘 판매량
+			request.setAttribute("oneDaySales", oneDaySales);     // 1일전 판매량
+			request.setAttribute("twoDaySales", twoDaySales);     // 2일전 판매량
+			
+			request.setAttribute("alertItemCount", alertItemCount); // 재고가 5개 이하인 제품들의 개수
+
+			System.out.println("2달 전 : " + twoMonthSales);
+			System.out.println("1달 전 : " + oneMonthSales);
+			System.out.println("2일 전 : " + twoDaySales);
+			System.out.println("1일 전 : " + oneDaySales);
 			System.out.println("오늘 : " + todaySales);
 			System.out.println("이번 달 : " + monthSales);
 			dispatch(request, response, "admin.jsp");
