@@ -125,12 +125,6 @@ public class OptController extends HttpServlet {
 			
 			request.setAttribute("alertItemCount", alertItemCount); // 재고가 5개 이하인 제품들의 개수
 
-			System.out.println("2달 전 : " + twoMonthSales);
-			System.out.println("1달 전 : " + oneMonthSales);
-			System.out.println("2일 전 : " + twoDaySales);
-			System.out.println("1일 전 : " + oneDaySales);
-			System.out.println("오늘 : " + todaySales);
-			System.out.println("이번 달 : " + monthSales);
 			dispatch(request, response, "admin.jsp");
 		}
 		
