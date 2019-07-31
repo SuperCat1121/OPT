@@ -43,29 +43,27 @@ public class OptController extends HttpServlet {
 			
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
-			
+
 			String hidden_chk = request.getParameter("hidden_chk");	//체크시 on 안되면 null
 			MemberDto login = biz.login(id, pw);
-			
+			System.out.println(login);
 			if(login == null && id.equals("") && pw.equals("")) {
 				response.sendRedirect("opt.do?command=login");
-			}else if(login == null && !id.equals("") && !pw.equals("")) {
-				
+			} else if(login == null && !id.equals("") && !pw.equals("")) {
 				dispatch(request, response, "login.jsp?res=fail");
-			
-			}else if(login.getOpt_enabled().equals("Y")){
+			} else if(login.getOpt_enabled().equals("Y")){
 				HttpSession session = request.getSession();
 				session.setAttribute("memdto", login);
 				session.setMaxInactiveInterval(3600);
 				// 로그인 후 admin 페이지 이동
 				if(login.getOpt_role().equals("admin")) {
 					dispatch(request, response, "admin.jsp");
-				}else if(login.getOpt_role().equals("user")) {
+				} else if(login.getOpt_role().equals("user")) {
 					if(hidden_chk.equals("Y")) {
 					    Cookie c = new Cookie("idSave", id) ;
 					    c.setMaxAge(60*60*24) ; // 쿠키 유효기간을 설정한다. 초단위 : 60*60*24= 1일
 					    response.addCookie(c) ; // 응답헤더에 쿠키를 추가한다.
-					}else {
+					} else {
 					    Cookie c = new Cookie("idSave", "") ;
 					    c.setMaxAge(60*60*24) ;
 					    response.addCookie(c) ;
@@ -81,7 +79,7 @@ public class OptController extends HttpServlet {
 					}
 					//결제페이지 추가
 				}
-			}else if(login.getOpt_enabled().equals("N")){
+			} else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");
 			}
 		} else if(command.equals("mypage")) {
@@ -100,9 +98,7 @@ public class OptController extends HttpServlet {
 				dispatch(request, response, "user.jsp?pay_count="+pay_count+"&coupon_count="+coupon_count);
 			}
 		}
-		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

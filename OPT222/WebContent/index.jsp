@@ -47,18 +47,18 @@
 
 <%
 	String res = request.getParameter("res");
-	System.out.println(res);
+	//System.out.println(res);
 	if(res == null || res == ""){
 %>
-			<a class = "menulist" href="login.jsp?mypageFlag=0">로그인</a>
+			<a class="menulist" href="login.jsp?mypageFlag=0">로그인</a>
 <%
 	}else{
 %>	
-			<a class = "menulist" href="opt.do?command=logout">로그아웃</a>
+			<a class="menulist" href="opt.do?command=logout">로그아웃</a>
 <%
 	}
 %>			
-			<a class = "menulist" href="opt.do?command=mypage">마이페이지</a>
+			<a class="menulist" href="opt.do?command=mypage">마이페이지</a>
 			</li>
 			</ul>
 		</div>

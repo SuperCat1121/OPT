@@ -2,8 +2,10 @@ package com.opt.biz;
 
 import java.util.List;
 
+import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
+import com.opt.dto.PaymentDto;
 
 public interface OPTBiz {
 	public List<MemberDto> selectList();
@@ -15,4 +17,8 @@ public interface OPTBiz {
 	public int pay_count(int num);
 	public int coupon_count(int num);
 	public List<OrderListDto> orderList(int no);
+	// AdminPage Branche Merge ===========
+	public List<ItemDto> itemList();
+	public List<PaymentDto> paymentList();
+	// ===================================
 }

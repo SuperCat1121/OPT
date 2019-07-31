@@ -3,8 +3,10 @@ package com.opt.biz;
 import java.util.List;
 
 import com.opt.dao.OPTDao;
+import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
+import com.opt.dto.PaymentDto;
 
 public class OPTBizImpl implements OPTBiz {
 
@@ -42,18 +44,27 @@ public class OPTBizImpl implements OPTBiz {
 
 	@Override
 	public int pay_count(int num) {
-		// TODO Auto-generated method stub
 		return dao.pay_count(num);
 	}
 
 	@Override
 	public int coupon_count(int num) {
-		// TODO Auto-generated method stub
 		return dao.coupon_count(num);
 	}
+	
+	@Override
 	public List<OrderListDto> orderList(int no){
-		
 		return dao.orderList(no);
+	}
+	
+	@Override
+	public List<ItemDto> itemList() {
+		return null;
+	}
+	
+	@Override
+	public List<PaymentDto> paymentList() {
+		return null;
 	}
 	
 }
