@@ -31,9 +31,9 @@
 		</script>
 	</c:if>
 	-->
-	<h1>admin님 환영합니다</h1>
+	<h1>관리자</h1>
 	
-	<hr>
+	<hr style="margin-bottom: 0px;">
 	
 	<div class="nav">
 		<table border="1">
@@ -52,147 +52,147 @@
 		</table>
 	</div>
 	<div class="content_area">
-		<div class="">
-			판매진행현황
-			<table border="1">
-				<tr>
-					<th>유저리스트</th>
-					<c:forEach items="${userList}" var="MemberDto">
-						<td><c:out value="${MemberDto.opt_name}"/></td>
-					</c:forEach>
-				</tr>
-				<tr>
-					<th>상품리스트</th>
-					<c:forEach items="${itemList}" var="ItemDto">
-						<td><c:out value="${ItemDto.item_name}"/></td>
-					</c:forEach>
-				</tr>
-			</table>
+		<div class="first" style="margin-left: 65px;">
+			<p>판매진행현황</p>
+			<hr>
+			<svg style="width: 120px; height: 120px; margin-left: -15px;">
+				<circle cx="60" cy="60" r="60" fill="#ccc" />
+				<text x="40" y="60">배송중</text>
+				<text x="40" y="85">9건</text>
+			</svg>
+			<svg style="width: 120px; height: 120px; margin-left: 15px;">
+				<circle cx="60" cy="60" r="60" fill="#ccc" />
+				<text x="40" y="60">주문신청</text>
+				<text x="40" y="85">14건</text>
+			</svg>
+			<svg style="width: 120px; height: 120px; margin-left: 15px;">
+				<circle cx="60" cy="60" r="60" fill="#ccc" />
+				<text x="40" y="60">환불요청</text>
+				<text x="40" y="85">3건</text>
+			</svg>
 		</div>
-		<div class="">
-			판매실적/판매현황
-			<table border="1">
-				<tr>
-					<td>
-						TODAY<br>
-						<c:out value="${todaySales}건"></c:out>
-						<img src="#">
-					</td>
-					<td>
-						MONTH<br>
-						<c:out value="${monthSales}건"></c:out>
-						<img src="#">
-					</td>
-					<td>
-						<span>재고부족</span><br>
-						<c:out value="${alertItemCount}건"></c:out>
-						<img src="#">
-					</td>
-				</tr>
-			</table>
+		<svg style="width: 3px; height: 150px; margin-left: 70px;">
+				<line x1="2" y1="0" x2="2" y2="150" style="stroke:#ccc; stroke-width:3;">
+		</svg>
+		<div class="first" style="position: relative; left: 70px;">
+			<p>판매실적/판매현황</p>
+			<hr>
+			<svg style="width: 120px; height: 120px; margin-left: -15px;">
+				<circle cx="60" cy="60" r="60" fill="#ccc" />
+				<text x="40" y="60">배송중</text>
+				<text x="40" y="85">9건</text>
+			</svg>
+			<svg style="width: 120px; height: 120px; margin-left: 15px;">
+				<circle cx="60" cy="60" r="60" fill="#ccc" />
+				<text x="40" y="60">주문신청</text>
+				<text x="40" y="85">14건</text>
+			</svg>
+			<svg style="width: 120px; height: 120px; margin-left: 15px;">
+				<circle cx="60" cy="60" r="60" fill="#ccc" />
+				<text x="40" y="60">환불요청</text>
+				<text x="40" y="85">3건</text>
+			</svg>
 		</div>
-		<div class="">
-		판매차트<br>
-		<script src="http://d3js.org/d3.v3.min.js"></script>
-		<script type="text/javascript">
-			window.onload = function() {
-				var dayData = [${twoDaySales}, ${oneDaySales}, ${todaySales}];
-				var monthData = [${twoMonthSales}, ${oneMonthSales}, ${monthSales}];
-				var day = d3.select("#day").selectAll();
-				var month = d3.select("#month").selectAll();
-				// 사각형 그래프 그리기 (2일전,1일전,오늘)
-				day.data(dayData).enter()
-				.append("rect")
-				.attr("height",function(d) {
-					return d*10+"px";
-				})
-				.attr("width", function(d) {
-					return "30px";
-				})
-				.attr("x", function(d, i) {
-					return i*35;
-				})
-				.attr("y", function(d, i) {
-					return 100-d*10;
-				})
-				.attr("class", "bar");
-				// 사각형 그래프 그리기 (2달전,1달전,이번달)
-				month.data(monthData).enter()
-				.append("rect")
-				.attr("height", function(d) {
-					return d*10+"px";
-				})
-				.attr("width", function(d) {
-					return "30px";
-				})
-				.attr("x", function(d, i) {
-					return i*35;
-				})
-				.attr("y", function(d, i) {
-					return 100-d*10;
-				})
-				.attr("class", "bar");
-				// 그래프 데이터 출력
-				day.data(dayData).enter()
-				.append("text")
-				.attr("x", function(d, i) {
-					return i*35+9;
-				})
-				.attr("y", function(d) {
-					return 90;
-				})
-				.style("font-size", "12pt")
-				.text(function(d){
-					return d;
-				});
-				// 그래프 데이터 출력
-				month.data(monthData).enter()
-				.append("text")
-				.attr("x", function(d, i) {
-					return i*35+9;
-				})
-				.attr("y", function(d) {
-					return 90;
-				})
-				.style("font-size", "12pt")
-				.text(function(d){
-					return d;
-				});
-				// 그래프 레이블 출력
-				day.data(dayData).enter()
-				.append("text")
-				.attr("x", function(d, i) {
-					return i*35;
-				})
-				.attr("y", function(d) {
-					return 120;
-				})
-				.style("font-size", "8pt")
-				.text(function(d, i){
-					return ["2일전", "1일전", "오늘"][i];
-				});
-				// 그래프 레이블 출력
-				month.data(monthData).enter()
-				.append("text")
-				.attr("x", function(d, i) {
-					return i*35;
-				})
-				.attr("y", function(d) {
-					return 120;
-				})
-				.style("font-size", "8pt")
-				.text(function(d, i) {
-					return ["2달전", "1달전", "이번달"][i];
-				});
-			}
-		</script>
-		</div>
-		<div id="itemCountWarning" style="display: none;">재고가 5개 이하인 상품들의 개수입니다</div>
-		<div id="graph">
-			<svg id="day" style="width:110; height:125;"></svg>
+		<div class="graph">
+			<p>판매차트<p>
+			<hr>
+			<script src="http://d3js.org/d3.v3.min.js"></script>
+			<script type="text/javascript">
+				window.onload = function() {
+					var dayData = [${twoDaySales}, ${oneDaySales}, ${todaySales}];
+					var monthData = [${twoMonthSales}, ${oneMonthSales}, ${monthSales}];
+					var day = d3.select("#day").selectAll();
+					var month = d3.select("#month").selectAll();
+					// 사각형 그래프 그리기 (2일전,1일전,오늘)
+					day.data(dayData).enter()
+					.append("rect")
+					.attr("height",function(d) {
+						return d*10+"px";
+					})
+					.attr("width", function(d) {
+						return "30px";
+					})
+					.attr("x", function(d, i) {
+						return i*35;
+					})
+					.attr("y", function(d, i) {
+						return 100-d*10;
+					})
+					.attr("class", "bar");
+					// 사각형 그래프 그리기 (2달전,1달전,이번달)
+					month.data(monthData).enter()
+					.append("rect")
+					.attr("height", function(d) {
+						return d*10+"px";
+					})
+					.attr("width", function(d) {
+						return "30px";
+					})
+					.attr("x", function(d, i) {
+						return i*35;
+					})
+					.attr("y", function(d, i) {
+						return 100-d*10;
+					})
+					.attr("class", "bar");
+					// 그래프 데이터 출력
+					day.data(dayData).enter()
+					.append("text")
+					.attr("x", function(d, i) {
+						return i*35+9;
+					})
+					.attr("y", function(d) {
+						return 90;
+					})
+					.style("font-size", "12pt")
+					.text(function(d){
+						return d;
+					});
+					// 그래프 데이터 출력
+					month.data(monthData).enter()
+					.append("text")
+					.attr("x", function(d, i) {
+						return i*35+9;
+					})
+					.attr("y", function(d) {
+						return 90;
+					})
+					.style("font-size", "12pt")
+					.text(function(d){
+						return d;
+					});
+					// 그래프 레이블 출력
+					day.data(dayData).enter()
+					.append("text")
+					.attr("x", function(d, i) {
+						return i*35;
+					})
+					.attr("y", function(d) {
+						return 120;
+					})
+					.style("font-size", "8pt")
+					.text(function(d, i){
+						return ["2일전", "1일전", "오늘"][i];
+					});
+					// 그래프 레이블 출력
+					month.data(monthData).enter()
+					.append("text")
+					.attr("x", function(d, i) {
+						return i*35;
+					})
+					.attr("y", function(d) {
+						return 120;
+					})
+					.style("font-size", "8pt")
+					.text(function(d, i) {
+						return ["2달전", "1달전", "이번달"][i];
+					});
+				}
+			</script>
+			<svg id="day" style="width:110; height:125; margin-right: 130px; margin-left: 160px;"></svg>
 			<svg id="month" style="width:110; height:125;"></svg>
 		</div>
-		
 	</div>
+	<div id="itemCountWarning" style="display: none;">재고가 5개 이하인 상품들의 개수입니다</div>
 </body>
 </html>
