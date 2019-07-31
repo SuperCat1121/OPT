@@ -25,7 +25,6 @@ import com.opt.dto.OrderListDto;
 public class OptController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
- 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8"); 
@@ -55,18 +54,14 @@ public class OptController extends HttpServlet {
 				dispatch(request, response, "login.jsp?res=fail");
 			
 			}else if(login.getOpt_enabled().equals("Y")){
-				
 				HttpSession session = request.getSession();
 				session.setAttribute("memdto", login);
-				
 				session.setMaxInactiveInterval(3600);
-				
+				// 로그인 후 admin 페이지 이동
 				if(login.getOpt_role().equals("admin")) {
 					dispatch(request, response, "admin.jsp");
 				}else if(login.getOpt_role().equals("user")) {
-					
 					if(hidden_chk.equals("Y")) {
-					    
 					    Cookie c = new Cookie("idSave", id) ;
 					    c.setMaxAge(60*60*24) ; // 쿠키 유효기간을 설정한다. 초단위 : 60*60*24= 1일
 					    response.addCookie(c) ; // 응답헤더에 쿠키를 추가한다.
@@ -76,24 +71,15 @@ public class OptController extends HttpServlet {
 					    response.addCookie(c) ;
 					}
 					if((Integer.parseInt(request.getParameter("mypageFlag"))) == 0) {
-						
 						dispatch(request, response, "index.jsp?res=login");
-						
 					} else {
 						response.sendRedirect("opt.do?command=mypage");
 					}
-					
-					System.out.println("회원");
-					
 					//회원정보수정
 					if(command.equals("registchange")) {
-						
 						dispatch(request, response, "regist_change_enter.jsp");
-						
 					}
-					
 					//결제페이지 추가
-					
 				}
 			}else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");
@@ -119,9 +105,9 @@ public class OptController extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
 	public void dispatch(HttpServletRequest request, HttpServletResponse response,String url) throws ServletException, IOException {
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);
 		dispatch.forward(request, response);
