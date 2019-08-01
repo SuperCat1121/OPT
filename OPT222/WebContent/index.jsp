@@ -24,7 +24,7 @@
 						<a class = "menulist" href="">OPT</a>
 					</li>
 					<li>
-						<a class = "menulist" href="">PT받기</a> 
+						<a class = "menulist" href="">PT받기</a>
 						<a class = "menulist" href="">FOOD</a>
 					</li>
 					<li>

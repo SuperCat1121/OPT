@@ -19,22 +19,19 @@
 			$("#itemCountWarning").toggle();
 		});
 	});
-	
 </script>
 </head>
 <body>
 	<!--
 	<c:if test="${memdto.opt_role ne 'admin'}">
 		<script type="text/javascript">
-		alert("잘못된 접근입니다.");
-		document.location.href = "index.jsp";
+			alert("잘못된 접근입니다.");
+			document.location.href = "index.jsp";
 		</script>
 	</c:if>
 	-->
 	<h1>관리자</h1>
-	
 	<hr style="margin-bottom: 0px;">
-	
 	<div class="nav">
 		<table border="1">
 			<tr>
