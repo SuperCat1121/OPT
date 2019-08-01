@@ -3,6 +3,7 @@ package com.opt.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -114,4 +115,17 @@ public class OPTDao extends SqlMapConfig {
 		return list;
 	}
 	// ================================================
+	public int adminUserUpdate(int opt_no_seq, String enabled, String role) {
+		SqlSession session = null;
+		session = getsqlSessionFactory().openSession(false);
+		Map<String, Object> update = new HashMap<String, Object>();
+		update.put("seq", opt_no_seq);
+		update.put("enabled", enabled);
+		update.put("role", role);
+		int res = session.update(namespace + "adminUserUpdate", update);
+		if(res > 0) {
+			session.commit();
+		}
+		return res;
+	}
 }

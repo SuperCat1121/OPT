@@ -38,7 +38,7 @@
 				<th>INDEX</th>
 			</tr>
 			<tr>
-				<td><a href="#">유저관리</a></td>
+				<td><a href="opt.do?command=adminusermanager">유저관리</a></td>
 			</tr>
 			<tr>
 				<td><a href="#">상품관리</a></td>

@@ -50,4 +50,9 @@
 		ORDER BY PAY_SEQ
 	</select>
 	<!-- *********************************************************** -->
+	<update id="adminUserUpdate">
+		UPDATE OPT_MEMBER
+		SET OPT_ENABLED = #{enabled}, OPT_ROLE = #{role}
+		WHERE OPT_ID = #{seq}
+	</update>
 </mapper>

@@ -32,14 +32,14 @@ public class OptController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[ " + command + " ]");
 		OPTBiz biz = new OPTBizImpl();
+		PrintWriter out = response.getWriter();
 		// 로그아웃
 		if(command.equals("logout")) {
 			HttpSession session = request.getSession();
 			session.invalidate();
 			dispatch(request, response, "index.jsp");
-		}
 		// 로그인
-		if(command.equals("login")) {
+		} else if(command.equals("login")) {
 			String id = request.getParameter("id"); // 입력 아디디
 			String pw = request.getParameter("pw"); // 입력 패스워드
 
@@ -84,6 +84,7 @@ public class OptController extends HttpServlet {
 			} else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");
 			}
+		// 마이페이지
 		} else if(command.equals("mypage")) {
 			HttpSession session = request.getSession();
 			if(session.getAttribute("memdto") == null) {
@@ -98,6 +99,24 @@ public class OptController extends HttpServlet {
 				
 				session.setAttribute("orderdto", orderList);
 				dispatch(request, response, "user.jsp?pay_count="+pay_count+"&coupon_count="+coupon_count);
+			}
+		// (관리자)유저관리
+		} else if(command.equals("adminusermanager")) {
+			List<MemberDto> list = biz.selectList();
+			request.setAttribute("memberList", list);
+			dispatch(request, response, "adminusermanager.jsp");
+		} else if(command.equals("adminusermanagerres")) {
+			int opt_no_seq = Integer.parseInt(request.getParameter("opt_no_seq"));
+			String enabled = request.getParameter("enabled");
+			String role = request.getParameter("role");
+			int res = biz.adminUserUpdate(opt_no_seq, enabled, role);
+			if(res > 0) {
+				out.print("<script type='text/javascript'>");
+				out.print("alert('해당 유저를 수정하였습니다');");
+				out.print("</script>");
+				response.sendRedirect("opt.do?command=adminusermanager");
+			} else {
+				out.print("시스템 오류입니다. 다시 시도해주세요");
 			}
 		}
 	}

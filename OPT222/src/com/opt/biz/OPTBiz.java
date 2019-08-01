@@ -21,4 +21,5 @@ public interface OPTBiz {
 	public List<ItemDto> itemList();
 	public List<PaymentDto> paymentList();
 	// ===================================
+	public int adminUserUpdate(int opt_no_seq, String enabled, String role);
 }

@@ -67,4 +67,8 @@ public class OPTBizImpl implements OPTBiz {
 		return null;
 	}
 	
+	@Override
+	public int adminUserUpdate(int opt_no_seq, String enabled, String role) {
+		return dao.adminUserUpdate(opt_no_seq, enabled, role);
+	}
 }
