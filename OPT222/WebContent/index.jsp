@@ -4,24 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OPT</title>
-
-<script
-	src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="js/jquery.parallax.js"></script>
-<link href="css/main.css" rel="stylesheet" type="text/css">
-
+	<meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>OPT</title>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="js/jquery.parallax.js"></script>
+	<link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
-
 <body class="main_body">
-
 	<header class="header">
 		<div class="Menu">
 			<div class ="innerMenu">
-			
 			<ul class="topmenu">
 			<li>
 				<a class = "menulogo" href="main3.html" title="OPT 메인으로 이동">
@@ -43,7 +37,7 @@
 				</a>
 			</li>
 			<li>
-			<c:out value="${memdto.opt_id }"/>
+			<c:out value="${memdto.opt_id}"/>
 
 <%
 	String res = request.getParameter("res");

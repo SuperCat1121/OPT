@@ -32,41 +32,43 @@ public class OptController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[ " + command + " ]");
 		OPTBiz biz = new OPTBizImpl();
-		
+		// 로그아웃
 		if(command.equals("logout")) {
 			HttpSession session = request.getSession();
 			session.invalidate();
 			dispatch(request, response, "index.jsp");
 		}
-		
+		// 로그인
 		if(command.equals("login")) {
-			
-			String id = request.getParameter("id");
-			String pw = request.getParameter("pw");
+			String id = request.getParameter("id"); // 입력 아디디
+			String pw = request.getParameter("pw"); // 입력 패스워드
 
 			String hidden_chk = request.getParameter("hidden_chk");	//체크시 on 안되면 null
-			MemberDto login = biz.login(id, pw);
-			System.out.println(login.getOpt_role());
+			MemberDto login = biz.login(id, pw); // 로그인 시도
+			// 로그인 안됨, 아이디, 비밀번호 미입력
 			if(login == null && id.equals("") && pw.equals("")) {
 				response.sendRedirect("opt.do?command=login");
+			// 아이디, 비밀번호 입력했으나 로그인 실패
 			} else if(login == null && !id.equals("") && !pw.equals("")) {
 				dispatch(request, response, "login.jsp?res=fail");
+			// 로그인 성공, 계정이 활성화 된 상태
 			} else if(login.getOpt_enabled().equals("Y")){
 				HttpSession session = request.getSession();
 				session.setAttribute("memdto", login);
 				session.setMaxInactiveInterval(3600);
-				// 로그인 후 admin 페이지 이동
+				// 관리자 계정일 때 관리자페이지로 이동
 				if(login.getOpt_role().equals("admin")) {
 					dispatch(request, response, "admin.jsp");
+				// 유저 계정일 때 유저페이지로 이동
 				} else if(login.getOpt_role().equals("user")) {
 					if(hidden_chk.equals("Y")) {
-					    Cookie c = new Cookie("idSave", id) ;
-					    c.setMaxAge(60*60*24) ; // 쿠키 유효기간을 설정한다. 초단위 : 60*60*24= 1일
-					    response.addCookie(c) ; // 응답헤더에 쿠키를 추가한다.
+					    Cookie c = new Cookie("idSave", id);
+					    c.setMaxAge(60*60*24); // 쿠키 유효기간을 설정한다. 초단위 : 60*60*24= 1일
+					    response.addCookie(c); // 응답헤더에 쿠키를 추가한다.
 					} else {
-					    Cookie c = new Cookie("idSave", "") ;
-					    c.setMaxAge(60*60*24) ;
-					    response.addCookie(c) ;
+					    Cookie c = new Cookie("idSave", "");
+					    c.setMaxAge(60*60*24);
+					    response.addCookie(c);
 					}
 					if((Integer.parseInt(request.getParameter("mypageFlag"))) == 0) {
 						dispatch(request, response, "index.jsp?res=login");
@@ -108,4 +110,5 @@ public class OptController extends HttpServlet {
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);
 		dispatch.forward(request, response);
 	}
+	
 }

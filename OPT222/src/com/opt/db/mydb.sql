@@ -44,7 +44,7 @@ INSERT INTO OPT_MEMBER VALUES(
     '서울시 관악구 청룡동 1536-4',
     '010-1234-5393',
     'ABCtjap@gmail.com',
-    'N',
+    'Y',
     'male',
     'admin',
     10000,
@@ -83,6 +83,7 @@ INSERT INTO OPT_MEMBER VALUES(
     500,
     SYSDATE
 );
+UPDATE OPT_MEMBER SET OPT_ENABLED='Y' WHERE OPT_NO_SEQ=2;
 DELETE FROM OPT_MEMBER WHERE OPT_NO_SEQ = 22;
 SELECT * FROM OPT_MEMBER;
 
