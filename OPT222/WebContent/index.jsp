@@ -16,53 +16,50 @@
 	<header class="header">
 		<div class="Menu">
 			<div class ="innerMenu">
-			<ul class="topmenu">
-			<li>
-				<a class = "menulogo" href="main3.html" title="OPT 메인으로 이동">
-					<img alt="main" src="./main_image/logo.png" width=110px; height=50px;>
-				</a> 
-				<a class = "menulist" href="">OPT</a>
-			</li>
-			<li>
-				<a class = "menulist" href="">PT받기</a> 
-				<a class = "menulist" href="">FOOD</a>
-			</li>
-			<li>
-				<a class = "menulist" href="">고객지원</a>
-			</li> 
-			<li> 
-				<a class = "menulist" href="" style = "margin-right: 0px;">
-				검색
-					<img alt="search" src="./main_image/button_search.png"width="25px" height="25px">
-				</a>
-			</li>
-			<li>
-			<c:out value="${memdto.opt_id}"/>
-
-<%
-	String res = request.getParameter("res");
-	//System.out.println(res);
-	if(res == null || res == ""){
-%>
-			<a class="menulist" href="login.jsp?mypageFlag=0">로그인</a>
-<%
-	}else{
-%>	
-			<a class="menulist" href="opt.do?command=logout">로그아웃</a>
-<%
-	}
-%>			
-			<a class="menulist" href="opt.do?command=mypage">마이페이지</a>
-			</li>
-			</ul>
+				<ul class="topmenu">
+					<li>
+						<a class = "menulogo" href="main3.html" title="OPT 메인으로 이동">
+							<img alt="main" src="./main_image/logo.png" width=110px; height=50px;>
+						</a> 
+						<a class = "menulist" href="">OPT</a>
+					</li>
+					<li>
+						<a class = "menulist" href="">PT받기</a> 
+						<a class = "menulist" href="">FOOD</a>
+					</li>
+					<li>
+						<a class = "menulist" href="">고객지원</a>
+					</li> 
+					<li> 
+						<a class = "menulist" href="" style = "margin-right: 0px;">
+							검색
+							<img alt="search" src="./main_image/button_search.png"width="25px" height="25px">
+						</a>
+					</li>
+					<li>
+						<c:out value="${memdto.opt_id}"/>
+	
+					<%
+						String res = request.getParameter("res");
+						if(res == null || res == ""){
+					%>
+					<a class="menulist" href="login.jsp?mypageFlag=0">로그인</a>
+					<%
+						}else{
+					%>	
+					<a class="menulist" href="opt.do?command=logout">로그아웃</a>
+					<%
+						}
+					%>			
+					<a class="menulist" href="opt.do?command=mypage">마이페이지</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-	</div>
 	</header>
 	
 	<div class="bar">
-		<div class="bar_inner"
-			style="width: 100%; height: 3px; background-color: rgb(255, 255, 255); opacity: 0.2;"></div>
-
+		<div class="bar_inner" style="width: 100%; height: 3px; background-color: rgb(255, 255, 255); opacity: 0.2;"></div>
 	</div>
 	<div class="container">
 		<section class="background">
@@ -73,17 +70,14 @@
 				</p>
 			</div>
 		</section>
-
 		<section class="background">
 			<div class="content-wrapper">
 				<p class="content-title">철저한 </p>
 				<p class="content-subtitle">
 					<strong>식단 관리</strong>
 				</p>
-				
 			</div>
 		</section>
-
 		<section class="background">
 			<div class="content-wrapper">
 				<p class="content-title">Section Three</p>
@@ -91,8 +85,6 @@
 			</div>
 		</section>
 	</div>
-	
-	
 	<!--<jsp:include page="footer.jsp"></jsp:include>-->
 </body>
 </html>
