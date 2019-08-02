@@ -36,7 +36,7 @@ public class OptController extends HttpServlet {
 		// 로그아웃
 		if(command.equals("logout")) {
 			HttpSession session = request.getSession();
-			session.invalidate();
+			session.removeAttribute("memdto");
 			dispatch(request, response, "index.jsp");
 		// 로그인
 		} else if(command.equals("login")) {
