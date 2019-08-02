@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="optmapper">
+
+	<select id="login" resultType="MemberDto">
+		 SELECT *
+		 FROM OPT_MEMBER
+		 WHERE OPT_ID = #{id} AND OPT_PW = #{pw}
+	</select>
+	<!-- **************** AdminPage Branche Merge ****************** -->
+	<select id="selectList" resultType="MemberDto">
+		SELECT *
+		FROM OPT_MEMBER
+		ORDER BY OPT_NO_SEQ
+	</select>
+	<!-- *********************************************************** -->
+	<select id="pay_count" resultType="int">
+		SELECT COUNT(*) 
+		FROM OPT_PAYMENT P, OPT_MEMBER M
+		WHERE P.OPT_NO_SEQ = M.OPT_NO_SEQ
+		AND P.OPT_NO_SEQ = #{num}
+	</select>
+
+	<select id="coupon_count" resultType="int">
+		SELECT COUNT(*) 
+		FROM OPT_COUPON C, OPT_MEMBER M
+		WHERE C.OPT_NO_SEQ = M.OPT_NO_SEQ
+		AND C.OPT_NO_SEQ = #{num}
+	</select>
+	
+	<select id="order_list" resultType="orderdto">
+		SELECT R , PAY_DATE , NAME , PAY_ALL
+		FROM(SELECT ROWNUM R, PAY_DATE ,I.ITEM_NAME NAME, I.ITEM_PRICE * P.PAY_COUNT PAY_ALL
+		FROM OPT_PAYMENT P , OPT_ITEM I , OPT_MEMBER M
+		WHERE M.OPT_NO_SEQ = P.OPT_NO_SEQ
+		AND P.ITEM_NUM_SEQ = I.ITEM_NUM_SEQ
+		AND M.OPT_NO_SEQ = #{no})
+		ORDER BY R DESC
+	</select>
+	<!-- **************** AdminPage Branche Merge ****************** -->
+	<select id="itemList" resultType="ItemDto">
+		SELECT *
+		FROM OPT_ITEM
+		ORDER BY ITEM_NUM_SEQ
+	</select>
+	
+	<select id="paymentList" resultType="PaymentDto">
+		SELECT *
+		FROM OPT_PAYMENT
+		ORDER BY PAY_SEQ
+	</select>
+	<!-- *********************************************************** -->
+	<update id="adminUserUpdate">
+		UPDATE OPT_MEMBER
+		SET OPT_ENABLED = #{enabled}, OPT_ROLE = #{role}
+		WHERE OPT_ID = #{id}
+	</update>
+</mapper>
