@@ -10,7 +10,7 @@ public class CouponDto {
 	private Date coupon_date;
 	private String coupon_sale;
 	public int getOpt_no_seq() {
-		return opt_no_seq;
+		return opt_no_seq; 
 	}
 	public void setOpt_no_seq(int opt_no_seq) {
 		this.opt_no_seq = opt_no_seq;

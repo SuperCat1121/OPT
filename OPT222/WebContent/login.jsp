@@ -89,14 +89,25 @@
 </script>
 </head>
 <% String Flag = request.getParameter("Flag"); %>
+<% System.out.print("Flag" + Flag); %>	
 <body>
 	<div class="login_content">
 	<fieldset class="login_form" style="border: 0px;">
 		<legend class="blind">로그인</legend>
-		<form action="opt.do" method="post" onsubmit="return check()" name="fr">
+		<form action="login.do" method="post" onsubmit="return check()" name="fr">
 			<input type="hidden" name="command" value="login" />
 			<input type="hidden" name="Flag" value="<%=Flag%>">
 			<input type="hidden" name="hidden_chk" value=""/>
+<%
+	if(Flag.equals("2")){
+	int itemNo = Integer.parseInt(request.getParameter("itemno"));
+	int itemEa = Integer.parseInt(request.getParameter("itemea"));	
+%>	
+	<input type="hidden" name="no" value="<%=itemNo %>"/>
+	<input type="hidden" name="ea" value="<%=itemEa %>"/>
+<%			
+	}
+%>
 			<div class=id_area>	
 				<span class="input_box">
 					<input type="text" placeholder="아이디" name="id" id="userId" onkeyup="checkData('id');" class="id_pw" value=<%=cValue %> >

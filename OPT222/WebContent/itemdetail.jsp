@@ -25,12 +25,12 @@
 		$('#totalPrice').html(addComma(total));	
 		
 		$('#basketlist').click(function(){
-			var item_no = ${dto.item_num_seq };
+			var item_no = ${Itemdto.item_num_seq };
 			var item_ea = $("#ea").val();
-			var item_name = "${dto.item_name }";
-			var item_price = ${dto.item_price };
-			var item_url = "${dto.item_url }";
-			var opt_no = 0 + 0${memdto.opt_no_seq };
+			var item_name = "${Itemdto.item_name }";
+			var item_price = ${Itemdto.item_price };
+			var item_url = "${Itemdto.item_url }";
+			var opt_no = 0 + 0 ${memdto.opt_no_seq };
 
 			if(opt_no == 0){
 			
@@ -106,21 +106,21 @@
 	<form action="opt.do" method="post" id="form" onsubmit="return false;">
 	<input type="hidden" name="command" value="payment">
 	<input type="hidden" name="Flag" value="2">
-	<input type="hidden" name="no" value="${dto.item_num_seq }" />
-	<input type="hidden" id="price" value="${dto.item_price }" />
+	<input type="hidden" name="no" value="${Itemdto.item_num_seq }" />
+	<input type="hidden" id="price" value="${Itemdto.item_price }" />
 		<div>
 			<ul>
 				<li>
 					<div>
 						<div>
-							<img alt="상품사진" src="${dto.item_url }" width="500" height="500" />
+							<img alt="상품사진" src="${Itemdto.item_url }" width="500" height="500" />
 						</div>
 						<div>					
-							<h3>${dto.item_name }</h3>
-							<a>${dto.item_content }</a><br/>
+							<h3>${Itemdto.item_name }</h3>
+							<a>${Itemdto.item_content }</a><br/>
 							<a>수량 : </a> <input type="number" value="1" id="ea" name="ea" min="1" max="100" onkeydown="javascript: return event.keyCode == 110 ? false : true" /><br/>
 							가격 : <strong id="totalPrice"></strong>원<br/>
-							<a>view : ${dto.item_views_no }</a><br/>
+							<a>view : ${Itemdto.item_views_no }</a><br/>
 							<input type="button" value="구매하기" onclick="submit();"/>
 							<input type="button" value="장바구니" id="basketlist" />
 							<input type="button" value="목록으로" onclick="location.href='opt.do?command=itemlist&page=${page }'">
