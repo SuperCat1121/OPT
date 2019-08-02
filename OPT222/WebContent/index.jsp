@@ -47,7 +47,7 @@
 					<%
 						}else{
 					%>	
-					<a class="menulist" href="opt.do?command=logout">로그아웃</a>
+					<a class="menulist" href="login.do?command=logout">로그아웃</a>
 					<%
 						}
 					%>			

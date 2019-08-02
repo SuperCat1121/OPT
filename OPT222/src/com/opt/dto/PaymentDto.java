@@ -9,7 +9,7 @@ public class PaymentDto {
 	private String pay_recipient_name;
 	private String pay_place;
 	private String pay_phone;
-	private String pay_memo;
+	private String pay_memo; 
 	private int pay_count;
 	private Date pay_date;
 	public Date getPay_date() {
