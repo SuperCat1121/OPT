@@ -293,13 +293,25 @@ CREATE TABLE OPT_ITEM(
     ITEM_PRICE NUMBER NOT NULL,  		--상품가격
     ITEM_VIEWS_NO NUMBER NOT NULL,      --조회수
     ITEM_CONTENT VARCHAR2(100),         --상품설명
-    ITEM_URL VARCHAR2(100)              --상품이미지URL
+    ITEM_URL VARCHAR2(100),             --상품이미지URL
 -- AdminPage Branche Merge ===============================
     ITEM_COUNT NUMBER DEFAULT 1         --상품 개수
 );
 
-INSERT INTO OPT_ITEM VALUES(ITEMSEQ.NEXTVAL,'미니아령','10,000',0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT);
-INSERT INTO OPT_ITEM VALUES(ITEMSEQ.NEXTVAL,'손목밴드','3,000',0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT);
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT);
 -- AdminPage Branche Merge ================================
 SELECT * FROM OPT_ITEM;
 

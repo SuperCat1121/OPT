@@ -1,7 +1,7 @@
 package com.opt.dto;
 
 public class ItemDto {
-	private int item_num;
+	private int item_num_seq;
 	private String item_name;
 	private String item_price;
 	private int item_views_no;
@@ -16,11 +16,11 @@ public class ItemDto {
 		this.item_count = item_count;
 	}
 	// =========================================
-	public int getItem_num() {
-		return item_num;
+	public int getItem_num_seq() {
+		return item_num_seq;
 	}
-	public void setItem_num(int item_num) {
-		this.item_num = item_num;
+	public void setItem_num_seq(int item_num_seq) {
+		this.item_num_seq = item_num_seq;
 	}
 	public String getItem_name() {
 		return item_name;

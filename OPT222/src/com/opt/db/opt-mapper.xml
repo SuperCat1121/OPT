@@ -55,4 +55,75 @@
 		SET OPT_ENABLED = #{enabled}, OPT_ROLE = #{role}
 		WHERE OPT_ID = #{seq}
 	</update>
+	
+	<!-- ********************************************************** -->
+	
+	<select id="itemSelect" parameterType="int" resultType="ItemDto">
+		SELECT *
+		FROM OPT_ITEM
+		WHERE ITEM_NUM_SEQ = #{no}	
+	</select>
+	
+	<update id="itemCount" parameterType="int">
+		UPDATE OPT_ITEM SET
+		ITEM_VIEWS_NO = ITEM_VIEWS_NO + 1
+		WHERE ITEM_NUM_SEQ = #{no}
+	</update>
+	
+	<select id="itemPage" parameterType="map" resultType="ItemDto">
+		SELECT R, ITEM_NUM_SEQ, ITEM_NAME, ITEM_PRICE, ITEM_VIEWS_NO, ITEM_CONTENT, ITEM_URL
+		FROM(SELECT ROWNUM AS R, ITEM_NUM_SEQ, ITEM_NAME, ITEM_PRICE, ITEM_VIEWS_NO, ITEM_CONTENT, ITEM_URL
+		FROM(SELECT ITEM_NUM_SEQ, ITEM_NAME, ITEM_PRICE, ITEM_VIEWS_NO, ITEM_CONTENT, ITEM_URL
+		FROM OPT_ITEM ORDER BY ITEM_NUM_SEQ DESC)) 
+		WHERE R BETWEEN #{start} AND #{end}
+	</select>
+		
+	
+	<select id="searchItem" parameterType="map" resultType="ItemDto">
+		SELECT * 
+		FROM OPT_ITEM
+		<where>	
+			<if test="msg != null and keyword == 'title'">
+				ITEM_NAME LIKE '%'||#{msg}||'%'
+			</if>
+			<if test="msg != null and keyword == 'content'">
+				ITEM_CONTENT LIKE '%'||#{msg}||'%'
+			</if>	
+			<if test="msg != null and keyword == 'titleContent'">
+				ITEM_NAME LIKE '%'||#{msg}||'%' or
+				ITEM_CONTENT LIKE '%'||#{msg}||'%'
+			</if>				
+		</where>			
+		ORDER BY ITEM_NUM_SEQ DESC	
+	</select>
+	
+	
+	
+	<select id="searchItemPage" parameterType="map" resultType="ItemDto">
+		SELECT R, ITEM_NUM_SEQ, ITEM_NAME, ITEM_PRICE, ITEM_VIEWS_NO, ITEM_CONTENT, ITEM_URL
+        FROM(SELECT ROWNUM AS R, ITEM_NUM_SEQ, ITEM_NAME, ITEM_PRICE, ITEM_VIEWS_NO, ITEM_CONTENT, ITEM_URL
+        FROM(SELECT ITEM_NUM_SEQ, ITEM_NAME, ITEM_PRICE, ITEM_VIEWS_NO, ITEM_CONTENT, ITEM_URL
+        FROM OPT_ITEM
+        <where>	
+			<if test="msg != null and keyword == 'title'">
+				ITEM_NAME LIKE '%'||#{msg}||'%'
+			</if>
+			<if test="msg != null and keyword == 'content'">
+				ITEM_CONTENT LIKE '%'||#{msg}||'%'
+			</if>	
+			<if test="msg != null and keyword == 'titleContent'">
+				ITEM_NAME LIKE '%'||#{msg}||'%' or
+				ITEM_CONTENT LIKE '%'||#{msg}||'%'
+			</if>							
+		</where>
+		ORDER BY ITEM_NUM_SEQ DESC))
+		WHERE R BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- *****************쿠폰리스트************** -->
+	<select id="couponList" parameterType="int" resultType="couponDto">
+		SELECT *
+		FROM OPT_COUPON
+		WHERE OPT_NO_SEQ = #{no}
+	</select>
 </mapper>

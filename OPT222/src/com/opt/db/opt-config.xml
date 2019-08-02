@@ -11,6 +11,7 @@
 		<typeAlias type="com.opt.dto.ItemDto" alias="ItemDto"/>
 		<typeAlias type="com.opt.dto.PaymentDto" alias="PaymentDto"/>
 		<!-- *********************************************************** -->
+		<typeAlias type="com.opt.dto.CouponDto" alias="couponDto" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
