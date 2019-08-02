@@ -26,7 +26,7 @@
 					</li>
 					<li>
 						<a class = "menulist" href="">PT받기</a>
-						<a class = "menulist" href="">FOOD</a>
+						<a class = "menulist" href="opt.do?command=itemlist&page=1">FOOD</a>
 					</li>
 					<li>
 						<a class = "menulist" href="">고객지원</a>
@@ -40,7 +40,7 @@
 					<li>
 						<c:out value="${memdto.opt_id}"/>
 					<% if(session.getAttribute("memdto") == null) { %>
-							<a class="menulist" href="login.jsp?mypageFlag=0">로그인</a>
+							<a class="menulist" href="login.jsp?Flag=0">로그인</a>
 					<% } else {%>
 							<a class="menulist" href="opt.do?command=logout">로그아웃</a>
 					<% } %>

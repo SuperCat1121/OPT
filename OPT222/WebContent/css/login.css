@@ -4,7 +4,10 @@
     padding-top: 100px;
     margin-left: 38%;
 } 
-
+/*추가 */
+input:focus{
+	outline: none;
+}
 
 .login_form{
 	width: 300px;

@@ -88,14 +88,14 @@
 		}
 </script>
 </head>
-<% String mypageFlag = request.getParameter("mypageFlag"); %>
+<% String Flag = request.getParameter("Flag"); %>
 <body>
 	<div class="login_content">
 	<fieldset class="login_form" style="border: 0px;">
 		<legend class="blind">로그인</legend>
 		<form action="opt.do" method="post" onsubmit="return check()" name="fr">
 			<input type="hidden" name="command" value="login" />
-			<input type="hidden" name="mypageFlag" value="<%=mypageFlag%>">
+			<input type="hidden" name="Flag" value="<%=Flag%>">
 			<input type="hidden" name="hidden_chk" value=""/>
 			<div class=id_area>	
 				<span class="input_box">

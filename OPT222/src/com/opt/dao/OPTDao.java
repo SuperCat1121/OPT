@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.opt.dto.ItemDto;
+import com.opt.dto.CouponDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
 import com.opt.dto.PaymentDto;
@@ -31,10 +32,8 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-		
 		return res;
 	}
-	
 	
 	public List<MemberDto> selectList() {
 		SqlSession session = null;
@@ -47,7 +46,6 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-		
 		return list;
 	}
 	
@@ -62,7 +60,6 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-		
 		return count;
 	}
 	
@@ -77,7 +74,6 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-		
 		return count;
 	}
 	
@@ -92,17 +88,14 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-		
 		return list;
 	}
-	
-	// AdminPage Branche Merge ========================
+
 	public List<ItemDto> itemList() {
 		SqlSession session = null;
 		List<ItemDto> list = new ArrayList<ItemDto>();
 		session = getsqlSessionFactory().openSession(false);
 		list = session.selectList(namespace + "itemList");
-		
 		return list;
 	}
 	
@@ -111,15 +104,14 @@ public class OPTDao extends SqlMapConfig {
 		List<PaymentDto> list = new ArrayList<PaymentDto>();
 		session = getsqlSessionFactory().openSession(false);
 		list = session.selectList(namespace + "paymentList");
-		
 		return list;
 	}
-	// ================================================
+
 	public int adminUserUpdate(String id, String enabled, String role) {
 		SqlSession session = null;
 		session = getsqlSessionFactory().openSession(false);
 		Map<String, Object> update = new HashMap<String, Object>();
-		update.put("id", id);
+		update.put("seq", id);
 		update.put("enabled", enabled);
 		update.put("role", role);
 		int res = session.update(namespace + "adminUserUpdate", update);
@@ -128,4 +120,104 @@ public class OPTDao extends SqlMapConfig {
 		}
 		return res;
 	}
+
+	public ItemDto itemSelect(int no){
+		SqlSession session = null;
+		ItemDto dto = new ItemDto();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			dto = session.selectOne(namespace + "itemSelect", no);
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+	
+	public int itemCount(int no){
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.update(namespace + "itemCount", no);
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+
+	public List<ItemDto> itemSearch(String keyword, String msg) {		
+		SqlSession session = null;
+		List<ItemDto> list = new ArrayList<ItemDto>();
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("keyword", keyword);
+		map.put("msg", msg);
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList(namespace + "searchItem", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	public List<ItemDto> itemSearchPage(String keyword, String msg, int start, int end) {		
+		SqlSession session = null;
+		List<ItemDto> list = new ArrayList<ItemDto>();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		map.put("msg", msg);
+		map.put("start", start);
+		map.put("end", end);
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList(namespace + "searchItemPage", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	public List<ItemDto> itemPage(int start, int end) {
+		SqlSession session = null;
+		List<ItemDto> list = new ArrayList<ItemDto>();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList(namespace + "itemPage", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	
+	public List<CouponDto> couponList(int no) {
+		SqlSession session = null;
+		List<CouponDto> list = new ArrayList<CouponDto>();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList(namespace + "couponList", no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	finally {
+			session.close();
+		}
+		return list;
+	}
+	
 }

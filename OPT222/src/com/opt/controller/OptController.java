@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
 import com.opt.dao.OPTDao;
+import com.opt.dto.CouponDto;
+import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
 
@@ -55,6 +57,8 @@ public class OptController extends HttpServlet {
 			} else if(login.getOpt_enabled().equals("Y")){
 				HttpSession session = request.getSession();
 				session.setAttribute("memdto", login);
+				session.setAttribute("id", login.getOpt_id());
+				session.setAttribute("opt_no", login.getOpt_no_seq());
 				session.setMaxInactiveInterval(3600);
 				// 관리자 계정일 때 관리자페이지로 이동
 				if(login.getOpt_role().equals("admin")) {
@@ -70,10 +74,19 @@ public class OptController extends HttpServlet {
 					    c.setMaxAge(60*60*24);
 					    response.addCookie(c);
 					}
-					if((Integer.parseInt(request.getParameter("mypageFlag"))) == 0) {
-						dispatch(request, response, "index.jsp");
-					} else {
+					// Flag
+					// 0 : index
+					// 1 : mypage
+					// 2 : payment
+					int Flag = Integer.parseInt(request.getParameter("Flag"));
+					if(Flag == 0) {
+						dispatch(request, response, "index.jsp?");
+					} else if(Flag == 1) {
 						response.sendRedirect("opt.do?command=mypage");
+					} else if(Flag == 2) {
+						int itemNo = Integer.parseInt(request.getParameter("no"));
+						int itemEa = Integer.parseInt(request.getParameter("ea"));	
+						dispatch(request, response, "opt.do?command=payment");
 					}
 					//회원정보수정
 					if(command.equals("registchange")) {
@@ -120,6 +133,133 @@ public class OptController extends HttpServlet {
 				out.print("alert('시스템 오류입니다. 다시 시도해주세요');");
 				out.print("location.href='opt.do?command=adminUserManager'");
 				out.print("</script>");
+			}
+			//상품페이지
+		}else if(command.equals("itemlist")) {
+			int page = Integer.parseInt(request.getParameter("page"));
+			int allCount = biz.itemList().size();
+			int listCount = 10;
+			int totalPage = (allCount -1) / listCount + 1;
+			int blockCount = 5;  
+			int absolutePage = 0;
+			int endPage = 0; 
+			
+			if(page < 1) {
+				page = 1;
+				
+			}else if(page > totalPage) {
+				page = totalPage;
+			}
+			
+			if(page%5 == 0) {
+				absolutePage = ((page/5) *5) -4;
+				endPage = (page / 5) * 5;
+				
+			}else {
+				absolutePage = ((page /5) *5)+1;
+				endPage = ((page/5) * 5) + 5;
+			}
+			
+			if(endPage > totalPage) {
+				endPage = totalPage;
+			}
+			
+			
+			int start = (page - 1)*listCount +1;
+			int end = page * listCount;
+			System.out.println("start >> " + start);
+			System.out.println("end >> " + end);
+			List<ItemDto> list = biz.itemPage(start, end);
+			for(ItemDto dto : list) {
+				System.out.println(dto.getItem_name());
+				System.out.println(dto.getItem_price());
+				System.out.println(dto.getItem_url());
+			}
+			request.setAttribute("list", list);
+			request.setAttribute("page", page);
+			request.setAttribute("blockCount", blockCount);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("absolutePage", absolutePage);
+			request.setAttribute("endPage", endPage);
+			
+			dispatch(request, response, "itemlist.jsp");
+		}else if(command.equals("itemsearch")) {
+			String keyword = request.getParameter("keyword");
+			String msg = request.getParameter("msg");
+			
+			int page = Integer.parseInt(request.getParameter("page"));
+			int allCount = biz.itemSearch(keyword, msg).size();			
+			int listCount = 10;
+			int totalPage = (allCount -1) / listCount + 1;
+			int blockCount = 5;  
+			int absolutePage = 0;
+			int endPage = 0; 
+			
+			if(page < 1) {
+				page = 1;
+				
+			}else if(page > totalPage) {
+				page = totalPage;
+			}
+			
+			if(page%5 == 0) {
+				absolutePage = ((page/5) *5) -4;
+				endPage = (page / 5) * 5;
+				
+			}else {
+				absolutePage = ((page /5) *5)+1;
+				endPage = ((page/5) * 5) + 5;
+			}
+			
+			if(endPage > totalPage) {
+				endPage = totalPage;
+			}
+			
+			
+			int start = (page - 1)*listCount +1;
+			int end = page * listCount;
+			System.out.println("start >> " + start);
+			System.out.println("end >> " + end);
+			request.setAttribute("list", biz.itemSearchPage(keyword, msg, start, end));			
+			request.setAttribute("page", page);
+			request.setAttribute("blockCount", blockCount);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("absolutePage", absolutePage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("keyword", keyword);
+			request.setAttribute("msg", msg);
+			
+			
+			dispatch(request, response, "itemsearch.jsp");
+		}else if(command.equals("itemdetail")) {
+			int page = Integer.parseInt(request.getParameter("page"));
+			int no = Integer.parseInt(request.getParameter("no"));
+			biz.itemCount(no);
+			ItemDto dto = biz.itemSelect(no);
+			request.setAttribute("page", page);
+			request.setAttribute("dto", dto);
+			dispatch(request, response, "itemdetail.jsp");			
+		
+		}else if(command.equals("payment")) {
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+			
+			
+			if(id == null || id == "") {
+				request.setAttribute("Flag", "2");
+				int itemNo = Integer.parseInt(request.getParameter("no"));
+				int itemEa = Integer.parseInt(request.getParameter("ea"));	
+				dispatch(request, response, "opt.do?command=login");
+			}else {
+				int optNo = ((Integer)(session.getAttribute("opt_no"))).intValue();				
+				List<CouponDto> couponList = biz.couponList(optNo);
+				int itemNo = Integer.parseInt(request.getParameter("no"));
+				int itemEa = Integer.parseInt(request.getParameter("ea"));			
+				ItemDto itemDto = biz.itemSelect(itemNo);
+				session.setAttribute("couponList", couponList);
+				session.setAttribute("itemDto", itemDto);	
+				session.setAttribute("ea", itemEa);	
+				dispatch(request, response, "payment.jsp");
 			}
 		}
 	}

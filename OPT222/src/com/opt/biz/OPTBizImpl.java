@@ -3,6 +3,7 @@ package com.opt.biz;
 import java.util.List;
 
 import com.opt.dao.OPTDao;
+import com.opt.dto.CouponDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
@@ -56,19 +57,49 @@ public class OPTBizImpl implements OPTBiz {
 	public List<OrderListDto> orderList(int no){
 		return dao.orderList(no);
 	}
-	
+
+	@Override
+	public int adminUserUpdate(String id, String enabled, String role) {
+		return dao.adminUserUpdate(id, enabled, role);
+	}
 	@Override
 	public List<ItemDto> itemList() {
-		return null;
+		return dao.itemList();
 	}
 	
 	@Override
 	public List<PaymentDto> paymentList() {
-		return null;
+		return dao.paymentList();
+	}
+
+	@Override
+	public ItemDto itemSelect(int no) {
+		return dao.itemSelect(no);
+	}
+
+	@Override
+	public int itemCount(int no) {
+		return dao.itemCount(no);
+	}
+
+	@Override
+	public List<ItemDto> itemSearch(String keyword, String msg) {
+		return dao.itemSearch(keyword, msg);
+	}
+
+	@Override
+	public List<ItemDto> itemPage(int start, int end) {
+		return dao.itemPage(start, end);
+	}
+
+	@Override
+	public List<ItemDto> itemSearchPage(String keyword, String msg, int start, int end) {
+		return dao.itemSearchPage(keyword, msg, start, end);
 	}
 	
+	//쿠폰리스트
 	@Override
-	public int adminUserUpdate(String id, String enabled, String role) {
-		return dao.adminUserUpdate(id, enabled, role);
+	public List<CouponDto> couponList(int no) {
+		return dao.couponList(no);
 	}
 }

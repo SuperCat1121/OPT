@@ -41,7 +41,7 @@ $(document).ready(function(){
 	<div id="mysidenav" class="sidenav">
 		<div style="width : 250px;">
 		<a href="#" class="closebtn" onclick='closeNav()'>x</a>
-		<a href="location.href='opt.do?command='">운송장번호 조회</a>
+		<a href="deliver_search.jsp">운송장번호 조회</a>
 		<a href="#">마이쪽지함</a>
 		<a href="#">일정관리</a>
 		<a href="#">장바구니</a>
