@@ -54,7 +54,7 @@
   });
 	
   function popup(){
-	window.open("calendar_popup.jsp","일정등록","width=700px,height=500px"); 
+	window.open("calendar_popup.jsp","일정등록","width=500px,height=400px"); 
   }
 </script>
 <style>
