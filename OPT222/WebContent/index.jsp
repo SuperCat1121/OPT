@@ -27,7 +27,7 @@
 					</li>
 					<li>
 						<a class = "menulist" href="">PT받기</a>
-						<a class = "menulist" href="opt.do?command=itemlist&page=1">FOOD</a>
+						<a class = "menulist" href="item.do?command=itemlist&page=1">FOOD</a>
 					</li>
 					<li>
 						<a class = "menulist" href="">고객지원</a>

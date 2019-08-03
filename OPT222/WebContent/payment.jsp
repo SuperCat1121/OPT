@@ -112,7 +112,7 @@
 	
 	<h3>구매자 정보</h3>
 	<hr/>
-	<form action="opt.do" method="get" id="form" onsubmit="return false;">
+	<form action="item.do" method="post" id="form" onsubmit="return false;">
 		<table class="user_table">
 			<col width="200px" />
 			<col width="200px" />
@@ -222,7 +222,7 @@
 	<br/>
 	
 	
-	
+	<%@ include file="./footer.jsp" %>
 
 </body>
 </html>

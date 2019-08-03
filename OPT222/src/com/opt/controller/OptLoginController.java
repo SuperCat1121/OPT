@@ -81,7 +81,7 @@ public class OptLoginController extends HttpServlet {
 					} else if(Flag == 2) {
 						int itemNo = Integer.parseInt(request.getParameter("no"));
 						int itemEa = Integer.parseInt(request.getParameter("ea"));
-						dispatch(request, response, "opt.do?command=payment&Flag=2&no="+itemNo+"&ea="+itemEa);
+						dispatch(request, response, "item.do?command=payment&Flag=2&no="+itemNo+"&ea="+itemEa);
 					}
 					//회원정보수정
 					if(command.equals("registchange")) {
@@ -90,9 +90,15 @@ public class OptLoginController extends HttpServlet {
 				}
 			} else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");
-			}	
+			}
+			
+			
+			
 		}
+		
+		
 	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

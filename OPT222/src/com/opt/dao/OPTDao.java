@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.opt.dto.ItemDto;
+import com.opt.dto.BasketDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
@@ -218,6 +219,34 @@ public class OPTDao extends SqlMapConfig {
 			session.close();
 		}
 		return list;
+	}
+	
+	
+	public int insertBasket(BasketDto basketDto) {
+		
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.insert("BasketMapper.insertBasket", basketDto);
+			
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+			
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+				
+		
+		return res;
+	
+	
 	}
 	
 }

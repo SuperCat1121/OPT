@@ -24,13 +24,13 @@
 		var total = $('#price').val() * $('#ea').val();		
 		$('#totalPrice').html(addComma(total));	
 		
-		$('#basketlist').click(function(){
+		$('#insertBasket').click(function(){
 			var item_no = ${Itemdto.item_num_seq };
 			var item_ea = $("#ea").val();
 			var item_name = "${Itemdto.item_name }";
 			var item_price = ${Itemdto.item_price };
 			var item_url = "${Itemdto.item_url }";
-			var opt_no = 0 + 0 ${memdto.opt_no_seq };
+			var opt_no = 0 + 0${memdto.opt_no_seq };
 
 			if(opt_no == 0){
 			
@@ -39,7 +39,7 @@
 			}else{				
 				
 				if(confirm("장바구니에 담으시겠습니까?")){
-					var url = "opt.do?command=basketinsert&opt_no=" + opt_no + "&item_no=" + item_no + "&item_ea=" + item_ea + "&item_price=" + item_price + "&item_name=" + item_name + "&item_url=" + item_url;
+					var url = "basket.do?command=basketinsert&opt_no=" + opt_no + "&item_no=" + item_no + "&item_ea=" + item_ea + "&item_price=" + item_price + "&item_name=" + item_name + "&item_url=" + item_url;
 					$.ajax({
 						type: "POST",
 						url: url,
@@ -103,7 +103,7 @@
 
 	<h1>상품 상세페이지</h1>
 	
-	<form action="opt.do" method="post" id="form" onsubmit="return false;">
+	<form action="item.do" method="post" id="form" onsubmit="return false;">
 	<input type="hidden" name="command" value="payment">
 	<input type="hidden" name="Flag" value="2">
 	<input type="hidden" name="no" value="${Itemdto.item_num_seq }" />
@@ -122,8 +122,8 @@
 							가격 : <strong id="totalPrice"></strong>원<br/>
 							<a>view : ${Itemdto.item_views_no }</a><br/>
 							<input type="button" value="구매하기" onclick="submit();"/>
-							<input type="button" value="장바구니" id="basketlist" />
-							<input type="button" value="목록으로" onclick="location.href='opt.do?command=itemlist&page=${page }'">
+							<input type="button" value="장바구니" id="insertBasket" />
+							<input type="button" value="목록으로" onclick="location.href='item.do?command=itemlist&page=${page }'">
 						</div>
 					</div>									
 				</li>

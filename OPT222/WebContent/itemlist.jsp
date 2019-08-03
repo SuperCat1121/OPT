@@ -51,7 +51,7 @@
 						<li>
 							<div>
 								<div>
-									<a href="opt.do?command=itemdetail&no=${dto.item_num_seq}&page=${page}"><img alt="" src="${dto.item_url}" width="270px" height="270px"/></a>
+									<a href="item.do?command=itemdetail&no=${dto.item_num_seq}&page=${page}"><img alt="" src="${dto.item_url}" width="270px" height="270px"/></a>
 								</div>
 								<div>
 									<input type="hidden" class="price" value="${dto.item_price }"/>
@@ -72,29 +72,29 @@
 				<c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
 			<c:choose>
 				<c:when test="${prevPage >0}">
-					<a href="opt.do?command=itemlist&page=${prevPage }">◀</a>
+					<a href="item.do?command=itemlist&page=${prevPage }">◀</a>
 				</c:when>
 				<c:otherwise>
-					<a href="opt.do?command=itemlist&page=1">◀</a>
+					<a href="item.do?command=itemlist&page=1">◀</a>
 				</c:otherwise>
 			</c:choose>
 			<c:forEach begin="${absolutePage }" end="${endPage }" var="i">
 				<c:choose>
 				<c:when test="${i eq page}">
-					<a href="opt.do?command=itemlist&page=${i}"><strong>[${ i }]</strong></a>
+					<a href="item.do?command=itemlist&page=${i}"><strong>[${ i }]</strong></a>
 				</c:when>
 				<c:otherwise>
-					<a href="opt.do?command=itemlist&page=${i}">[${ i }]</a>
+					<a href="item.do?command=itemlist&page=${i}">[${ i }]</a>
 				</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:set var="nextPage" value="${absolutePage+blockCount }"></c:set>
 			<c:choose>
 				<c:when test="${nextPage < totalPage}">
-					<a href="opt.do?command=itemlist&page=${nextPage }">▶</a>
+					<a href="item.do?command=itemlist&page=${nextPage }">▶</a>
 				</c:when>
 				<c:otherwise>
-					<a href="opt.do?command=itemlist&page=${totalPage}">▶</a>
+					<a href="item.do?command=itemlist&page=${totalPage}">▶</a>
 				</c:otherwise>
 			</c:choose>
 			</td>
@@ -102,7 +102,7 @@
 	</table>
 	
 	
-	<form action="opt.do?command=itemsearch&page=1" method="post">
+	<form action="item.do?command=itemsearch&page=1" method="post">
 	<table>
 		<tr>
 			<td>
