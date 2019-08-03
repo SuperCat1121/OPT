@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,7 @@
 					<% if(session.getAttribute("memdto") == null) { %>
 							<a class="menulist" href="login.jsp?Flag=0">로그인</a>
 					<% } else {%>
-							<a class="menulist" href="opt.do?command=logout">로그아웃</a>
+							<a class="menulist" href="login.do?command=logout">로그아웃</a>
 					<% } %>
 					<a class="menulist" href="opt.do?command=mypage">마이페이지</a>
 					</li>
