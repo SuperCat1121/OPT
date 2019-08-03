@@ -2,6 +2,7 @@ package com.opt.biz;
 
 import java.util.List;
 
+import com.opt.dto.BasketDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
@@ -31,6 +32,9 @@ public interface OPTBiz {
 	
 	
 	//쿠폰리스트
-	public List<CouponDto> couponList(int no); 
+	public List<CouponDto> couponList(int no);
+	
+	//장바구니	
+	public int insertBasket(BasketDto basketDto);
 
 }

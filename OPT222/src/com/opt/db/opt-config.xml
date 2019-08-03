@@ -10,6 +10,8 @@
 		<typeAlias type="com.opt.dto.ItemDto" alias="ItemDto"/>
 		<typeAlias type="com.opt.dto.PaymentDto" alias="PaymentDto"/>
 		<typeAlias type="com.opt.dto.CouponDto" alias="couponDto" />
+		<typeAlias type="com.opt.dto.BasketDto" alias="basketDto" />
+		
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -30,6 +32,7 @@
 		<mapper resource="com/opt/db/LoginMapper.xml" />
 		<mapper resource="com/opt/db/OrderMapper.xml" />
 		<mapper resource="com/opt/db/PayMapper.xml" />
+		<mapper resource="com/opt/db/BasketMapper.xml" />
 	</mappers>
 
 

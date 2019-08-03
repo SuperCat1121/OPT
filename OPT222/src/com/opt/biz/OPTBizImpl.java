@@ -3,6 +3,7 @@ package com.opt.biz;
 import java.util.List;
 
 import com.opt.dao.OPTDao;
+import com.opt.dto.BasketDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
@@ -102,4 +103,13 @@ public class OPTBizImpl implements OPTBiz {
 	public List<CouponDto> couponList(int no) {
 		return dao.couponList(no);
 	}
+	
+	//장바구니 상품등록
+	@Override
+	public int insertBasket(BasketDto basketDto) {
+		return dao.insertBasket(basketDto);
+	}
+	
+	
+	
 }
