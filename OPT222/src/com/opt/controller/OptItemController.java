@@ -160,6 +160,7 @@ public class OptItemController extends HttpServlet {
 				session.setAttribute("itemDto", itemDto);	
 				session.setAttribute("ea", itemEa);	
 				dispatch(request, response, "payment.jsp");
+				
 			}
 			
 			
