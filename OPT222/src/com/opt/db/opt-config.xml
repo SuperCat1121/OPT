@@ -24,6 +24,12 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/opt/db/opt-mapper.xml" />
+		<mapper resource="com/opt/db/AdminMapper.xml" />
+		<mapper resource="com/opt/db/CouponMapper.xml" />
+		<mapper resource="com/opt/db/ItemMapper.xml" />
+		<mapper resource="com/opt/db/LoginMapper.xml" />
+		<mapper resource="com/opt/db/OrderMapper.xml" />
+		<mapper resource="com/opt/db/PayMapper.xml" />
 	</mappers>
 
 

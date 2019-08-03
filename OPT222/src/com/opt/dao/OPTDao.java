@@ -26,7 +26,7 @@ public class OPTDao extends SqlMapConfig {
 		login.put("pw", pw);
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			res = session.selectOne(namespace + "login", login);
+			res = session.selectOne("LoginMapper.login", login);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -54,7 +54,7 @@ public class OPTDao extends SqlMapConfig {
 		int count = 0;
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			count = session.selectOne(namespace + "pay_count",num);
+			count = session.selectOne("PayMapper.pay_count",num);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -68,7 +68,7 @@ public class OPTDao extends SqlMapConfig {
 		int count = 0;
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			count = session.selectOne(namespace + "coupon_count", num);
+			count = session.selectOne("CouponMapper.coupon_count", num);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -82,7 +82,7 @@ public class OPTDao extends SqlMapConfig {
 		List<OrderListDto> list = new ArrayList<OrderListDto>();
 		try {
 			session = getsqlSessionFactory().openSession();
-			list = session.selectList(namespace + "order_list", no);
+			list = session.selectList("OrderMapper.order_list", no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -95,7 +95,7 @@ public class OPTDao extends SqlMapConfig {
 		SqlSession session = null;
 		List<ItemDto> list = new ArrayList<ItemDto>();
 		session = getsqlSessionFactory().openSession(false);
-		list = session.selectList(namespace + "itemList");
+		list = session.selectList("ItemMapper.itemList");
 		return list;
 	}
 	
@@ -103,7 +103,7 @@ public class OPTDao extends SqlMapConfig {
 		SqlSession session = null;
 		List<PaymentDto> list = new ArrayList<PaymentDto>();
 		session = getsqlSessionFactory().openSession(false);
-		list = session.selectList(namespace + "paymentList");
+		list = session.selectList("PayMapper.paymentList");
 		return list;
 	}
 
@@ -114,7 +114,7 @@ public class OPTDao extends SqlMapConfig {
 		update.put("seq", id);
 		update.put("enabled", enabled);
 		update.put("role", role);
-		int res = session.update(namespace + "adminUserUpdate", update);
+		int res = session.update("AdminMapper.adminUserUpdate", update);
 		if(res > 0) {
 			session.commit();
 		}
@@ -126,7 +126,7 @@ public class OPTDao extends SqlMapConfig {
 		ItemDto dto = new ItemDto();
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			dto = session.selectOne(namespace + "itemSelect", no);
+			dto = session.selectOne("ItemMapper.itemSelect", no);
 		} catch (Exception e) {			
 			e.printStackTrace();
 		} finally {
@@ -140,7 +140,7 @@ public class OPTDao extends SqlMapConfig {
 		int res = 0;
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			res = session.update(namespace + "itemCount", no);
+			res = session.update("ItemMapper.itemCount", no);
 			if(res > 0) {
 				session.commit();
 			}else {
@@ -162,7 +162,7 @@ public class OPTDao extends SqlMapConfig {
 		map.put("msg", msg);
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			list = session.selectList(namespace + "searchItem", map);
+			list = session.selectList("ItemMapper.searchItem", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -180,7 +180,7 @@ public class OPTDao extends SqlMapConfig {
 		map.put("end", end);
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			list = session.selectList(namespace + "searchItemPage", map);
+			list = session.selectList("ItemMapper.searchItemPage", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -197,7 +197,7 @@ public class OPTDao extends SqlMapConfig {
 		map.put("end", end);
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			list = session.selectList(namespace + "itemPage", map);
+			list = session.selectList("ItemMapper.itemPage", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -211,7 +211,7 @@ public class OPTDao extends SqlMapConfig {
 		List<CouponDto> list = new ArrayList<CouponDto>();
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			list = session.selectList(namespace + "couponList", no);
+			list = session.selectList("CouponMapper.couponList", no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	finally {
