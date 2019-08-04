@@ -6,10 +6,12 @@ public class CalendarDto {
 	private int calendar_no_seq;
 	private int opt_no_seq;
 	private String calendar_title;
-	private Date calendar_startday;
-	private Date calendar_enddate;
+	private String calendar_startday;
+	private String calendar_enddate;
 	private String calendar_url;
 	private Date calendar_regdate;
+	
+	
 	public int getCalendar_no_seq() {
 		return calendar_no_seq;
 	}
@@ -28,16 +30,16 @@ public class CalendarDto {
 	public void setCalendar_title(String calendar_title) {
 		this.calendar_title = calendar_title;
 	}
-	public Date getCalendar_startday() {
+	public String getCalendar_startday() {
 		return calendar_startday;
 	}
-	public void setCalendar_startday(Date calendar_startday) {
+	public void setCalendar_startday(String calendar_startday) {
 		this.calendar_startday = calendar_startday;
 	}
-	public Date getCalendar_enddate() {
+	public String getCalendar_enddate() {
 		return calendar_enddate;
 	}
-	public void setCalendar_enddate(Date calendar_enddate) {
+	public void setCalendar_enddate(String calendar_enddate) {
 		this.calendar_enddate = calendar_enddate;
 	}
 	public String getCalendar_url() {

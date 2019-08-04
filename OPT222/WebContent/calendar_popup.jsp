@@ -20,11 +20,13 @@
 	<h3>일정등록</h3>
 	</div>
 	<form action="opt.do" method="post">
+	<input type="hidden" name="command" value="cal_insert">
 	<div class="cal_content">
 	일정제목: <input type="text" name="cal_title"><br/>
-    일정시작일: <input type="text" id="datepicker"><br/>
-    일정종료일: <input type="text" id="datepicker2"><br/>
+    일정시작일: <input type="text" id="datepicker" name="cal_start"><br/>
+    일정종료일: <input type="text" id="datepicker2" name="cal_end"><br/>
     </div>
+    	<input type="submit" value="일정 전송">
  	</form>
     <script>
         $(function() {

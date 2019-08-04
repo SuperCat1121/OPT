@@ -33,7 +33,7 @@
       defaultDate: today,
       editable: true,
       eventLimit: true, // allow "more" link when too many events
-      events: [
+      events: [//ajax 맵형태로 리턴하면 json 형태로됨
         {
           title: 'Dinner',
           start: '2019-06-12T20:00:00'

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.opt.dao.OPTDao;
 import com.opt.dto.BasketDto;
+import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
@@ -111,6 +112,11 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.insertBasket(basketDto);
 	}
 	
+	//일정관리 일정등록
+	@Override
+	public int insertCalendar(CalendarDto calendardto) {
+		return dao.insertCalendar(calendardto);
+	}
 	
 	
 }

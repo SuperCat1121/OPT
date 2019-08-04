@@ -2,6 +2,9 @@ package com.opt.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
 import com.opt.dao.OPTDao;
+import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
@@ -113,8 +117,32 @@ public class OptController extends HttpServlet {
 				session.setAttribute("orderdto", orderList);
 				dispatch(request, response, "user.jsp?pay_count="+pay_count+"&coupon_count="+coupon_count);
 			}
+		//회원 일정 등록	
+		}else if(command.equals("cal_insert")) {
+			String cal_title = request.getParameter("cal_title");
+			String cal_start = request.getParameter("cal_start");
+			String cal_end = request.getParameter("cal_end");
+			HttpSession session = request.getSession();
+			MemberDto memdto = (MemberDto)session.getAttribute("memdto");
+			CalendarDto caldto = new CalendarDto();
+			
+			caldto.setOpt_no_seq(memdto.getOpt_no_seq());
+			caldto.setCalendar_title(cal_title);
+			caldto.setCalendar_startday(cal_start);
+			caldto.setCalendar_enddate(cal_end);
+			
+			
+			int res = biz.insertCalendar(caldto);
+			if(res > 0) {
+				System.out.println("insert 성공!");
+			}else {
+				System.out.println("insert 실패");
+			}
+			System.out.println("seq" + memdto.getOpt_no_seq());
+			System.out.println("cal_title" + cal_title);
+			System.out.println("cal_start" + cal_start);
+			System.out.println("cal_end" + cal_end);
 		}
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
