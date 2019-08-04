@@ -221,15 +221,15 @@ SELECT * FROM OPT_ADMIN_ANSWER;
 
 --------------일정관리-----------------
 DROP SEQUENCE CALENDERSEQ;
-DROP TABLE OPT_CALENDER PURGE;
+DROP TABLE OPT_CALENDER  CASCADE CONSTRAINTS PURGE;
 
 CREATE SEQUENCE CALENDERSEQ;
 CREATE TABLE OPT_CALENDER(
     OPT_NO_SEQ NUMBER REFERENCES OPT_MEMBER (OPT_NO_SEQ),   --회원번호
     CALENDER_NO_SEQ NUMBER PRIMARY KEY,                     --일정번호
     CALENDER_TITLE VARCHAR2(100) NOT NULL,                  --일정제목
-    CALENDER_STARTDAY DATE NOT NULL,                        --일정시작일
-    CALENDER_ENDDATE DATE NOT NULL,                         --일정완료일
+    CALENDER_STARTDAY VARCHAR2(100) NOT NULL,                        --일정시작일 			--***일단 문자열로 수정****
+    CALENDER_ENDDATE VARCHAR2(100) NOT NULL,                         --일정완료일
     CALENDER_URL VARCHAR2(500),                             --일정URL
     CALENDER_REGDATE DATE NOT NULL                          --일정등록일
 );

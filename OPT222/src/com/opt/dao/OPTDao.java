@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.opt.dto.ItemDto;
 import com.opt.dto.BasketDto;
+import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
@@ -247,6 +248,28 @@ public class OPTDao extends SqlMapConfig {
 		return res;
 	
 	
+	}
+	//일정 등록
+	public int insertCalendar(CalendarDto calendardto) {
+	
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.insert("CalMapper.insertCal" , calendardto);
+			
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
 	}
 	
 }

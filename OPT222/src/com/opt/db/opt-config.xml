@@ -11,6 +11,7 @@
 		<typeAlias type="com.opt.dto.PaymentDto" alias="PaymentDto"/>
 		<typeAlias type="com.opt.dto.CouponDto" alias="couponDto" />
 		<typeAlias type="com.opt.dto.BasketDto" alias="basketDto" />
+		<typeAlias type="com.opt.dto.CalendarDto" alias="calendarDto"/>
 		
 	</typeAliases>
 	<environments default="development">
@@ -33,6 +34,7 @@
 		<mapper resource="com/opt/db/OrderMapper.xml" />
 		<mapper resource="com/opt/db/PayMapper.xml" />
 		<mapper resource="com/opt/db/BasketMapper.xml" />
+		<mapper resource="com/opt/db/CalendarMapper.xml"/>
 	</mappers>
 
 
