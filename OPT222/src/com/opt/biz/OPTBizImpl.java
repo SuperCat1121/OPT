@@ -59,6 +59,7 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.orderList(no);
 	}
 
+	// 관리자_유저관리
 	@Override
 	public int adminUserUpdate(String id, String enabled, String role) {
 		return dao.adminUserUpdate(id, enabled, role);

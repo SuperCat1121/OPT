@@ -108,11 +108,12 @@ public class OPTDao extends SqlMapConfig {
 		return list;
 	}
 
+	// 관리자_유저관리
 	public int adminUserUpdate(String id, String enabled, String role) {
 		SqlSession session = null;
 		session = getsqlSessionFactory().openSession(false);
 		Map<String, Object> update = new HashMap<String, Object>();
-		update.put("seq", id);
+		update.put("id", id);
 		update.put("enabled", enabled);
 		update.put("role", role);
 		int res = session.update("AdminMapper.adminUserUpdate", update);

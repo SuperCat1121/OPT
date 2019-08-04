@@ -15,10 +15,11 @@
 			var id = $(this).parent().siblings().eq(0).text();
 			var enabled = $(this).parent().siblings().eq(3).children().val();
 			var role = $(this).parent().siblings().eq(5).children().val();
-			$(location).attr("href","opt.do?command=adminUserManagerres&id="+id+"&enabled="+enabled+"&role="+role);
+			$(location).attr("href","admin.do?command=adminUserManagerRes&id="+id+"&enabled="+enabled+"&role="+role);
 		});
 		$("#close").click(function() {
-			window.close();
+			$(".adminUserManagerPopup").fadeToggle(400);
+			$(".layer").toggle();
 		});
 	});
 </script>

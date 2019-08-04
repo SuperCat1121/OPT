@@ -21,6 +21,8 @@ public interface OPTBiz {
 	public List<OrderListDto> orderList(int no);
 	public List<ItemDto> itemList();
 	public List<PaymentDto> paymentList();
+	
+	// 관리자_유저관리
 	public int adminUserUpdate(String id, String enabled, String role);
 	
 	//상품리스트

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
+import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 
 @WebServlet("/admin.do")
@@ -37,6 +38,7 @@ public class OptAdminController extends HttpServlet {
 			List<MemberDto> list = biz.selectList();
 			request.setAttribute("memberList", list);
 			dispatch(request, response, "admin_user_manager.jsp");
+		// (유저관리)수정 버튼 누르면 유저 정보 업데이트 실행
 		} else if(command.equals("adminUserManagerRes")) {
 			String id = request.getParameter("id");
 			String enabled = request.getParameter("enabled");
@@ -53,6 +55,12 @@ public class OptAdminController extends HttpServlet {
 				out.print("location.href='opt.do?command=adminUserManager'");
 				out.print("</script>");
 			}
+		} else if(command.equals("adminItemManager")) {
+			List<ItemDto> list = biz.itemList();
+			request.setAttribute("itemList", list);
+			dispatch(request, response, "admin_item_manager.jsp");
+		} else if(command.equals("adminItemManagerRes")) {
+			
 		}
 	}
 
