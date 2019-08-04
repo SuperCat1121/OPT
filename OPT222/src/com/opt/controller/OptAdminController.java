@@ -47,12 +47,10 @@ public class OptAdminController extends HttpServlet {
 			if(res > 0) {
 				out.print("<script type='text/javascript'>");
 				out.print("alert('해당 유저를 수정하였습니다');");
-				out.print("location.href='opt.do?command=adminUserManager'");
 				out.print("</script>");
 			} else {
 				out.print("<script type='text/javascript'>");
 				out.print("alert('시스템 오류입니다. 다시 시도해주세요');");
-				out.print("location.href='opt.do?command=adminUserManager'");
 				out.print("</script>");
 			}
 		} else if(command.equals("adminItemManager")) {

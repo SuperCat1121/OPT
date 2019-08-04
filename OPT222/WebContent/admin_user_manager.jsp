@@ -15,17 +15,37 @@
 			var id = $(this).parent().siblings().eq(0).text();
 			var enabled = $(this).parent().siblings().eq(3).children().val();
 			var role = $(this).parent().siblings().eq(5).children().val();
-			$(location).attr("href","admin.do?command=adminUserManagerRes&id="+id+"&enabled="+enabled+"&role="+role);
+			//$(location).attr("href","admin.do?command=adminUserManagerRes&id="+id+"&enabled="+enabled+"&role="+role);
+			$.ajax({
+				url : "admin.do?command=adminUserManagerRes",
+				type : "POST",
+				data : {"id" : id, "enabled" : enabled, "role" : role},
+				dataType : "html",
+				success : function(data) {
+					alert(data);
+				},
+				error : function(request, status, error) {
+					alert(request.status);
+					alert(request.responseText);
+					alert(status);
+					alert(error);
+				}
+			});
 		});
 		$("#close").click(function() {
 			$(".adminUserManagerPopup").fadeToggle(400);
 			$(".layer").toggle();
+		});
+		$.ajax(function() {
+			url : "admin.do?command=adminUserManagerRes";
+			
 		});
 	});
 </script>
 <link href="css/adminUserManager.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<c:if test="${res}"></c:if>
 	<h3>유저관리</h3>
 	<a href="#" id="close">x</a>
 	<hr>
