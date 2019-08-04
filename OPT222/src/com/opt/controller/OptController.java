@@ -113,29 +113,8 @@ public class OptController extends HttpServlet {
 				session.setAttribute("orderdto", orderList);
 				dispatch(request, response, "user.jsp?pay_count="+pay_count+"&coupon_count="+coupon_count);
 			}
-		// (관리자)유저관리
-		} else if(command.equals("adminUserManager")) {
-			List<MemberDto> list = biz.selectList();
-			request.setAttribute("memberList", list);
-			dispatch(request, response, "admin_user_manager.jsp");
-		} else if(command.equals("adminUserManagerRes")) {
-			String id = request.getParameter("id");
-			String enabled = request.getParameter("enabled");
-			String role = request.getParameter("role");
-			int res = biz.adminUserUpdate(id, enabled, role);
-			if(res > 0) {
-				out.print("<script type='text/javascript'>");
-				out.print("alert('해당 유저를 수정하였습니다');");
-				out.print("location.href='opt.do?command=adminUserManager'");
-				out.print("</script>");
-			} else {
-				out.print("<script type='text/javascript'>");
-				out.print("alert('시스템 오류입니다. 다시 시도해주세요');");
-				out.print("location.href='opt.do?command=adminUserManager'");
-				out.print("</script>");
-			}
-			
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
