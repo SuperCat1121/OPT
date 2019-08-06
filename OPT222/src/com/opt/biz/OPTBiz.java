@@ -1,6 +1,7 @@
 package com.opt.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
@@ -9,6 +10,7 @@ import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
 import com.opt.dto.PaymentDto;
+import com.opt.dto.PostboxDto;
 
 public interface OPTBiz {
 	public List<MemberDto> selectList();
@@ -22,7 +24,13 @@ public interface OPTBiz {
 	public List<OrderListDto> orderList(int no);
 	public List<ItemDto> itemList();
 	public List<PaymentDto> paymentList();
+	
+	// 관리자_유저관리
 	public int adminUserUpdate(String id, String enabled, String role);
+	// 관리자_상품관리
+	public int adminItemUpdate(Map<String, String> update);
+	// 관리자_결제내역
+	public List<PaymentDto> paymentAllList();
 	
 	//상품리스트
 	public ItemDto itemSelect(int no);
@@ -40,4 +48,15 @@ public interface OPTBiz {
 
 	//일정관리
 	public int insertCalendar(CalendarDto calendardto);
+	
+	//쪽지함
+	public List<PostboxDto> recivePostboxList(String id);
+	public List<PostboxDto> recivePostboxListPage(String id, int start, int end);
+	public List<PostboxDto> sendPostboxList(int opt_no);
+	public List<PostboxDto> sendPostboxListPage(int opt_no, int start, int end);
+	public PostboxDto postboxDetail(int post_no);
+	public int postboxRead(int post_no);
+	public int readDel(int post_no);
+	public int sendDel(int post_no);
+	public int allDel(int post_no);
 }

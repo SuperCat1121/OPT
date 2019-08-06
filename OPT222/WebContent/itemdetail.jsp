@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 상세페이지</title>
+<link href="css/item_detail.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
@@ -27,14 +28,16 @@
 		$('#insertBasket').click(function(){
 			var item_no = ${Itemdto.item_num_seq };
 			var item_ea = $("#ea").val();
+			var item_page = ${page };
 			var item_name = "${Itemdto.item_name }";
 			var item_price = ${Itemdto.item_price };
 			var item_url = "${Itemdto.item_url }";
-			var opt_no = 0 + 0${memdto.opt_no_seq };
+			var opt_no = 0 +0${memdto.opt_no_seq };
+			
 
 			if(opt_no == 0){
 			
-				location.href="login.jsp";
+				location.href="login.jsp?Flag=3&itemno="+item_no+"&itempage="+item_page;
 				
 			}else{				
 				
@@ -100,6 +103,7 @@
 </head>
 <body>
   
+  	<jsp:include page="header.jsp"></jsp:include>
 
 	<h1>상품 상세페이지</h1>
 	
@@ -116,7 +120,7 @@
 							<img alt="상품사진" src="${Itemdto.item_url }" width="500" height="500" />
 						</div>
 						<div>					
-							<h3>${Itemdto.item_name }</h3>
+							<h3>${Itemdto.item_name } </h3>
 							<a>${Itemdto.item_content }</a><br/>
 							<a>수량 : </a> <input type="number" value="1" id="ea" name="ea" min="1" max="100" onkeydown="javascript: return event.keyCode == 110 ? false : true" /><br/>
 							가격 : <strong id="totalPrice"></strong>원<br/>
@@ -133,7 +137,7 @@
 	
 	</form>
 
-<%@ include file="./footer.jsp" %>
+	<%@ include file="./footer.jsp" %>
 
 </body>
 </html>

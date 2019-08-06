@@ -73,6 +73,7 @@ public class OptLoginController extends HttpServlet {
 					// 0 : index
 					// 1 : mypage
 					// 2 : payment
+					// 3 : itemdetail
 					int Flag = Integer.parseInt(request.getParameter("Flag"));
 					if(Flag == 0) {
 						dispatch(request, response, "index.jsp?");
@@ -82,21 +83,23 @@ public class OptLoginController extends HttpServlet {
 						int itemNo = Integer.parseInt(request.getParameter("no"));
 						int itemEa = Integer.parseInt(request.getParameter("ea"));
 						dispatch(request, response, "item.do?command=payment&Flag=2&no="+itemNo+"&ea="+itemEa);
+					} else if(Flag == 3) {
+						int itemNo = Integer.parseInt(request.getParameter("itemNo"));
+						int page = Integer.parseInt(request.getParameter("itemPage"));
+						dispatch(request, response, "item.do?command=itemdetail&Flag=3&no="+itemNo+"&page="+page);
 					}
+					
 					//회원정보수정
 					if(command.equals("registchange")) {
 						dispatch(request, response, "regist_change_enter.jsp");
 					}
 				}
+				
 			} else if(login.getOpt_enabled().equals("N")){
 				dispatch(request, response, "login.jsp?res=fail");
 			}
-			
-			
-			
 		}
-		
-		
+
 	}
 	
 

@@ -1,5 +1,5 @@
 DROP SEQUENCE MEMBERSEQ;
-DROP TABLE OPT_MEMBER PURGE;
+DROP TABLE OPT_MEMBER CASCADE CONSTRAINT PURGE;
 
 CREATE SEQUENCE MEMBERSEQ;      --회원번호 시퀀스
 
@@ -248,7 +248,7 @@ CREATE TABLE OPT_COUPON(
     COUPON_NO NUMBER PRIMARY KEY,             --쿠폰번호
     COUPON_NAME VARCHAR2(100) NOT NULL,       --쿠폰이름
     COUPON_CONTENT VARCHAR2(1000) NOT NULL,   --쿠폰내용
-    COUPON_DATE DATE NOT NULL,                --유효기간
+    COUPON_DATE VARCHAR2(100) NOT NULL,                --유효기간
     COUPON_SALE VARCHAR2(100) NOT NULL        --할인가격
 );
 
@@ -338,17 +338,17 @@ INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 �
 -- Admin Branche Merge ================================================================
 INSERT INTO OPT_PAYMENT VALUES(1,1,PAYSEQ.NEXTVAL,'홍길동','경기도 고양시 덕양구','010-1234-4567','경비실에 놔주세요',1,SYSDATE);
 INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,SYSDATE);
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-30');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-30');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-30');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-29');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-29');
+INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-04');
+INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-04');
+INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-04');
+INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-03');
+INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-03');
+INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-28');
+INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-28');
+INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-28');
+INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-28');
 INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-06-28');
 INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-06-28');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-06-28');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-06-28');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-05-28');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-05-28');
 -- =====================================================================================
 번호 주문일자 상품명 결제금액
 
@@ -386,21 +386,37 @@ INSERT INTO PURCHASE_DELIVERY VALUES(1,17,1234567);
 SELECT * FROM PURCHASE_DELIVERY;
 
 
----------------쪽지-----------------------
+---------------쪽지함-----------------------
 
 DROP SEQUENCE POSTSEQ;
-DROP TABLE OPT_POSTBOX PURGE;
+DROP TABLE OPT_POSTBOX CASCADE CONSTRAINTS PURGE;
 
 
 CREATE SEQUENCE POSTSEQ;
 
 CREATE TABLE OPT_POSTBOX(
-     OPT_NO_SEQ NUMBER REFERENCES OPT_MEMBER,           --회원번호FK
-     POST_NO_SEQ NUMBER PRIMARY KEY,                    --쪽지번호PK
-     POST_RECIVE_ID VARCHAR2(100) NOT NULL,             --받는사람ID
-     POST_CONTENT VARCHAR2(2000)                        --쪽지내용            
+     OPT_NO_SEQ 		NUMBER 			REFERENCES	OPT_MEMBER,           	--회원번호FK (보낸사람)
+     POST_NO_SEQ 		NUMBER 			PRIMARY KEY,        	            --쪽지번호PK
+     POST_RECIVE_ID 	VARCHAR2(100) 	NOT NULL,   		    		    --받는사람ID
+     POST_TITLE			VARCHAR2(200)	NOT NULL,							--쪽지제목
+     POST_CONTENT 		VARCHAR2(2000)	NOT NULL,							--쪽지내용
+     POST_SEND_DATE 	VARCHAR2(200)	NOT NULL,							--보낸시간
+     POST_RECIVE_READ 	VARCHAR2(2)		CONSTRAINT read_ck CHECK (POST_RECIVE_READ IN('Y','N')),	--쪽지확인여부
+     POST_READ_DATE		VARCHAR2(200)	NOT NULL,							--쪽지확인시간
+     POST_SEND_DEL 		VARCHAR2(2)		CONSTRAINT sendDel_ck CHECK (POST_SEND_DEL IN('Y','N')),	--보낸쪽지 삭제여부
+     POST_READ_DEL 		VARCHAR2(2)		CONSTRAINT reciveDel_ck CHECK (POST_READ_DEL IN('Y','N'))	--받은쪽지 삭제여부						--받은쪽지 삭제여부
 );
 
-INSERT INTO OPT_POSTBOX VALUES(1,POSTSEQ.NEXTVAL,'ADMIN1234','안녕하이'); 
+INSERT INTO OPT_POSTBOX VALUES(
+	1, POSTSEQ.NEXTVAL, 'user1', '환영합니다', '사이트 이용가이드를 참고하세요', 
+	TO_CHAR(SYSDATE, 'YYYY/MM/DD HH24:MI'), 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD-HH24-MI'), 'N', 'N'
+);
+
+INSERT INTO OPT_POSTBOX VALUES(
+	2, POSTSEQ.NEXTVAL, 'admin', '감사합니다', '가입인사 드립니다~', 
+	TO_CHAR(SYSDATE, 'YYYY/MM/DD HH24:MI'), 'N', TO_CHAR(SYSDATE, 'YYYY-MM-DD-HH24-MI'), 'N', 'N'
+);
+
+
 
 SELECT * FROM OPT_POSTBOX;

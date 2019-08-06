@@ -54,7 +54,7 @@
   });
 	
   function popup(){
-	window.open("calendar_popup.jsp","일정등록","width=500px,height=400px"); 
+	window.open("calendar_popup.jsp","쿠폰함","width=500px,height=400px"); 
   }
 </script>
 <style>

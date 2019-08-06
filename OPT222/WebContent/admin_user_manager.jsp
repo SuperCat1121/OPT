@@ -11,22 +11,43 @@
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$(".update").click(function() {
+		$(".userUpdate").click(function() {
 			var id = $(this).parent().siblings().eq(0).text();
 			var enabled = $(this).parent().siblings().eq(3).children().val();
 			var role = $(this).parent().siblings().eq(5).children().val();
-			$(location).attr("href","opt.do?command=adminUserManagerres&id="+id+"&enabled="+enabled+"&role="+role);
+			//$(location).attr("href","admin.do?command=adminUserManagerRes&id="+id+"&enabled="+enabled+"&role="+role);
+			$.ajax({
+				url : "admin.do?command=adminUserUpdate",
+				type : "POST",
+				data : {"id" : id, "enabled" : enabled, "role" : role},
+				dataType : "html",
+				success : function(data) {
+					alert(data);
+				},
+				error : function(request, status, error) {
+					alert(request.status);
+					alert(request.responseText);
+					alert(status);
+					alert(error);
+				}
+			});
 		});
-		$("#close").click(function() {
-			window.close();
+		$("#userManagerPopupClose").click(function() {
+			$(".adminUserManagerPopup").fadeToggle(400);
+			$(".layer").toggle();
+		});
+		$.ajax(function() {
+			url : "admin.do?command=adminUserManagerRes";
+			
 		});
 	});
 </script>
 <link href="css/adminUserManager.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<c:if test="${res}"></c:if>
 	<h3>유저관리</h3>
-	<a href="#" id="close">x</a>
+	<a href="#" id="userManagerPopupClose">x</a>
 	<hr>
 	<table border="1">
 		<tr>
@@ -72,7 +93,7 @@
 					</select>
 				</td>
 				<td>${MemberDto.opt_regdate}</td>
-				<td><input type="button" class="update" value="수정"></td>
+				<td><input type="button" class="userUpdate" value="수정"></td>
 			</tr>
 		</c:forEach>
 	</table>

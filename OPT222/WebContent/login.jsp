@@ -100,14 +100,23 @@
 			<input type="hidden" name="hidden_chk" value=""/>
 <%
 	if(Flag.equals("2")){
-	int itemNo = Integer.parseInt(request.getParameter("itemno"));
-	int itemEa = Integer.parseInt(request.getParameter("itemea"));	
+		int itemNo = Integer.parseInt(request.getParameter("itemno"));
+		int itemEa = Integer.parseInt(request.getParameter("itemea"));	
 %>	
 	<input type="hidden" name="no" value="<%=itemNo %>"/>
 	<input type="hidden" name="ea" value="<%=itemEa %>"/>
 <%			
+	}else if(Flag.equals("3")){
+		int itemNo = Integer.parseInt(request.getParameter("itemno"));
+		int itemPage = Integer.parseInt(request.getParameter("itempage"));
+%>
+	<input type="hidden" name="itemNo" value="<%=itemNo %>"/>
+	<input type="hidden" name="itemPage" value="<%=itemPage %>"/>
+<%
 	}
 %>
+	
+	
 			<div class=id_area>	
 				<span class="input_box">
 					<input type="text" placeholder="아이디" name="id" id="userId" onkeyup="checkData('id');" class="id_pw" value=<%=cValue %> >

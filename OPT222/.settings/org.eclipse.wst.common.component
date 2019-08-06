@@ -2,7 +2,7 @@
     <wb-module deploy-name="OPT222">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="8월2일_9시45분_master"/>
+        <property name="context-root" value="OPT222_190806_오후_945"/>
         <property name="java-output-path" value="/OPT222/build/classes"/>
     </wb-module>
 </project-modules>

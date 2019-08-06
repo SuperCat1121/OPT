@@ -11,25 +11,17 @@
 <title>Insert title here</title>
 <link href="css/admin.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$("span").hover(function() {
-			$("#itemCountWarning").toggle();
-		},function() {
-			$("#itemCountWarning").toggle();
-		});
-	});
-</script>
+<script type="text/javascript" src="js/admin.js"></script>
 </head>
 <body>
-	<!--
+	<!-- 관리자로 로그인 해야만 접근 가능 -->
 	<c:if test="${memdto.opt_role ne 'admin'}">
 		<script type="text/javascript">
 			alert("잘못된 접근입니다.");
 			document.location.href = "index.jsp";
 		</script>
 	</c:if>
-	-->
+	<a href="index.jsp">메인</a>
 	<h1>관리자</h1>
 	<hr style="margin-bottom: 0px;">
 	<div class="nav">
@@ -38,26 +30,17 @@
 				<th>INDEX</th>
 			</tr>
 			<tr>
-				<td>
-					<script type="text/javascript">
-						$(function() {
-							$(".adminUserManagerPopup").load("opt.do?command=adminUserManager");
-							$(".adminUserManager").eq(0).click(function() {
-								$(".adminUserManagerPopup").toggle();
-							});
-						});
-					</script>
-					<a href="#" class="adminUserManager">유저관리</a>
-				</td>
+				<td> <a href="#" class="adminUserManager">유저관리</a> </td>
 			</tr>
 			<tr>
-				<td><a href="#">상품관리</a></td>
+				<td> <a href="#" class="adminItemManager">상품관리</a> </td>
 			</tr>
 			<tr>
-				<td><a href="#">내 정보</a></td>
+				<td> <a href="#">내 정보</a> </td>
 			</tr>
 		</table>
 	</div>
+	<div class="layer" style="display: none;"></div>
 	<div class="content_area">
 		<div class="first" style="margin-left: 65px;">
 			<p>판매진행현황</p>
@@ -195,11 +178,12 @@
 						return ["2달전", "1달전", "이번달"][i];
 					});
 				}
-			</script>
-			<svg id="day" style="width:110; height:125; margin-right: 130px; margin-left: 160px;"></svg>
-			<svg id="month" style="width:110; height:125;"></svg>
+				</script>
+				<svg id="day" style="width:110; height:125; margin-right: 130px; margin-left: 160px;"></svg>
+				<svg id="month" style="width:110; height:125;"></svg>
 		</div>
-		<div class="adminUserManagerPopup"></div>
+		<div class="adminUserManagerPopup" style="display: none;"></div>
+		<div class="adminItemManagerPopup" style="display: none;"></div>
 	</div>
 	<div id="itemCountWarning" style="display: none;">재고가 5개 이하인 상품들의 개수입니다</div>
 </body>

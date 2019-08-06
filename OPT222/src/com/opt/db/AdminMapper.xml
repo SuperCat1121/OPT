@@ -8,4 +8,10 @@
 		WHERE OPT_ID = #{id}
 	</update>
 	
+	<update id="adminItemUpdate">
+		UPDATE OPT_ITEM
+		SET ITEM_NAME = #{item_name}, ITEM_PRICE = #{item_price}, ITEM_CONTENT = #{item_content}
+		WHERE ITEM_NUM_SEQ = #{item_num_seq}
+	</update>
+	
 </mapper>
