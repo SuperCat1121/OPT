@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CouponMapper">
+
+	<select id="coupon_count" resultType="int">
+		SELECT COUNT(*)
+		FROM OPT_COUPON C, OPT_MEMBER M
+		WHERE C.OPT_NO_SEQ = M.OPT_NO_SEQ
+		AND C.OPT_NO_SEQ = #{num}
+	</select>
+	
+	<select id="couponList" parameterType="int" resultType="couponDto">
+		SELECT *
+		FROM OPT_COUPON
+		WHERE OPT_NO_SEQ = #{no}
+	</select>
+	
+</mapper>
