@@ -78,7 +78,6 @@ a {
 				font-size: 18px;
 			}
 		}
-		
 
 /* 마이페이지 콘텐츠 */
 .page_title {
@@ -244,3 +243,34 @@ color: #575757;
 .td_content{
     text-align: center;
 }
+
+/*햄버거*/	
+.wrapper {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 70px;
+    left: 230px;
+}
+
+/* 추가된 부분 */
+.line-wrapper {
+  cursor:pointer;
+  width:56px;
+  height:35px;
+  position:relative;
+  top:52.5px;
+  left:47px;
+}
+
+/* 추가된 부분 */
+.line {
+  background: #888;
+  margin-top:6px;
+  margin-bottom:6px;
+  width: 46px;
+  height:7px; 
+  border-radius:2px;
+  box-shadow:0 1px 3px rgba(0,0,0,.5);
+  position:relative;
+}	

@@ -12,7 +12,7 @@
 /*datepicer 버튼 롤오버 시 손가락 모양 표시*/
 .ui-datepicker-trigger{cursor: pointer;}
 /*datepicer input 롤오버 시 손가락 모양 표시*/
-.hasDatepicker{cursor: pointer;} 
+.hasDatepicker{cursor: pointer;}
 </style>
 </head>
 <body>

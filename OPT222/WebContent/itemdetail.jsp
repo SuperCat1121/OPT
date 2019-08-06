@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 상세페이지</title>
+<link href="css/item_detail.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
@@ -31,7 +32,7 @@
 			var item_name = "${Itemdto.item_name }";
 			var item_price = ${Itemdto.item_price };
 			var item_url = "${Itemdto.item_url }";
-			var opt_no = 0 + 0${memdto.opt_no_seq };
+			var opt_no = 0 +0${memdto.opt_no_seq };
 			
 
 			if(opt_no == 0){
@@ -102,6 +103,7 @@
 </head>
 <body>
   
+  	<jsp:include page="header.jsp"></jsp:include>
 
 	<h1>상품 상세페이지</h1>
 	
@@ -135,7 +137,7 @@
 	
 	</form>
 
-<%@ include file="./footer.jsp" %>
+	<%@ include file="./footer.jsp" %>
 
 </body>
 </html>

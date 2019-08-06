@@ -12,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/item_list.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
@@ -32,6 +33,9 @@
 
 </head>
 <body>
+
+	<jsp:include page="header.jsp"></jsp:include>
+	
 	<h1>내 쪽지함</h1>
 	<hr>
 	<h3>전체 받은 쪽지 [${allCount}]개</h3>
@@ -116,6 +120,7 @@
 		</tr>
 	</table>
 	
+	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>
