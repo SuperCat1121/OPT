@@ -89,26 +89,10 @@
 			<script src="http://d3js.org/d3.v3.min.js"></script>
 			<script type="text/javascript">
 				window.onload = function() {
-					var dayData = [${twoDaySales}, ${oneDaySales}, ${todaySales}];
-					var monthData = [${twoMonthSales}, ${oneMonthSales}, ${monthSales}];
+					var monthData = [${beforeTwoMonth}, ${beforeOneMonth}, ${thisMonth}];
+					var dayData = [${beforeTwoDay}, ${beforeOneDay}, ${today}];
 					var day = d3.select("#day").selectAll();
 					var month = d3.select("#month").selectAll();
-					// 사각형 그래프 그리기 (2일전,1일전,오늘)
-					day.data(dayData).enter()
-					.append("rect")
-					.attr("height",function(d) {
-						return d*10+"px";
-					})
-					.attr("width", function(d) {
-						return "30px";
-					})
-					.attr("x", function(d, i) {
-						return i*35;
-					})
-					.attr("y", function(d, i) {
-						return 100-d*10;
-					})
-					.attr("class", "bar");
 					// 사각형 그래프 그리기 (2달전,1달전,이번달)
 					month.data(monthData).enter()
 					.append("rect")
@@ -126,7 +110,7 @@
 					})
 					.attr("class", "bar");
 					// 그래프 데이터 출력
-					day.data(dayData).enter()
+					month.data(monthData).enter()
 					.append("text")
 					.attr("x", function(d, i) {
 						return i*35+9;
@@ -138,8 +122,37 @@
 					.text(function(d){
 						return d;
 					});
-					// 그래프 데이터 출력
+					// 그래프 레이블 출력
 					month.data(monthData).enter()
+					.append("text")
+					.attr("x", function(d, i) {
+						return i*35;
+					})
+					.attr("y", function(d) {
+						return 120;
+					})
+					.style("font-size", "8pt")
+					.text(function(d, i) {
+						return ["2달전", "1달전", "이번달"][i];
+					});
+					// 사각형 그래프 그리기 (2일전,1일전,오늘)
+					day.data(dayData).enter()
+					.append("rect")
+					.attr("height",function(d) {
+						return d*10+"px";
+					})
+					.attr("width", function(d) {
+						return "30px";
+					})
+					.attr("x", function(d, i) {
+						return i*35;
+					})
+					.attr("y", function(d, i) {
+						return 100-d*10;
+					})
+					.attr("class", "bar");
+					// 그래프 데이터 출력
+					day.data(dayData).enter()
 					.append("text")
 					.attr("x", function(d, i) {
 						return i*35+9;
@@ -163,19 +176,6 @@
 					.style("font-size", "8pt")
 					.text(function(d, i){
 						return ["2일전", "1일전", "오늘"][i];
-					});
-					// 그래프 레이블 출력
-					month.data(monthData).enter()
-					.append("text")
-					.attr("x", function(d, i) {
-						return i*35;
-					})
-					.attr("y", function(d) {
-						return 120;
-					})
-					.style("font-size", "8pt")
-					.text(function(d, i) {
-						return ["2달전", "1달전", "이번달"][i];
 					});
 				}
 				</script>

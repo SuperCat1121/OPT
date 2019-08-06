@@ -120,8 +120,6 @@ $(document).ready(function(){
 </script>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
-
 	<div class="deliver_title">
 		<h1>운송장번호조회</h1>
 	</div>
@@ -131,7 +129,7 @@ $(document).ready(function(){
 		<div style="width : 250px;">
 		<a href="#" class="closebtn" onclick='closeNav()'>x</a>
 		<a href="opt.do?command=mypage">마이페이지</a>
-		<a href="postbox.do?command=recivePostbox&page=1">마이쪽지함</a>
+		<a href="#">마이쪽지함</a>
 		<a href="#">일정관리</a>
 		<a href="#">장바구니</a>
 		<a href="#">내쿠폰함</a>

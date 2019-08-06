@@ -21,38 +21,17 @@ function closeNav() {
 }
 
 $(document).ready(function(){
-/* 	$(".side_menu_nav").mouseenter(function(){
+	$(".side_menu_nav").mouseenter(function(){
 		$("#mysidenav").width('250px');
 	});
 	$(".side_menu_nav").mouseleave(function(){
 		$("#mysidenav").width('0px');
-	}); */
-	
-	
-	
-	$(".line-wrapper").click(function(){
-	
-	if($("#mysidenav").hasClass('abc') == true) {
-	
-		$("#mysidenav").removeClass('abc');
-		$("#mysidenav").width('0px');
-	} else {
-	$("#mysidenav").addClass('abc');
-	$("#mysidenav").width('250px');
-	}
 	});
 });
-	function popup(){
-			window.open("coupon.do?command=couponlist","쿠폰함","width=950px,height=500px"); 
-	}
 
 </script>
 </head>
 <body>
-
-	<div>
-	<jsp:include page="header.jsp"></jsp:include>
-	</div>
 	
 	<div class="page_title">
 		<h2>마이페이지</h2>
@@ -66,23 +45,13 @@ $(document).ready(function(){
 		<a href="postbox.do?command=recivePostbox&page=1">마이쪽지함</a>
 		<a href="calendar.jsp">일정관리</a>
 		<a href="#">장바구니</a>
-		<a href="" onclick="popup();">내쿠폰함</a>
+		<a href="#">내쿠폰함</a>
 		<a href="#">고객센터</a>		
 		</div>
 	</div>
 	<div class="openmenu_btn">
 	</div>
 	</nav>
-	<!-- 햄버거 -->
-		<div class="wrapper">
-  <!-- 추가된 부분 -->
-		  <div class="line-wrapper">
-		    <div class="line"></div>
-		    <div class="line"></div>
-		    <div class="line"></div>
-		  </div>
-		</div>
-		<!-- ************ -->
 	<div class="mypage_content">
 		<div class="mypage_welcome">
 		<div class="welcom_box">
@@ -98,15 +67,15 @@ $(document).ready(function(){
 		</dd>	
 		</dl>
 		<div class="coupon_box">
-		<dl class="coupon" style="cursor: pointer;" onclick="popup();">
+		<dl class="coupon" style="cursor: pointer;" onclick="">
 			<dt>쿠폰</dt>
 			<dd><b class="num"><%=coupon_count %></b> 장</dd>
 		</dl>
-		<dl class="opt_point" onclick="">
+		<dl class="opt_point" style="cursor: pointer;" onclick="">
 			<dt>포인트</dt>
 			<dd><b class="num">${memdto.opt_point }</b> 포인트</dd>
 		</dl>
-		<dl class="opt_pay" onclick="">
+		<dl class="opt_pay" style="cursor: pointer;" onclick="">
 			<dt>결제</dt>
 			<dd><b class="num"><%=pay_count %></b> 결제건수</dd>
 		</dl>

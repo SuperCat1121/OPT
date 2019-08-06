@@ -10,7 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>상품페이지</title>
-<link href="css/item_list.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
@@ -34,8 +33,6 @@
 
 </head>
 <body>
-
-	<jsp:include page="header.jsp"></jsp:include>
 
 	
 	<h1>상품페이지</h1>	
@@ -123,7 +120,7 @@
 	
 	
 	
-	<jsp:include page="footer.jsp"></jsp:include>
+	<%@ include file="./footer.jsp" %>
 
 </body>
 </html>

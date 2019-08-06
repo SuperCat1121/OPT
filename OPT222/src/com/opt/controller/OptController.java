@@ -54,7 +54,7 @@ public class OptController extends HttpServlet {
 					Calendar cal = Calendar.getInstance();
 					int year = cal.get(Calendar.YEAR);
 					int month = cal.get(Calendar.MONTH)+1;
-					int day = cal.get(Calendar.DAY_OF_MONTH);
+					int date = cal.get(Calendar.DAY_OF_MONTH);
 					List<PaymentDto> list = biz.paymentAllList();
 					// 두달전
 					int beforeTwoMonth = 0;
@@ -68,12 +68,31 @@ public class OptController extends HttpServlet {
 					int thisMonth = 0;
 					// 오늘
 					int today = 0;
-					System.out.println(month);
-					System.out.println(day);
 					for(PaymentDto dto : list) {
-						
+						// 2달전, 1달전, 이번달 판매 개수
+						if(dto.getPay_date().getMonth()+1 == (month-2)) {
+							beforeTwoMonth++;
+						} else if(dto.getPay_date().getMonth()+1 == (month-1)) {
+							beforeOneMonth++;
+						} else if(dto.getPay_date().getMonth()+1 == month) {
+							thisMonth++;
+						}
+						// 2일전, 1일전, 오늘 판매 개수
+						if(dto.getPay_date().getDate() == (date-2) && dto.getPay_date().getMonth()+1 == month) {
+							beforeTwoDay++;
+						} else if(dto.getPay_date().getDate() == (date-1) && dto.getPay_date().getMonth()+1 == month) {
+							beforeOneDay++;
+						} else if(dto.getPay_date().getDate() == date && dto.getPay_date().getMonth()+1 == month) {
+							today++;
+						}
 					}
-					response.sendRedirect("admin.jsp");
+					request.setAttribute("beforeTwoMonth", beforeTwoMonth);
+					request.setAttribute("beforeOneMonth", beforeOneMonth);
+					request.setAttribute("beforeTwoDay", beforeTwoDay);
+					request.setAttribute("beforeOneDay", beforeOneDay);
+					request.setAttribute("thisMonth",thisMonth);
+					request.setAttribute("today", today);
+					dispatch(request, response, "admin.jsp");
 				} else {
 					int pay_count = biz.pay_count(memdto.getOpt_no_seq());
 					int coupon_count = biz.coupon_count(memdto.getOpt_no_seq());
