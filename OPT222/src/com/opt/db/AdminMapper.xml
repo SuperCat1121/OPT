@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminMapper">
+
+	<update id="adminUserUpdate">
+		UPDATE OPT_MEMBER
+		SET OPT_ENABLED = #{enabled}, OPT_ROLE = #{role}
+		WHERE OPT_ID = #{id}
+	</update>
+	
+	<update id="adminItemUpdate">
+		UPDATE OPT_ITEM
+		SET ITEM_NAME = #{item_name}, ITEM_PRICE = #{item_price}, ITEM_CONTENT = #{item_content}
+		WHERE ITEM_NUM_SEQ = #{item_num_seq}
+	</update>
+	
+</mapper>
