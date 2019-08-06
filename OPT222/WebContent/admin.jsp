@@ -23,6 +23,7 @@
 	</c:if>
 	
 	<h1>관리자</h1>
+	<a href="index.jsp">메인</a>
 	<hr style="margin-bottom: 0px;">
 	<div class="nav">
 		<table border="1">
