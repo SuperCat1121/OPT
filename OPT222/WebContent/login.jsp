@@ -101,6 +101,99 @@
 			// 아이디와 비밀번호를 확인해주세요 글자 삭제
 			$("#resultText").css("display","none");
 		}
+		function onSignIn(googleUser) {
+	          var profile = googleUser.getBasicProfile();
+	          var snsId = profile.getId();
+	          var snsEmail = profile.getEmail();
+	          location.href="login.do?command=snslogin&opt_id="+snsId+"&opt_email="+snsEmail +"&Flag="+<%=Flag%>;
+
+	        }
+	        
+
+     $(function(){
+   	   var naverLogin = new naver.LoginWithNaverId({
+             clientId: "lcTrrWMiQvKel6vICKwB",
+             callbackUrl: "http://127.0.0.1:8787/OPT222/login.jsp?Flag=0",
+             isPopup: false,
+             loginButton: {
+                 color: "green",
+                 type: 3,
+                 height: 48
+             }
+         });
+  	   
+         naverLogin.init();
+         window.addEventListener('load', function () {
+             naverLogin.getLoginStatus(function (status) {
+                 if (status) {
+                     var email = naverLogin.user.getEmail();
+                     console.log(email);
+                     console.log(snsId);
+                     var snsId = naverLogin.user.id;
+                     var snsEmail = naverLogin.user.email;
+		           	   location.href="login.do?command=snslogin&opt_id="+snsId+"&opt_email="+snsEmail +"&Flag="+<%=Flag%>;
+
+                 }else {
+         			console.log("AccessToken이 올바르지 않습니다.");
+         		} 
+             });
+         });
+
+         Kakao.init('20c730ea6463b1ab9c0f8ef78e9ed232');
+		    Kakao.Auth.createLoginButton({
+		      container: '#kakao-login-btn',
+		      success: function(authObj) {
+		        Kakao.API.request({
+		          url: '/v2/user/me',
+		          success: function(res) {
+		            JSON.stringify(res);
+		            var snsId = res.id;
+		            var snsEmail = res.kakao_account.email;
+		            
+		             location.href="login.do?command=snslogin&opt_id="+snsId+"&opt_email="+snsEmail +"&Flag="+<%=Flag%>;
+		          },
+		          fail: function(error) {
+		            alert(JSON.stringify(error));
+		          }
+		        });
+		      },
+		      fail: function(err) {
+		        alert(JSON.stringify(err));
+		      }
+		    })
+     })
+     		function fbLogin() {
+			// 로그인 여부 체크
+			FB.getLoginStatus(function(response) {
+
+				if (response.status === 'connected') {
+					FB.api('/me', function(res) {
+						// 제일 마지막에 실행
+						alert("Success Login : " + response.name);
+						// alert("Success Login : " + response.name);
+					});
+				}
+			}, false); // 중복실행방지
+		}
+
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '2428130137468919',
+				cookie : false,
+				xfbml : true,
+				version : 'v4.0'
+			});
+		};
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			// ko_KR 을 en_US 로 바꾸면 영문으로 로그인버튼을 사용할 수 있어요.
+			js.src = "//connect.facebook.net/ko_KR/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 </script>
 </head>
 <body>
