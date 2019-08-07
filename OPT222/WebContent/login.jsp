@@ -1,34 +1,49 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%
 	String res = request.getParameter("res");
-	if(res == null) {res = "";}
-	
-	String cValue="";
+	if (res == null) {
+		res = "";
+	}
+
+	String cValue = "";
 	Cookie[] cookies = request.getCookies();
-    
-	if(cookies != null){
-	    for(int i=0; i < cookies.length; i++) {
-			Cookie co = cookies[i] ;
+
+	if (cookies != null) {
+		for (int i = 0; i < cookies.length; i++) {
+			Cookie co = cookies[i];
 			// 저장된 쿠키 이름을 가져온다
 			String cName = co.getName();
-			if(cName.equals("idSave")){
+			if (cName.equals("idSave")) {
 				// 쿠키값을 가져온다
 				cValue = co.getValue();
 			}
-		}	
+		}
 	}
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>LOGIN</title>
-	<link href="css/login.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-	<script type="text/javascript">
+<%
+	String Flag = request.getParameter("Flag");
+%>
+<%
+	System.out.print("Flag" + Flag);
+%>
+<meta charset="UTF-8">
+<title>LOGIN</title>
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id"content="236084628267-j6u2itovr6ocvop0ae5jk52536vf2joq.apps.googleusercontent.com">
+<link href="css/login.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"> </script>
+<script type="text/javascript">
 		//아이디 검사 ---------------------------------------------------------------------------
 		//1. ID : 4~12자 이내의 영어와 숫자로 입력
 		//2. 첫문자는 숫자로 시작할 수 없음.
@@ -88,63 +103,92 @@
 		}
 </script>
 </head>
-<% String Flag = request.getParameter("Flag"); %>
-<% System.out.print("Flag" + Flag); %>	
 <body>
 	<div class="login_content">
-	<fieldset class="login_form" style="border: 0px;">
-		<legend class="blind">로그인</legend>
-		<form action="login.do" method="post" onsubmit="return check()" name="fr">
-			<input type="hidden" name="command" value="login" />
-			<input type="hidden" name="Flag" value="<%=Flag%>">
-			<input type="hidden" name="hidden_chk" value=""/>
-<%
-	if(Flag.equals("2")){
-		int itemNo = Integer.parseInt(request.getParameter("itemno"));
-		int itemEa = Integer.parseInt(request.getParameter("itemea"));	
-%>	
-	<input type="hidden" name="no" value="<%=itemNo %>"/>
-	<input type="hidden" name="ea" value="<%=itemEa %>"/>
-<%			
-	}else if(Flag.equals("3")){
-		int itemNo = Integer.parseInt(request.getParameter("itemno"));
-		int itemPage = Integer.parseInt(request.getParameter("itempage"));
-%>
-	<input type="hidden" name="itemNo" value="<%=itemNo %>"/>
-	<input type="hidden" name="itemPage" value="<%=itemPage %>"/>
-<%
-	}
-%>
-	
-	
-			<div class=id_area>	
-				<span class="input_box">
-					<input type="text" placeholder="아이디" name="id" id="userId" onkeyup="checkData('id');" class="id_pw" value=<%=cValue %> >
-					<span id="idCheck" style="display:none" class="idchk_span"></span>
-				</span>
-			</div>
-			<div class="pw_area">
-				<input type="text" placeholder="비밀번호" name="pw" onkeyup="checkData('pw');" class="id_pw" >
-				<span id="pwCheck" style="display:none" class="idchk_span"></span>
-			</div>
-				
-		<% if(res.equals("fail")){ %>
-			<span id="resultText" class="idchk_span">아이디와 비밀번호를 확인해주세요</span>
-		<% } %>
+		<fieldset class="login_form" style="border: 0px;">
+			<legend class="blind">로그인</legend>
+			<form action="login.do" method="post" onsubmit="return check()"
+				name="fr">
+				<input type="hidden" name="command" value="login" /> <input
+					type="hidden" name="Flag" value="<%=Flag%>"> <input
+					type="hidden" name="hidden_chk" value="" />
+				<%
+					if (Flag.equals("2")) {
+						int itemNo = Integer.parseInt(request.getParameter("itemno"));
+						int itemEa = Integer.parseInt(request.getParameter("itemea"));
+				%>
+				<input type="hidden" name="no" value="<%=itemNo%>" /> <input
+					type="hidden" name="ea" value="<%=itemEa%>" />
+				<%
+					} else if (Flag.equals("3")) {
+						int itemNo = Integer.parseInt(request.getParameter("itemno"));
+						int itemPage = Integer.parseInt(request.getParameter("itempage"));
+				%>
+				<input type="hidden" name="itemNo" value="<%=itemNo%>" /> <input
+					type="hidden" name="itemPage" value="<%=itemPage%>" />
+				<%
+					}
+				%>
 
-			<div class="checks etrans">
-			<% if(cValue == "" || cValue == null) { %>
-	  			<input type="checkbox" id="ex_chk3" name="id_save" /> 
-	 			<label for="ex_chk3">아이디저장</label>
-			<% } else { %>
-				<input type="checkbox" id="ex_chk3" name="id_save" checked="checked"/> 
-	 			<label for="ex_chk3">아이디저장</label>
-			<% } %>
+
+				<div class=id_area>
+					<span class="input_box"> <input type="text"
+						placeholder="아이디" name="id" id="userId" onkeyup="checkData('id');"
+						class="id_pw" value=<%=cValue%>> <span id="idCheck"
+						style="display: none" class="idchk_span"></span>
+					</span>
+				</div>
+				<div class="pw_area">
+					<input type="text" placeholder="비밀번호" name="pw"
+						onkeyup="checkData('pw');" class="id_pw"> <span
+						id="pwCheck" style="display: none" class="idchk_span"></span>
+				</div>
+
+				<%
+					if (res.equals("fail")) {
+				%>
+				<span id="resultText" class="idchk_span">아이디와 비밀번호를 확인해주세요</span>
+				<%
+					}
+				%>
+
+				<div class="checks etrans">
+					<%
+						if (cValue == "" || cValue == null) {
+					%>
+					<input type="checkbox" id="ex_chk3" name="id_save" /> <label
+						for="ex_chk3">아이디저장</label>
+					<%
+						} else {
+					%>
+					<input type="checkbox" id="ex_chk3" name="id_save"
+						checked="checked" /> <label for="ex_chk3">아이디저장</label>
+					<%
+						}
+					%>
+				</div>
+				<input type="submit" value="로그인" class="login_btn" /> <input
+					type="button" value="회원가입" onclick="location.href='register.jsp'"
+					class="regist_btn" />
+			</form>
+			<div>
+				<input type="button"class="regist_btn" onclick="location.href='findid.jsp'"
+					value="아이디찾기"> <input class="regist_btn" type="button"
+					onclick="location.href='findpassword.jsp'" value="비밀번호 찾기">
+
 			</div>
-			<input type="submit" value="로그인" class="login_btn"/> 
-			<input type="button" value="회원가입" onclick="" class="regist_btn"/>
-		</form>
-	</fieldset>
+			<a id="kakao-login-btn"></a>
+			<div id="naverIdLogin"></div>
+			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+			<div class="fb-login-button" scope="public_profile,email"
+				data-max-rows="1" data-size="large" data-button-type="continue_with"
+				data-show-faces="true" data-auto-logout-link="true"
+				data-use-continue-as="true" onlogin="fbLogin();"></div>
+
+		</fieldset>
 	</div>
+	<script>
+
+	</script>
 </body>
 </html>

@@ -12,6 +12,8 @@ import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
 import com.opt.dto.PaymentDto;
 import com.opt.dto.PostboxDto;
+import com.opt.dto.VideoClipDto;
+import com.opt.dto.VideoComment;
 
 
 public class OPTBizImpl implements OPTBiz {
@@ -30,12 +32,12 @@ public class OPTBizImpl implements OPTBiz {
 
 	@Override
 	public int insert(MemberDto dto) {
-		return 0;
+		return dao.insert(dto);
 	}
 
 	@Override
 	public int update(MemberDto dto) {
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
@@ -203,6 +205,40 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.allDel(post_no);
 	}
 
+	@Override
+	public MemberDto emailChk(String email) {
+		return dao.emailChk(email);
+	}
+
+	@Override
+	public MemberDto findId(String email) {
+		return dao.findID(email);
+	}
+
+	@Override
+	public List<VideoClipDto> selectVideoList() {
+		return dao.selectVideoList();
+	}
+
+	@Override
+	public List<VideoClipDto> videoListPage(int start, int end) {
+		return dao.videoListPage(start, end);
+	}
+
+	@Override
+	public int videoCount(int no) {
+		return dao.videoCount(no);
+	}
+
+	@Override
+	public VideoClipDto videoSelectOne(int no) {
+		return dao.videoSelectOne(no);
+	}
+
+	@Override
+	public List<VideoComment> videoCommentList(int no) {
+		return dao.videoCommentList(no);
+	}
 	
 	
 }

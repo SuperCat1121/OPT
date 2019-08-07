@@ -3,6 +3,7 @@ package com.opt.dto;
 import java.util.Date;
 
 public class VideoClipDto {
+	private int r;
 	private int video_no_seq;
 	private int opt_no_seq;
 	private String video_url;
@@ -11,6 +12,12 @@ public class VideoClipDto {
 	private Date video_regdate;
 	private int video_views_no;
 	
+	public int getR() {
+		return r;
+	}
+	public void setR(int r) {
+		this.r = r;
+	}
 	public int getVideo_no_seq() {
 		return video_no_seq;
 	}

@@ -15,6 +15,8 @@ import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
 import com.opt.dto.PaymentDto;
 import com.opt.dto.PostboxDto;
+import com.opt.dto.VideoClipDto;
+import com.opt.dto.VideoComment;
 
 public class OPTDao extends SqlMapConfig {
 
@@ -38,8 +40,63 @@ public class OPTDao extends SqlMapConfig {
 		}
 		return res;
 	}
+	public int insert(MemberDto dto) {
+
+		SqlSession session = null;
+		int result = 0;
+
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			result = session.insert("LoginMapper.register", dto);
+
+			if (result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return result;
+	}
+	public int update(MemberDto dto) {
+
+		SqlSession session = null;
+		int result = 0;
+
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			result = session.update("LoginMapper.updateUser", dto);
+
+			if (result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return result;
+	}
 	
-	// 유저 리스트
+	public MemberDto findID(String email) {
+		SqlSession session = null;
+		MemberDto res = new MemberDto();
+
+
+		session = getsqlSessionFactory().openSession(false);
+		res = session.selectOne("LoginMapper.findId", email);
+
+		return res;
+	}
+	
+	
 	public List<MemberDto> selectList() {
 		SqlSession session = null;
 		List<MemberDto> list = new ArrayList<MemberDto>();
@@ -54,7 +111,18 @@ public class OPTDao extends SqlMapConfig {
 		return list;
 	}
 	
-	// 결제 개수
+	public MemberDto emailChk(String email) {
+		SqlSession session = null;
+		MemberDto res = new MemberDto();
+
+
+		session = getsqlSessionFactory().openSession(false);
+		res = session.selectOne("LoginMapper.emailChk", email);
+
+		return res;
+	}
+	
+	
 	public int pay_count(int num) {
 		SqlSession session = null;
 		int count = 0;
@@ -529,5 +597,76 @@ public class OPTDao extends SqlMapConfig {
 		}
 		return res;
 	}
+	
+	public List<VideoClipDto> selectVideoList() {
+		SqlSession session = null;
+
+		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
+
+		session = getsqlSessionFactory().openSession();
+		list = session.selectList("VideoMapper.videolist");
+
+		return list;
+	}
+
+	public List<VideoClipDto> videoListPage(int start, int end) {
+		SqlSession session = null;
+
+		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("start", start);
+		map.put("end", end);
+
+		session = getsqlSessionFactory().openSession();
+		list = session.selectList("VideoMapper.videoPage", map);
+
+		return list;
+	}
+
+	public int videoCount(int no) {
+		int res = 0;
+		SqlSession session = null;
+
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.update("VideoMapper.videoCount", no);
+			if (res > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return res;
+	};
+	
+	public VideoClipDto videoSelectOne(int no) {
+		SqlSession session = null;
+		VideoClipDto dto = new VideoClipDto();
+
+		session = getsqlSessionFactory().openSession();
+		dto = session.selectOne("VideoMapper.videoSelectOne", no);
+
+		return dto;
+	}
+	
+
+	public List<VideoComment> videoCommentList(int no) {
+		SqlSession session = null;
+
+		List<VideoComment> list = new ArrayList<VideoComment>();
+
+		session = getsqlSessionFactory().openSession();
+		list = session.selectList("VideoMapper.videoCommentList", no);
+
+		return list;
+	}
+	
+	
+	
 	
 }

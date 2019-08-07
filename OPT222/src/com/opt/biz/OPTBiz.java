@@ -11,6 +11,8 @@ import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
 import com.opt.dto.PaymentDto;
 import com.opt.dto.PostboxDto;
+import com.opt.dto.VideoClipDto;
+import com.opt.dto.VideoComment;
 
 public interface OPTBiz {
 	public List<MemberDto> selectList();
@@ -24,6 +26,16 @@ public interface OPTBiz {
 	public List<OrderListDto> orderList(int no);
 	public List<ItemDto> itemList();
 	public List<PaymentDto> paymentList();
+	public MemberDto emailChk(String email);	
+	public MemberDto findId(String email);
+
+	//비디오
+	public List<VideoClipDto> selectVideoList();
+	public List<VideoClipDto> videoListPage(int start, int end);
+	public int videoCount(int no);
+	public VideoClipDto videoSelectOne(int no);
+	public List<VideoComment> videoCommentList(int no);
+	
 	
 	// 관리자_유저관리
 	public int adminUserUpdate(String id, String enabled, String role);

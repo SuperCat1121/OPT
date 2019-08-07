@@ -31,7 +31,6 @@ import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
 import com.opt.dto.PaymentDto;
 
-
 @WebServlet("/opt.do")
 public class OptController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
