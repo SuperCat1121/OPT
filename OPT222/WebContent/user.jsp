@@ -46,6 +46,12 @@ $(document).ready(function(){
 			window.open("coupon.do?command=couponlist","쿠폰함","width=950px,height=500px"); 
 	}
 
+function updateForm(){
+	var url = "updateUser.jsp";
+	var prop = "top=200px,left=600px,width=500px,height=500px";
+    window.open(url, "", prop);
+}
+
 </script>
 </head>
 <body>
@@ -93,7 +99,7 @@ $(document).ready(function(){
 		
 		<dd>
 		<p></p>
-			<a href="opt.do?command=registchange" class="link">개인정보 수정</a>
+			<a class="link" onclick="updateForm()">개인정보 수정</a>
 			<a href="" class="link">일정관리</a>
 		</dd>	
 		</dl>
