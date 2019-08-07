@@ -214,7 +214,6 @@ public class OptLoginController extends HttpServlet {
 			prop.put("mail.smtp.socketFactory.fallback", "false");
 
 			try {
-
 				Authenticator auth = new Gmail();
 				Session ses = Session.getInstance(prop, auth);
 				ses.setDebug(true);
@@ -226,7 +225,6 @@ public class OptLoginController extends HttpServlet {
 				msg.addRecipient(Message.RecipientType.TO, toAddr);
 				msg.setContent(content, "text/html; charset=UTF-8");
 				Transport.send(msg);
-
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
