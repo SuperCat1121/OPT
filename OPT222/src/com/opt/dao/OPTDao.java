@@ -423,7 +423,6 @@ public class OPTDao extends SqlMapConfig {
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.update("CalMapper.updateCal" , caldto);
-			
 			if(res > 0) {
 				session.commit();
 			}else {
@@ -445,7 +444,26 @@ public class OPTDao extends SqlMapConfig {
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.delete("CalMapper.deleteCal" , cal_no_seq);
-			
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+	}
+	//일정 막대 옮기기
+	public int updateCalendarDrop(CalendarDto caldto) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.update("CalMapper.updateDrop" , caldto);
 			if(res > 0) {
 				session.commit();
 			}else {

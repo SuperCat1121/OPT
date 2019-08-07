@@ -157,10 +157,15 @@ public class OPTBizImpl implements OPTBiz {
 		// TODO Auto-generated method stub
 		return dao.updateCalendar(caldto);
 	}
+	//일정 삭제
 	@Override
 	public int deleteCalendar(int cal_no_seq) {
-		// TODO Auto-generated method stub
 		return dao.deleteCalendar(cal_no_seq);
+	}
+	//일정 막대 옮기기
+	@Override
+	public int updateCalendarDrop(CalendarDto caldto) {
+		return dao.updateCalendarDrop(caldto);
 	}
 
 	
@@ -261,6 +266,6 @@ public class OPTBizImpl implements OPTBiz {
 	public List<VideoComment> videoCommentList(int no) {
 		return dao.videoCommentList(no);
 	}
-	
+
 	
 }

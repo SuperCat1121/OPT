@@ -392,7 +392,7 @@ hr.fc-divider {
 	text-align: center;
 	padding: 4px 0;
 	background-color: #595757;
-	
+	color: #fff;
 }
 
 .fc th,
@@ -530,7 +530,6 @@ temporary rendered events).
 	font-family: Nanum-Gothic, sans-serif;
 	letter-spacing: -0.5px;
 	margin-top: 5px;
-	cursor: pointer;
 }
 
 /* overpower some of bootstrap's and jqui's styles on <a> tags */

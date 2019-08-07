@@ -66,6 +66,8 @@ public interface OPTBiz {
 	public CalendarDto CalllistOne(int cal_no_seq);
 	public int updateCalendar(CalendarDto caldto);
 	public int deleteCalendar(int cal_no_seq);
+	public int updateCalendarDrop(CalendarDto caldto);
+	
 	
 	//쪽지함
 	public List<PostboxDto> recivePostboxList(String id);

@@ -52,7 +52,6 @@ $(function() { // document ready
 				now : date,
 				defaultDate: today,
 				editable : true, // enable draggable events 
-			    eventLimit: true,
 				droppable : true, // this allows things to be dropped onto the
 				aspectRatio : 1.8,
 				scrollTime : '00:00', // undo default 6am scrollTime
@@ -118,23 +117,25 @@ $(function() { // document ready
 					console.log('eventReceive', event);
 				},
 				
-				/*eventDrop : function(event) { // 막대 옮길때
+				eventDrop : function(event) { // 막대 옮길때
 					var id = event.id;
-					var title = event.title;
-					var start = event.start;
-					var end = event.end;
-					var color = event.color;
+					var start = moment(event.start).format('YYYY-MM-DD');
+					var end = moment(event.end).format('YYYY-MM-DD');
+					//var title = event.title;
+					//var color = event.color;
+					alert(start);
+					alert(end);
 					$.ajax({
 						error : function() {
 							alert("전송실패")
 						},
 						success : function() {
-							location.href = "scheduleMove.do?id=" + id + "&start=" + start + "&end=" + end;
+							location.href = "opt.do?command=updateDrop&idx=" + id + "&start=" + start + "&end=" + end;
 						}
 					});
 				},
 
-				eventResize : function(event) { // 사이즈 줄이기
+				/*eventResize : function(event) { // 사이즈 늘이기, 줄이기
 					var title = event.title;
 					var id = event.id;
 					var start = event.start;
@@ -167,12 +168,9 @@ $(function() { // document ready
 				},*/
 
 				eventClick : function(event) { //이벤트 클릭시
-					console.log(event);
 					var title = event.title;
-					alert(event.title);
 					var id = event.id;
 					var start = event.start;
-					alert(event.start);
 					var end = event.end;
 					var color = event.color;
 					
@@ -185,7 +183,7 @@ $(function() { // document ready
 					ml = (cw - sw) / 2;
 					mt = (ch - sh) / 2;
 
-					var url = encodeURI("opt.do?command=caldetail");
+					var url = encodeURI("opt.do?command=caldetail&id=" + id);
 					window.open(url, 'name444', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
 					/*var url = encodeURI("scheduleDetail.do?idx="+ id);
 					window.open(url, 'name444', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);*/
@@ -204,16 +202,19 @@ $(function() { // document ready
 							var title = [];
 							var start = [];
 							var end = [];
+							var id = [];
 							
 							for (var i = 0; i < data.cal.length; i++) {
 								title[i] = data.cal[i].title;
 			                    start[i] = data.cal[i].start;
 			                    end[i] = data.cal[i].end;
+			                    id[i] = data.cal[i].id;
 
 								events.push({
 									"title" : title[i],
 									"start" : start[i],
-									"end" : end[i]
+									"end" : end[i],
+									"id" : id[i]
 								});
 							}
 							callback(events);

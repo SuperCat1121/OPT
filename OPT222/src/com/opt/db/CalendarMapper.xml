@@ -11,4 +11,16 @@
 	SELECT * FROM OPT_CALENDAR
 	WHERE OPT_NO_SEQ = #{opt_no_seq}
 	</select>
+	<select id="calselectone" parameterType="int" resultType="calendarDto">
+	SELECT * FROM OPT_CALENDAR
+	WHERE CALENDAR_NO_SEQ = #{cal_no_seq}
+	</select>
+	<update id="updateCal" parameterType="calendarDto">
+	UPDATE OPT_CALENDAR SET CALENDAR_TITLE = #{calendar_title},  CALENDAR_STARTDAY = #{calendar_startday}, CALENDAR_ENDDATE = #{calendar_enddate},CALENDAR_REGDATE =SYSDATE
+	WHERE CALENDAR_NO_SEQ = #{calendar_no_seq}
+	</update>
+	<delete id="deleteCal" parameterType="int">
+	DELETE FROM OPT_CALENDAR 
+	WHERE CALENDAR_NO_SEQ = #{cal_no_seq}
+	</delete>
 </mapper>

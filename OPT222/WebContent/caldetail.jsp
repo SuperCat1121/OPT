@@ -12,16 +12,20 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
+
 function goData(){
 	var form = document.fr;
 	form.submit();
     opener.location.reload();
     window.close();
 }
+
 function deleteData(idx){
-	location.href="opt.do?command=cal_delete&idx="+idx;
+	alert(idx);
+	location.href="opt.do?command=cal_delete&idx="+idx; 
 	opener.location.reload();
 	window.close();
+	//return false;
 }
 </script>
 <style>
@@ -38,21 +42,25 @@ function deleteData(idx){
 	</c:when>
 		<c:otherwise>
 			<form action="opt.do" method="post" name="fr">
-			<input type="hidden" name="command" value="cal_update"/>
+	
+		<!-- 	<input type="hidden" name="command" value="cal_update"/> -->
 			<input type="hidden" name="idx" value="${caldto.calendar_no_seq }"/>
 			
 			<div class="cal_content">
 			일정제목: <input type="text" name="cal_title" value="${caldto.calendar_title }"><br/>
-    		일정시작일: <input type="text" id="datepicker" name="cal_start" value="${caldto.calendar_startday }"><br/>
+    		일정시작일: <input type="text" id="datepicker" name="cal_start" value="${caldto.calendar_startday}"><br/>
     		일정종료일: <input type="text" id="datepicker2" name="cal_end" value="${caldto.calendar_enddate }"><br/>
     		일정등록일: <input type="text" name="cal_date" value="${caldto.calendar_regdate }"><br/>
+    		
     		</div>
-    		<a href="#" onClick="goData();">일정수정하기</a>
-    		<button onclick="deleteData(${caldto.calendar_no_seq});">삭제</button>
+    		<a href="#" id="update" onClick="goData();">일정수정하기</a>
+    		<br/>
     		</form>
+    		<button id="delete" onClick="goData();">삭제</button>
 		</c:otherwise>		
 	</c:choose>
 <script>
+
         $(function() {
             //모든 datepicker에 대한 공통 옵션 설정
             $.datepicker.setDefaults({
@@ -79,9 +87,9 @@ function deleteData(idx){
             $("#datepicker2").datepicker();
             
             //From의 초기값을 오늘 날짜로 설정
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+            //$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
             //To의 초기값을 내일로 설정
-            $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+            //$('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
         });
    </script>
 

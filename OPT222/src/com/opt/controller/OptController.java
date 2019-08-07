@@ -188,6 +188,19 @@ public class OptController extends HttpServlet {
 			}else {
 				System.out.println("delete실패");
 			}
+		//회원 일정 막대 옴길때	
+		}else if(command.equals("updateDrop")) {
+			int cal_no_seq = Integer.parseInt(request.getParameter("idx"));
+			String start = request.getParameter("start");
+			String end = request.getParameter("end");
+			
+			CalendarDto caldto = new CalendarDto();
+			caldto.setCalendar_no_seq(cal_no_seq);
+			caldto.setCalendar_startday(start);
+			caldto.setCalendar_enddate(end);
+			
+			int res = biz.updateCalendarDrop(caldto);
+			
 		}
 	}
 
