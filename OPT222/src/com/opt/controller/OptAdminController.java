@@ -40,7 +40,7 @@ public class OptAdminController extends HttpServlet {
 			// 한 화면에 찍을 페이지 수
 			int countPage = 3;
 			// 한 화면에 찍을 유저 수
-			int countList = 4;
+			int countList = 4; 
 			// 현재 페이지
 			int page = Integer.parseInt(request.getParameter("page"));
 			// 총 유저 수
