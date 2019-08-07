@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="VideoMapper">
+
+	<select id="videolist" resultType="VideoClipDto">
+		SELECT *
+		FROM OPT_VIDEO_CLIP
+		ORDER BY OPT_NO_SEQ
+	</select>
+
+	<select id="videoPage" parameterType="map"
+		resultType="VideoClipDto">
+		SELECT R, OPT_NO_SEQ, VIDEO_NO_SEQ, VIDEO_URL, VIDEO_TITLE,
+		VIDEO_CONTENT,
+		VIDEO_REGDATE, VIDEO_VIEWS_NO
+		FROM(SELECT ROWNUM AS R,
+		OPT_NO_SEQ, VIDEO_NO_SEQ, VIDEO_URL, VIDEO_TITLE,
+		VIDEO_CONTENT,
+		VIDEO_REGDATE, VIDEO_VIEWS_NO
+		FROM(SELECT OPT_NO_SEQ, VIDEO_NO_SEQ,
+		VIDEO_URL, VIDEO_TITLE, VIDEO_CONTENT,
+		VIDEO_REGDATE, VIDEO_VIEWS_NO
+		FROM OPT_VIDEO_CLIP ORDER BY VIDEO_NO_SEQ
+		DESC))
+		WHERE R BETWEEN
+		#{start} AND #{end}
+
+	</select>
+	<update id="videoCount" parameterType="int">
+		UPDATE OPT_VIDEO_CLIP
+		SET
+		VIDEO_VIEWS_NO = VIDEO_VIEWS_NO +1
+		WHERE VIDEO_NO_SEQ = #{no}
+	</update>
+
+	<select id="videoSelectOne" parameterType="int"
+		resultType="VideoClipDto">
+		SELECT *
+		FROM OPT_VIDEO_CLIP
+		WHERE VIDEO_NO_SEQ = #{no}
+	</select>
+
+
+	<select id="videoCommentList" parameterType="int"
+		resultType="VideoCommentDto">
+		SELECT *
+		FROM OPT_VIDEO_COMMENT
+		WHERE VIDEO_NO_SEQ = #{no}
+		ORDER BY VIDEO_COMMENT_SEQ DESC
+	</select>
+
+	<select id="search" parameterType="map"	resultType="VideoCommentDto">
+		SELECT *
+		FROM OPT_VIDEO_CLIP
+		<choose>
+			<when test="searchtext == ''">
+				ORDER BY OPT_NO_SEQ
+			</when>
+			<when test="searchoption == 'seq'">
+				WHERE VIDEO_NO_SEQ=#{searchtext}
+			</when>
+			<when test="searchoption == 'writer'">
+				WHERE OPT_NO_SEQ LIKE '%' || #{searchtext} || '%'
+			</when>
+			<when test="searchoption == 'title'">
+				WHERE VIDEO_TITLE LIKE '%' || #{searchtext} || '%'
+			</when>
+		</choose>
+	</select>
+
+
+
+</mapper>

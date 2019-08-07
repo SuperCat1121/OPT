@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>	
-
-
 	<h2>개인정보수정</h2>
-
 </body>
 </html>
