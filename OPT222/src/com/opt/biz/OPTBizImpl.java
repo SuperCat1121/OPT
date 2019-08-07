@@ -77,10 +77,15 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.adminItemUpdate(update);
 	}
 	
-	// 관리자_그래프
+	// 관리자_결제내역(그래프)
 	@Override
 	public List<PaymentDto> paymentAllList() {
 		return dao.paymentAllList();
+	}
+	
+	@Override
+	public List<MemberDto> adminUserPaging(int startCount, int endCount) {
+		return dao.adminUserPaging(startCount, endCount);
 	}
 	
 	@Override

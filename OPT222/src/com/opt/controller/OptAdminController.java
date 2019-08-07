@@ -37,13 +37,33 @@ public class OptAdminController extends HttpServlet {
 		
 		// (관리자)유저관리
 		if(command.equals("adminUserManager")) {
-			int startPage = 0;
-			int endPage = 0;
-			int page = 0;
-			int totalPage = 0;
-			int totalCnt = 0;
+			// 한 화면에 찍을 페이지 수
+			int countPage = 3;
+			// 한 화면에 찍을 유저 수
+			int countList = 4;
+			// 현재 페이지
+			int page = Integer.parseInt(request.getParameter("page"));
+			// 총 유저 수
+			List<MemberDto> memList = biz.selectList();
+			int totalCount = memList.size();
+			// 총 페이지 수
+			int totalPage = totalCount / countList;
+			// 페이지에 찍는 페이지가 남을 때 totalPage 보정
+			if(totalCount % countList > 0) { totalPage++; }
+			// 시작 페이지
+			int startPage = ((page-1) / countPage) * countPage + 1;
+			// 끝 페이지
+			int endPage = startPage + countPage - 1;
+			// 끝 페이지가 총 페이지보다 클 경우 끝 페이지를 총 페이지로 맞춤
+			if(endPage > totalPage) { endPage = totalPage; }
+			// 첫번째 글
+			int startCount = (page-1) * countPage + 1;
+			// 마지막 글
+			int endCount = page * countPage;
 			
-			List<MemberDto> list = biz.selectList();
+			List<MemberDto> list = biz.adminUserPaging(startCount, endCount);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
 			request.setAttribute("memberList", list);
 			dispatch(request, response, "admin_user_manager.jsp");
 		// (유저관리)수정 버튼 누르면 유저 정보 업데이트 실행

@@ -96,6 +96,9 @@
 				<td><input type="button" class="userUpdate" value="수정"></td>
 			</tr>
 		</c:forEach>
+		<c:forEach var="i" begin="${startPage}" end="${endPage}">
+			[<c:out value="${i}"/>]
+		</c:forEach>
 	</table>
 </body>
 </html>

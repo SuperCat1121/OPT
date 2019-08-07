@@ -41,8 +41,10 @@ public interface OPTBiz {
 	public int adminUserUpdate(String id, String enabled, String role);
 	// 관리자_상품관리
 	public int adminItemUpdate(Map<String, String> update);
-	// 관리자_결제내역
+	// 관리자_결제내역(그래프)
 	public List<PaymentDto> paymentAllList();
+	// 관리자_유저관리 페이징
+	public List<MemberDto> adminUserPaging(int startCount, int endCount);
 	
 	//상품리스트
 	public ItemDto itemSelect(int no);

@@ -40,37 +40,14 @@ public class OPTDao extends SqlMapConfig {
 		}
 		return res;
 	}
+	
+	// 회원가입
 	public int insert(MemberDto dto) {
-
 		SqlSession session = null;
 		int result = 0;
-
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			result = session.insert("LoginMapper.register", dto);
-
-			if (result > 0) {
-				session.commit();
-			} else {
-				session.rollback();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-
-		return result;
-	}
-	public int update(MemberDto dto) {
-
-		SqlSession session = null;
-		int result = 0;
-
-		try {
-			session = getsqlSessionFactory().openSession(false);
-			result = session.update("LoginMapper.updateUser", dto);
-
 			if (result > 0) {
 				session.commit();
 			} else {
@@ -85,18 +62,38 @@ public class OPTDao extends SqlMapConfig {
 		return result;
 	}
 	
+	// 회원정보 수정
+	public int update(MemberDto dto) {
+		SqlSession session = null;
+		int result = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			result = session.update("LoginMapper.updateUser", dto);
+			if (result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return result;
+	}
+	
+	// ID 찾기
 	public MemberDto findID(String email) {
 		SqlSession session = null;
 		MemberDto res = new MemberDto();
-
-
 		session = getsqlSessionFactory().openSession(false);
 		res = session.selectOne("LoginMapper.findId", email);
 
 		return res;
 	}
 	
-	
+	// 회원 목록 조회
 	public List<MemberDto> selectList() {
 		SqlSession session = null;
 		List<MemberDto> list = new ArrayList<MemberDto>();
@@ -122,7 +119,7 @@ public class OPTDao extends SqlMapConfig {
 		return res;
 	}
 	
-	
+	// 회원의 결제내역 조회
 	public int pay_count(int num) {
 		SqlSession session = null;
 		int count = 0;
@@ -219,6 +216,17 @@ public class OPTDao extends SqlMapConfig {
 		SqlSession session = null;
 		session = getsqlSessionFactory().openSession(false);
 		List<PaymentDto> list = session.selectList("PayMapper.paymentAllList");
+		return list;
+	}
+	
+	// 관리자_유저관리 페이징
+	public List<MemberDto> adminUserPaging(int startCount, int endCount) {
+		SqlSession session = null;
+		session = getsqlSessionFactory().openSession(false);
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("startCount", startCount);
+		map.put("endCount", endCount);
+		List<MemberDto> list = session.selectList("AdminMapper.userPaging", map);
 		return list;
 	}
 	
@@ -330,41 +338,32 @@ public class OPTDao extends SqlMapConfig {
 	
 	// 장바구니에 상품 추가
 	public int insertBasket(BasketDto basketDto) {
-		
 		SqlSession session = null;
 		int res = 0;
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.insert("BasketMapper.insertBasket", basketDto);
-			
 			if(res > 0) {
 				session.commit();
 			}else {
 				session.rollback();
 			}
-			
 		} catch (Exception e) {			
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-				
-		
+
 		return res;
-	
-	
 	}
 	
 	//일정 등록
 	public int insertCalendar(CalendarDto calendardto) {
-	
 		SqlSession session = null;
 		int res = 0;
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.insert("CalMapper.insertCal" , calendardto);
-			
 			if(res > 0) {
 				session.commit();
 			}else {
@@ -378,6 +377,7 @@ public class OPTDao extends SqlMapConfig {
 		
 		return res;
 	}
+	
 	//일정 리스트
 	public List<CalendarDto> Callist(int opt_no_seq) {
 			
@@ -461,10 +461,8 @@ public class OPTDao extends SqlMapConfig {
 	}
 	// 받은 쪽지함 리스트
 	public List<PostboxDto> recivePostboxList(String id) {
-		
 		SqlSession session = null;
 		List<PostboxDto> list = new ArrayList<PostboxDto>();
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			list = session.selectList("PostboxMapper.postboxReciveList", id);
@@ -474,20 +472,17 @@ public class OPTDao extends SqlMapConfig {
 			session.close();			
 		}
 		
-		
 		return list;
 	}
 	
 	// 받은 쪽지함 리스트 페이징처리
 	public List<PostboxDto> recivePostboxListPage(String id, int start, int end) {
-		
 		SqlSession session = null;
 		List<PostboxDto> list = new ArrayList<PostboxDto>();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);		
 		map.put("start", start);
 		map.put("end", end);
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			list = session.selectList("PostboxMapper.postboxReciveListPage", map);
@@ -497,16 +492,13 @@ public class OPTDao extends SqlMapConfig {
 			session.close();
 		}
 		
-		
 		return list;
 	}
 	
 	// 보낸 쪽지함 리스트
 	public List<PostboxDto> sendPostboxList(int opt_no) {
-		
 		SqlSession session = null;
 		List<PostboxDto> list = new ArrayList<PostboxDto>();
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			list = session.selectList("PostboxMapper.sendPostboxList", opt_no);
@@ -516,20 +508,17 @@ public class OPTDao extends SqlMapConfig {
 			session.close();			
 		}
 		
-		
 		return list;
 	}
 	
 	// 보낸 쪽지함 리스트 페이징처리
 	public List<PostboxDto> sendPostboxListPage(int opt_no, int start, int end) {
-		
 		SqlSession session = null;
 		List<PostboxDto> list = new ArrayList<PostboxDto>();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("opt_no", opt_no);		
 		map.put("start", start);
 		map.put("end", end);
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			list = session.selectList("PostboxMapper.sendPostboxListPage", map);
@@ -538,16 +527,14 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-				
+		
 		return list;
 	}
 	
 	// 쪽지 상세페이지
 	public PostboxDto postboxDetail(int post_no) {
-		
 		SqlSession session = null;
 		PostboxDto dto = new PostboxDto();
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			dto = session.selectOne("PostboxMapper.postboxDetail", post_no);
@@ -558,60 +545,47 @@ public class OPTDao extends SqlMapConfig {
 		}
 				
 		return dto;
-		
 	}
 	
 	// 쪽지 확인여부
 	public int postboxRead(int post_no) {
-		
 		SqlSession session = null;
 		int res = 0;
-
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.update("PostboxMapper.postboxRead", post_no);
-			
 			if(res > 0) {
 				session.commit();
 			}else {
 				session.rollback();
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		
 		
 		return res;
 	}
 	
 	// 받은 쪽지 삭제
 	public int reciveDel(int post_no) {
-		
 		SqlSession session = null;
 		int res = 0;
-
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.update("PostboxMapper.readDel", post_no);
-			
 			if(res > 0) {
 				session.commit();
 			}else {
 				session.rollback();
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		
-		
+
 		return res;
 	}
 	
@@ -619,7 +593,6 @@ public class OPTDao extends SqlMapConfig {
 	public int sendDel(int post_no) {
 		SqlSession session = null;
 		int res = 0;
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.update("PostboxMapper.sendDel", post_no);
@@ -628,12 +601,12 @@ public class OPTDao extends SqlMapConfig {
 			}else {
 				session.rollback();
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
+		
 		return res;
 	}
 	
@@ -641,7 +614,6 @@ public class OPTDao extends SqlMapConfig {
 	public int allDel(int post_no) {
 		SqlSession session = null;
 		int res = 0;
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.delete("PostboxMapper.allDel", post_no);
@@ -651,20 +623,18 @@ public class OPTDao extends SqlMapConfig {
 			}else {
 				session.rollback();
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
+		
 		return res;
 	}
 	
 	public List<VideoClipDto> selectVideoList() {
 		SqlSession session = null;
-
 		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
-
 		session = getsqlSessionFactory().openSession();
 		list = session.selectList("VideoMapper.videolist");
 
@@ -673,12 +643,10 @@ public class OPTDao extends SqlMapConfig {
 
 	public List<VideoClipDto> videoListPage(int start, int end) {
 		SqlSession session = null;
-
 		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("start", start);
 		map.put("end", end);
-
 		session = getsqlSessionFactory().openSession();
 		list = session.selectList("VideoMapper.videoPage", map);
 
@@ -688,7 +656,6 @@ public class OPTDao extends SqlMapConfig {
 	public int videoCount(int no) {
 		int res = 0;
 		SqlSession session = null;
-
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.update("VideoMapper.videoCount", no);
@@ -704,12 +671,11 @@ public class OPTDao extends SqlMapConfig {
 		}
 
 		return res;
-	};
+	}
 	
 	public VideoClipDto videoSelectOne(int no) {
 		SqlSession session = null;
 		VideoClipDto dto = new VideoClipDto();
-
 		session = getsqlSessionFactory().openSession();
 		dto = session.selectOne("VideoMapper.videoSelectOne", no);
 
@@ -719,16 +685,11 @@ public class OPTDao extends SqlMapConfig {
 
 	public List<VideoComment> videoCommentList(int no) {
 		SqlSession session = null;
-
 		List<VideoComment> list = new ArrayList<VideoComment>();
-
 		session = getsqlSessionFactory().openSession();
 		list = session.selectList("VideoMapper.videoCommentList", no);
 
 		return list;
 	}
-	
-	
-	
 	
 }
