@@ -379,24 +379,86 @@ public class OPTDao extends SqlMapConfig {
 		return res;
 	}
 	//일정 리스트
-		public List<CalendarDto> Callist(int opt_no_seq) {
+	public List<CalendarDto> Callist(int opt_no_seq) {
 			
-			SqlSession session = null;
-			List<CalendarDto> list = new ArrayList<CalendarDto>();
-			
-			try {
-				session = getsqlSessionFactory().openSession(false);
-				list = session.selectList("CalMapper.calselectList", opt_no_seq);
+		SqlSession session = null;
+		List<CalendarDto> list = new ArrayList<CalendarDto>();
+		
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("CalMapper.calselectList", opt_no_seq);
 				
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				session.close();
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 			
 			
 			return list;
-		}				
+		}	
+	//일정 디테일
+	public CalendarDto CalllistOne(int cal_no_seq) {
+		
+		SqlSession session = null;
+		CalendarDto Caldto = new CalendarDto();
+		
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			Caldto = session.selectOne("CalMapper.calselectone", cal_no_seq);
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return Caldto;
+	}	
+	//일정 수정
+	public int updateCalendar(CalendarDto caldto) {
+		
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.update("CalMapper.updateCal" , caldto);
+			
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+	}
+	
+	//일정 삭제
+	public int deleteCalendar(int cal_no_seq) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.delete("CalMapper.deleteCal" , cal_no_seq);
+			
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+	}
 	// 받은 쪽지함 리스트
 	public List<PostboxDto> recivePostboxList(String id) {
 		

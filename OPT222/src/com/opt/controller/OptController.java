@@ -139,6 +139,7 @@ public class OptController extends HttpServlet {
 			JSONArray Jarray = new JSONArray();
 			for(int i = 0; i < callist.size(); i++) {
 				JSONObject jobject = new JSONObject();
+				jobject.put("id", callist.get(i).getCalendar_no_seq());
 				jobject.put("title",callist.get(i).getCalendar_title());
 				jobject.put("start",callist.get(i).getCalendar_startday());
 				jobject.put("end",callist.get(i).getCalendar_enddate());
@@ -147,12 +148,46 @@ public class OptController extends HttpServlet {
 			
 			object.put("cal", Jarray);
 			out.print(object);
-			
+		//회원 일정 상세페이지	
 		}else if(command.equals("caldetail")) {
+			int cal_no_seq = Integer.parseInt(request.getParameter("id"));
+			
+			CalendarDto caldto = biz.CalllistOne(cal_no_seq);
 			HttpSession session = request.getSession();
-			MemberDto memdto = (MemberDto)session.getAttribute("memdto");
-			List<CalendarDto> callist = biz.Callist(memdto.getOpt_no_seq());
+			session.setAttribute("caldto", caldto);
 			dispatch(request, response, "caldetail.jsp");
+		//회원 일정 수정
+		}else if(command.equals("cal_update")) {
+			int cal_no_seq = Integer.parseInt(request.getParameter("idx"));
+			
+			
+			String cal_title = request.getParameter("cal_title");
+			String cal_start = request.getParameter("cal_start");
+			String cal_end = request.getParameter("cal_end");
+			
+			CalendarDto caldto = new CalendarDto();
+			caldto.setCalendar_no_seq(cal_no_seq);
+			caldto.setCalendar_title(cal_title);
+			caldto.setCalendar_startday(cal_start);
+			caldto.setCalendar_enddate(cal_end);
+			System.out.println(caldto.getCalendar_no_seq());
+			int res = biz.updateCalendar(caldto);
+			if(res > 0) {
+				System.out.println("update성공");
+			}else {
+				System.out.println("update실패");
+			}
+		//회원 일정 삭제	
+		}else if(command.equals("cal_delete")) {
+			int cal_no_seq = Integer.parseInt(request.getParameter("idx"));
+			
+			int res = biz.deleteCalendar(cal_no_seq);
+			
+			if(res > 0) {
+				System.out.println("delete성공");
+			}else {
+				System.out.println("delete실패");
+			}
 		}
 	}
 

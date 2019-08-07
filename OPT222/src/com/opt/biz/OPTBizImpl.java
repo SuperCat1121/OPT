@@ -141,6 +141,23 @@ public class OPTBizImpl implements OPTBiz {
 	public List<CalendarDto> Callist(int opt_no_seq) {
 		return dao.Callist(opt_no_seq);
 	}
+	//일정 상세
+	@Override
+	public CalendarDto CalllistOne(int cal_no_seq) {
+		return dao.CalllistOne(cal_no_seq);
+	}
+	//일정 수정
+	@Override
+	public int updateCalendar(CalendarDto caldto) {
+		// TODO Auto-generated method stub
+		return dao.updateCalendar(caldto);
+	}
+	@Override
+	public int deleteCalendar(int cal_no_seq) {
+		// TODO Auto-generated method stub
+		return dao.deleteCalendar(cal_no_seq);
+	}
+
 	
 	//받은쪽지함 리스트
 	@Override

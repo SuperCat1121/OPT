@@ -61,6 +61,9 @@ public interface OPTBiz {
 	//일정관리
 	public int insertCalendar(CalendarDto calendardto);
 	public List<CalendarDto> Callist(int opt_no_seq);
+	public CalendarDto CalllistOne(int cal_no_seq);
+	public int updateCalendar(CalendarDto caldto);
+	public int deleteCalendar(int cal_no_seq);
 	
 	//쪽지함
 	public List<PostboxDto> recivePostboxList(String id);
