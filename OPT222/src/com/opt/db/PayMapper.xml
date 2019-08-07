@@ -22,7 +22,7 @@
 		ORDER BY R DESC
 	</select>
 	
-	<select id="paymentAllList">
+	<select id="paymentAllList" resultType="PaymentDto">
 		SELECT *
 		FROM OPT_PAYMENT
 	</select>

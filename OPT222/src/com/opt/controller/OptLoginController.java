@@ -2,6 +2,8 @@ package com.opt.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
 import com.opt.dto.MemberDto;
+import com.opt.dto.PaymentDto;
 
 
 @WebServlet("/login.do")
@@ -57,6 +60,47 @@ public class OptLoginController extends HttpServlet {
 				session.setMaxInactiveInterval(3600);
 				// 관리자 계정일 때 관리자페이지로 이동
 				if(login.getOpt_role().equals("admin")) {
+					Calendar cal = Calendar.getInstance();
+					int year = cal.get(Calendar.YEAR);
+					int month = cal.get(Calendar.MONTH)+1;
+					int date = cal.get(Calendar.DAY_OF_MONTH);
+					List<PaymentDto> list = biz.paymentAllList();
+					// 두달전
+					int beforeTwoMonth = 0;
+					// 한달전
+					int beforeOneMonth = 0;
+					// 이틀전
+					int beforeTwoDay = 0;
+					// 하루전
+					int beforeOneDay = 0;
+					// 이번달
+					int thisMonth = 0;
+					// 오늘
+					int today = 0;
+					for(PaymentDto dto : list) {
+						// 2달전, 1달전, 이번달 판매 개수
+						if(dto.getPay_date().getMonth()+1 == (month-2)) {
+							beforeTwoMonth++;
+						} else if(dto.getPay_date().getMonth()+1 == (month-1)) {
+							beforeOneMonth++;
+						} else if(dto.getPay_date().getMonth()+1 == month) {
+							thisMonth++;
+						}
+						// 2일전, 1일전, 오늘 판매 개수
+						if(dto.getPay_date().getDate() == (date-2) && dto.getPay_date().getMonth()+1 == month) {
+							beforeTwoDay++;
+						} else if(dto.getPay_date().getDate() == (date-1) && dto.getPay_date().getMonth()+1 == month) {
+							beforeOneDay++;
+						} else if(dto.getPay_date().getDate() == date && dto.getPay_date().getMonth()+1 == month) {
+							today++;
+						}
+					}
+					request.setAttribute("beforeTwoMonth", beforeTwoMonth);
+					request.setAttribute("beforeOneMonth", beforeOneMonth);
+					request.setAttribute("beforeTwoDay", beforeTwoDay);
+					request.setAttribute("beforeOneDay", beforeOneDay);
+					request.setAttribute("thisMonth",thisMonth);
+					request.setAttribute("today", today);
 					dispatch(request, response, "admin.jsp");
 				// 유저 계정일 때 유저페이지로 이동
 				} else if(login.getOpt_role().equals("user")) {

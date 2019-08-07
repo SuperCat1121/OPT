@@ -37,6 +37,12 @@ public class OptAdminController extends HttpServlet {
 		
 		// (관리자)유저관리
 		if(command.equals("adminUserManager")) {
+			int startPage = 0;
+			int endPage = 0;
+			int page = 0;
+			int totalPage = 0;
+			int totalCnt = 0;
+			
 			List<MemberDto> list = biz.selectList();
 			request.setAttribute("memberList", list);
 			dispatch(request, response, "admin_user_manager.jsp");

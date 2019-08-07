@@ -140,7 +140,6 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.Callist(opt_no_seq);
 	}
 	
-	
 	//받은쪽지함 리스트
 	@Override
 	public List<PostboxDto> recivePostboxList(String id) {

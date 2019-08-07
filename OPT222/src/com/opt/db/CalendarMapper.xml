@@ -4,7 +4,7 @@
 	
 	<insert id="insertCal" parameterType="calendarDto">
 		INSERT INTO OPT_CALENDAR 
-		VALUES(#{opt_no_seq},CALENDERSEQ.NEXTVAL,#{calendar_title},#{calendar_startday},#{calendar_enddate},null,SYSDATE)
+		VALUES(#{opt_no_seq},CALENDARSEQ.NEXTVAL,#{calendar_title},#{calendar_startday},#{calendar_enddate},null,SYSDATE)
 	</insert>
 	
 	<select id="calselectList"  parameterType="int" resultType="calendarDto">
