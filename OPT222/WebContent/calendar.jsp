@@ -47,8 +47,8 @@ $(document).ready(function(){
 	ml = (cw - sw) / 2;
 	mt = (ch - sh) / 2;
 
-	var url = encodeURI("calendar_popup.jsp");
-	window.open(url, '일정등록', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+	var url = encodeURI("coupon.do?command=couponlist");
+	window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
   }
 </script>
 </head>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
 import com.opt.dto.CouponDto;
+import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 
 /**
@@ -35,8 +36,51 @@ public class OptCouponController extends HttpServlet {
 			HttpSession session = request.getSession();
 			MemberDto memdto = (MemberDto)session.getAttribute("memdto");
 			
-			List<CouponDto> couponlist = biz.couponList(memdto.getOpt_no_seq());
-			session.setAttribute("coupondto", couponlist);
+			
+			int page = Integer.parseInt(request.getParameter("page")); //현재페이징번호
+			int allCount = biz.couponList(memdto.getOpt_no_seq()).size(); //전체게시글개수
+			int listCount = 5; //한 화면에 뿌릴 데이터 개수
+			int totalPage = (allCount -1) / listCount + 1; // 전체 페이지 개수
+			int blockCount = 5;  // 이동을 위한 페이지 표시에 나타나는 숫자의 표시 갯수( 예 [1] [2] [3])
+			int absolutePage = 0; // 페이지를 넘겼을 때 시작되는 첫번째 게시물의 시작 번호
+			int endPage = 0;  // 페이지 마지막 번호
+			
+			if(page < 1) {
+				page = 1;
+				
+			}else if(page > totalPage) {
+				page = totalPage;
+			}
+			
+			if(page%5 == 0) {
+				absolutePage = ((page/5) *5) -4;
+				endPage = (page / 5) * 5;
+				
+			}else {
+				absolutePage = ((page /5) *5)+1;
+				endPage = ((page/5) * 5) + 5;
+			}
+			
+			if(endPage > totalPage) {
+				endPage = totalPage;
+			}
+			
+							
+			int start = (page - 1)*listCount +1;
+			int end = page * listCount;
+			System.out.println("start >> " + start);
+			System.out.println("end >> " + end);
+			List<CouponDto> list = biz.couponPaging(memdto.getOpt_no_seq(), start, end);
+			//request.setAttribute("list", list);
+			request.setAttribute("coupondto", list);
+			request.setAttribute("page", page);
+			request.setAttribute("blockCount", blockCount);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("absolutePage", absolutePage);
+			request.setAttribute("endPage", endPage);
+			
+			
+			
 			dispatch(request, response, "coupon_popup.jsp");
 		}
 	}

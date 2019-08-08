@@ -11,15 +11,15 @@
 </head>
 <body>
 	<div class="coupon_title">
-	<h3>쿠폰함</h3>
+	<h3>내 쿠폰함</h3>
 	</div>
 	<div class="coupon_list">
 			<table summary="쿠폰번호 쿠폰이름 쿠폰내용 유효기간 할인가격">
 				<colgroup>
 					<col width="70">
-					<col width="100">
+					<col width="180">
 					<col width="*">
-					<col width="100">
+					<col width="180">
 					<col width="70">
 				</colgroup>
 				<thead>
@@ -62,6 +62,38 @@
 		</c:choose>			
 		</tbody>	 
 			</table>
+		</div>
+		<div class="paging">
+			<ul>
+			<c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
+			<c:choose>
+				<c:when test="${prevPage >0}">
+					<li><a href="coupon.do?command=couponlist&page=${prevPage }">◀</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="coupon.do?command=couponlist&page=1">◀</a></li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach begin="${absolutePage }" end="${endPage }" var="i">
+				<c:choose>
+				<c:when test="${i eq page}">
+					<li><a href="coupon.do?command=couponlist&page=${i}">${ i }</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="coupon.do?command=couponlist&page=${i}">${ i }</a></li>
+				</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:set var="nextPage" value="${absolutePage+blockCount }"></c:set>
+			<c:choose>
+				<c:when test="${nextPage < totalPage}">
+					<li><a href="coupon.do?command=couponlist&page=${nextPage }">▶</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="coupon.do?command=couponlist&page=${totalPage}">▶</a></li>
+				</c:otherwise>
+			</c:choose>
+			</ul>
 		</div>
 </body>
 </html>

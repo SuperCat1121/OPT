@@ -3,6 +3,7 @@ package com.opt.dto;
 
 public class CouponDto {
 	private int opt_no_seq;
+	private int coupon_no_seq;
 	private int coupon_no;
 	private String coupon_name;
 	private String coupon_content;
@@ -13,6 +14,12 @@ public class CouponDto {
 	}
 	public void setOpt_no_seq(int opt_no_seq) {
 		this.opt_no_seq = opt_no_seq;
+	}
+	public int getCoupon_no_seq() {
+		return coupon_no_seq;
+	}
+	public void setCoupon_no_seq(int coupon_no_seq) {
+		this.coupon_no_seq = coupon_no_seq;
 	}
 	public int getCoupon_no() {
 		return coupon_no;

@@ -128,7 +128,11 @@ public class OPTBizImpl implements OPTBiz {
 	public List<CouponDto> couponList(int no) {
 		return dao.couponList(no);
 	}
-	
+	//쿠폰 페이징
+	@Override
+	public List<CouponDto> couponPaging(int opt_no_seq, int start, int end) {
+		return dao.couponPaging(opt_no_seq, start, end);
+	}
 	//장바구니 상품등록
 	@Override
 	public int insertBasket(BasketDto basketDto) {

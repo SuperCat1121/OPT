@@ -56,7 +56,8 @@ public interface OPTBiz {
 	
 	//쿠폰리스트
 	public List<CouponDto> couponList(int no);
-	
+	//쿠폰페이징
+	public List<CouponDto> couponPaging(int opt_no_seq , int start , int end);
 	//장바구니	
 	public int insertBasket(BasketDto basketDto);
 

@@ -52,7 +52,7 @@ $(document).ready(function(){
 	ml = (cw - sw) / 2;
 	mt = (ch - sh) / 2;
 
-	var url = encodeURI("coupon_popup.jsp");
+	var url = encodeURI("coupon.do?command=couponlist&page=1");
 	window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
   }
 

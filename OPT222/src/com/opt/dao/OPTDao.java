@@ -321,6 +321,7 @@ public class OPTDao extends SqlMapConfig {
 		return list;
 	}
 	
+	
 	// 보유 쿠폰 리스트
 	public List<CouponDto> couponList(int no) {
 		SqlSession session = null;
@@ -331,6 +332,24 @@ public class OPTDao extends SqlMapConfig {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	finally {
+			session.close();
+		}
+		return list;
+	}
+	//내 쿠폰함 페이징
+	public List<CouponDto> couponPaging(int opt_no_seq, int start, int end) {
+		SqlSession session = null;
+		List<CouponDto> list = new ArrayList<CouponDto>();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("opt_no_seq",opt_no_seq);
+		map.put("start", start);
+		map.put("end", end);
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("CouponMapper.CouponPaging", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			session.close();
 		}
 		return list;
