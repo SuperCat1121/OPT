@@ -41,7 +41,7 @@ $(document).ready(function(){
 	cw = screen.availWidth;
 	ch = screen.availHeight;
 		
-	sw=530;    //띄울 창의 넓이
+	sw=600;    //띄울 창의 넓이
 	sh=340;    //띄울 창의 높이
 
 	ml = (cw - sw) / 2;
