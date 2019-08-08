@@ -6,39 +6,45 @@
 <meta charset="UTF-8">
 <script src="js/jquery-3.4.1.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="css/fullcalender/jquery-ui.css">
 <link href="css/calendar_popup.css" rel="stylesheet" type="text/css">
 <style>
 /*datepicer 버튼 롤오버 시 손가락 모양 표시*/
 .ui-datepicker-trigger{cursor: pointer;}
 /*datepicer input 롤오버 시 손가락 모양 표시*/
 .hasDatepicker{cursor: pointer;}
+#ui-datepicker-div {
+    border: 1px solid #c5c5c5;
+    top: 35px;
+    left: 73.6px;
+  } 
 </style>
 
-<script type="text/javascript">
-function goData(){
-	var form = document.fr;
-	form.submit();
-    opener.location.reload();
-    window.close();
-}
-</script>
+
 
 </head>
 <body>
 	<div class="cal_title">
 	<h3>일정등록</h3>
 	</div>
-	<form action="opt.do" method="post" name="fr">
-	<input type="hidden" name="command" value="cal_insert">
+	<form action="opt.do?command=cal_insert" method="post" name="fr">
 	<div class="cal_content">
-	일정제목: <input type="text" name="cal_title"><br/>
-    일정시작일: <input type="text" id="datepicker" name="cal_start"><br/>
-    일정종료일: <input type="text" id="datepicker2" name="cal_end"><br/>
+	<div class="cal_text">일정제목: <input type="text" name="cal_title"></div>
+    <div class="cal_text">일정시작일: <input type="text" id="datepicker" name="cal_start"></div>
+    <div class="cal_text">일정종료일: <input type="text" id="datepicker2" name="cal_end"></div>
     </div>
-    	<a href="#" onClick="goData();">전송</a>
+    <div class="btn">
+    	<a class="calinsertBtn"onClick="goData();">일정등록</a>
+    </div>	
  	</form>
     <script>
+    	
+    	function goData(){
+    		document.fr.submit();
+        	opener.location.reload();
+        	self.close();
+    	}
+    	
         $(function() {
             //모든 datepicker에 대한 공통 옵션 설정
             $.datepicker.setDefaults({

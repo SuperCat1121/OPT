@@ -200,7 +200,30 @@ public class OptController extends HttpServlet {
 			caldto.setCalendar_enddate(end);
 			
 			int res = biz.updateCalendarDrop(caldto);
+			if(res > 0) {
+				System.out.println("drop성공!");
+			}else {
+				System.out.println("drop 실패!");
+			}
+			dispatch(request, response, "calendar.jsp");
+		//회원 일정 막대사이즈 늘리기/줄이기
+		}else if(command.equals("updateResize")) {
+			int cal_no_seq = Integer.parseInt(request.getParameter("idx"));
+			String start = request.getParameter("start");
+			String end = request.getParameter("end");
 			
+			CalendarDto caldto = new CalendarDto();
+			caldto.setCalendar_no_seq(cal_no_seq);
+			caldto.setCalendar_startday(start);
+			caldto.setCalendar_enddate(end);
+			
+			int res = biz.updateCalendarResize(caldto);
+			if(res > 0) {
+				System.out.println("resize 성공!");
+			}else {
+				System.out.println("resize 실패!");
+			}
+			dispatch(request, response, "calendar.jsp");
 		}
 	}
 

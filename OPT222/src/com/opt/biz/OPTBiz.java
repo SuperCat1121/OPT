@@ -67,6 +67,7 @@ public interface OPTBiz {
 	public int updateCalendar(CalendarDto caldto);
 	public int deleteCalendar(int cal_no_seq);
 	public int updateCalendarDrop(CalendarDto caldto);
+	public int updateCalendarResize(CalendarDto caldto);
 	
 	
 	//쪽지함

@@ -164,11 +164,14 @@ public class OPTBizImpl implements OPTBiz {
 	}
 	//일정 막대 옮기기
 	@Override
-	public int updateCalendarDrop(CalendarDto caldto) {
-		return dao.updateCalendarDrop(caldto);
+	public int updateCalendarDrop(CalendarDto caldto) { 
+		return dao.updateCalendarDrop(caldto); 
 	}
-
-	
+	//일정 막대 사이즈 줄이기/늘리기
+	@Override
+	public int updateCalendarResize(CalendarDto caldto) {
+		return dao.updateCalendarResize(caldto);
+	}
 	//받은쪽지함 리스트
 	@Override
 	public List<PostboxDto> recivePostboxList(String id) {
@@ -266,6 +269,8 @@ public class OPTBizImpl implements OPTBiz {
 	public List<VideoComment> videoCommentList(int no) {
 		return dao.videoCommentList(no);
 	}
+
+
 
 	
 }

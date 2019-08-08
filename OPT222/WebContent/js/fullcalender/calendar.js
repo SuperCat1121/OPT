@@ -123,8 +123,6 @@ $(function() { // document ready
 					var end = moment(event.end).format('YYYY-MM-DD');
 					//var title = event.title;
 					//var color = event.color;
-					alert(start);
-					alert(end);
 					$.ajax({
 						error : function() {
 							alert("전송실패")
@@ -135,24 +133,26 @@ $(function() { // document ready
 					});
 				},
 
-				/*eventResize : function(event) { // 사이즈 늘이기, 줄이기
-					var title = event.title;
+				eventResize : function(event) { // 사이즈 늘이기, 줄이기
+					//var title = event.title;
+					//var color = event.color;
 					var id = event.id;
-					var start = event.start;
-					var end = event.end;
-					var color = event.color;
+					var start = moment(event.start).format('YYYY-MM-DD');
+					var end = moment(event.end).format('YYYY-MM-DD');
+					alert(start);
+					alert(end);
 
 					$.ajax({
 						error : function() {
 							alert("전송실패")
 						},
 						success : function() {
-							location.href = "scheduleResize.do?id=" + id + "&start=" + start + "&end=" + end ;
+							location.href = "opt.do?command=updateResize&idx=" + id + "&start=" + start + "&end=" + end;
 						}
 					});
 				},
 				
-				dayClick : function(event) {
+			/*	dayClick : function(event) {
 					var url = encodeURI("addSchedule.do?event="+ event);
 
 					cw = screen.availWidth;
@@ -177,8 +177,8 @@ $(function() { // document ready
 					cw = screen.availWidth;
 					ch = screen.availHeight;
 					
-					sw=1024;    //띄울 창의 넓이
-					sh=screen.height - 440;    //띄울 창의 높이
+					sw=530;    //띄울 창의 넓이
+					sh=340;    //띄울 창의 높이
 
 					ml = (cw - sw) / 2;
 					mt = (ch - sh) / 2;

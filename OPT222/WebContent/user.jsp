@@ -43,14 +43,24 @@ $(document).ready(function(){
 	});
 });
 	function popup(){
-			window.open("coupon.do?command=couponlist","쿠폰함","width=950px,height=500px"); 
-	}
+	cw = screen.availWidth;
+	ch = screen.availHeight;
+		
+	sw=1024;    //띄울 창의 넓이
+	sh=550;    //띄울 창의 높이
 
-function updateForm(){
-	var url = "updateUser.jsp";
-	var prop = "top=200px,left=600px,width=500px,height=500px";
-    window.open(url, "", prop);
-}
+	ml = (cw - sw) / 2;
+	mt = (ch - sh) / 2;
+
+	var url = encodeURI("coupon_popup.jsp");
+	window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+  }
+
+	function updateForm(){
+		var url = "updateUser.jsp";
+		var prop = "top=200px,left=600px,width=500px,height=500px";
+	    window.open(url, "", prop);
+	}
 
 </script>
 </head>
@@ -63,7 +73,7 @@ function updateForm(){
 	<div class="page_title">
 		<h2>마이페이지</h2>
 	</div>
-	
+	<!-- side menu -->
 	<nav class="side_menu_nav">
 	<div id="mysidenav" class="sidenav">
 		<div style="width : 250px;">

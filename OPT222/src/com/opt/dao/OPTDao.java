@@ -458,25 +458,47 @@ public class OPTDao extends SqlMapConfig {
 		return res;
 	}
 	//일정 막대 옮기기
+	
 	public int updateCalendarDrop(CalendarDto caldto) {
-		SqlSession session = null;
+		SqlSession session = null; 
 		int res = 0;
-		try {
+		try { 
 			session = getsqlSessionFactory().openSession(false);
-			res = session.update("CalMapper.updateDrop" , caldto);
+			res = session.update("CalMapper.updateDrop" , caldto); 
 			if(res > 0) {
-				session.commit();
-			}else {
+				session.commit(); 
+			}else { 
 				session.rollback();
-			}
+			} 
 		}catch (Exception e){
 			e.printStackTrace();
 		}finally {
-			session.close();
+			session.close(); 
 		}
-		
-		return res;
+	 
+	  return res;
+	  }
+	//일정 막대 사이즈 줄이기/늘리기
+	public int updateCalendarResize(CalendarDto caldto) {
+		SqlSession session = null; 
+		int res = 0;
+		try { 
+			session = getsqlSessionFactory().openSession(false);
+			res = session.update("CalMapper.updateResize" , caldto); 
+			if(res > 0) {
+				session.commit(); 
+			}else { 
+				session.rollback();
+			} 
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			session.close(); 
+		}
+	 
+	  return res;
 	}
+	 
 	// 받은 쪽지함 리스트
 	public List<PostboxDto> recivePostboxList(String id) {
 		SqlSession session = null;

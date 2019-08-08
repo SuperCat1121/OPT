@@ -23,4 +23,12 @@
 	DELETE FROM OPT_CALENDAR 
 	WHERE CALENDAR_NO_SEQ = #{cal_no_seq}
 	</delete>
+	<update id="updateDrop" parameterType="calendarDto">
+	UPDATE OPT_CALENDAR SET  CALENDAR_STARTDAY = #{calendar_startday}, CALENDAR_ENDDATE = #{calendar_enddate} , CALENDAR_REGDATE =SYSDATE
+	WHERE CALENDAR_NO_SEQ = #{calendar_no_seq}
+	</update>
+	<update id="updateResize" parameterType="calendarDto">
+	UPDATE OPT_CALENDAR SET  CALENDAR_STARTDAY = #{calendar_startday}, CALENDAR_ENDDATE = #{calendar_enddate} , CALENDAR_REGDATE =SYSDATE
+	WHERE CALENDAR_NO_SEQ = #{calendar_no_seq}
+	</update>
 </mapper>

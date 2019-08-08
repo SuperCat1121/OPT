@@ -1,65 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="js/jquery-3.4.1.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="css/fullcalender/jquery-ui.css">
 <link href="css/calendardetail.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 </head>
-<script type="text/javascript">
-
-function goData(){
-	var form = document.fr;
-	form.submit();
-    opener.location.reload();
-    window.close();
-}
-
-function deleteData(idx){
-	alert(idx);
-	location.href="opt.do?command=cal_delete&idx="+idx; 
-	opener.location.reload();
-	window.close();
-	//return false;
-}
-</script>
 <style>
 /*datepicer 버튼 롤오버 시 손가락 모양 표시*/
 .ui-datepicker-trigger{cursor: pointer;}
 /*datepicer input 롤오버 시 손가락 모양 표시*/
 .hasDatepicker{cursor: pointer;}
 </style>
+<script type="text/javascript">
+
+
+	function getFormatDate(date){ 
+		var year = date.getFullYear();	//yyyy 
+		var month = (1 + date.getMonth());	//M 
+		month = month >= 10 ? month : '0' + month; //month 두자리로 저장
+		var day = date.getDate();	//d 
+		day = day >= 10 ? day : '0' + day;	//day 두자리로 저장 
+		
+		return year + '-' + month + '-' + day;
+	}
+
+
+</script>
 <body>
-	<h1>일정상세</h1>
-	
+	<div class="cal_title">
+	<h3>일정상세</h3>
+	</div>
 	<c:choose>
 	<c:when test="${empty caldto }">
 	</c:when>
 		<c:otherwise>
-			<form action="opt.do" method="post" name="fr">
-	
-		<!-- 	<input type="hidden" name="command" value="cal_update"/> -->
+			<form method="post" name="fr">
 			<input type="hidden" name="idx" value="${caldto.calendar_no_seq }"/>
-			
 			<div class="cal_content">
-			일정제목: <input type="text" name="cal_title" value="${caldto.calendar_title }"><br/>
-    		일정시작일: <input type="text" id="datepicker" name="cal_start" value="${caldto.calendar_startday}"><br/>
-    		일정종료일: <input type="text" id="datepicker2" name="cal_end" value="${caldto.calendar_enddate }"><br/>
-    		일정등록일: <input type="text" name="cal_date" value="${caldto.calendar_regdate }"><br/>
-    		
+			<div class="cal_text">일정제목 : <input type="text" name="cal_title" value="${caldto.calendar_title }"></div>
+    		<div class="cal_text">일정시작일: <input type="text" id="datepicker" name="cal_start" value="${caldto.calendar_startday}"></div>
+    		<div class="cal_text">일정종료일: <input type="text" id="datepicker2" name="cal_end" value="${caldto.calendar_enddate }"></div>
+    		<div class="cal_text">일정등록일: <div class="regdate"><p><fmt:formatDate pattern = "yyyy-MM-dd" value="${caldto.calendar_regdate }"/></p></div></div>
     		</div>
-    		<a href="#" id="update" onClick="goData();">일정수정하기</a>
     		<br/>
     		</form>
-    		<button id="delete" onClick="goData();">삭제</button>
+    		<div class="btn">
+    		<a class="btn_a" id="update" onClick="updateBtn();">일정수정하기</a>
+    		<a class="btn_a" id="delete" onClick="deleteBtn();">삭제</a>
+    		</div>
 		</c:otherwise>		
 	</c:choose>
 <script>
+			function updateBtn(){
+				document.fr.action="opt.do?command=cal_update";
+				document.fr.submit();
+				opener.location.reload();
+				self.close();
+			}
+			 
+			function deleteBtn(){
+				document.fr.action="opt.do?command=cal_delete";
+				document.fr.submit();
+				opener.location.reload();
+				self.close();
+			}
 
         $(function() {
             //모든 datepicker에 대한 공통 옵션 설정
