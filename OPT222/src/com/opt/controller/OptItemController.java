@@ -2,6 +2,8 @@ package com.opt.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
+import com.opt.dto.BasketDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
@@ -147,6 +150,7 @@ public class OptItemController extends HttpServlet {
 			HttpSession session = request.getSession();
 			int itemNo = Integer.parseInt(request.getParameter("no"));
 			int itemEa = Integer.parseInt(request.getParameter("ea"));
+			int post = 2500;
 			
 			// 로그인 여부 확인
 			if(session.getAttribute("memdto") == null) {
@@ -158,9 +162,50 @@ public class OptItemController extends HttpServlet {
 				ItemDto itemDto = biz.itemSelect(itemNo);
 				session.setAttribute("couponList", couponList);
 				session.setAttribute("itemDto", itemDto);	
-				session.setAttribute("ea", itemEa);	
+				session.setAttribute("ea", itemEa);
+				session.setAttribute("post", post);
 				dispatch(request, response, "payment.jsp");
 				
+			}
+			
+		// 장바구니 결제페이지	
+		}else if(command.equals("basketpayment")) {
+			HttpSession session = request.getSession();	
+			MemberDto memdto = (MemberDto)session.getAttribute("memdto");			
+			List<CouponDto> couponList = biz.couponList(memdto.getOpt_no_seq());
+			
+			
+			List<BasketDto> list = new ArrayList<BasketDto>();
+			String[] seq = request.getParameterValues("chk");
+			String count = request.getParameter("countarr");			
+			String[] cnt = new String[seq.length];
+			
+			
+			for(int i=0; i<cnt.length; i++) {
+				cnt[i] = count.split(",")[i];
+			}		
+			
+			for(int i=0; i<seq.length; i++) {
+				BasketDto dto = new BasketDto();
+				dto.setBasket_no_seq(Integer.parseInt(seq[i]));				
+				dto.setBasket_item_count(Integer.parseInt(cnt[i]));
+				list.add(dto);
+			}
+			
+			if(biz.updateBasket(list)) {
+				List<BasketDto> basketList = new ArrayList<BasketDto>();
+				
+				for(int i=0; i<seq.length; i++) {
+					BasketDto dto = biz.selectBasket(Integer.parseInt(seq[i]));
+					basketList.add(dto);
+				}
+				
+				request.setAttribute("couponList", couponList);
+				request.setAttribute("basketList", basketList);
+				dispatch(request, response, "basketpayment.jsp");
+				
+			}else {
+				alert("에러", "basket.do?command=basketlist", response);
 			}
 			
 			
@@ -178,6 +223,11 @@ public class OptItemController extends HttpServlet {
 	public void dispatch(HttpServletRequest request, HttpServletResponse response,String url) throws ServletException, IOException {
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);
 		dispatch.forward(request, response);
+	}
+	
+	public void alert(String msg, String url, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		out.print("<script> alert('"+msg+"'); location.href='"+url+"'; </script>");
 	}
 
 }

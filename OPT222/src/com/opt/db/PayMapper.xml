@@ -27,4 +27,10 @@
 		FROM OPT_PAYMENT
 	</select>
 	
+	<insert id="insertPayment" parameterType="PaymentDto">
+		INSERT INTO OPT_PAYMENT VALUES(
+		#{opt_no_seq}, #{item_num_seq}, PAYSEQ.NEXTVAL, #{pay_recipient_name},
+		#{pay_place}, #{pay_phone}, #{pay_memo}, #{pay_count}, SYSDATE
+		)
+	</insert>
 </mapper>

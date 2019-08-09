@@ -38,6 +38,7 @@
 		</tr>
 	</table>
 	<br/>
+	<input type="button" value="답장" onclick="location.href='postbox.do?command=sendPostForm&user=${postDto.opt_id }&type=${type }&page=${page }'" />&nbsp;
 	<input type="button" value="쪽지목록" onclick="location.href='postbox.do?command=${type }&page=${page }'"/>&nbsp;
 	<input type="button" value="삭제" onclick="location.href='postbox.do?command=delPost&post_no=${postDto.post_no_seq }&type=${type }&page=${page }'"/>
 		

@@ -62,6 +62,35 @@ public class OPTDao extends SqlMapConfig {
 		return result;
 	}
 	
+	public List<MemberDto> selectList() {
+		SqlSession session = null;
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList(namespace + "selectList");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	
+	// 회원정보 조회
+	public MemberDto selectOne(String opt_id) {
+		SqlSession session = null;
+		MemberDto dto = new MemberDto();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			dto = session.selectOne(namespace + "idChk", opt_id);						
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
+	
 	// 회원정보 수정
 	public int update(MemberDto dto) {
 		SqlSession session = null;
@@ -93,20 +122,28 @@ public class OPTDao extends SqlMapConfig {
 		return res;
 	}
 	
-	// 회원 목록 조회
-	public List<MemberDto> selectList() {
+	public int updatePoint(int opt_no_seq, int point) {
 		SqlSession session = null;
-		List<MemberDto> list = new ArrayList<MemberDto>();
-		try {
+		int res = 0;
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("opt_no_seq", opt_no_seq);
+		map.put("point", point);
+		try {			
 			session = getsqlSessionFactory().openSession(false);
-			list = session.selectList(namespace + "selectList");
+			res = session.update(namespace+"updatePoint", map);
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return list;
+		return res;
 	}
+	
 	
 	public MemberDto emailChk(String email) {
 		SqlSession session = null;
@@ -321,6 +358,33 @@ public class OPTDao extends SqlMapConfig {
 	}
 	
 	
+	
+	// 결제 내역 db 추가
+	public int insertPayment(PaymentDto PaymentDto) {
+		
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.insert("PayMapper.insertPayment", PaymentDto);
+			
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+	
+	
+	
 	// 보유 쿠폰 리스트
 	public List<CouponDto> couponList(int no) {
 		SqlSession session = null;
@@ -335,6 +399,28 @@ public class OPTDao extends SqlMapConfig {
 		}
 		return list;
 	}
+	
+	// 사용한 쿠폰 삭제
+	public int deleteCoupon(int coupon_no_seq) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.delete("CouponMapper.deleteCoupon", coupon_no_seq);
+			
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	finally {
+			session.close();
+		}
+		return res;	
+	}
+	
 	//내 쿠폰함 페이징
 	public List<CouponDto> couponPaging(int opt_no_seq, int start, int end) {
 		SqlSession session = null;
@@ -395,6 +481,79 @@ public class OPTDao extends SqlMapConfig {
 		
 		return res;
 	}
+	
+	//장바구니 목록
+	public List<BasketDto> basketlist(int opt_no){
+		SqlSession session=null;
+		List<BasketDto> list=new ArrayList<BasketDto>();
+		
+		try {
+			session=getsqlSessionFactory().openSession(false);
+			list=session.selectList("BasketMapper.basketlist", opt_no);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}finally {
+			session.close();
+			
+		}
+		return list;
+		
+	}
+	
+	//장바구니 삭제
+	public boolean muldelbasket(String[] seq) {
+		int count=0;
+		Map<String , String[]> map=new HashMap<String, String[]>();
+		map.put("seqs", seq);
+		
+		SqlSession session=null;
+		try {
+			session=getsqlSessionFactory().openSession(false);
+			count=session.delete("BasketMapper.basketmuldel",map);
+			if(count==seq.length) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return count==seq.length?true:false;
+	}
+	
+	//장바구니 수량 수정
+	public boolean updateBasket(List<BasketDto> list) {
+		int cnt = 0;
+		SqlSession session=null;
+		try {
+			session=getsqlSessionFactory().openSession(false);
+			cnt=session.update("BasketMapper.updateBasket", list);		
+			if(cnt==-1) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}		
+		return cnt==-1?true:false;
+	}
+	
+	//장바구니 번호로 조회
+	public BasketDto selectBasket(int basket_no) {
+		SqlSession session = null;
+		BasketDto dto = new BasketDto();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			dto = session.selectOne("BasketMapper.selectBasket" , basket_no);			
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
 	
 	//일정 리스트
 	public List<CalendarDto> Callist(int opt_no_seq) {
@@ -549,7 +708,6 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-		
 		return list;
 	}
 	
@@ -565,7 +723,6 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();			
 		}
-		
 		return list;
 	}
 	
@@ -585,12 +742,10 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-		
 		return list;
 	}
 	
-	// 쪽지 상세페이지
-	public PostboxDto postboxDetail(int post_no) {
+public PostboxDto postboxDetail(int post_no) {
 		SqlSession session = null;
 		PostboxDto dto = new PostboxDto();
 		try {
@@ -601,7 +756,6 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-				
 		return dto;
 	}
 	
@@ -622,7 +776,6 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-		
 		return res;
 	}
 	
@@ -643,39 +796,16 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-
-		return res;
-	}
-	
-	// 보낸 쪽지 삭제
-	public int sendDel(int post_no) {
-		SqlSession session = null;
-		int res = 0;
-		try {
-			session = getsqlSessionFactory().openSession(false);
-			res = session.update("PostboxMapper.sendDel", post_no);
-			if(res > 0) {
-				session.commit();
-			}else {
-				session.rollback();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-		
 		return res;
 	}
 	
 	//받은쪽지, 보낸쪽지 삭제된 경우 DB에서 삭제
-	public int allDel(int post_no) {
+	public int allDel() {
 		SqlSession session = null;
 		int res = 0;
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			res = session.delete("PostboxMapper.allDel", post_no);
-			
+			res = session.delete("PostboxMapper.allDel");
 			if(res > 0) {
 				session.commit();
 			}else {
@@ -686,7 +816,6 @@ public class OPTDao extends SqlMapConfig {
 		} finally {
 			session.close();
 		}
-		
 		return res;
 	}
 	
@@ -764,7 +893,27 @@ public class OPTDao extends SqlMapConfig {
 		}
 
 		return res;
-	};
+	}
+	
+	// 보낸 쪽지 삭제
+		public int sendDel(int post_no) {
+			SqlSession session = null;
+			int res = 0;
+			try {
+				session = getsqlSessionFactory().openSession(false);
+				res = session.update("PostboxMapper.sendDel", post_no);
+				if(res > 0) {
+					session.commit();
+				}else {
+					session.rollback();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				session.close();
+			}
+			return res;
+		}
 
 	public int insertVideo(VideoClipDto VideoClipDto) {
 
@@ -788,6 +937,98 @@ public class OPTDao extends SqlMapConfig {
 
 		return res;
 	}
+	//체크된 보낸 쪽지 삭제
+	public boolean multiSendDel(String[] post_no) {
+		
+		int count = 0;
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("post_no", post_no);
+		
+		SqlSession session = null;
+		
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			count = session.update("PostboxMapper.multiSendDel", map);
+			
+			if(count == post_no.length) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return (count==post_no.length)?true:false;
+		
+	}
+	
+	
+	//체크된 받은 쪽지 삭제
+	public boolean multiReadDel(String[] post_no) {
+			
+		int count = 0;
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("post_no", post_no);
+			
+		SqlSession session = null;
+			
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			count = session.update("PostboxMapper.multiReadDel", map);
+				
+			if(count == post_no.length) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+			
+		return (count==post_no.length)?true:false;
+			
+	}
+	
+	
+	//쪽지 보내기
+	public int sendPost(int opt_no, String id, String title, String content) {
+			
+		int res = 0;
+		SqlSession session = null;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("opt_no", opt_no);
+		map.put("id", id);
+		map.put("title", title);
+		map.put("content", content);		
+		
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.update("PostboxMapper.sendPost", map);
+				
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}			
+		
+		return res;
+			
+	}
+	
+	
 
 	public int updateVideo(VideoClipDto VideoClipDto) {
 

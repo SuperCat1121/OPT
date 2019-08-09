@@ -17,6 +17,8 @@ import com.opt.dto.VideoComment;
 public interface OPTBiz {
 	public List<MemberDto> selectList();
 	public MemberDto selectOne(int opt_no_seq);
+	public MemberDto selectOne(String opt_id);
+	public int updatePoint(int opt_no_seq, int point);
 	public int insert(MemberDto dto);
 	public int update(MemberDto dto);
 	public int delete(int opt_no_seq);
@@ -59,19 +61,27 @@ public interface OPTBiz {
 	public List<MemberDto> adminUserPaging(int startCount, int endCount);
 	
 	//상품리스트
+	public List<ItemDto> itemList();
 	public ItemDto itemSelect(int no);
 	public int itemCount(int no);
 	public List<ItemDto> itemSearch(String keyword, String msg);
 	public List<ItemDto> itemPage(int start, int end);
 	public List<ItemDto> itemSearchPage(String keyword, String msg, int start, int end);
 	
+	//결제상품
+	public int insertPayment(PaymentDto PaymentDto);
 	
 	//쿠폰리스트
 	public List<CouponDto> couponList(int no);
+	public int deleteCoupon(int coupon_no_seq);
 	//쿠폰페이징
 	public List<CouponDto> couponPaging(int opt_no_seq , int start , int end);
 	//장바구니	
 	public int insertBasket(BasketDto basketDto);
+	public List<BasketDto> basketlist(int opt_no);
+	public boolean muldelBasket(String[] seq);
+	public boolean updateBasket(List<BasketDto> list);
+	public BasketDto selectBasket(int basket_no);
 
 	//일정관리
 	public int insertCalendar(CalendarDto calendardto);
@@ -92,5 +102,9 @@ public interface OPTBiz {
 	public int postboxRead(int post_no);
 	public int readDel(int post_no);
 	public int sendDel(int post_no);
-	public int allDel(int post_no);
+	public int allDel();
+	public boolean muliteSendDel(String[] post_no);
+	public boolean muliteReadDel(String[] post_no);
+	public int sendPost(int opt_no, String id, String title, String content);
+	
 }

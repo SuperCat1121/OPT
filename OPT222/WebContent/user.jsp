@@ -87,8 +87,8 @@ function updateForm(){
 		<a href="deliver_search.jsp">운송장번호 조회</a>
 		<a href="postbox.do?command=recivePostbox&page=1">마이쪽지함</a>
 		<a href="calendar.jsp">일정관리</a>
-		<a href="#">장바구니</a>
-		<a href="" onclick="popup();">내쿠폰함</a>
+		<a href="basket.do?command=basketlist">장바구니</a>
+		<a href="#">내쿠폰함</a>
 		<a href="#">고객센터</a>		
 		</div>
 	</div>

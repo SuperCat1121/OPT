@@ -29,6 +29,16 @@ public class OPTBizImpl implements OPTBiz {
 	public MemberDto selectOne(int opt_no_seq) {
 		return null;
 	}
+	
+	@Override
+	public MemberDto selectOne(String opt_id) {
+		return dao.selectOne(opt_id);
+	}
+	
+	@Override
+	public int updatePoint(int opt_no_seq, int point){
+		return dao.updatePoint(opt_no_seq, point);
+	}
 
 	@Override
 	public int insert(MemberDto dto) {
@@ -123,6 +133,11 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.itemSearchPage(keyword, msg, start, end);
 	}
 	
+	@Override
+	public int insertPayment(PaymentDto PaymentDto) {
+		return dao.insertPayment(PaymentDto);
+	}
+	
 	//쿠폰리스트
 	@Override
 	public List<CouponDto> couponList(int no) {
@@ -133,10 +148,40 @@ public class OPTBizImpl implements OPTBiz {
 	public List<CouponDto> couponPaging(int opt_no_seq, int start, int end) {
 		return dao.couponPaging(opt_no_seq, start, end);
 	}
+	//사용한 쿠폰 삭제
+	@Override
+	public int deleteCoupon(int coupon_no_seq) {
+		return dao.deleteCoupon(coupon_no_seq);
+	}
+	
 	//장바구니 상품등록
 	@Override
 	public int insertBasket(BasketDto basketDto) {
 		return dao.insertBasket(basketDto);
+	}
+	
+	//장바구니 상품 목록
+	@Override
+	public List<BasketDto> basketlist(int opt_no) {
+		return dao.basketlist(opt_no);
+	}
+	
+	//장바구니 목록삭제
+	@Override
+	public boolean muldelBasket(String[] seq) {
+		return dao.muldelbasket(seq);
+	}
+	
+	//장바구니 수량수정
+	@Override
+	public boolean updateBasket(List<BasketDto> list) {
+		return dao.updateBasket(list);
+	}
+	
+	//장바구니 번호로 상품조회
+	@Override
+	public BasketDto selectBasket(int basket_no) {
+		return dao.selectBasket(basket_no);
 	}
 	
 	//일정관리 일정등록
@@ -234,8 +279,9 @@ public class OPTBizImpl implements OPTBiz {
 	
 	//받은쪽지, 보낸쪽지 삭제된 경우 DB에서 삭제
 	@Override
-	public int allDel(int post_no) {
-		return dao.allDel(post_no);
+	public int allDel() {
+		
+		return dao.allDel();
 	}
 
 	@Override
@@ -258,6 +304,26 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.videoListPage(start, end);
 	}
 
+	//체크된 보낸쪽지 삭제
+	@Override
+	public boolean muliteSendDel(String[] post_no) {
+
+		return dao.multiSendDel(post_no);
+	}
+	
+	//체크된 받은쪽지 삭제
+	@Override
+	public boolean muliteReadDel(String[] post_no) {
+
+		return dao.multiReadDel(post_no);
+	}
+	
+	//쪽지 보내기
+	@Override
+	public int sendPost(int opt_no, String id, String title, String content) {
+		return dao.sendPost(opt_no, id, title, content);
+	}
+	
 	@Override
 	public int videoCount(int video_no_seq) {
 		return dao.videoCount(video_no_seq);

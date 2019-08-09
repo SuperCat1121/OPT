@@ -24,4 +24,9 @@
 		WHERE R BETWEEN #{start} AND #{end}
 	</select>
 	
+	<delete id="deleteCoupon" parameterType="int">
+		DELETE FROM OPT_COUPON
+		WHERE COUPON_NO_SEQ = #{coupon_no_seq}	
+	</delete>
+	
 </mapper>
