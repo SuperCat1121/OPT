@@ -1,5 +1,6 @@
 package com.opt.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -278,11 +279,21 @@ public class OptVideoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String savePath = request.getSession().getServletContext().getRealPath("video");
+		String tempSavePath = request.getSession().getServletContext().getRealPath("video");
+
+		String savePath = tempSavePath.replace('\\', '/');
+
+		File targetDir = new File(savePath);
+		if (!targetDir.exists()) {
+			System.out.println("폴더생성");
+			targetDir.mkdirs();
+		}
+
 		int sizeLimit = 1024 * 1024 * 1500;
 		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8",
 				new DefaultFileRenamePolicy());
 		OPTBizImpl biz = new OPTBizImpl();
+		
 		String command = multi.getParameter("command");
 		System.out.println("[ video.do? post : " + command + " ]");
 		if (command.equals("videoupload")) {
