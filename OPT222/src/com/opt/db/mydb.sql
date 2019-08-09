@@ -19,7 +19,6 @@ CREATE TABLE OPT_MEMBER(                                    --회원테이블
     OPT_REGDATE DATE            NOT NULL                    --가입일자
 );
 
-
 INSERT INTO OPT_MEMBER VALUES(
     MEMBERSEQ.NEXTVAL,
     'admin',
@@ -84,6 +83,71 @@ INSERT INTO OPT_MEMBER VALUES(
     500,
     SYSDATE
 );
+
+INSERT INTO OPT_MEMBER VALUES(
+    MEMBERSEQ.NEXTVAL,
+    'user2',
+    'user2',
+    '유저2',
+    '1991/02/16',
+    '인천시',
+    '010-4427-3576',
+    'user2@naver.com',
+    'Y',
+    'female',
+    'user',
+    0,
+    SYSDATE
+);
+
+INSERT INTO OPT_MEMBER VALUES(
+    MEMBERSEQ.NEXTVAL,
+    'user3',
+    'user3',
+    '유저3',
+    '1991/02/16',
+    '여수시',
+    '010-6671-8464',
+    'user3@naver.com',
+    'Y',
+    'female',
+    'user',
+    0,
+    SYSDATE
+);
+
+INSERT INTO OPT_MEMBER VALUES(
+    MEMBERSEQ.NEXTVAL,
+    'user4',
+    'user4',
+    '유저4',
+    '1991/02/16',
+    '부산시',
+    '010-7210-1971',
+    'user4@naver.com',
+    'Y',
+    'male',
+    'user',
+    0,
+    SYSDATE
+);
+
+INSERT INTO OPT_MEMBER VALUES(
+    MEMBERSEQ.NEXTVAL,
+    'user5',
+    'user5',
+    '유저5',
+    '1991/02/16',
+    '일산시',
+    '010-5602-7842',
+    'user5@naver.com',
+    'Y',
+    'male',
+    'user',
+    0,
+    SYSDATE
+);
+
 UPDATE OPT_MEMBER SET OPT_ENABLED='Y' WHERE OPT_NO_SEQ=2;
 
 DELETE FROM OPT_MEMBER WHERE OPT_NO_SEQ = 22;

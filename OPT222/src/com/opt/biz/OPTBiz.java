@@ -58,6 +58,8 @@ public interface OPTBiz {
 	public List<PaymentDto> paymentAllList();
 	// 관리자_유저관리 페이징
 	public List<MemberDto> adminUserPaging(int startCount, int endCount);
+	// 관리자_상품관리 페이징
+	public List<ItemDto> adminItemPaging(int startCount, int endCount);
 	
 	//상품리스트
 	public List<ItemDto> itemList();

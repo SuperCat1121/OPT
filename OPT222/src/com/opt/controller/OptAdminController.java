@@ -35,12 +35,12 @@ public class OptAdminController extends HttpServlet {
 		OPTBiz biz = new OPTBizImpl();
 		PrintWriter out = response.getWriter();
 		
-		// (관리자)유저관리
+		// (관리자) 유저관리
 		if(command.equals("adminUserManager")) {
 			// 한 화면에 찍을 페이지 수
 			int countPage = 3;
 			// 한 화면에 찍을 유저 수
-			int countList = 4; 
+			int countList = 3;
 			// 현재 페이지
 			int page = Integer.parseInt(request.getParameter("page"));
 			// 총 유저 수
@@ -56,11 +56,11 @@ public class OptAdminController extends HttpServlet {
 			int endPage = startPage + countPage - 1;
 			// 끝 페이지가 총 페이지보다 클 경우 끝 페이지를 총 페이지로 맞춤
 			if(endPage > totalPage) { endPage = totalPage; }
-			// 첫번째 글
+			// 첫번째 목록
 			int startCount = (page-1) * countPage + 1;
-			// 마지막 글
+			// 마지막 목록
 			int endCount = page * countPage;
-			
+
 			List<MemberDto> list = biz.adminUserPaging(startCount, endCount);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);
@@ -72,27 +72,59 @@ public class OptAdminController extends HttpServlet {
 			String enabled = request.getParameter("enabled");
 			String role = request.getParameter("role");
 			int res = biz.adminUserUpdate(id, enabled, role);
-			out.print("유저 수정 완료");
+			if(res > 0) {
+				out.print("유저 수정 완료");
+			}
+		// (관리자) 상품관리
 		} else if(command.equals("adminItemManager")) {
-			List<ItemDto> list = biz.itemList();
+			// 한 화면에 찍을 페이지 수
+			int countPage = 4;
+			// 한 화면에 찍을 상품 수
+			int countList = 5;
+			// 현재 페이지
+			int page = Integer.parseInt(request.getParameter("page"));
+			// 총 상품 수
+			List<ItemDto> itemList = biz.itemList();
+			int totalCount = itemList.size();
+			// 총 페이지 수
+			int totalPage = totalCount / countList;
+			// 페이지에 찍는 상품이 남을 때 totalPage 보정
+			if(totalCount % countList > 0) { totalPage++; }
+			// 시작 페이지
+			int startPage = ((page-1) / countPage) * countPage + 1;
+			// 끝 페이지
+			int endPage = startPage + countPage - 1;
+			// 끝 페이지가 총 페이지보다 클 경우 끝 페이지를 총 페이지로 맞춤
+			if(endPage > totalPage) { endPage = totalPage; }
+			// 첫번째 목록
+			int startCount = (page-1) * countPage + 1;
+			// 마지막 목록
+			int endCount = page * countPage;
+			
+			List<ItemDto> list = biz.adminItemPaging(startCount, endCount);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
 			request.setAttribute("itemList", list);
 			dispatch(request, response, "admin_item_manager.jsp");
+		// (관리자) 상품정보 수정
 		} else if(command.equals("adminItemUpdate")) {
 			String item_num_seq = request.getParameter("item_num_seq");
 			String item_name = request.getParameter("item_name");
 			String item_price = request.getParameter("item_price");
 			String item_content = request.getParameter("item_content");
+			int page = Integer.parseInt(request.getParameter("page"));
+			request.setAttribute("page", page);
 			request.setAttribute("item_num_seq", item_num_seq);
 			request.setAttribute("item_name", item_name);
 			request.setAttribute("item_price", item_price);
 			request.setAttribute("item_content", item_content);
-			dispatch(request, response, "admin_Item_Update_Form.jsp");
+			dispatch(request, response, "admin_item_update_form.jsp");
+		// (관리자) 상품정보 수정 실행
 		} else if(command.equals("adminItemUpdateRes")) {
 			String item_num_seq = request.getParameter("item_num_seq");
 			String item_name = request.getParameter("item_name");
 			String item_price = request.getParameter("item_price");
 			String item_content = request.getParameter("item_content");
-			System.out.println(item_name);
 			Map<String, String> update = new HashMap<String, String>();
 			update.put("item_num_seq", item_num_seq);
 			update.put("item_name", item_name);
@@ -100,13 +132,7 @@ public class OptAdminController extends HttpServlet {
 			update.put("item_content", item_content);
 			int res = biz.adminItemUpdate(update);
 			if(res > 0) {
-				out.print("<script type='text/javascript'>");
-				out.print("alert('상품 수정 완료')");
-				out.print("</script>");
-			} else {
-				out.print("<script type='text/javascript'>");
-				out.print("alert('상품 수정 실패')");
-				out.print("</script>");
+				out.print("상품 수정 완료");
 			}
 		}
 	}

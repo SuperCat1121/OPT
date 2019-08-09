@@ -64,18 +64,18 @@
 	.adminUserManagerPopup {
 		background: white;
 		width: 60%;
-		height: 50%;
+		height: 65%;
+		margin: 0 auto;
 		position: relative;
-		left: 294px;
 		bottom: 275px;
 	}
 	
 	.adminItemManagerPopup {
 		background: white;
 		width: 60%;
-		height: 50%;
+		height: 65%;
+		margin: 0 auto;
 		position: relative;
-		left: 294px;
 		bottom: 275px;
 	}
 

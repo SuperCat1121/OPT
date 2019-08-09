@@ -266,6 +266,17 @@ public class OPTDao extends SqlMapConfig {
 		return list;
 	}
 	
+	// 관리자_상품관리 페이징
+	public List<ItemDto> adminItemPaging(int startCount, int endCount) {
+		SqlSession session = null;
+		session = getsqlSessionFactory().openSession(false);
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("startCount", startCount);
+		map.put("endCount", endCount);
+		List<ItemDto> list = session.selectList("AdminMapper.itemPaging", map);
+		return list;
+	}
+	
 	// 선택한 상품 정보 출력
 	public ItemDto itemSelect(int no){
 		SqlSession session = null;

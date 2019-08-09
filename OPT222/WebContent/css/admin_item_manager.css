@@ -1,0 +1,18 @@
+	table {
+		margin: 0 auto;
+	}
+	
+	.itemPageNum {
+		display: block;
+		width: 30%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	
+	.itemPageNum a {
+		color: black;
+		text-decoration: none;
+	}
+	.itemPageNum a:hover {
+		color: red;
+	}
