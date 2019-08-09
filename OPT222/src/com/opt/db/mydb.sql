@@ -125,16 +125,6 @@ INSERT INTO OPT_VIDEO_CLIP VALUES(
     0
 );
 
-INSERT INTO OPT_VIDEO_CLIP VALUES(
-    2,
-    VIDEOCLIPSEQ.NEXTVAL,
-    'https://www.youtube.com/watch?v=zSLHRAlUktU',
-    '스쿼트 초보자분들 이거보고 시작~~',
-    '올바른자세로 운동하는 습관을 들여보세요 !!',
-    SYSDATE,
-    0
-);
-
 SELECT * FROM OPT_VIDEO_CLIP;
 
 --------------------------------------------------------------------------------------------------------------------------------
