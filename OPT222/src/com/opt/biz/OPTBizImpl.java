@@ -235,7 +235,6 @@ public class OPTBizImpl implements OPTBiz {
 	//받은쪽지, 보낸쪽지 삭제된 경우 DB에서 삭제
 	@Override
 	public int allDel(int post_no) {
-		
 		return dao.allDel(post_no);
 	}
 
@@ -260,21 +259,68 @@ public class OPTBizImpl implements OPTBiz {
 	}
 
 	@Override
-	public int videoCount(int no) {
-		return dao.videoCount(no);
+	public int videoCount(int video_no_seq) {
+		return dao.videoCount(video_no_seq);
 	}
 
 	@Override
-	public VideoClipDto videoSelectOne(int no) {
-		return dao.videoSelectOne(no);
+	public VideoClipDto videoSelectOne(int video_no_seq) {
+		return dao.videoSelectOne(video_no_seq);
 	}
 
+
+	@Override
+	public List<VideoClipDto> searchVideo(String searchoption, String searchtext) {
+		return dao.searchVideo(searchoption, searchtext);
+	}
+	@Override
+	public List<VideoClipDto> searchVideoPage(String searchoption, String searchtext, int start, int end) {
+		return dao.searchVideoPage(searchoption, searchtext, start, end);
+	}
+
+	@Override
+	public int insertVideo(VideoClipDto VideoClipDto) {
+		return dao.insertVideo(VideoClipDto);
+	}
+
+	@Override
+	public int deleteVideo(int video_no_seq) {
+		return dao.deleteVideo(video_no_seq);
+	}
+
+	@Override
+	public boolean multiDelVideo(String[] seq) {
+		return dao.multiDelVideo(seq);
+	}
+
+	@Override
+	public int updateVideo(VideoClipDto VideoClipDto) {
+		return dao.updateVideo(VideoClipDto);
+	}
+	
 	@Override
 	public List<VideoComment> videoCommentList(int no) {
 		return dao.videoCommentList(no);
 	}
 
+	@Override
+	public VideoComment videoCommentselectone(int video_comment_seq) {
+		return dao.videoCommentselectone(video_comment_seq);
+	}
 
+	@Override
+	public int insertVideocomment(VideoComment videocomment) {
+		return dao.insertVideocomment(videocomment);
+	}
 
+	@Override
+	public int videoCommentUpdate(VideoComment videocomment) {
+		return dao.videoCommentUpdate(videocomment);
+	}
+
+	@Override
+	public int videoCommentDelete(int video_comment_seq) {
+		return dao.videoCommentDelete(video_comment_seq);
+	}
 	
 }

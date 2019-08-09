@@ -23,7 +23,7 @@
 						<a class = "menulogo" href="main3.html" title="OPT 메인으로 이동">
 							<img alt="main" src="./main_image/logo.png" width=110px; height=50px;>
 						</a> 
-						<a class = "menulist" href="">OPT</a>
+						<a class = "menulist" href="video.do?command=videoList&page=1&videoarea=main">OPT</a>
 					</li>
 					<li>
 						<a class = "menulist" href="">PT받기</a>

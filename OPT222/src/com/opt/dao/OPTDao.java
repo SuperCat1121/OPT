@@ -112,7 +112,6 @@ public class OPTDao extends SqlMapConfig {
 		SqlSession session = null;
 		MemberDto res = new MemberDto();
 
-
 		session = getsqlSessionFactory().openSession(false);
 		res = session.selectOne("LoginMapper.emailChk", email);
 
@@ -712,12 +711,70 @@ public class OPTDao extends SqlMapConfig {
 		return list;
 	}
 
-	public int videoCount(int no) {
+	public List<VideoClipDto> searchVideo(String searchoption, String searchtext) {
+
+		SqlSession session = null;
+
+		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("searchoption", searchoption);
+		map.put("searchtext", searchtext);
+
+		session = getsqlSessionFactory().openSession();
+		list = session.selectList("VideoMapper.searchVideo", map);
+
+		return list;
+
+	}
+
+	public List<VideoClipDto> searchVideoPage(String searchoption, String searchtext, int start, int end) {
+
+		SqlSession session = null;
+
+		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("searchoption", searchoption);
+		map.put("searchtext", searchtext);
+		map.put("start", start);
+		map.put("end", end);
+
+		session = getsqlSessionFactory().openSession();
+		list = session.selectList("VideoMapper.searchVideoPage", map);
+
+		return list;
+
+	}
+
+	public int videoCount(int video_no_seq) {
 		int res = 0;
 		SqlSession session = null;
+
 		try {
 			session = getsqlSessionFactory().openSession(false);
-			res = session.update("VideoMapper.videoCount", no);
+			res = session.update("VideoMapper.videoCount", video_no_seq);
+			if (res > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return res;
+	};
+
+	public int insertVideo(VideoClipDto VideoClipDto) {
+
+		SqlSession session = null;
+		int res = 0;
+
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.insert("VideoMapper.insertVideo", VideoClipDto);
+
 			if (res > 0) {
 				session.commit();
 			} else {
@@ -731,16 +788,89 @@ public class OPTDao extends SqlMapConfig {
 
 		return res;
 	}
-	
-	public VideoClipDto videoSelectOne(int no) {
+
+	public int updateVideo(VideoClipDto VideoClipDto) {
+
+		SqlSession session = null;
+		int result = 0;
+
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			result = session.update("VideoMapper.updateVideo", VideoClipDto);
+			System.out.println(result);
+
+			if (result > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return result;
+	}
+
+	public int deleteVideo(int video_no_seq) {
+
+		SqlSession session = null;
+		int res = 0;
+
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.delete("VideoMapper.deleteVideo", video_no_seq);
+
+			if (res > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return res;
+
+	}
+
+	public boolean multiDelVideo(String[] seq) {
+
+		SqlSession session = null;
+		int cnt = 0;
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("seq", seq);
+
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			cnt = session.delete("VideoMapper.multiDel", map);
+
+			if (cnt == seq.length) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return cnt == seq.length ? true : false;
+	}
+
+	public VideoClipDto videoSelectOne(int video_no_seq) {
 		SqlSession session = null;
 		VideoClipDto dto = new VideoClipDto();
 		session = getsqlSessionFactory().openSession();
-		dto = session.selectOne("VideoMapper.videoSelectOne", no);
+		dto = session.selectOne("VideoMapper.videoSelectOne", video_no_seq);
 
 		return dto;
 	}
-	
 
 	public List<VideoComment> videoCommentList(int no) {
 		SqlSession session = null;
@@ -750,5 +880,89 @@ public class OPTDao extends SqlMapConfig {
 
 		return list;
 	}
-	
+
+	public VideoComment videoCommentselectone(int video_comment_seq) {
+		SqlSession session = null;
+		VideoComment dto = null;
+
+		session = getsqlSessionFactory().openSession(false);
+		dto = session.selectOne("VideoMapper.videoCommentSelectone", video_comment_seq);
+
+		return dto;
+	}
+
+	public int insertVideocomment(VideoComment videocomment) {
+		SqlSession session = null;
+
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.insert("VideoMapper.videoCommentInsert", videocomment);
+			if (res > 0) {
+
+				session.commit();
+
+			} else {
+
+				session.rollback();
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return res;
+	}
+
+	public int videoCommentUpdate(VideoComment VideoCommentDto) {
+		SqlSession session = null;
+		int res = 0;
+
+		try {
+			session = getsqlSessionFactory().openSession(true);
+			res = session.update("VideoMapper.videoCommentUpdate", VideoCommentDto);
+			if (res > 0) {
+
+				session.commit();
+
+			} else {
+
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return res;
+	}
+
+	public int videoCommentDelete(int video_comment_seq) {
+		SqlSession session = null;
+		int res = 0;
+
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.delete("VideoMapper.videoCommentDelete", video_comment_seq);
+			if (res > 0) {
+
+				session.commit();
+
+			} else {
+
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+
+		}
+
+		return res;
+
+	}
+
 }

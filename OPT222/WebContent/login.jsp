@@ -36,13 +36,15 @@
 <meta charset="UTF-8">
 <title>LOGIN</title>
 <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id"content="236084628267-j6u2itovr6ocvop0ae5jk52536vf2joq.apps.googleusercontent.com">
+<meta name="google-signin-client_id"
+	content="236084628267-j6u2itovr6ocvop0ae5jk52536vf2joq.apps.googleusercontent.com">
 <link href="css/login.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript"
-	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"> </script>
+	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
+	charset="utf-8"></script>
 <script type="text/javascript">
 		//아이디 검사 ---------------------------------------------------------------------------
 		//1. ID : 4~12자 이내의 영어와 숫자로 입력
@@ -108,40 +110,9 @@
 	          location.href="login.do?command=snslogin&opt_id="+snsId+"&opt_email="+snsEmail +"&Flag="+<%=Flag%>;
 
 	        }
-	        
-
-     $(function(){
-   	   var naverLogin = new naver.LoginWithNaverId({
-             clientId: "lcTrrWMiQvKel6vICKwB",
-             callbackUrl: "http://127.0.0.1:8787/OPT222/login.jsp?Flag=0",
-             isPopup: false,
-             loginButton: {
-                 color: "green",
-                 type: 3,
-                 height: 48
-             }
-         });
-  	   
-         naverLogin.init();
-         window.addEventListener('load', function () {
-             naverLogin.getLoginStatus(function (status) {
-                 if (status) {
-                     var email = naverLogin.user.getEmail();
-                     console.log(email);
-                     console.log(snsId);
-                     var snsId = naverLogin.user.id;
-                     var snsEmail = naverLogin.user.email;
-		           	   location.href="login.do?command=snslogin&opt_id="+snsId+"&opt_email="+snsEmail +"&Flag="+<%=Flag%>;
-
-                 }else {
-         			console.log("AccessToken이 올바르지 않습니다.");
-         		} 
-             });
-         });
-
-         Kakao.init('20c730ea6463b1ab9c0f8ef78e9ed232');
-		    Kakao.Auth.createLoginButton({
-		      container: '#kakao-login-btn',
+		function kLogin(){
+		    Kakao.init('20c730ea6463b1ab9c0f8ef78e9ed232');
+		    Kakao.Auth.loginForm({
 		      success: function(authObj) {
 		        Kakao.API.request({
 		          url: '/v2/user/me',
@@ -149,8 +120,10 @@
 		            JSON.stringify(res);
 		            var snsId = res.id;
 		            var snsEmail = res.kakao_account.email;
-		            
-		             location.href="login.do?command=snslogin&opt_id="+snsId+"&opt_email="+snsEmail +"&Flag="+<%=Flag%>;
+		            Kakao.Auth.logout(
+		            	function(){
+			            	 location.href="login.do?command=snslogin&opt_id="+snsId+"&opt_email="+snsEmail +"&Flag="+<%=Flag%>;
+		            })
 		          },
 		          fail: function(error) {
 		            alert(JSON.stringify(error));
@@ -161,39 +134,61 @@
 		        alert(JSON.stringify(err));
 		      }
 		    })
-     })
-     		function fbLogin() {
-			// 로그인 여부 체크
+		}
+ 		function fbLogin() {
 			FB.getLoginStatus(function(response) {
-
 				if (response.status === 'connected') {
 					FB.api('/me', function(res) {
-						// 제일 마지막에 실행
-						alert("Success Login : " + response.name);
-						// alert("Success Login : " + response.name);
+						console.log("Success Login : " + res.name);
 					});
 				}
-			}, false); // 중복실행방지
+			}, false);
 		}
+ 		$(function(){
+ 	 		var naverLogin = new naver.LoginWithNaverId(
+ 	 				{
+ 	 					clientId: "lcTrrWMiQvKel6vICKwB",
+ 	 					callbackUrl: "http://localhost:8787/OPT222/login.jsp?Flag=0",
+ 	 					isPopup: false, 
+ 	 					loginButton: {color: "green", type: 3, height: 40} 
+ 	 				}
+ 	 			);
+ 	 			
+ 	 			naverLogin.init();
+ 	 			
+ 	 			
+ 	 			naverLogin.getLoginStatus(function (status) {
+ 	 				if (status) {
+ 	 					var snsEmail  = naverLogin.user.getEmail();
+ 	 					var snsId = naverLogin.user.getId();
+ 	 		       	 location.href="login.do?command=snslogin&opt_id="+snsId+"&opt_email="+snsEmail +"&Flag="+<%=Flag%>;
 
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId : '2428130137468919',
-				cookie : false,
-				xfbml : true,
-				version : 'v4.0'
-			});
-		};
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id))
-				return;
-			js = d.createElement(s);
-			js.id = id;
-			// ko_KR 을 en_US 로 바꾸면 영문으로 로그인버튼을 사용할 수 있어요.
-			js.src = "//connect.facebook.net/ko_KR/sdk.js";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
+ 	 				} else {
+ 	 					console.log("AccessToken이 올바르지 않습니다.");
+ 	 				}
+ 	 			});
+ 	 			
+ 	 			window.fbAsyncInit = function() {
+ 	 				FB.init({
+ 	 					appId : '2428130137468919',
+ 	 					cookie : false,
+ 	 					xfbml : true,
+ 	 					version : 'v4.0'
+ 	 				});
+ 	 			};
+ 	 			(function(d, s, id) {
+ 	 				var js, fjs = d.getElementsByTagName(s)[0];
+ 	 				if (d.getElementById(id))
+ 	 					return;
+ 	 				js = d.createElement(s);
+ 	 				js.id = id;
+ 	 				js.src = "//connect.facebook.net/ko_KR/sdk.js";
+ 	 				fjs.parentNode.insertBefore(js, fjs);
+ 	 			}(document, 'script', 'facebook-jssdk')); 
+ 	 			
+ 	 			
+ 		})
+
 </script>
 </head>
 <body>
@@ -265,19 +260,21 @@
 					class="regist_btn" />
 			</form>
 			<div>
-				<input type="button"class="regist_btn" onclick="location.href='findid.jsp'"
-					value="아이디찾기"> <input class="regist_btn" type="button"
+				<input type="button" class="regist_btn"
+					onclick="location.href='findid.jsp'" value="아이디찾기"> <input
+					class="regist_btn" type="button"
 					onclick="location.href='findpassword.jsp'" value="비밀번호 찾기">
 
 			</div>
-			<a id="kakao-login-btn"></a>
-			<div id="naverIdLogin"></div>
+			<div id="naverIdLogin" ></div>
+			
 			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+			
 			<div class="fb-login-button" scope="public_profile,email"
 				data-max-rows="1" data-size="large" data-button-type="continue_with"
 				data-show-faces="true" data-auto-logout-link="true"
-				data-use-continue-as="true" onlogin="fbLogin();"></div>
-
+				data-use-continue-as="true" onlogin="fbLogin();"> </div>
+			<img alt="" src="./image/kakaobtn.png" onclick="kLogin()">
 		</fieldset>
 	</div>
 	<script>

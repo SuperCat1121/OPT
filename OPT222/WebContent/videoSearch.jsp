@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html;charset=UTF-8");
@@ -12,30 +13,15 @@
 <head>
 <meta charset="UTF-8">
 <title>상품페이지</title>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	if(${empty memdto} == true){
-		$("#myvedioBtn").attr("style","display:none");
-		}
-})
-	function videouploada(){
-		var opt_no = 0 + 0${memdto.opt_no_seq };
-		if(opt_no == 0){
-			location.href="login.jsp?Flag=1";
-		}else{
-			location.href="videoupload.jsp";
-		}
-	}
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 
-</script>
 </head>
 <body>
-	<h1>동영상 게시판</h1>
+	<h1>검색 게시판</h1>
 	<form action="video.do">
 		<input type="hidden" name="command" value="searchVideo" /> <input
 			type="hidden" name="page" value="1" />
+
 		<table style="border: none; margin-top: 20px; margin-bottom: 20px;">
 			<tr>
 				<td><select name="searchoption">
@@ -44,19 +30,15 @@ $(function(){
 						<option value="video_content">내용</option>
 				</select></td>
 				<td><input type="text" name="searchtext"> <input
-					type="submit" value="검색하기"> <input type="button"
-					value="업로드" onclick="videouploada()"></td>
-			</tr>
-			<tr>
-				<td><input id="myvedioBtn" type="button" value="내가 올린 동영상 목록"
-					onclick="location.href='video.do?command=videoList&page=1&videoarea=my'"></td>
+					type="submit" value="검색하기"></td>
+				<!-- 						<a href="videoupload.jsp">비디오 업로드</a> -->
 			</tr>
 		</table>
 	</form>
 	<table>
 		<c:choose>
 			<c:when test="${empty list }">
-						------등록된 동영상이 없습니다------
+						------등록된 상품이 없습니다------
 				</c:when>
 			<c:otherwise>
 				<c:forEach items="${list }" var="videoDto">
@@ -72,17 +54,12 @@ $(function(){
 								</c:otherwise>
 							</c:choose></td>
 						<td style="padding-left: 20px; padding-bottom: 130px;"
-							onclick="location.href='video.do?command=videoDetail&videoseq=${videoDto.video_no_seq}&page=${page }'">
-							<h4>타이틀 : ${videoDto.video_title }</h4>
-							<h4>비디오 번호 : ${videoDto.video_no_seq}</h4>
-							<h4>조회수 : ${videoDto.video_views_no }</h4>
-							<h4>
-								등록시간 :
-								<fmt:formatDate value="${videoDto.video_regdate }"
-									pattern="yyyy-MM-dd HH:mm" />
-							</h4>
-
-							<h4>${videoDto.opt_id}</h4> <br /> ${videoDto.video_content }
+							onclick="location.href='video.do?command=videoDetail&no=${videoDto.video_no_seq}&page=${page }'">
+							<h4>${videoDto.video_title }${videoDto.video_no_seq}</h4> 조회수 :
+							${videoDto.video_views_no } <br /> 등록시간 : <fmt:formatDate
+								value="${videoDto.video_regdate }" pattern="yyyy-MM-dd HH:mm" />
+							<br />
+							<h1>1111${videoDto.opt_id}</h1> <br /> ${videoDto.video_content }
 						</td>
 					</tr>
 				</c:forEach>
@@ -95,33 +72,32 @@ $(function(){
 				<c:choose>
 					<c:when test="${prevPage >0}">
 						<a
-							href="video.do?command=videoList&page=${prevPage }&videoarea=main">◀</a>
+							href="video.do?command=searchVideo&page=${prevPage }&videoarea=main">◀</a>
 					</c:when>
 					<c:otherwise>
-						<a href="video.do?command=videoList&page=1&videoarea=main">◀</a>
+						<a href="video.do?command=searchVideo&page=1&videoarea=main">◀</a>
 					</c:otherwise>
 				</c:choose> <c:forEach begin="${absolutePage }" end="${endPage }" var="i">
 					<c:choose>
 						<c:when test="${i eq page}">
-							<a href="video.do?command=videoList&page=${i}&videoarea=main"><strong>[${ i }]</strong></a>
+							<a href="video.do?command=searchVideo&page=${i}&videoarea=main"><strong>[${ i }]</strong></a>
 						</c:when>
 						<c:otherwise>
-							<a href="video.do?command=videoList&page=${i}&videoarea=main">[${ i }]</a>
+							<a href="video.do?command=searchVideo&page=${i}&videoarea=main">[${ i }]</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach> <c:set var="nextPage" value="${absolutePage+blockCount }"></c:set>
 				<c:choose>
 					<c:when test="${nextPage < totalPage}">
 						<a
-							href="video.do?command=videoList&page=${nextPage }&videoarea=main">▶</a>
+							href="video.do?command=searchVideo&page=${nextPage }&videoarea=main">▶</a>
 					</c:when>
 					<c:otherwise>
 						<a
-							href="video.do?command=videoList&page=${totalPage}&videoarea=main">▶</a>
+							href="video.do?command=searchVideo&page=${totalPage}&videoarea=main">▶</a>
 					</c:otherwise>
 				</c:choose></td>
 		</tr>
 	</table>
 </body>
-
 </html>

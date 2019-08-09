@@ -33,8 +33,20 @@ public interface OPTBiz {
 	public List<VideoClipDto> selectVideoList();
 	public List<VideoClipDto> videoListPage(int start, int end);
 	public int videoCount(int no);
-	public VideoClipDto videoSelectOne(int no);
+	public VideoClipDto videoSelectOne(int video_no_seq);
+	public List<VideoClipDto> searchVideo(String searchoption, String searchtext) ;
+	public List<VideoClipDto> searchVideoPage(String searchoption, String searchtext, int start, int end);
+	public int insertVideo(VideoClipDto VideoClipDto);
+	public int updateVideo(VideoClipDto VideoClipDto);
+	public int deleteVideo(int video_no_seq);
+	public boolean multiDelVideo(String[] seq);
+	
+	//비디오 댓글
 	public List<VideoComment> videoCommentList(int no);
+	public VideoComment videoCommentselectone(int no);
+	public int insertVideocomment(VideoComment videocomment);
+	public int videoCommentUpdate(VideoComment videocomment);
+	public int videoCommentDelete(int video_comment_seq);
 	
 	
 	// 관리자_유저관리

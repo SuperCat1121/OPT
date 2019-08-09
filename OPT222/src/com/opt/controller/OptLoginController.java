@@ -195,7 +195,7 @@ public class OptLoginController extends HttpServlet {
 				ran += (int) (Math.random() * 10);
 			}
 
-			String from = "kode15333@gmail.com";
+			String from = "optservicecenter@gmail.com";
 			String to = email;
 			String subject = "OPT 메일 인증입니다.";
 			String content = "인증번호 : " + ran;

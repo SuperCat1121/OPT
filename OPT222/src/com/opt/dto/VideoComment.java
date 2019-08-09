@@ -3,12 +3,18 @@ package com.opt.dto;
 import java.util.Date;
 
 public class VideoComment {
+	private String opt_id; 
 	private int opt_no_seq;
 	private int video_no_seq;
 	private int video_comment_seq;
 	private String video_reple;
 	private Date video_comment_date;
-	
+	public String getOpt_id() {
+		return opt_id;
+	}
+	public void setOpt_id(String opt_id) {
+		this.opt_id = opt_id;
+	}
 	public int getOpt_no_seq() {
 		return opt_no_seq;
 	}

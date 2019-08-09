@@ -6,12 +6,12 @@ public class VideoClipDto {
 	private int r;
 	private int video_no_seq;
 	private int opt_no_seq;
+	private String opt_id;
 	private String video_url;
 	private String video_title;
 	private String video_content;
 	private Date video_regdate;
 	private int video_views_no;
-	
 	public int getR() {
 		return r;
 	}
@@ -29,6 +29,12 @@ public class VideoClipDto {
 	}
 	public void setOpt_no_seq(int opt_no_seq) {
 		this.opt_no_seq = opt_no_seq;
+	}
+	public String getOpt_id() {
+		return opt_id;
+	}
+	public void setOpt_id(String opt_id) {
+		this.opt_id = opt_id;
 	}
 	public String getVideo_url() {
 		return video_url;

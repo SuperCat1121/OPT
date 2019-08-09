@@ -62,6 +62,12 @@ $(document).ready(function(){
 	    window.open(url, "", prop);
 	}
 
+function updateForm(){
+	var url = "updateUser.jsp";
+	var prop = "top=200px,left=600px,width=500px,height=500px";
+    window.open(url, "", prop);
+}
+
 </script>
 </head>
 <body>
