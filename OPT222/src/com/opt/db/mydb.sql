@@ -106,11 +106,21 @@ CREATE TABLE OPT_VIDEO_CLIP(                                 --동영상 게시�
 );
 
 INSERT INTO OPT_VIDEO_CLIP VALUES(
-    1,
+    3,
     VIDEOCLIPSEQ.NEXTVAL,
-    'https://www.youtube.com/watch?v=H-AcDBLqxi4',
-    '운동 동기부여 영상',
-    '이거보고 운동 시작하세요!',
+    'https://www.youtube.com/embed/XsX3ATc3FbA?list=RD2BlwXXVCAFM',
+    '방탄소년단1',
+    '작은것들의 시',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/ml_0KpFAEhY?list=RD2BlwXXVCAFM',
+    '아이즈원2',
+    '비올레타',
     SYSDATE,
     0
 );
@@ -141,7 +151,7 @@ CREATE TABLE OPT_VIDEO_COMMENT(
     --동영상게시판 게시글번호 참조키
     VIDEO_COMMENT_SEQ   NUMBER          PRIMARY KEY,        --댓글번호
     VIDEO_REPLE         VARCHAR2(2000)  NOT NULL,           --댓글내용
-    VIDE_COMMENT_DATE   DATE            NOT NULL            --댓글작성시간
+    VIDEO_COMMENT_DATE   DATE            NOT NULL            --댓글작성시간
 );
 
 INSERT INTO OPT_VIDEO_COMMENT VALUES(
