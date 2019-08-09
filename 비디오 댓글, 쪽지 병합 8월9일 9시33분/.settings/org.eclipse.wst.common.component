@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="비디오 댓글, 쪽지 병합 8월9일 9시33분">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="비디오_댓글,_쪽지_병합_8월9일_9시33분"/>
+        <property name="java-output-path" value="/비디오 댓글, 쪽지 병합 8월9일 9시33분/build/classes"/>
+    </wb-module>
+</project-modules>
