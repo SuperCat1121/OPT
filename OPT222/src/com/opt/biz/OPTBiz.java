@@ -26,7 +26,6 @@ public interface OPTBiz {
 	public int pay_count(int num);
 	public int coupon_count(int num);
 	public List<OrderListDto> orderList(int no);
-	public List<ItemDto> itemList();
 	public List<PaymentDto> paymentList();
 	public MemberDto emailChk(String email);	
 	public MemberDto findId(String email);

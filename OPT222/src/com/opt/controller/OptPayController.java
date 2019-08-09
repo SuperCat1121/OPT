@@ -194,7 +194,7 @@ public class OptPayController extends HttpServlet {
 			
 			PaymentDto payDto = new PaymentDto();
 			payDto.setOpt_no_seq(memberDto.getOpt_no_seq());
-			payDto.setItem_num_seq(itemDto.getItem_num_seq());
+			payDto.setItem_num(itemDto.getItem_num_seq());
 			payDto.setPay_recipient_name(memberDto.getOpt_name());
 			payDto.setPay_place((String)session.getAttribute("addr"));
 			payDto.setPay_phone(memberDto.getOpt_phone());

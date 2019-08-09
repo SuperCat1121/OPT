@@ -554,6 +554,8 @@ public class OPTDao extends SqlMapConfig {
 		}finally {
 			session.close();
 		}
+		return dto;
+	}
 	
 	//일정 리스트
 	public List<CalendarDto> Callist(int opt_no_seq) {
@@ -824,7 +826,6 @@ public PostboxDto postboxDetail(int post_no) {
 		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
 		session = getsqlSessionFactory().openSession();
 		list = session.selectList("VideoMapper.videolist");
-
 		return list;
 	}
 
@@ -836,48 +837,36 @@ public PostboxDto postboxDetail(int post_no) {
 		map.put("end", end);
 		session = getsqlSessionFactory().openSession();
 		list = session.selectList("VideoMapper.videoPage", map);
-
 		return list;
 	}
 
 	public List<VideoClipDto> searchVideo(String searchoption, String searchtext) {
-
 		SqlSession session = null;
-
 		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("searchoption", searchoption);
 		map.put("searchtext", searchtext);
-
 		session = getsqlSessionFactory().openSession();
 		list = session.selectList("VideoMapper.searchVideo", map);
-
 		return list;
-
 	}
 
 	public List<VideoClipDto> searchVideoPage(String searchoption, String searchtext, int start, int end) {
-
 		SqlSession session = null;
-
 		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("searchoption", searchoption);
 		map.put("searchtext", searchtext);
 		map.put("start", start);
 		map.put("end", end);
-
 		session = getsqlSessionFactory().openSession();
 		list = session.selectList("VideoMapper.searchVideoPage", map);
-
 		return list;
-
 	}
 
 	public int videoCount(int video_no_seq) {
 		int res = 0;
 		SqlSession session = null;
-
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.update("VideoMapper.videoCount", video_no_seq);
@@ -891,39 +880,35 @@ public PostboxDto postboxDetail(int post_no) {
 		} finally {
 			session.close();
 		}
-
 		return res;
 	}
 	
 	// 보낸 쪽지 삭제
-		public int sendDel(int post_no) {
-			SqlSession session = null;
-			int res = 0;
-			try {
-				session = getsqlSessionFactory().openSession(false);
-				res = session.update("PostboxMapper.sendDel", post_no);
-				if(res > 0) {
-					session.commit();
-				}else {
-					session.rollback();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				session.close();
-			}
-			return res;
-		}
-
-	public int insertVideo(VideoClipDto VideoClipDto) {
-
+	public int sendDel(int post_no) {
 		SqlSession session = null;
 		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.update("PostboxMapper.sendDel", post_no);
+			if(res > 0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
 
+	public int insertVideo(VideoClipDto VideoClipDto) {
+		SqlSession session = null;
+		int res = 0;
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.insert("VideoMapper.insertVideo", VideoClipDto);
-
 			if (res > 0) {
 				session.commit();
 			} else {
@@ -934,48 +919,37 @@ public PostboxDto postboxDetail(int post_no) {
 		} finally {
 			session.close();
 		}
-
 		return res;
 	}
+	
 	//체크된 보낸 쪽지 삭제
 	public boolean multiSendDel(String[] post_no) {
-		
 		int count = 0;
 		Map<String, String[]> map = new HashMap<String, String[]>();
 		map.put("post_no", post_no);
-		
 		SqlSession session = null;
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			count = session.update("PostboxMapper.multiSendDel", map);
-			
 			if(count == post_no.length) {
 				session.commit();
 			}else {
 				session.rollback();
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		
 		return (count==post_no.length)?true:false;
-		
 	}
-	
 	
 	//체크된 받은 쪽지 삭제
 	public boolean multiReadDel(String[] post_no) {
-			
 		int count = 0;
 		Map<String, String[]> map = new HashMap<String, String[]>();
 		map.put("post_no", post_no);
-			
 		SqlSession session = null;
-			
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			count = session.update("PostboxMapper.multiReadDel", map);
@@ -985,21 +959,16 @@ public PostboxDto postboxDetail(int post_no) {
 			}else {
 				session.rollback();
 			}
-				
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-			
 		return (count==post_no.length)?true:false;
-			
 	}
-	
 	
 	//쪽지 보내기
 	public int sendPost(int opt_no, String id, String title, String content) {
-			
 		int res = 0;
 		SqlSession session = null;
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -1007,34 +976,25 @@ public PostboxDto postboxDetail(int post_no) {
 		map.put("id", id);
 		map.put("title", title);
 		map.put("content", content);		
-		
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.update("PostboxMapper.sendPost", map);
-				
 			if(res > 0) {
 				session.commit();
 			}else {
 				session.rollback();
 			}
-				
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}			
-		
 		return res;
-			
 	}
 	
-	
-
 	public int updateVideo(VideoClipDto VideoClipDto) {
-
 		SqlSession session = null;
 		int result = 0;
-
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			result = session.update("VideoMapper.updateVideo", VideoClipDto);
@@ -1050,19 +1010,15 @@ public PostboxDto postboxDetail(int post_no) {
 		} finally {
 			session.close();
 		}
-
 		return result;
 	}
 
 	public int deleteVideo(int video_no_seq) {
-
 		SqlSession session = null;
 		int res = 0;
-
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.delete("VideoMapper.deleteVideo", video_no_seq);
-
 			if (res > 0) {
 				session.commit();
 			} else {
@@ -1073,28 +1029,22 @@ public PostboxDto postboxDetail(int post_no) {
 		} finally {
 			session.close();
 		}
-
 		return res;
-
 	}
 
 	public boolean multiDelVideo(String[] seq) {
-
 		SqlSession session = null;
 		int cnt = 0;
 		Map<String, String[]> map = new HashMap<String, String[]>();
 		map.put("seq", seq);
-
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			cnt = session.delete("VideoMapper.multiDel", map);
-
 			if (cnt == seq.length) {
 				session.commit();
 			} else {
 				session.rollback();
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -1125,85 +1075,64 @@ public PostboxDto postboxDetail(int post_no) {
 	public VideoComment videoCommentselectone(int video_comment_seq) {
 		SqlSession session = null;
 		VideoComment dto = null;
-
 		session = getsqlSessionFactory().openSession(false);
 		dto = session.selectOne("VideoMapper.videoCommentSelectone", video_comment_seq);
-
 		return dto;
 	}
 
 	public int insertVideocomment(VideoComment videocomment) {
 		SqlSession session = null;
-
 		int res = 0;
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.insert("VideoMapper.videoCommentInsert", videocomment);
 			if (res > 0) {
-
 				session.commit();
-
 			} else {
-
 				session.rollback();
 			}
-
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-
 		return res;
 	}
 
 	public int videoCommentUpdate(VideoComment VideoCommentDto) {
 		SqlSession session = null;
 		int res = 0;
-
 		try {
 			session = getsqlSessionFactory().openSession(true);
 			res = session.update("VideoMapper.videoCommentUpdate", VideoCommentDto);
 			if (res > 0) {
-
 				session.commit();
-
 			} else {
-
 				session.rollback();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return res;
 	}
 
 	public int videoCommentDelete(int video_comment_seq) {
 		SqlSession session = null;
 		int res = 0;
-
 		try {
 			session = getsqlSessionFactory().openSession(false);
 			res = session.delete("VideoMapper.videoCommentDelete", video_comment_seq);
 			if (res > 0) {
-
 				session.commit();
-
 			} else {
-
 				session.rollback();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
-
 		}
-
 		return res;
-
 	}
 
 }
