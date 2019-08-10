@@ -35,7 +35,7 @@
 					<div class="hd_menu">
 						<ul class="inline_menu">
 							<li>
-								<a href="#">BRAND</a>
+								<a href="opt_brand.jsp">BRAND</a>
 							</li>
 							<li>
 								<a href="#">MEDIA</a>
