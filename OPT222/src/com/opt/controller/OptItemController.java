@@ -18,6 +18,7 @@ import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CouponDto;
+import com.opt.dto.ItemCommentDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 
@@ -140,8 +141,12 @@ public class OptItemController extends HttpServlet {
 			int no = Integer.parseInt(request.getParameter("no"));
 			biz.itemCount(no);
 			ItemDto Itemdto = biz.itemSelect(no);
+			List<ItemCommentDto> itemCommentList = biz.itemCommentList(Itemdto.getItem_num_seq());
 			request.setAttribute("page", page);
 			request.setAttribute("Itemdto", Itemdto);
+			request.setAttribute("itemCommentList", itemCommentList);
+			
+			
 			dispatch(request, response, "itemdetail.jsp");			
 		
 			
@@ -209,6 +214,36 @@ public class OptItemController extends HttpServlet {
 			}
 			
 			
+		}else if(command.equals("insertItemComment")) {
+			HttpSession session = request.getSession();
+			int itemPage = Integer.parseInt(request.getParameter("itemPage"));
+			int itemNo = Integer.parseInt(request.getParameter("itemNo"));
+			String content =  request.getParameter("content");
+			MemberDto memberDto = (MemberDto)session.getAttribute("memdto");
+			ItemCommentDto commentDto = new ItemCommentDto();
+			
+			commentDto.setOpt_no_seq(memberDto.getOpt_no_seq());
+			commentDto.setItem_num_seq(itemNo);
+			commentDto.setItem_comment_content(content);
+			
+			int res = biz.insertItemComment(commentDto);
+			if(res > 0) {
+				alert("댓글 작성 성공", "item.do?command=itemdetail&no="+itemNo+"&page="+itemPage, response);
+			}else {
+				alert("댓글 작성 실패", "item.do?command=itemdetail&no="+itemNo+"&page="+itemPage, response);
+			}
+			
+		}else if(command.equals("deleteItemComment")) {
+			int itemPage = Integer.parseInt(request.getParameter("itemPage"));
+			int itemNo = Integer.parseInt(request.getParameter("itemNo"));
+			int item_comment_no_seq = Integer.parseInt(request.getParameter("item_comment_no_seq"));
+			
+			int res = biz.deleteItemComment(item_comment_no_seq);
+			if(res > 0) {
+				alert("댓글 삭제 성공", "item.do?command=itemdetail&no="+itemNo+"&page="+itemPage, response);
+			}else {
+				alert("댓글 삭제 실패", "item.do?command=itemdetail&no="+itemNo+"&page="+itemPage, response);
+			}
 		}
 		
 		

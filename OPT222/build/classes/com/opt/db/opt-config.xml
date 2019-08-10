@@ -15,6 +15,8 @@
 		<typeAlias type="com.opt.dto.PostboxDto" alias="postboxDto" />
 		<typeAlias type="com.opt.dto.VideoClipDto" alias="VideoClipDto" />
 		<typeAlias type="com.opt.dto.VideoComment" alias="VideoCommentDto" />
+		<typeAlias type="com.opt.dto.ItemCommentDto" alias="ItemCommentDto" />
+		
 				
 	</typeAliases>
 	<environments default="development">
@@ -40,6 +42,7 @@
 		<mapper resource="com/opt/db/CalendarMapper.xml"/>
 		<mapper resource="com/opt/db/PostboxMapper.xml"/>
 		<mapper resource="com/opt/db/VideoMapper.xml"/>
+		<mapper resource="com/opt/db/ItemCommentMapper.xml"/>
 	</mappers>
 
 

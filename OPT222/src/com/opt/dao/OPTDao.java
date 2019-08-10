@@ -11,6 +11,7 @@ import com.opt.dto.ItemDto;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
+import com.opt.dto.ItemCommentDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
 import com.opt.dto.PaymentDto;
@@ -1175,5 +1176,58 @@ public PostboxDto postboxDetail(int post_no) {
 		}
 		return res;
 	}
+	
+	public List<ItemCommentDto> itemCommentList(int item_num_seq) {
+		SqlSession session = null;
+		List<ItemCommentDto> list = new ArrayList<ItemCommentDto>();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("ItemCommentMapper.itemCommentList", item_num_seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	
+	public int insertItemComment(ItemCommentDto itemCommentDto) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.insert("ItemCommentMapper.insertItemComment", itemCommentDto);
+			if(res>0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+	
+	public int deleteItemComment(int item_comment_no_seq) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.delete("ItemCommentMapper.deleteItemComment", item_comment_no_seq);
+			if(res>0) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+	
 
 }

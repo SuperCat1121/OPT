@@ -182,8 +182,72 @@
 				</li>
 			</ul>
 		</div>
-		
 	</form>
+	<br>
+	<hr>
+	<c:choose>
+		<c:when test="${empty memdto }">
+		<ul>
+			<li>
+				<div>-----상품댓글은 로그인후 작성할수 있습니다------</div>
+			</li>
+		</ul>
+		</c:when>
+		<c:otherwise>
+		<form action="item.do" method="post">
+		<input type="hidden" name="command" value="insertItemComment"/>
+		<input type="hidden" name="itemNo" value="${Itemdto.item_num_seq }"/>
+		<input type="hidden" name="itemPage" value="${page }">
+		<ul>
+			<li>
+				<div>
+					${memdto.opt_id } &nbsp; <input type="text" value="" name="content" placeholder="댓글을 작성해주세요" maxlength="30" style="width: 200px"/> &nbsp;
+					<input type="submit" value="등록" />
+				</div>
+			</li>			
+		</ul>
+		</form>
+		</c:otherwise>
+	</c:choose>
+	<br>	
+	<c:choose>
+		<c:when test="${empty itemCommentList }">
+		<ul>
+			<li>
+			 	<div>-----작성된 댓글이 없습니다------</div>
+			</li>
+		</ul>
+		</c:when>
+		<c:otherwise>
+		<table>
+		<col width="200" />
+		<col width="300" />
+		<col width="200" />		
+			<tr>
+				<th>작성자</th>
+				<th>내   용</th>
+				<th>작성일</th>
+			</tr>
+			<c:forEach items="${itemCommentList }" var="commentDto">
+			<tr>
+				<th>${commentDto.opt_id }</th>
+				<th>${commentDto.item_comment_content }</th>
+				<th>${commentDto.item_comment_date }</th>
+				<c:choose>
+					<c:when test="${memdto.opt_no_seq == commentDto.opt_no_seq }">						
+						<th><input type="button" value="삭제" onclick="location.href='item.do?command=deleteItemComment&itemNo=${Itemdto.item_num_seq}&itemPage=${page }&item_comment_no_seq=${commentDto.item_comment_no_seq}'"/></th>
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose>				
+			</tr>
+			
+			</c:forEach>
+		</table>
+		</c:otherwise>
+	</c:choose>
+
+	
 
 <%@ include file="./footer.jsp" %>
 

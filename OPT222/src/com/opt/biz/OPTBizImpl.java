@@ -7,6 +7,7 @@ import com.opt.dao.OPTDao;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
+import com.opt.dto.ItemCommentDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
@@ -399,5 +400,24 @@ public class OPTBizImpl implements OPTBiz {
 	public int deleteVideoComment(int video_no_seq) {
 		return dao.deleteVideoComment(video_no_seq);
 	}
+
+	// 상품댓글 조회
+	@Override
+	public List<ItemCommentDto> itemCommentList(int item_num_seq) {
+		return dao.itemCommentList(item_num_seq);
+	}
+	
+	// 상품댓글 작성
+	@Override
+	public int insertItemComment(ItemCommentDto itemCommentDto) {
+		return dao.insertItemComment(itemCommentDto);
+	}
+	
+	// 상품댓글 삭제
+	@Override
+	public int deleteItemComment(int item_comment_no_seq) {
+		return dao.deleteItemComment(item_comment_no_seq);
+	}
+	
 	
 }

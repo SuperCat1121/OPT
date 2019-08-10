@@ -6,6 +6,7 @@ import java.util.Map;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
+import com.opt.dto.ItemCommentDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
@@ -67,6 +68,13 @@ public interface OPTBiz {
 	public List<ItemDto> itemSearch(String keyword, String msg);
 	public List<ItemDto> itemPage(int start, int end);
 	public List<ItemDto> itemSearchPage(String keyword, String msg, int start, int end);
+	
+	//상품댓글
+	public List<ItemCommentDto> itemCommentList(int item_num_seq);
+	public int insertItemComment(ItemCommentDto itemCommentDto);
+	public int deleteItemComment(int item_comment_no_seq);
+	
+	
 	
 	//결제상품
 	public int insertPayment(PaymentDto PaymentDto);
