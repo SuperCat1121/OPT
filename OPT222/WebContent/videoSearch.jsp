@@ -17,6 +17,9 @@
 
 </head>
 <body>
+	<div>
+		<jsp:include page="header.jsp"></jsp:include>
+	</div>
 	<h1>검색 게시판</h1>
 	<form action="video.do">
 		<input type="hidden" name="command" value="searchVideo" /> <input
@@ -99,5 +102,8 @@
 				</c:choose></td>
 		</tr>
 	</table>
+	<div>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

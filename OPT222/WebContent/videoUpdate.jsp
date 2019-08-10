@@ -49,6 +49,9 @@
 </script>
 </head>
 <body>
+	<div>
+		<jsp:include page="header.jsp"></jsp:include>
+	</div>
 	<h1>${ memdto.opt_id}님비디오수정사이트입니다.</h1>
 	<table>
 		<col width="300">
@@ -103,5 +106,8 @@
 			</tr>
 		</table>
 	</form>
+		<div>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>
