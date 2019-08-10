@@ -91,7 +91,7 @@ public class OptItemController extends HttpServlet {
 			
 			int page = Integer.parseInt(request.getParameter("page"));
 			int allCount = biz.itemSearch(keyword, msg).size();			
-			int listCount = 10;
+			int listCount = 8;
 			int totalPage = (allCount -1) / listCount + 1;
 			int blockCount = 5;  
 			int absolutePage = 0;
