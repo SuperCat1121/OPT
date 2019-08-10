@@ -60,6 +60,12 @@ public interface OPTBiz {
 	public List<PaymentDto> paymentAllList();
 	// 관리자_유저관리 페이징
 	public List<MemberDto> adminUserPaging(int startCount, int endCount);
+	// 관리자_상품관리 페이징
+	public List<ItemDto> adminItemPaging(int startCount, int endCount);
+	// 관리자_상품 판매 시작
+	public int adminItemUnDelete(Map<String, String[]> unDelete);
+	// 관리자_상품 삭제
+	public int adminItemDelete(Map<String, String[]> delete);
 	
 	//상품리스트
 	public List<ItemDto> itemList();

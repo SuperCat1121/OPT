@@ -1,0 +1,20 @@
+	
+	table {
+		position: relative;
+	    top: 78px;
+	    margin: 0 auto;
+	    border: 1px solid black;
+	    padding: 30px;
+	}
+	th {
+		text-align: right;
+	}
+	input[type=button] {
+		border: none;
+		background: lime;
+		border-radius: 6px;
+	}
+	input[type=button]:hover {
+		cursor: pointer;
+		border: 1px solid black;
+	}

@@ -253,6 +253,7 @@ public class OPTDao extends SqlMapConfig {
 		SqlSession session = null;
 		session = getsqlSessionFactory().openSession(false);
 		List<PaymentDto> list = session.selectList("PayMapper.paymentAllList");
+		session.close();
 		return list;
 	}
 	
@@ -264,7 +265,44 @@ public class OPTDao extends SqlMapConfig {
 		map.put("startCount", startCount);
 		map.put("endCount", endCount);
 		List<MemberDto> list = session.selectList("AdminMapper.userPaging", map);
+		session.close();
 		return list;
+	}
+	
+	// 관리자_상품관리 페이징
+	public List<ItemDto> adminItemPaging(int startCount, int endCount) {
+		SqlSession session = null;
+		session = getsqlSessionFactory().openSession(false);
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("startCount", startCount);
+		map.put("endCount", endCount);
+		List<ItemDto> list = session.selectList("AdminMapper.itemPaging", map);
+		session.close();
+		return list;
+	}
+		
+	// 관리자_상품 판매 시작
+		public int adminItemUnDelete(Map<String, String[]> unDelete) {
+			SqlSession session = null;
+			session = getsqlSessionFactory().openSession(false);
+			int res = session.update("AdminMapper.itemUnDelete", unDelete);
+			if(res > 0) {
+				session.commit();
+			}
+			session.close();
+			return res;
+		}
+	
+	// 관리자_상품 판매 중지
+	public int adminItemDelete(Map<String, String[]> delete) {
+		SqlSession session = null;
+		session = getsqlSessionFactory().openSession(false);
+		int res = session.update("AdminMapper.itemDelete", delete);
+		if(res > 0) {
+			session.commit();
+		}
+		session.close();
+		return res;
 	}
 	
 	// 선택한 상품 정보 출력

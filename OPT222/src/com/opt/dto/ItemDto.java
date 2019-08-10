@@ -7,15 +7,20 @@ public class ItemDto {
 	private int item_views_no;
 	private String item_content;
 	private String item_url;
-	// AdminPage Branche Merge =================
 	private int item_count;
+	private String item_enabled;
+	public String getItem_enabled() {
+		return item_enabled;
+	}
+	public void setItem_enabled(String item_enabled) {
+		this.item_enabled = item_enabled;
+	}
 	public int getItem_count() {
 		return item_count;
 	}
 	public void setItem_count(int item_count) {
 		this.item_count = item_count;
 	}
-	// =========================================
 	public int getItem_num_seq() {
 		return item_num_seq;
 	}

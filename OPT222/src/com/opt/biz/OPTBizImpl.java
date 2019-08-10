@@ -94,9 +94,28 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.paymentAllList();
 	}
 	
+	// 관리자_유저 페이징
 	@Override
 	public List<MemberDto> adminUserPaging(int startCount, int endCount) {
 		return dao.adminUserPaging(startCount, endCount);
+	}
+	
+	// 관리자_상품 페이징
+	@Override
+	public List<ItemDto> adminItemPaging(int startCount, int endCount) {
+		return dao.adminItemPaging(startCount, endCount);
+	}
+	
+	// 관리자_상품 판매 시작
+	@Override
+	public int adminItemUnDelete(Map<String, String[]> unDelete) {
+		return dao.adminItemUnDelete(unDelete);
+	}
+	
+	// 관리자_상품 삭제
+	@Override
+	public int adminItemDelete(Map<String, String[]> delete) {
+		return dao.adminItemDelete(delete);
 	}
 	
 	@Override
