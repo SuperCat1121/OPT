@@ -28,7 +28,7 @@
 	var options = { //지도를 생성할 때 필요한 기본 옵션
 			center: new kakao.maps.LatLng(37.498981, 127.032908),//지도의 중심좌표(위도 , 경도순),!반드시 필요
 			level:1 //지도의 레벨 확대 축소
-			
+			 
 	};
 	
 	var map = new kakao.maps.Map(container,options); //지도 생성및 객체 리턴
