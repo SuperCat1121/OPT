@@ -185,6 +185,5 @@
 		<div class="adminUserManagerPopup" style="display: none;"></div>
 		<div class="adminItemManagerPopup" style="display: none;"></div>
 	</div>
-	<div id="itemCountWarning" style="display: none;">재고가 5개 이하인 상품들의 개수입니다</div>
 </body>
 </html>

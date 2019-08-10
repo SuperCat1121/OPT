@@ -1,10 +1,4 @@
-$(function() {
-	$("span").hover(function() {
-		$("#itemCountWarning").toggle();
-	},function() {
-		$("#itemCountWarning").toggle();
-	});
-	
+$(function() {	
 	// admin 페이지 로딩 시 .adminUserManagerPopup div 태그에 유저관리 로딩
 	$(".adminUserManagerPopup").load("admin.do?command=adminUserManager&page=1");
 	// 유저관리 클릭 시 무조건 첫 페이지로 로딩 (돌아다니던 div 페이지 안보이게 하고 다시 그거 보여지는 것 방지)
