@@ -139,8 +139,6 @@ $(function() { // document ready
 					var id = event.id;
 					var start = moment(event.start).format('YYYY-MM-DD');
 					var end = moment(event.end).format('YYYY-MM-DD');
-					alert(start);
-					alert(end);
 
 					$.ajax({
 						error : function() {

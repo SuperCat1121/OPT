@@ -16,7 +16,7 @@
 				<ul class="inline">
 					<li>
 					<% if(session.getAttribute("memdto") == null) { %>
-						<a href="#">로그인</a>
+						<a href="login.jsp?Flag=0">로그인</a>
 					<% } else {%>
 						<a href="login.do?command=logout">로그아웃</a>
 					<% } %>	

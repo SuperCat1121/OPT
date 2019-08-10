@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <title>상품페이지</title>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<link href="css/item_list.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 
 	function addComma(num) {
@@ -35,80 +36,13 @@
 </head>
 <body>
 
+	<jsp:include page="header.jsp"></jsp:include>
 	
-	<h1>상품페이지</h1>	
-	
-	<div class="item_list">
-		<ul>
-	
-		<c:choose>
-			<c:when test="${empty list }">				
-					<li>
-						<div>------검색된 상품이 없습니다------</div>
-					</li>	
-			</c:when>
-			<c:otherwise>
-				<c:forEach items="${list }" var="dto">
-					
-						<li>
-							<div>
-								<div>
-									<a href="item.do?command=itemdetail&no=${dto.item_num_seq }&page=${page}"><img alt="" src="${dto.item_url }" width="270px" height="270px"/></a>
-								</div>
-								<div>
-									<input type="hidden" class="price" value="${dto.item_price }"/>
-									<h3>${dto.item_name }</h3>																		
-									<strong class="commaPrice"></strong>원<br/>
-									<a>view : ${dto.item_views_no }</a>									
-								</div>
-							</div>
-						</li>								
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
-		</ul>
-	</div>
-	<table>
-		<tr>
-			<td>
-				<c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
-			<c:choose>
-				<c:when test="${prevPage >0}">
-					<a href="item.do?command=itemsearch&page=${prevPage }&keyword=${keyword }&msg=${msg }">◀</a>
-				</c:when>
-				<c:otherwise>
-					<a href="item.do?command=itemsearch&page=1&keyword=${keyword }&msg=${msg }">◀</a>
-				</c:otherwise>
-			</c:choose>
-			<c:forEach begin="${absolutePage }" end="${endPage }" var="i">
-				<c:choose>
-				<c:when test="${i eq page}">
-					<a href="item.do?command=itemsearch&page=${i}&keyword=${keyword }&msg=${msg }"><strong>[${ i }]</strong></a>
-				</c:when>
-				<c:otherwise>
-					<a href="item.do?command=itemsearch&page=${i}&keyword=${keyword }&msg=${msg }">[${ i }]</a>
-				</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<c:set var="nextPage" value="${absolutePage+blockCount }"></c:set>
-			<c:choose>
-				<c:when test="${nextPage < totalPage}">
-					<a href="item.do?command=itemsearch&page=${nextPage }&keyword=${keyword }&msg=${msg }">▶</a>
-				</c:when>
-				<c:otherwise>
-					<a href="item.do?command=itemsearch&page=${totalPage}&keyword=${keyword }&msg=${msg }">▶</a>
-				</c:otherwise>
-			</c:choose>
-			</td>
-		</tr>
-	</table>
-	
-	
-	<form action="item.do?command=itemsearch&page=1" method="post">
-	<table>
-		<tr>
-			<td>
-				<select name="keyword">
+	<div class="item_search_wrap">
+	<form action="item.do?command=itemsearch&page=1" method="post" name="fr">
+	<div class="item_search">
+			<div class="select-wrap">
+				<select name="keyword" class="select-box">
 				<c:if test="${keyword == 'title'}">
 					<option value="title" selected="selected">상품명</option>
 					<option value="content">상품내용</option>
@@ -124,14 +58,83 @@
 					<option value="content">상품내용</option>
 					<option value="titleContent" selected="selected">상품명+상품내용</option>
 				</c:if>
-				
 				</select>
+				<div class="select-point">▽</div>
 				<input type="text" name="msg" value="${msg }"/>
-				<input type="submit" value="검색" />
-			</td>
-		</tr>
-	</table>
+				<div class="search_item" onclick="submit();">
+				<img id="myButton1" alt="" src="./deliver_img/icon_sch_big.png">
+				</div>
+			</div>	
+	</div>			
 	</form>
+	</div>
+	
+	<script type="text/javascript">
+	function submit(){
+		document.fr.submit();
+	}
+	
+	</script>
+	
+	<div class="item_list_wrap">
+	
+		<c:choose>
+			<c:when test="${empty list }">				
+						<div>------등록된 상품이 없습니다------</div>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${list}" var="dto">
+							<div class="item_list_div">	
+								<div class="item_list">
+									<a href="item.do?command=itemdetail&no=${dto.item_num_seq}&page=${page}">
+									<img alt="" src="${dto.item_url}" width="270px" height="270px"/></a>
+								
+								<div class="item_text">
+									<input type="hidden" class="price" value="${dto.item_price }"/>
+									<h3>${dto.item_name }</h3>																		
+									<strong class="commaPrice"></strong>원<br/>
+									<a>view : ${dto.item_views_no }</a>									
+								</div>
+								</div>
+							</div>	
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</div>
+	<div class="paging">
+		<ul class="paging_ul">
+			<c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
+			<c:choose>
+				<c:when test="${prevPage >0}">
+					<li><a href="item.do?command=itemsearch&page=${prevPage }&keyword=${keyword }&msg=${msg }">◀</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="item.do?command=itemsearch&page=1&keyword=${keyword }&msg=${msg }">◀</a></li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach begin="${absolutePage }" end="${endPage }" var="i">
+				<c:choose>
+				<c:when test="${i eq page}">
+					<li><a href="item.do?command=itemsearch&page=${i}&keyword=${keyword }&msg=${msg }">${ i }</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="item.do?command=itemsearch&page=${i}&keyword=${keyword }&msg=${msg }">${ i }</a></li>
+				</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:set var="nextPage" value="${absolutePage+blockCount }"></c:set>
+			<c:choose>
+				<c:when test="${nextPage < totalPage}">
+					<li><a href="item.do?command=itemsearch&page=${nextPage }&keyword=${keyword }&msg=${msg }">▶</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="item.do?command=itemsearch&page=${totalPage}&keyword=${keyword }&msg=${msg }">▶</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</div>	
+	
+	
 	
 	
 	

@@ -124,8 +124,10 @@ public class OptController extends HttpServlet {
 			int res = biz.insertCalendar(caldto);
 			if(res > 0) {
 				System.out.println("insert 성공!");
+				out.println("success");
 			}else {
 				System.out.println("insert 실패");
+				out.println("fail");
 			}
 		//회원 일정 페이지	
 		}else if(command.equals("calendar")) {
@@ -173,9 +175,11 @@ public class OptController extends HttpServlet {
 			System.out.println(caldto.getCalendar_no_seq());
 			int res = biz.updateCalendar(caldto);
 			if(res > 0) {
-				System.out.println("update성공");
+				System.out.println("update 성공!");
+				out.println("success");
 			}else {
-				System.out.println("update실패");
+				System.out.println("update 실패");
+				out.println("fail");
 			}
 		//회원 일정 삭제	
 		}else if(command.equals("cal_delete")) {
@@ -184,9 +188,11 @@ public class OptController extends HttpServlet {
 			int res = biz.deleteCalendar(cal_no_seq);
 			
 			if(res > 0) {
-				System.out.println("delete성공");
+				System.out.println("insert 성공!");
+				out.println("success");
 			}else {
-				System.out.println("delete실패");
+				System.out.println("insert 실패");
+				out.println("fail");
 			}
 		//회원 일정 막대 옴길때	
 		}else if(command.equals("updateDrop")) {

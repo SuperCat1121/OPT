@@ -88,7 +88,7 @@ a {
 	margin:0 auto;
     padding-top: 10px;
     width: 80%;
-    padding-left: 50px;
+    padding-left: 120px;
 }
 .deliver_content{
 	width: 68%;
@@ -171,3 +171,86 @@ input:focus{
 	position: relative;
     top: 29%;
 }
+
+/* 사이드바 */
+.side_menu_nav{
+	float: left;
+    width: 15%;
+    height: 780px;
+    position: absolute;
+    top: 0px;
+}
+.sidenav {
+			height:100%;
+			width: 0;
+			position: fixed;
+			z-index:1;
+			top: 0;
+			left: 0;
+			background-color: #7c7c7c;
+			overflow-x: hidden;
+			transition:0.5s ease-in-out;
+			padding-top: 60px;
+			
+		}
+		.sidenav a {
+			padding: 8px 8px 8px 32px;
+			text-decoration: none;
+			font-size: 25px;
+			color: #fff;
+			display: block;
+			transition: 0.2s ease-in-out;
+		}
+		.sidenav a:hover, .offcanvas a:focus {
+			color: #000;
+		}
+		.closebtn {
+			position: absolute;
+			top: 0;
+			right: 25px;
+			font-size: 36px !important;
+			margin-left: 50px;
+		}
+		
+		
+		/* 미디어쿼리 적용 */
+		@media screen and (max-height:450px) {
+			.sidenav {
+				padding-top:15px;
+			}
+			.sidenav a {
+				font-size: 18px;
+			}
+		}
+		
+
+/*햄버거*/	
+.wrapper {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 70px;
+    left: 230px;
+}
+
+/* 추가된 부분 */
+.line-wrapper {
+  cursor:pointer;
+  width:56px;
+  height:35px;
+  position:relative;
+  top:52.5px;
+  left: 82px;
+}
+
+/* 추가된 부분 */
+.line {
+  background: #888;
+  margin-top:6px;
+  margin-bottom:6px;
+  width: 46px;
+  height:7px; 
+  border-radius:2px;
+  box-shadow:0 1px 3px rgba(0,0,0,.5);
+  position:relative;
+}			

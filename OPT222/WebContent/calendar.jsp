@@ -37,19 +37,33 @@ $(document).ready(function(){
 	}
 	});
 });
-  function popup(){
+  function calpopup(){
 	cw = screen.availWidth;
 	ch = screen.availHeight;
 		
 	sw=600;    //띄울 창의 넓이
-	sh=380;    //띄울 창의 높이
+	sh=340;    //띄울 창의 높이
 
 	ml = (cw - sw) / 2;
 	mt = (ch - sh) / 2;
 
-	var url = encodeURI("coupon.do?command=couponlist");
-	window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+	var url = encodeURI("calendar_popup.jsp");
+	window.open(url, '일정등록', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
   }
+  
+  function coupon_popup(){
+		cw = screen.availWidth;
+		ch = screen.availHeight;
+			
+		sw=1024;    //띄울 창의 넓이
+		sh=550;    //띄울 창의 높이
+
+		ml = (cw - sw) / 2;
+		mt = (ch - sh) / 2;
+
+		var url = encodeURI("coupon.do?command=couponlist&page=1");
+		window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+	  }
 </script>
 </head>
 <body>
@@ -66,7 +80,7 @@ $(document).ready(function(){
 		<a href="postbox.do?command=recivePostbox&page=1">마이쪽지함</a>
 		<a href="calendar.jsp">일정관리</a>
 		<a href="#">장바구니</a>
-		<a href="" onclick="popup();">내쿠폰함</a>
+		<a href="" onclick="coupon_popup();">내쿠폰함</a>
 		<a href="#">고객센터</a>		
 		</div>
 	</div>
@@ -85,7 +99,7 @@ $(document).ready(function(){
 	<div class="cal_header">
 	<h3>일정관리</h3>
 	<div class="insert_btn_area">
-	<button class="snip1535" onclick="popup();">일정등록</button>
+	<button class="snip1535" onclick="calpopup();">일정등록</button>
 	</div>
 	</div>
   <div id='calendar'></div>

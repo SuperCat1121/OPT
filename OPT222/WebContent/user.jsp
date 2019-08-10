@@ -42,7 +42,7 @@ $(document).ready(function(){
 	}
 	});
 });
-	function popup(){
+	function coupon_popup(){
 	cw = screen.availWidth;
 	ch = screen.availHeight;
 		
@@ -56,11 +56,6 @@ $(document).ready(function(){
 	window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
   }
 
-	function updateForm(){
-		var url = "updateUser.jsp";
-		var prop = "top=200px,left=600px,width=500px,height=500px";
-	    window.open(url, "", prop);
-	}
 
 function updateForm(){
 	var url = "updateUser.jsp";
@@ -88,7 +83,7 @@ function updateForm(){
 		<a href="postbox.do?command=recivePostbox&page=1">마이쪽지함</a>
 		<a href="calendar.jsp">일정관리</a>
 		<a href="basket.do?command=basketlist">장바구니</a>
-		<a href="#">내쿠폰함</a>
+		<a onclick="coupon_popup();">내쿠폰함</a>
 		<a href="#">고객센터</a>		
 		</div>
 	</div>
@@ -120,7 +115,7 @@ function updateForm(){
 		</dd>	
 		</dl>
 		<div class="coupon_box">
-		<dl class="coupon" style="cursor: pointer;" onclick="popup();">
+		<dl class="coupon" style="cursor: pointer;" onclick="coupon_popup();">
 			<dt>쿠폰</dt>
 			<dd><b class="num"><%=coupon_count %></b> 장</dd>
 		</dl>

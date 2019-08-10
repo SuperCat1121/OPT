@@ -59,18 +59,47 @@
 	</c:choose>
 <script>
 			function updateBtn(){
-				document.fr.action="opt.do?command=cal_update";
-				document.fr.submit();
-				opener.location.reload();
-				self.close();
+				var queryString = $("form[name=fr]").serialize();
+
+				$.ajax({
+			        type : 'post',
+			        url : 'opt.do?command=cal_update',
+			        data : queryString,
+			        error: function(xhr, status, error){
+			            alert(error);
+			        },
+			        success : function(data){
+			            if(data != "fail"){
+			            	opener.location.reload();
+			            	self.close();
+			            }else{
+			            	alert("수정실패!");
+			            }
+			        }
+			    });
 			}
 			 
 			function deleteBtn(){
-				document.fr.action="opt.do?command=cal_delete";
-				document.fr.submit();
-				opener.location.reload();
-				self.close();
+				var queryString = $("form[name=fr]").serialize();
+
+				$.ajax({
+			        type : 'post',
+			        url : 'opt.do?command=cal_delete',
+			        data : queryString,
+			        error: function(xhr, status, error){
+			            alert(error);
+			        },
+			        success : function(data){
+			            if(data != "fail"){
+			            	opener.location.reload();
+			            	self.close();
+			            }else{
+			            	alert("삭제실패!");
+			            }
+			        }
+			    });
 			}
+			
 
         $(function() {
             //모든 datepicker에 대한 공통 옵션 설정

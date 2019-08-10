@@ -42,7 +42,7 @@ public class OptItemController extends HttpServlet {
 		if(command.equals("itemlist")) {
 			int page = Integer.parseInt(request.getParameter("page"));
 			int allCount = biz.itemList().size();
-			int listCount = 10;
+			int listCount = 8;
 			int totalPage = (allCount -1) / listCount + 1;
 			int blockCount = 5;  
 			int absolutePage = 0;

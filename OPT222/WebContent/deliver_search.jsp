@@ -18,13 +18,39 @@ function closeNav() {
 }
 
 $(document).ready(function(){
-	$(".side_menu_nav").mouseenter(function(){
+	/* $(".side_menu_nav").mouseenter(function(){
 		$("#mysidenav").width('250px');
 	});
 	$(".side_menu_nav").mouseleave(function(){
 		$("#mysidenav").width('0px');
+	}); */
+	$(".line-wrapper").click(function(){
+		
+		if($("#mysidenav").hasClass('abc') == true) {
+		
+			$("#mysidenav").removeClass('abc');
+			$("#mysidenav").width('0px');
+		} else {
+		$("#mysidenav").addClass('abc');
+		$("#mysidenav").width('250px');
+		}
+		});
 	});
-});
+	
+function coupon_popup(){
+	cw = screen.availWidth;
+	ch = screen.availHeight;
+		
+	sw=1024;    //띄울 창의 넓이
+	sh=550;    //띄울 창의 높이
+
+	ml = (cw - sw) / 2;
+	mt = (ch - sh) / 2;
+
+	var url = encodeURI("coupon.do?command=couponlist&page=1");
+	window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+  }
+	
 
 $(document).ready(function(){
 	var myKey = "wOUKvXq0nmNzi1hiW84eGA"; // sweet tracker에서 발급받은 자신의 키 넣는다.
@@ -126,22 +152,31 @@ $(document).ready(function(){
 		<h1>운송장번호조회</h1>
 	</div>
 	
+	<!-- side menu -->
 	<nav class="side_menu_nav">
 	<div id="mysidenav" class="sidenav">
 		<div style="width : 250px;">
 		<a href="#" class="closebtn" onclick='closeNav()'>x</a>
-		<a href="opt.do?command=mypage">마이페이지</a>
+		<a href="deliver_search.jsp">운송장번호 조회</a>
 		<a href="postbox.do?command=recivePostbox&page=1">마이쪽지함</a>
-		<a href="#">일정관리</a>
-		<a href="#">장바구니</a>
-		<a href="#">내쿠폰함</a>
-		<a href="#">고객센터</a>
+		<a href="calendar.jsp">일정관리</a>
+		<a href="basket.do?command=basketlist">장바구니</a>
+		<a onclick="coupon_popup();">내쿠폰함</a>
+		<a href="#">고객센터</a>		
 		</div>
 	</div>
 	<div class="openmenu_btn">
 	</div>
 	</nav>
-	
+	<!-- 햄버거 -->
+		<div class="wrapper">
+  <!-- 추가된 부분 -->
+		  <div class="line-wrapper">
+		    <div class="line"></div>
+		    <div class="line"></div>
+		    <div class="line"></div>
+		  </div>
+		</div>
 	
 	<div class="deliver_contents_aera">
 	<div class="deliver_content">

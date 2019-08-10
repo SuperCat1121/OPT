@@ -259,13 +259,13 @@
 					type="button" value="회원가입" onclick="location.href='register.jsp'"
 					class="regist_btn" />
 			</form>
-			<div>
-				<input type="button" class="regist_btn"
-					onclick="location.href='findid.jsp'" value="아이디찾기"> <input
-					class="regist_btn" type="button"
-					onclick="location.href='findpassword.jsp'" value="비밀번호 찾기">
-
+			
+			<div class="search_idpw_area">
+				<a onclick="location.href='findid.jsp'">아이디찾기</a>
+				<span class="bar" aria-hidden="true">|</span>
+				<a onclick="location.href='findpassword.jsp'">비밀번호찾기</a>
 			</div>
+			<div class="sns_login_area" >
 			<div id="naverIdLogin" ></div>
 			
 			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
@@ -275,10 +275,9 @@
 				data-show-faces="true" data-auto-logout-link="true"
 				data-use-continue-as="true" onlogin="fbLogin();"> </div>
 			<img alt="" src="./image/kakaobtn.png" onclick="kLogin()">
+			</div>
 		</fieldset>
 	</div>
-	<script>
-
-	</script>
+	
 </body>
 </html>

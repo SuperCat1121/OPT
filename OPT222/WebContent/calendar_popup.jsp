@@ -27,7 +27,7 @@
 	<div class="cal_title">
 	<h3>일정등록</h3>
 	</div>
-	<form action="opt.do?command=cal_insert" method="post" name="fr">
+	<form method="post" name="fr">
 	<div class="cal_content">
 	<div class="cal_text">일정제목: <input type="text" name="cal_title"></div>
     <div class="cal_text">일정시작일: <input type="text" id="datepicker" name="cal_start"></div>
@@ -39,11 +39,29 @@
  	</form>
     <script>
     	
-    	function goData(){
-    		document.fr.submit();
-        	opener.location.reload();
-        	self.close();
-    	}
+function goData(){
+	var queryString = $("form[name=fr]").serialize();
+
+	$.ajax({
+        type : 'post',
+        url : 'opt.do?command=cal_insert',
+        data : queryString,
+        error: function(xhr, status, error){
+            alert(error);
+        },
+        success : function(data){
+            if(data != "fail"){
+            	opener.location.reload();
+            	self.close();
+            }else{
+            	alert("실패");
+            }
+        }
+    });
+
+}
+
+    
     	
         $(function() {
             //모든 datepicker에 대한 공통 옵션 설정
