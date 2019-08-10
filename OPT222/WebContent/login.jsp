@@ -39,6 +39,20 @@
 <meta name="google-signin-client_id"
 	content="236084628267-j6u2itovr6ocvop0ae5jk52536vf2joq.apps.googleusercontent.com">
 <link href="css/login.css" rel="stylesheet" type="text/css">
+<style>
+	.abcRioButtonBlue {
+		height:45px !important;
+		width: 122px !important;
+	}
+	.abcRioButtonIcon{
+	    padding: 12.5px !important;
+	}
+	.abcRioButtonContents{
+		    font-size: 13px !important;
+   	 		line-height: 44px !important;
+   			 font-weight: bold !important;
+	}
+</style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -141,7 +155,7 @@
  	 					clientId: "lcTrrWMiQvKel6vICKwB",
  	 					callbackUrl: "http://localhost:8787/OPT222/login.jsp?Flag=0",
  	 					isPopup: false, 
- 	 					loginButton: {color: "green", type: 2, height: 45} 
+ 	 					loginButton: {color: "green", type: 2, height: 47} 
  	 				}
  	 			);
  	 			
@@ -255,9 +269,13 @@
 				<span class="bar" aria-hidden="true">|</span>
 				<a onclick="location.href='findpassword.jsp'">비밀번호찾기</a>
 			</div>
+			<div class="sns_login_area">
 			<div id="naverIdLogin" ></div>
-			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-			<img alt="" src="./image/kakaobtn.png" onclick="kLogin()"> 
+			<div class="kakao_login">
+			<img alt="" src="./image/kakaobtn.png" onclick="kLogin()" style="cursor: pointer;" >
+			</div>
+			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="padding-top: 6px;"></div>
+			</div> 
 		</fieldset>
 	</div>
 	

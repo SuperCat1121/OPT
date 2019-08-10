@@ -193,7 +193,12 @@ input[type=text]{
     top: 7px;
 }
 .sns_login_area{
-	width: 100%;
-    height: 250px;
-    padding-left: 50px;
+	padding-left: 20px;
+}
+.kakao_login img{
+	padding-left:10px;
+	
+}
+#naverIdLogin{
+	 float: left;
 }

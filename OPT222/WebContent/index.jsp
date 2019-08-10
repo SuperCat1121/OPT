@@ -37,7 +37,7 @@
 
 .menulogo{ /*로고부분 (따로뺌)*/
 	float : left;
-	margin-right : 60px;
+	margin-right: 25px;
 }
 .menulist { /*메뉴 리스트 a링크들 / 로고와 구분하려고 따로 줌 */
 	float: left;
@@ -80,13 +80,16 @@
 		background-size: cover;
 	}
 			
-	section div {
-		font-family: 'Open Sans';
-		font-style: normal;
-		text-align: center;
-		position: relative;
-		top: 50%;  
-		transform: translateY(-50%);
+	section .section_title {
+	font-family: 'Open Sans';
+    font-style: normal;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-top: -60px;
+    /* top: 50%; */
+    transform: translateY(-50%);
 	}
 
 	span {
@@ -101,7 +104,13 @@
     font-size: 25px;
     top: 32px;
 	}
-	
+	.section_background{
+   	 width: 100%;
+   	 height: 100%;
+   	 background-color: black;
+   	 opacity: 0.2;
+	}
+
 	</style>	
 </head>
 <body>
@@ -111,7 +120,7 @@
 				<ul class="topmenu">
 					<li>
 						<a class = "menulogo" href="main3.html" title="OPT 메인으로 이동">
-							<img alt="main" src="./main_image/logo.png" width=110px; height=50px;>
+							<img alt="main" src="image/logo2_w.png" width=120px;>
 						</a> 
 						<a class = "menulist" href="video.do?command=videoList&page=1&videoarea=main">OPT</a>
 					</li>
@@ -138,7 +147,8 @@
 	
 	<div id="main" class="scroll-container">
 		<section class="section1">
-			<div>
+			<div class="section_background"></div>
+			<div class="section_title">
 				<span>어디서나 함께하는</span>
 				<p>
 					<strong>운동 친구</strong>
@@ -146,7 +156,8 @@
 			</div>
 		</section>
 		<section class="section2">
-			<div>
+			<div class="section_background"></div>
+			<div class="section_title">
 				<span>미쳐라</span>
 				<p>
 					<strong>It`s only crazy until you do it</strong>
@@ -154,7 +165,8 @@
 			</div>
 		</section>
 		<section class="section3">
-			<div>
+			<div class="section_background"></div>
+			<div class="section_title">
 				<span>철저한</span>
 				<p>
 					<strong>식단 관리</strong>
@@ -162,7 +174,8 @@
 			</div>
 		</section>
 		<section class="section4">
-			<div>
+			<div class="section_background"></div>
+			<div class="section_title">
 				<span>맛있게 드세요</span>
 				<p>
 					<strong>저희가 준비한 걸로</strong>
@@ -170,7 +183,8 @@
 			</div>
 		</section>
 		<section class="section5">
-			<div>
+			<div class="section_background"></div>
+			<div class="section_title">
 				<span>OPT가</span>
 				<p>
 					<strong>여러분의 건강을 책임집니다.</strong>

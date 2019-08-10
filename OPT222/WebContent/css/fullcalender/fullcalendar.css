@@ -641,7 +641,7 @@ be a descendant of the grid when it is being dragged.
 	overflow: hidden;
 	line-height: 1.5;
 	padding: 3px;
-	background-color: #E2E4CB;
+	background-color: #cbb7d6;
 }
 
 .fc-day-grid-event .fc-time {
