@@ -19,7 +19,7 @@
 	
 		<button onclick="zoomIn()">지도레벨 -1</button>
 		<button onclick="zoomOut()">지도레벨 +1</button>
-		<span id="maplevel"></span>
+		<span id="maplevel"></span> 
 	</p>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=166c35471279ee679a666dea66875cae"></script>
 <script type="text/javascript">
