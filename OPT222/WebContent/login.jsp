@@ -135,27 +135,17 @@
 		      }
 		    })
 		}
- 		function fbLogin() {
-			FB.getLoginStatus(function(response) {
-				if (response.status === 'connected') {
-					FB.api('/me', function(res) {
-						console.log("Success Login : " + res.name);
-					});
-				}
-			}, false);
-		}
  		$(function(){
  	 		var naverLogin = new naver.LoginWithNaverId(
  	 				{
  	 					clientId: "lcTrrWMiQvKel6vICKwB",
  	 					callbackUrl: "http://localhost:8787/OPT222/login.jsp?Flag=0",
  	 					isPopup: false, 
- 	 					loginButton: {color: "green", type: 3, height: 40} 
+ 	 					loginButton: {color: "green", type: 2, height: 45} 
  	 				}
  	 			);
  	 			
  	 			naverLogin.init();
- 	 			
  	 			
  	 			naverLogin.getLoginStatus(function (status) {
  	 				if (status) {
@@ -265,17 +255,9 @@
 				<span class="bar" aria-hidden="true">|</span>
 				<a onclick="location.href='findpassword.jsp'">비밀번호찾기</a>
 			</div>
-			<div class="sns_login_area" >
 			<div id="naverIdLogin" ></div>
-			
 			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-			
-			<div class="fb-login-button" scope="public_profile,email"
-				data-max-rows="1" data-size="large" data-button-type="continue_with"
-				data-show-faces="true" data-auto-logout-link="true"
-				data-use-continue-as="true" onlogin="fbLogin();"> </div>
-			<img alt="" src="./image/kakaobtn.png" onclick="kLogin()">
-			</div>
+			<img alt="" src="./image/kakaobtn.png" onclick="kLogin()"> 
 		</fieldset>
 	</div>
 	

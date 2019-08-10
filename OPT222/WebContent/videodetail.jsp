@@ -20,12 +20,57 @@ $(function(){
 })
 
 </script>
+<style type="text/css">
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	color: #888;
+	font-style: normal;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: -1px;
+	height: 100%;
+}
+
+ul, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+setion {
+	display: block;
+}
+
+.video_area {
+	margin: 0 auto;
+	padding-top: 10px;
+	width: 1600px;
+	height: 1400px;
+	padding-left: 100px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.side_nav_video {
+	width: 500px;
+	height: 1280px;
+	position: relative;
+	top: -620px;
+	left: 1100px;
+}
+</style>
 </head>
 <body>
-	<div
-		style="display: inline-block; position: inherit; margin: 10px 155px;">
-		<h1>비디오 디테일${sessionScope.memdto.opt_no_seq}</h1>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div class="video_area">
 		<div>
+			<h1>${videoDto.video_title }</h1>
+
 			<c:set var="videourl" value="${videoDto.video_url }" />
 			<c:choose>
 				<c:when test="${fn:startsWith(videourl, 'h')}">
@@ -37,12 +82,13 @@ $(function(){
 				</c:otherwise>
 			</c:choose>
 		</div>
-		<div>
-			<h2>${videoDto.video_title }</h2>
-		</div>
 		<div>${videoDto.video_content }</div>
 		<div>조회수 ${videoDto.video_views_no }</div>
-		<div>게시일 ${videoDto.video_regdate }</div>
+		<div>
+			<span> 등록시간 : <fmt:formatDate
+					value="${videoDto.video_regdate }" pattern="yyyy-MM-dd HH:mm" /><br>
+			</span>11111${videoDto.opt_id}222
+		</div>
 		<form action="video.do" method="get" id="commentFrm">
 			<input type="hidden" name="command" value="videoAnswerinsert">
 			<input type="hidden" name="no" value="${videoDto.video_no_seq }">
@@ -89,33 +135,39 @@ $(function(){
 				</c:otherwise>
 			</c:choose>
 		</table>
-	</div>
-	<table
-		style="display: inline-block; position: absolute; margin: 85px 100px;">
-		<c:choose>
-			<c:when test="${empty videoList }">
+
+		<div class="side_nav_video">
+			<table>
+				<c:choose>
+					<c:when test="${empty videoList }">
 						------등록된 동영상이 없습니다------
 				</c:when>
-			<c:otherwise>
-				<c:forEach items="${videoList }" var="videoDto">
-					<tr>
-						<c:set var="videourl" value="${videoDto.video_url }" />
-						<td><c:choose>
-								<c:when test="${fn:startsWith(videourl, 'h')}">
-									<iframe width="426" height="245" src=${videoDto.video_url }></iframe>
-								</c:when>
-								<c:otherwise>
-									<video width="426" height="245"
-										src="./video/${videoDto.video_url }" controls="controls"></video>
-								</c:otherwise>
-							</c:choose></td>
-						<td style="padding-left: 20px; padding-bottom: 130px;"
-							onclick="location.href='video.do?command=videoDetail&videoseq=${videoDto.video_no_seq}&page=${page }'">
-						</td>
-					</tr>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
-	</table>
+
+					<c:otherwise>
+						<c:forEach items="${videoList }" var="videoDto">
+							<tr>
+								<c:set var="videourl" value="${videoDto.video_url }" />
+								<td><c:choose>
+										<c:when test="${fn:startsWith(videourl, 'h')}">
+											<iframe width="426" height="245" src=${videoDto.video_url }></iframe>
+										</c:when>
+										<c:otherwise>
+											<video width="426" height="245"
+												src="./video/${videoDto.video_url }" controls="controls"></video>
+										</c:otherwise>
+									</c:choose></td>
+								<td style="padding-left: 20px; padding-bottom: 130px;"
+									onclick="location.href='video.do?command=videoDetail&videoseq=${videoDto.video_no_seq}&page=${page }'">
+								</td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</table>
+		</div>
+	</div>
+	<div class="foot_wrap">
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>
