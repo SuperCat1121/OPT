@@ -16,15 +16,33 @@
 
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#postbox").change(function() {
-			if ($("#postbox option:selected").val() == "받은 쪽지함") {
-				location.href = "postbox.do?command=recivePostbox&page=1";
-			} else {
-				location.href = "postbox.do?command=sendPostbox&page=1";
+
+function closeNav() {
+	document.getElementById('mysidenav').style.width = '0';
+}
+
+
+	$(document).ready(function(){
+		$("#postbox").change(function(){
+			if($("#postbox option:selected").val() == "보낸 쪽지함"){
+				location.href="postbox.do?command=sendPostbox&page=1";
+			}else{
+				location.href="postbox.do?command=recivePostbox&page=1";				
 			}
 		});
-
+		
+		$(".line-wrapper").click(function(){
+			
+			if($("#mysidenav").hasClass('abc') == true) {
+			
+				$("#mysidenav").removeClass('abc');
+				$("#mysidenav").width('0px');
+			} else {
+			$("#mysidenav").addClass('abc');
+			$("#mysidenav").width('250px');
+			}
+			});
+	
 	});
 
 	function allChk(bool) {
@@ -95,114 +113,151 @@
 
 </head>
 <body>
-	<h1>내 쪽지함</h1>
-	<hr>
-	<div class="content_area">
-		<form action="postbox.do" method="post" id="muldelform">
-			<div>
-				<div class="dropdown">
-					<select id="postbox" name="one" class="dropdown-select">
-						<option>받은 쪽지함</option>
-						<option selected>보낸 쪽지함</option>
-					</select>
-				</div>
-				<input class="btn" type="submit" value="삭제" /> <input class="btn"
-					type="button" value="쪽지보내기"
-					onclick="location.href='postbox.do?command=writePost&type=sendPostbox&page=${page }'" />&nbsp;
-
-			</div>
-			<br /> <input type="hidden" name="command" value="multiDel" /> <input
-				type="hidden" name="type" value="sendPostbox" /> <input
-				type="hidden" name="page" value="${page }" />
-			<table style="margin-top: -10px;">
-				<col width="120" />
-				<col width="300" />
-				<col width="150" />
-				<col width="150" />
-				<col width="50" />
-				<thead>
-					<tr>
-						<td>받은사람</td>
-						<td>제목</td>
-						<td>받은시간</td>
-						<td>읽은시간</td>
-						<td><input type="checkbox" name="all"
-							onclick="allChk(this.checked);" /></td>
-					</tr>
-				</thead>
-				<tbody>
-					<c:choose>
-						<c:when test="${empty list }">
-							<tr>
-								<td colspan="5">----------보낸 쪽지가 없습니다----------</td>
-							</tr>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${list }" var="dto">
-								<tr>
-									<td>${dto.post_recive_id }</td>
-									<td><a
-										href="postbox.do?command=sendPostdetail&post_no=${dto.post_no_seq }&page=${page }&type=sendPostbox">${dto.post_title }</a></td>
-									<td>${dto.post_send_date }</td>
-									<td><c:choose>
-											<c:when test="${dto.post_recive_read eq 'N'}">
-												<c:out value="읽지않음"></c:out>
-											</c:when>
-											<c:otherwise>
-												<c:out value="${dto.post_read_date }"></c:out>
-											</c:otherwise>
-										</c:choose></td>
-									<td><input type="checkbox" name="chk"
-										value="${dto.post_no_seq }" /></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-				</tbody>
-			</table>
-		</form>
-
-
-		<div class="pagination">
-			<div class="pagepoint">
-				<c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
-				<c:choose>
-					<c:when test="${prevPage >0}">
-						<a href="postbox.do?command=sendPostbox&page=${prevPage }"
-							class="page gradient">◀</a>
-					</c:when>
-					<c:otherwise>
-						<a href="postbox.do?command=sendPostbox&page=1"
-							class="page gradient">◀</a>
-					</c:otherwise>
-				</c:choose>
-				<c:forEach begin="${absolutePage }" end="${endPage }" var="i">
-					<c:choose>
-						<c:when test="${i eq page}">
-							<a href="postbox.do?command=sendPostbox&page=${i}"><span
-								class="page active">${i}</span></a>
-						</c:when>
-						<c:otherwise>
-							<a href="postbox.do?command=sendPostbox&page=${i}"
-								class="page gradient">${i}</a>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				<c:set var="nextPage" value="${absolutePage+blockCount }"></c:set>
-				<c:choose>
-					<c:when test="${nextPage < totalPage}">
-						<a href="postbox.do?command=sendPostbox&page=${nextPage }"
-							class="page gradient">▶</a>
-					</c:when>
-					<c:otherwise>
-						<a href="postbox.do?command=sendPostbox&page=${totalPage}"
-							class="page gradient">▶</a>
-					</c:otherwise>
-				</c:choose>
-			</div>
-			<h3>전체 보낸 쪽지 [${allCount}]개</h3>
-
+	
+	<div>
+	<jsp:include page="header.jsp"></jsp:include>
+	</div>
+	
+	<div class="page_title">
+		<h2>내 쪽지함</h2>
+	</div>
+		<!-- side menu -->
+	<nav class="side_menu_nav">
+	<div id="mysidenav" class="sidenav">
+		<div style="width : 250px;">
+		<a href="#" class="closebtn" onclick='closeNav()'>x</a>
+		<a href="deliver_search.jsp">운송장번호 조회</a>
+		<a href="postbox.do?command=recivePostbox&page=1">마이쪽지함</a>
+		<a href="calendar.jsp">일정관리</a>
+		<a href="basket.do?command=basketlist">장바구니</a>
+		<a onclick="coupon_popup();">내쿠폰함</a>
+		<a href="#">고객센터</a>		
 		</div>
+	</div>
+	<div class="openmenu_btn">
+	</div>
+	</nav>
+	<!-- 햄버거 -->
+		<div class="wrapper">
+  <!-- 추가된 부분 -->
+		  <div class="line-wrapper">
+		    <div class="line"></div>
+		    <div class="line"></div>
+		    <div class="line"></div>
+		  </div>
+		</div>
+		<!-- ************ -->
+	<div class="postboxContent">
+		<div class="content_area">
+			<form action="postbox.do" method="post" id="muldelform">
+				<div>
+					<div class="dropdown">
+						<select id="postbox" name="one" class="dropdown-select">
+							<option>받은 쪽지함</option>
+							<option selected>보낸 쪽지함</option>
+						</select>
+					</div>
+					<input class="btn" type="submit" value="삭제" /> <input class="btn"
+						type="button" value="쪽지보내기"
+						onclick="location.href='postbox.do?command=writePost&type=sendPostbox&page=${page }'" />&nbsp;
+
+				</div>
+				<br /> <input type="hidden" name="command" value="multiDel" /> <input
+					type="hidden" name="type" value="sendPostbox" /> <input
+					type="hidden" name="page" value="${page }" />
+				<table style="margin-top: -10px;">
+					<col width="120" />
+					<col width="300" />
+					<col width="150" />
+					<col width="150" />
+					<col width="50" />
+					<thead>
+						<tr>
+							<td>받은사람</td>
+							<td>제목</td>
+							<td>작성시간</td>
+							<td>읽은시간</td>
+							<td><input type="checkbox" name="all"
+								onclick="allChk(this.checked);" /></td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test="${empty list }">
+								<tr>
+									<td colspan="5">----------보낸 쪽지가 없습니다----------</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${list }" var="dto">
+									<tr>
+										<td>${dto.post_recive_id }</td>
+										<td><a
+											href="postbox.do?command=sendPostdetail&post_no=${dto.post_no_seq }&page=${page }&type=sendPostbox">${dto.post_title }</a></td>
+										<td>${dto.post_send_date }</td>
+										<td><c:choose>
+												<c:when test="${dto.post_recive_read eq 'N'}">
+													<c:out value="읽지않음"></c:out>
+												</c:when>
+												<c:otherwise>
+													<c:out value="${dto.post_read_date }"></c:out>
+												</c:otherwise>
+											</c:choose></td>
+										<td><input type="checkbox" name="chk"
+											value="${dto.post_no_seq }" /></td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+			</form>
+
+
+			<div class="pagination">
+				<div class="pagepoint">
+					<c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
+					<c:choose>
+						<c:when test="${prevPage >0}">
+							<a href="postbox.do?command=sendPostbox&page=${prevPage }"
+								class="page gradient">◀</a>
+						</c:when>
+						<c:otherwise>
+							<a href="postbox.do?command=sendPostbox&page=1"
+								class="page gradient">◀</a>
+						</c:otherwise>
+					</c:choose>
+					<c:forEach begin="${absolutePage }" end="${endPage }" var="i">
+						<c:choose>
+							<c:when test="${i eq page}">
+								<a href="postbox.do?command=sendPostbox&page=${i}"><span
+									class="page active">${i}</span></a>
+							</c:when>
+							<c:otherwise>
+								<a href="postbox.do?command=sendPostbox&page=${i}"
+									class="page gradient">${i}</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:set var="nextPage" value="${absolutePage+blockCount }"></c:set>
+					<c:choose>
+						<c:when test="${nextPage < totalPage}">
+							<a href="postbox.do?command=sendPostbox&page=${nextPage }"
+								class="page gradient">▶</a>
+						</c:when>
+						<c:otherwise>
+							<a href="postbox.do?command=sendPostbox&page=${totalPage}"
+								class="page gradient">▶</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<h3>전체 보낸 쪽지 [${allCount}]개</h3>
+			</div>
+		</div>
+	</div>
+	
+	<div>
+	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 
 </body>
