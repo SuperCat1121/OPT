@@ -60,6 +60,13 @@ input[type=text]{
     border-right: none;
     
 }
+.pw_area input{
+	width: 300px;
+    height: 25px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
 .regist_btn{
 	display: block;
     width: 100%;

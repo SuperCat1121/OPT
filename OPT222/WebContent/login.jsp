@@ -230,16 +230,14 @@
 
 
 				<div class=id_area>
-					<span class="input_box"> <input type="text"
-						placeholder="아이디" name="id" id="userId" onkeyup="checkData('id');"
-						class="id_pw" value=<%=cValue%>> <span id="idCheck"
-						style="display: none" class="idchk_span"></span>
+					<span class="input_box">
+					 <input type="text"placeholder="아이디" name="id" id="userId" onkeyup="checkData('id');"class="id_pw" value=<%=cValue%>> 
+					 <span id="idCheck" style="display: none" class="idchk_span"></span>
 					</span>
 				</div>
 				<div class="pw_area">
-					<input type="text" placeholder="비밀번호" name="pw"
-						onkeyup="checkData('pw');" class="id_pw"> <span
-						id="pwCheck" style="display: none" class="idchk_span"></span>
+					<input type="password"  class="pw_input" placeholder="비밀번호" name="pw" onkeyup="checkData('pw');" class="id_pw"> 
+					<span id="pwCheck" style="display: none" class="idchk_span"></span>
 				</div>
 
 				<%
