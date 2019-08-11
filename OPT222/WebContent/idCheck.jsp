@@ -5,8 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 중복체크</title>
+<style type="text/css">
+.btn {
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 8.5px;
+    margin-top:5px;
+}
+.checkBtn {
+    background-color: #cbb795;
+}
+input[type=text] {
+	   padding: 8px;
+}
+table {
+    margin: 0 auto;
+    margin-top: 15px;
+   }
+.hide {
+	display:none;
+}
+</style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <script type="text/javascript">
 var ids = [];
 	$(function() {
@@ -46,7 +70,7 @@ var ids = [];
 		if (ids.indexOf(id) != -1) {
 			message.innerHTML = "<b>아이디가 존재합니다.</b>";
 		} else {
-			message.innerHTML = "사용할수 있는 아이디입니다. <input type='button' value='확인' onclick='insertId(\""
+			message.innerHTML = "<b>사용할수 있는 아이디입니다.</b> <br/><input type='button' class='btn checkBtn' value='확인' onclick='insertId(\""
 					+ id + "\")'>";
 		}
 
@@ -64,12 +88,17 @@ var ids = [];
 			<td>아이디</td>
 			<td><input type="text" name="id_check" id="id_check" /></td>
 		</tr>
+		<tr align="center" id="check_area">
+			<td colspan="2">
+				<input type="button" value="중복확인" class="btn checkBtn" onclick="cofirmChk()" /> 
+				<input type="button" value="취소" class="btn" onclick="self.close()" />
+			</td>
+		</tr>
 		<tr align="center">
-			<td colspan="2"><input type="button" value="중복확인"
-				onclick="cofirmChk()" /> <input type="button" value="취소"
-				onclick="self.close()" /></td>
+			<td colspan="2" id="checkMessage">
+			
+			</td>
 		</tr>
 	</table>
-	<div id="checkMessage"></div>
 </body>
 </html>

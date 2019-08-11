@@ -9,9 +9,17 @@
 <!-- 다음 주소 api -->
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <link rel="stylesheet"	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link href="css/register.css" rel="stylesheet" type="text/css">
 <!-- 달력 api -->
 <meta charset="UTF-8">
 <title>register</title>
+<style type="text/css">
+	.foot_area_wrap{
+	position: relative;
+    top: 110px;
+	}
+
+</style>
 </head>
 <script type="text/javascript">
 	function validate() {
@@ -96,14 +104,27 @@
 		what.focus();
 	}
 
-	function idCheck() {
+	/* function idCheck() {
 		window.open("idCheck.jsp", "", "width=300px; height=300px;");
-	};
+	}; */
+	function idCheck(){
+			cw = screen.availWidth;
+			ch = screen.availHeight;
+				
+			sw=300;    //띄울 창의 넓이
+			sh=300;    //띄울 창의 높이
 
+			ml = (cw - sw) / 2;
+			mt = (ch - sh) / 2;
+
+			var url = encodeURI("idCheck.jsp");
+			window.open(url, '아이디중복검사', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+		  }
+		  
 	var ran = null;
 	
 	function emailChk() {
-		var email = $("#opt_email").val() + $("#str_email").val();
+		var email = $("#opt_email").val() +"@"+ $("#str_email").val();
 		var emailSpan = $("#emailSpan");
 
 		$.ajax({
@@ -193,75 +214,88 @@
 	})
 </script>
 <body>
-	<h1>SIGN UP</h1>
+
+	<jsp:include page="header.jsp"></jsp:include>
+	<div class="regist_content">
+	<h2>회원가입</h2>
 	<form action="login.do" method="get" name="join" onsubmit="return validate()" >
 	<input  type="hidden" name="command" value="register"/>
+		<div class="regist_area">
 		<table>
 			<tr>
-				<td><b>아이디</b></td>
+				<td class="width-17"><b>아이디</b></td>
 				<td>
-					<input type="text" id="opt_id" name="opt_id" onclick="idCheck()" readonly="readonly" placeholder="4-12자의 영문 대소문자 숫자" size="25"/>
-					<input type="button" value="중복체크" onclick="idCheck()" /></td>
+					<input type="text" class="id_input" id="opt_id" name="opt_id" onclick="idCheck()" readonly="readonly" placeholder="4-12자의 영문 대소문자 숫자" />
+					<input type="button" class="btn id_input_btn" value="중복체크" onclick="idCheck()" /></td>
 			</tr>
 			<tr>
-				<td><b>비밀번호</b></td>
-				<td><input type="password" id="opt_pw" name="opt_pw" size="25"></td>
+				<td class="width-17"><b>비밀번호</b></td>
+				<td><input type="password" class="input_form" id="opt_pw" name="opt_pw" ></td>
 			</tr>
 			<tr>
-				<td><b>비빌번호 확인</b></td>
-				<td><input type="password" id="checkpw" name="checkpw" size="25"></td>
+				<td class="width-17"><b>비빌번호 확인</b></td>
+				<td><input type="password" class="input_form" id="checkpw" name="checkpw" ></td>
 			</tr>
 			<tr>
-				<td><b>이 름</b></td>
-				<td><input type="text" id="opt_name" name="opt_name" size="25"></td>
+				<td class="width-17"><b>이 름</b></td>
+				<td><input type="text" class="input_form" id="opt_name" name="opt_name" ></td>
 			</tr>
 			<tr>
-				<td><b>생년월일</b></td>
-				<td><input type="text" id="opt_birth" name="opt_birth" readonly="readonly" size="25"></td>
+				<td class="width-17"><b>생년월일</b></td>
+				<td><input type="text" class="input_form" id="opt_birth" name="opt_birth" readonly="readonly" ></td>
 			</tr>
 			<tr>
-				<td><b>전화번호</b></td>
-				<td><input type="text" id="opt_phone" name="opt_phone" size="25"></td>
+				<td class="width-17"><b>전화번호</b></td>
+				<td><input type="text"  class="input_form"  id="opt_phone" name="opt_phone" ></td>
 			</tr>
 			<tr>
-				<td><b>주 소</b></td>
+				<td class="width-17"><b>주 소</b></td>
 				<td>
-					<input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly="readonly" size="25">
-				  	<input type="button" value="우편번호 찾기" onclick="DaumPostcode()"><br>
-					<input type="text" id="roadAddress" name="roadAddress" placeholder="도로명주소" readonly="readonly" size="25">
-					<input type="text" name="opt_addr" checked="checked" placeholder="상세주소" size="25"/></td>
+					<input type="text" class="post_num margin-bottom-5px" id="postcode" name="postcode" placeholder="우편번호" readonly="readonly" >
+				  	<input type="button"  class="btn id_input_btn"  value="우편번호 찾기" onclick="DaumPostcode()"><br>
+					<input type="text" class="input_form margin-bottom-5px" id="roadAddress" name="roadAddress" placeholder="도로명주소" readonly="readonly" >
+					<input type="text" class="input_form" name="opt_addr" checked="checked" placeholder="상세주소" /></td>
 			</tr>
 			<tr>
-				<td><b>이메일</b></td>
+				<td class="width-17"><b>이메일</b></td>
 				<td>
-					<input type="text" id="opt_email" name="opt_email">
-					<input type="text" name="opt_email_addr" id="str_email"	value="@naver.com">
-						<select id="selectEmail">
+					<input type="text" class="email_input" id="opt_email" name="opt_email">@
+					<input type="text" class="email_input" name="opt_email_addr" id="str_email"	value="naver.com">
+						<select id="selectEmail" class="email_select">
 							<option value="1">직접입력</option>
-							<option value="naver.com" selected>@naver.com</option>
-							<option value="nate.com">@nate.com</option>
-							<option value="hanmail.net">@hanmail.net</option>
-							<option value="gmail.com">@gmail.com</option>
+							<option value="naver.com" selected>naver.com</option>
+							<option value="nate.com">nate.com</option>
+							<option value="hanmail.net">hanmail.net</option>
+							<option value="gmail.com">gmail.com</option>
 						</select>
-					<input type="button" value="이메일 인증" onclick="emailChk()"> <span id="emailSpan"></span></td>
+					<input type="button" class="btn email_btn margin-top-5px" value="이메일 인증" onclick="emailChk()"> 
+					<div id="emailSpan" class="margin-top-5px"></div>
+				</td>
+
 			</tr>
 			<tr>
-				<td><b>인증번호</b></td>
+				<td class="width-17"><b>인증번호</b></td>
 				<td>
-					<input type="text" id="emailConfirm" size="25">
-					<input type="button" value="확인" onclick="emailCon()"> <span id="emailConSpan"></span></td>
+					<input type="text" id="emailConfirm" class="email_confirm" >
+					<input type="button" value="확인" class="btn email_confirm_btn" onclick="emailCon()">
+					<div class="margin-top-5px" id="emailConSpan"></div>
+				</td>
 			</tr>
 			<tr>
-				<td><b>성 별</b></td>
+				<td class="width-17"><b>성 별</b></td>
 				<td>
 					<input type="radio" name="opt_gender" value="male" />남성
 				    <input type="radio" id="opt_gender"	name="opt_gender" value="female" /> 여성
 				</td>
 			</tr>
-			<tr>
-				<td><input type="submit" value="회원가입" > <input type="reset" value="다시입력"></td>
-			</tr>
 		</table>
+				<input type="submit" class="regist_btn" value="회원가입" >
+		</div>
 	</form>
+	</div>
+	
+	<div class="foot_area_wrap">
+	<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

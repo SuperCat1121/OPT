@@ -29,7 +29,7 @@
 				<div class="hd_bottom">
 					<div class="hd_logo">
 						<a href="index.jsp">
-							<img alt="opt_logo" src="image/logo2.png">
+							<img alt="opt_logo" src="main_image/logo2.png">
 						</a>
 					</div>
 					<div class="hd_menu">

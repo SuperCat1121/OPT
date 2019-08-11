@@ -40,7 +40,7 @@ input:focus{
     padding-top: 1px;
     border: none;
     border-radius: 0;
-    background-color: #03c75a;
+    background-color: #cbb7d6;
     cursor: pointer;
     text-align: center;
     color: #fff;
@@ -49,6 +49,7 @@ input:focus{
     line-height: 61px;
     margin: 20px 0 14px;
     border-radius: 50px;
+    margin-top: 38px;
     
 }
 input[type=text]{
@@ -87,7 +88,9 @@ input[type=text]{
   font-style: italic;
 }
 
-.checks {position: relative;}
+.checks {
+    position: relative;
+    margin-top: 13px;}
 
 .checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
   position: absolute;

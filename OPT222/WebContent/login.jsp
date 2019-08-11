@@ -52,6 +52,10 @@
    	 		line-height: 44px !important;
    			 font-weight: bold !important;
 	}
+	.foot_area_wrap{
+	 position: relative;
+   	 top: 170px;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -196,6 +200,8 @@
 </script>
 </head>
 <body>
+
+ 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="login_content">
 		<fieldset class="login_form" style="border: 0px;">
 			<legend class="blind">로그인</legend>
@@ -248,20 +254,18 @@
 					<%
 						if (cValue == "" || cValue == null) {
 					%>
-					<input type="checkbox" id="ex_chk3" name="id_save" /> <label
-						for="ex_chk3">아이디저장</label>
+					<input type="checkbox" id="ex_chk3" name="id_save" /> 
+					<label for="ex_chk3">아이디저장</label>
 					<%
 						} else {
 					%>
-					<input type="checkbox" id="ex_chk3" name="id_save"
-						checked="checked" /> <label for="ex_chk3">아이디저장</label>
+					<input type="checkbox" id="ex_chk3" name="id_save" checked="checked" /> <label for="ex_chk3">아이디저장</label>
 					<%
 						}
 					%>
 				</div>
-				<input type="submit" value="로그인" class="login_btn" /> <input
-					type="button" value="회원가입" onclick="location.href='register.jsp'"
-					class="regist_btn" />
+				<input type="submit" value="로그인" class="login_btn" />
+				 <input type="button" value="회원가입" onclick="location.href='register.jsp'" class="regist_btn" />
 			</form>
 			
 			<div class="search_idpw_area">
@@ -278,6 +282,11 @@
 			</div> 
 		</fieldset>
 	</div>
+	
+	<div class="foot_area_wrap">
+	<jsp:include page="footer.jsp"></jsp:include>
+	</div>
+
 	
 </body>
 </html>
