@@ -22,7 +22,8 @@
 		V.VIDEO_CONTENT, V.VIDEO_REGDATE, V.VIDEO_VIEWS_NO
 		FROM OPT_VIDEO_CLIP
 		V, OPT_MEMBER M
-		WHERE V.OPT_NO_SEQ = M.OPT_NO_SEQ))
+		WHERE V.OPT_NO_SEQ = M.OPT_NO_SEQ
+		ORDER BY VIDEO_NO_SEQ DESC))
 		WHERE R BETWEEN
 		#{start} AND #{end}
 	</select>
@@ -74,7 +75,7 @@
 			</if>
 			<if test="searchtext!= null and searchoption == 'video_content'">
 				AND VIDEO_CONTENT LIKE '%'||#{searchtext}||'%'
-			</if>
+			</if>			
 		</where>
 		ORDER BY VIDEO_NO_SEQ DESC))
 		WHERE R BETWEEN #{start} AND #{end}

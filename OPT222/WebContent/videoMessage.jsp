@@ -81,7 +81,7 @@
 		<table id="ta1" radius="6" rborder="#999999" rbgcolor="#F8F8F8">
 			<tr>
 				<th>아 이 디</th>
-				<td class="sendPostTd"><input type="text" name="user" value="${id }"
+				<td class="sendPostTd"><input type="text" name="user" value="${param.id }"
 					readonly="readonly" required="required"/></td>
 			</tr>
 			<tr>
