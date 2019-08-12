@@ -82,7 +82,9 @@ $(function(){
 					type="submit" value="검 색"
 					style="height: 36px; width: 76px; background: rgb(105, 1, 143); color: white; font-weight: bold;"></td>
 				<td class="myvedioBtn"><input type="button" value="나의 동영상"
-					onclick="location.href='video.do?command=videoList&page=1&videoarea=my'"></td>
+					onclick="location.href='video.do?command=videoList&page=1&videoarea=my'">
+					<input type="button" value="업로드"
+					onclick="location.href='videoupload.jsp'"></td>
 			</tr>
 		</table>
 	</form>
@@ -105,7 +107,7 @@ $(function(){
 								</c:otherwise>
 							</c:choose></td>
 						<td class="videoContent">
-							<h4 style="font-size: 1.5em;margin-top: 1px;"
+							<h4 style="font-size: 1.5em; margin-top: 1px;"
 								onclick="location.href='video.do?command=videoDetail&videoseq=${videoDto.video_no_seq}&page=${page }'">${videoDto.video_title }</h4>
 							<span onclick="videoMessage('${videoDto.opt_id}')">${videoDto.opt_id}</span>
 							<span>조회수 : ${videoDto.video_views_no }</span> <span> 등록시간

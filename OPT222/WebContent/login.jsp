@@ -153,6 +153,33 @@
 		      }
 		    })
 		}
+		function findID(){
+			cw = screen.availWidth;
+			ch = screen.availHeight;
+				
+			sw=300;    //띄울 창의 넓이
+			sh=300;    //띄울 창의 높이
+
+			ml = (cw - sw) / 2;
+			mt = (ch - sh) / 2;
+
+			var url = encodeURI("findid.jsp");
+			window.open(url, '아이디 찾기', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+		  }
+		function findPW(){
+			cw = screen.availWidth;
+			ch = screen.availHeight;
+				
+			sw=300;    //띄울 창의 넓이
+			sh=300;    //띄울 창의 높이
+
+			ml = (cw - sw) / 2;
+			mt = (ch - sh) / 2;
+
+			var url = encodeURI("findpassword.jsp");
+			window.open(url, '비밀번호 찾기', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+		  }
+		
  		$(function(){
  	 		var naverLogin = new naver.LoginWithNaverId(
  	 				{
@@ -228,16 +255,18 @@
 					}
 				%>
 
-
+ 
 				<div class=id_area>
-					<span class="input_box">
-					 <input type="text"placeholder="아이디" name="id" id="userId" onkeyup="checkData('id');"class="id_pw" value=<%=cValue%>> 
-					 <span id="idCheck" style="display: none" class="idchk_span"></span>
+					<span class="input_box"> <input type="text"
+						placeholder="아이디" name="id" id="userId" onkeyup="checkData('id');"
+						class="id_pw" value=<%=cValue%>> <span id="idCheck"
+						style="display: none" class="idchk_span"></span>
 					</span>
 				</div>
 				<div class="pw_area">
-					<input type="password"  class="pw_input" placeholder="비밀번호" name="pw" onkeyup="checkData('pw');" class="id_pw"> 
-					<span id="pwCheck" style="display: none" class="idchk_span"></span>
+					<input type="text" placeholder="비밀번호" name="pw"
+						onkeyup="checkData('pw');" class="id_pw"> <span
+						id="pwCheck" style="display: none" class="idchk_span"></span>
 				</div>
 
 				<%
@@ -267,9 +296,9 @@
 			</form>
 			
 			<div class="search_idpw_area">
-				<a onclick="location.href='findid.jsp'">아이디찾기</a>
+				<a onclick="findID()">아이디찾기</a>
 				<span class="bar" aria-hidden="true">|</span>
-				<a onclick="location.href='findpassword.jsp'">비밀번호찾기</a>
+				<a onclick="findPW()">비밀번호찾기</a>
 			</div>
 			<div class="sns_login_area">
 			<div id="naverIdLogin" ></div>

@@ -169,7 +169,8 @@
 	})
 </script>
 <body>
-	<h1>UPDATE</h1>
+	<h1>개인정보 수정</h1>
+	<h3>개인정보를 수정하려면 비밀번호와 이메일 인증이 필수입니다</h3>
 	<form action="login.do" id="updateFrm" method="post" name="update"
 		onsubmit="return validate()">
 		<input type="hidden" name="command" value="updateUser" /> <input
