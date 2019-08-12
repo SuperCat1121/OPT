@@ -30,7 +30,7 @@ $(function(){
 	}
 	function videoMessage(id) {
 		console.log(id);
- 		window.open("videoMessage.jsp?id="+id, "", "width=500px; height=300px;");
+ 		window.open("videoMessage.jsp?id="+id, "", "width=600px; height=480px;");
  	}
 
 </script>

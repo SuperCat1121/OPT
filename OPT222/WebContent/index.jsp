@@ -60,7 +60,7 @@
 	}
 
 	.section2 {
-		background: url(main_image/running.png);
+		background: url("main_image/running.png");
 		background-size: cover;
 	}
 

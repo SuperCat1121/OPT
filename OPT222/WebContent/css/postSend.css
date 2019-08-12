@@ -135,12 +135,17 @@ a {
 	padding-left: 11%;
 }
 
+.sendVideoBtnDiv{
+    padding-left: 27%;
+}
+
 .sendPostBtn{
 	border-radius: 5px;
     font-size: .875em;
     width: 100px;
     height: 40px;
 }
+
 
 .sendPostTd{
 	padding-left: 10px;

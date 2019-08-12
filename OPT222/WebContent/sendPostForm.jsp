@@ -138,7 +138,7 @@
 	<table id="ta1" radius="6" rborder="#999999" rbgcolor="#F8F8F8">
 		<tr>
 			<th>아 이 디</th>
-			<td class="sendPostTd"><input type="text" name="user" value="${user }" readonly="readonly"/></td>			
+			<td class="sendPostTd"><input type="text" name="user" value="${user }" readonly="readonly" required="required"/></td>			
 		</tr>
 		<tr>
 			<th>제     목</th>
