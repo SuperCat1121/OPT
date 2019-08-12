@@ -1,4 +1,9 @@
 	
+	body {
+		background: #fbffe6;
+		margin: 0px;
+	}
+	
 	table {
 		position: relative;
 	    top: 78px;
@@ -7,14 +12,15 @@
 	    padding: 30px;
 	}
 	th {
+		background: #e8fdb6;
 		text-align: right;
 	}
 	input[type=button] {
-		border: none;
-		background: lime;
+		background: white;
+		border: 1px solid black;
 		border-radius: 6px;
 	}
 	input[type=button]:hover {
+		background: #F5BCA9;
 		cursor: pointer;
-		border: 1px solid black;
 	}

@@ -58,9 +58,9 @@ public class OptAdminController extends HttpServlet {
 			// 끝 페이지가 총 페이지보다 클 경우 끝 페이지를 총 페이지로 맞춤
 			if(endPage > totalPage) { endPage = totalPage; }
 			// 첫번째 목록
-			int startCount = (page-1) * countPage + 1;
+			int startCount = (page-1) * countList + 1;
 			// 마지막 목록
-			int endCount = page * countPage;
+			int endCount = page * countList;
 
 			List<MemberDto> list = biz.adminUserPaging(startCount, endCount);
 			request.setAttribute("startPage", startPage);
@@ -81,7 +81,7 @@ public class OptAdminController extends HttpServlet {
 			// 한 화면에 찍을 페이지 수
 			int countPage = 4;
 			// 한 화면에 찍을 상품 수
-			int countList = 5;
+			int countList = 3;
 			// 현재 페이지
 			int page = Integer.parseInt(request.getParameter("page"));
 			// 총 상품 수
@@ -98,9 +98,9 @@ public class OptAdminController extends HttpServlet {
 			// 끝 페이지가 총 페이지보다 클 경우 끝 페이지를 총 페이지로 맞춤
 			if(endPage > totalPage) { endPage = totalPage; }
 			// 첫번째 목록
-			int startCount = (page-1) * countPage + 1;
+			int startCount = (page-1) * countList + 1;
 			// 마지막 목록
-			int endCount = page * countPage;
+			int endCount = page * countList;
 			
 			List<ItemDto> list = biz.adminItemPaging(startCount, endCount);
 			request.setAttribute("startPage", startPage);

@@ -21,9 +21,11 @@
 			document.location.href = "index.jsp";
 		</script>
 	</c:if>
-	<a href="index.jsp">메인</a>
-	<h1>관리자</h1>
-	<hr style="margin-bottom: 0px;">
+	<div>
+		<jsp:include page="header.jsp"/>
+	</div>
+	<div class="page_title">관리자님, 어서오세요</div>
+	<hr style="width: 68%;">
 	<div class="nav">
 		<table border="1">
 			<tr>
@@ -41,7 +43,7 @@
 		</table>
 	</div>
 	<div class="layer" style="display: none;"></div>
-	<div class="content_area">
+	<div class="main">
 		<div class="first" style="margin-left: 65px;">
 			<p>판매진행현황</p>
 			<hr>
@@ -184,6 +186,9 @@
 		</div>
 		<div class="adminUserManagerPopup" style="display: none;"></div>
 		<div class="adminItemManagerPopup" style="display: none;"></div>
+	</div>
+	<div>
+		<jsp:include page="footer.jsp"/>
 	</div>
 </body>
 </html>
