@@ -359,33 +359,7 @@ WHERE R BETWEEN 1 AND 5
 INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
 INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
 INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111111,'회원가입쿠폰','회원가입시 1000원 쿠폰','2019-08-16','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111112,'3000원 할인쿠폰','고객감사 3000원 할인 쿠폰','2019-08-12','1000');
-INSERT INTO OPT_COUPON VALUES(3,COUPONSEQ.NEXTVAL,111113,'배송비무료쿠폰',' 배송비 무료 쿠폰','2019-08-11','1000');
+
 
 
 
@@ -425,26 +399,31 @@ CREATE TABLE OPT_ITEM(
     ITEM_NAME VARCHAR2(100) NOT NULL,   --상품이름
     ITEM_PRICE NUMBER NOT NULL,  		--상품가격
     ITEM_VIEWS_NO NUMBER NOT NULL,      --조회수
-    ITEM_CONTENT VARCHAR2(100),         --상품설명
+    ITEM_CONTENT VARCHAR2(1000),         --상품설명
     ITEM_URL VARCHAR2(100),             --상품이미지URL
     ITEM_COUNT NUMBER DEFAULT 1,        --상품 개수
     ITEM_ENABLED VARCHAR2(2) NOT NULL CONSTRAINT item_enabled_ck CHECK (ITEM_ENABLED IN('Y','N')) -- 판매 여부
 );
 
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'미니아령',10000,0,'여성분들도 운동하실수있는 가벼운 아령입니다','image/dombel.png', DEFAULT, 'Y');
-INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'손목밴드',3000,0,'운동할때 다치지않게 잡아주는 손목밴드입니다','image/band.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'순식단 식물성단백질 28개입', 49000, 0, '맛있는 식이조절 식단이 필요하시다면, 간편한 식사대용품이 필요하다면 순식단으로 선택하세요','image/item_img01.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'밀스원 바디케어 도시락 10팩', 37900, 0, '칼로리는 낮지만 매일매일 질리지 않고 맛있는 식사를 위해 맛, 영양, 식감까지 고려한 최적의 하모니~','image/item_img02.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'비타북스 2주 완성 식단', 11700, 0, '2주 완성, 살이 쭉쭉 빠지는 저칼로리 식단 하루 세 끼, 든든히 먹으면서 뺀다!','image/item_img03.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'포르미 한입도시락 10종 20팩', 54900, 0, '간편하게 한입! 바쁜 출근시간에 2분30초만 전자렌지에 돌려서 드세요 적은 칼로리로 야식이 땡길때도 한입 도시락으로!!','image/item_img04.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'나마시떼 도시락 8팩', 29900, 0, '식이섬유가 풍부한 갓 지은 영양밥으로 만든 맞춤 도시락 ','image/item_img05.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'포켓샐러드 6팩 패키지', 31800, 0, '매일 먹어도 질리지 않는 취향따라 기분따라 골라먹는 3가지맛!! 풍부한 식이섬유가 포함된 샐러드로 건강을 챙겨보세요!','image/item_img06.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'비타할로 다이어트 쉐이크', 12300, 0, '아직도 굶으면서 다이어트 하시나요? 칼로리 걱정 없이 맛있는 한끼 비타할로 가볍게 한끼 다이어트 쉐이크로 균형잡힌 다이어트 하세요!!','image/item_img07.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'칼로리발란스 치즈 10개입', 10650, 0, '당신을 위한 맞춤영양 밸런스! 굶지말고 간단하게 식사대용으로 드세요~','image/item_img08.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'밥이곤약 곤약 즉석밥 10개입', 18340, 0, '흰쌀은 한 톨도 넣지 않았어요 현미 3: 귀리 3: 곤약 4의 황금비율로 밥을 지어 잡곡밥 특유의 거칠함 없이 기분좋은 식감을 느껴보세요!','image/item_img09.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'이훈 현미밥식단 4종 12팩', 41900, 0, '더욱 다양해진 현미밥 식단으로 건강관리 하세요! 각기 다른 4종의 도시락으로 질리지않습니다!','image/item_img10.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'에스앤씨 닭가슴살 샐러드 6팩', 16900, 0, '단백질이 풍부한 닭가슴살과 식이섬유가 풍부한 각종 채소를 넣은 건강한 혼닭 닭가슴살 샐러드예요.','image/item_img11.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'허닭 닭가슴살 스테이크 5팩', 18900, 0, '삼시세끼 먹고 탄탄하고 빛나는 바디라인을 만들고 싶다면! 허닭 스테이크 도시락 5종!!','image/item_img12.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'칼로바이 파워쉐이크 14개입', 32400, 0, '간편하고 맛있고 건강한 재료를 사용한 단백질 쉐이크! 황금비율 배합비가 적용된 프리미엄 단백질로 선택하세요!!','image/item_img13.png', DEFAULT, 'Y');
+INSERT INTO OPT_ITEM VALUES(ITEM_NUM_SEQ.NEXTVAL,'땡스귀리 도시락 6개입', 24000, 0, '포만감이 풍부한 삶은 귀리, 식이섬유가 풍부한 4색 콩과 각종 야채의 만남으로 채소의 영양을 그대로 섭취하실수 있는 다이어트 도시락입니다','image/item_img14.png', DEFAULT, 'Y');
+
+
+
+
+
 
 SELECT * FROM OPT_ITEM;
 -------------상품댓글-------------------

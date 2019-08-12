@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html;charset=UTF-8");
-%>   
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 <title>상품 상세페이지</title>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -153,14 +154,14 @@
 		<jsp:include page="header.jsp"></jsp:include>
 	</div>
 
-	<h1>상품 상세페이지</h1>
+	
 
 	<form action="item.do" method="post" id="form" onsubmit="return false;">
 		<input type="hidden" name="command" value="payment"> <input
 			type="hidden" name="Flag" value="2"> <input type="hidden"
 			name="no" value="${Itemdto.item_num_seq }" /> <input type="hidden"
 			id="price" value="${Itemdto.item_price }" />
-		<div>
+		<div style="padding-top: 50px; padding-bottom: 50px; padding-right: 226px;">
 			<ul>
 				<li>
 					<div style="display: inline-flex; position: relative; left: 30%;">
@@ -169,16 +170,17 @@
 								height="500" />
 						</div>
 						<div style="margin-left: 100px;">
-							<span style="font-size: 3em; font-weight: bold;">${Itemdto.item_name }</span>
-							<span>view : ${Itemdto.item_views_no }</span> <a
-								id="kakao-link-btn" href="javascript:;"> <img
-								src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" />
-
-							</a>
+							<span style="font-size: 2em; font-weight: bold;">${Itemdto.item_name }</span>
+														
 							<h2>
 								<strong id="totalPrice"></strong>원
+								<a id="kakao-link-btn" href="javascript:;">
+								<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" />
+								</a>
 							</h2>
-							<a>${Itemdto.item_content }</a><br />
+							
+							<div style="width: 405px; height: 73px;">${Itemdto.item_content }</div>
+							<br />
 
 							<div>
 								<input type="number" value="1" id="ea" name="ea" min="1"
@@ -203,7 +205,8 @@
 		</div>
 	</form>
 	<br>
-	<hr>
+	
+	<div style="width: 1200px; margin: 0 auto; border-top-style: solid; color: #ebebeb;"></div>
 	<div style="text-align: center; padding: 30px;">
 		<c:choose>
 			<c:when test="${empty memdto }">
@@ -241,7 +244,7 @@
 				</ul>
 			</c:when>
 			<c:otherwise>
-				<table>
+				<table style="margin: 0 auto;">
 					<col width="200" />
 					<col width="300" />
 					<col width="200" />
@@ -271,9 +274,9 @@
 		</c:choose>
 	</div>
 
-	
 
-<%@ include file="./footer.jsp" %>
+
+	<%@ include file="./footer.jsp"%>
 
 </body>
 </html>
