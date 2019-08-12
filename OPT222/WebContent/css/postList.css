@@ -93,12 +93,12 @@ a {
 
 /* 추가된 부분 */
 .line-wrapper {
-       cursor: pointer;
+     cursor: pointer;
     width: 56px;
     height: 35px;
     position: relative;
     top: 52.5px;
-    left: 136px;
+    left: 147px;
 }
 
 /* 추가된 부분 */

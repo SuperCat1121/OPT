@@ -9,6 +9,7 @@ public class ItemDto {
 	private String item_url;
 	private int item_count;
 	private String item_enabled;
+	
 	public String getItem_enabled() {
 		return item_enabled;
 	}

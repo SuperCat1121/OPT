@@ -12,15 +12,19 @@
 <title>결제 완료</title>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+	
+	function payComplete() {
+		opener.location.replace("basketPayComplete.jsp");
+		self.close();
+	}
+	
+	onload = function() {
+		payComplete();
+	}
 
-	$(document).ready(function(){
-		window.location.replace("basketPayComplete.jsp");
-	});
+
 </script>
 </head>
 <body>
-
-	<h1>결제가 완료되었습니다.</h1>
-
 </body>
 </html>

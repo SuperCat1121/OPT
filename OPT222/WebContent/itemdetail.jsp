@@ -225,7 +225,7 @@
 						<li>
 							<div>
 								${memdto.opt_id } &nbsp; <input type="text" value=""
-									name="content" placeholder="댓글을 작성해주세요" maxlength="30"
+									name="content" placeholder="댓글을 작성해주세요" maxlength="30" required="required"
 									style="width: 200px" /> &nbsp; <input type="submit" value="등록" />
 							</div>
 						</li>

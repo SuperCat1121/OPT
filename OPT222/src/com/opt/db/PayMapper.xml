@@ -14,7 +14,7 @@
 		FROM OPT_PAYMENT
 		ORDER BY PAY_SEQ
 		SELECT R , PAY_DATE , NAME , PAY_ALL
-		FROM(SELECT ROWNUM R, PAY_DATE ,I.ITEM_NAME NAME, I.ITEM_PRICE * P.PAY_COUNT PAY_ALL
+		FROM(SELECT ROWNUM R, PAY_DATE ,I.ITEM_NAME NAME, P.PAY_TOTAL PAY_ALL
 		FROM OPT_PAYMENT P , OPT_ITEM I , OPT_MEMBER M
 		WHERE M.OPT_NO_SEQ = P.OPT_NO_SEQ
 		AND P.ITEM_NUM_SEQ = I.ITEM_NUM_SEQ
@@ -30,7 +30,7 @@
 	<insert id="insertPayment" parameterType="PaymentDto">
 		INSERT INTO OPT_PAYMENT VALUES(
 		#{opt_no_seq}, #{item_num}, PAYSEQ.NEXTVAL, #{pay_recipient_name},
-		#{pay_place}, #{pay_phone}, #{pay_memo}, #{pay_count}, SYSDATE
+		#{pay_place}, #{pay_phone}, #{pay_memo}, #{pay_count}, SYSDATE, #{pay_total}
 		)
 	</insert>
 </mapper>

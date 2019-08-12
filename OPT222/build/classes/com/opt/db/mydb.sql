@@ -28,7 +28,7 @@ INSERT INTO OPT_MEMBER VALUES(
     '1987/01/14',
     '서울시 관악구 청룡동 1536-4',
     '010-2662-5393',
-    'lastjap@gmail.com',
+    'last@gmail.com',
     'Y',
     'male',
     'admin',
@@ -465,28 +465,12 @@ CREATE TABLE OPT_PAYMENT(
     PAY_PHONE VARCHAR2(100) NOT NULL,                   --배송지 전화번호
     PAY_MEMO VARCHAR2(3000),                            --배송 요청사항
     PAY_COUNT NUMBER NOT NULL,                          --상품수량
-    PAY_DATE DATE NOT NULL								--결제일
+    PAY_DATE DATE NOT NULL,								--결제일
+    PAY_TOTAL NUMBER NOT NULL								--총 결제금액
 );
 
-INSERT INTO OPT_PAYMENT VALUES(1,1,PAYSEQ.NEXTVAL,'홍길동','경기도 고양시 덕양구','010-1234-4567','경비실에 놔주세요',1,SYSDATE);
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,SYSDATE);
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','7시에 와주세요',1,SYSDATE);
--- Admin Branche Merge ================================================================
-INSERT INTO OPT_PAYMENT VALUES(1,1,PAYSEQ.NEXTVAL,'홍길동','경기도 고양시 덕양구','010-1234-4567','경비실에 놔주세요',1,SYSDATE);
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,SYSDATE);
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-04');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-04');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-04');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-03');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-08-03');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-28');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-28');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-28');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-07-28');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-06-28');
-INSERT INTO OPT_PAYMENT VALUES(2,2,PAYSEQ.NEXTVAL,'강호동','서울특별시 마포구','010-1423-4467','3시에 와주세요',1,'2019-06-28');
--- =====================================================================================
-번호 주문일자 상품명 결제금액
+
+
 
 
 SELECT R , PAY_DATE , NAME , PAY_ALL

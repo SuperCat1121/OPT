@@ -134,7 +134,7 @@
 	
 	<h3>구매자 정보</h3>
 	<hr/>
-	<form action="pay.do" method="post" id="form" onsubmit="return false;">
+	<form action="pay.do" method="post" target="kakaoPay" id="form">
 	<input type="hidden" name="command" value="basketReady" />	
 	<input type="hidden" name="partner_order_id" value="123" />
 	<input type="hidden" name="partner_user_id" value="12" />
@@ -174,8 +174,8 @@
 			<col width="200px" />
 			<tr>
 				<td>배송주소</td>
-				<td id="addr">${memdto.opt_addr}</td>
-				<td><input type="button" class="paymentBtn" value="배송지 변경" onclick="addrChange()"></td>
+				<td id="addr" width="500px">${memdto.opt_addr}</td>
+				<td width="500px"><input type="button" class="paymentBtn" value="배송지 변경" onclick="addrChange()"></td>
 			</tr>
 			<tr>
 				<td>요청사항</td>
@@ -194,7 +194,7 @@
 			<col width="200px" />
 			<tr>
 				<td>상품이름<input type="hidden" name="basket_item_name" value="${dto.basket_item_name }" /></td>
-				<td>${dto.basket_item_name }</td>
+				<td width="500px">${dto.basket_item_name }</td>
 			</tr>
 			<tr>
 				<td>수량<input type="hidden" name="count" value="${dto.basket_item_count }" /></td>
@@ -255,7 +255,7 @@
 			</tr>		  
 		</table>
 		<br/>
-		<img alt="" src="image/kakaoPay.png" onclick="submit();" style="cursor: pointer;"/>
+		<img alt="" src="image/kakaoPay.png" onclick="formSubmit();" style="cursor: pointer;"/>
 		<input type="hidden" name="coupon_no_seq" value="0" />
 		<input type="hidden" name="coupon_sale" value="0" />		
 		<input type="hidden" id="addrForm" name="addr" value="${memdto.opt_addr}"/>		
@@ -265,6 +265,15 @@
 	
 	
 	<%@ include file="./footer.jsp" %>
+
+<script type="text/javascript">
+	function formSubmit(){
+		ml = (screen.availWidth - 800) / 2;
+		mt = (screen.availHeight - 600) / 2;
+		kakaoWindow = window.open("","kakaoPay","width=800,height=600, scrollbars=no, left=" + ml + ", top=" + mt);		
+		$('#form').submit();		
+	}
+</script>
 
 </body>
 </html>

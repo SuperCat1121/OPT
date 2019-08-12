@@ -78,6 +78,7 @@ public class OptPayController extends HttpServlet {
 			params.put("cancel_url", request.getParameter("cancel_url"));
 			params.put("fail_url", request.getParameter("fail_url"));
 			
+			
 			String string_params = new String(); // 보낼 파라미터
 			for(Map.Entry<String, String> elem : params.entrySet()) {
 				string_params += (elem.getKey() + "=" + elem.getValue() + "&"); // 파라미터 전송 준비
@@ -112,6 +113,7 @@ public class OptPayController extends HttpServlet {
 				
 				System.out.println(successUrl);
 				System.out.println(tid);
+				
 			} catch (ParseException e) {
 				e.printStackTrace();
 			} finally {
@@ -142,6 +144,7 @@ public class OptPayController extends HttpServlet {
 			String tid = (String)session.getAttribute("tid");
 			String pg_token = request.getParameter("pg_token");
 			String partner_order_id = (String)session.getAttribute("partner_order_id");
+			System.out.println(partner_order_id);
 			String partner_user_id = (String)session.getAttribute("partner_user_id");
 			//System.out.println("pg_token" + " : " + pg_token);
 			//System.out.println("partner_order_id : " + partner_order_id);
@@ -202,6 +205,7 @@ public class OptPayController extends HttpServlet {
 			payDto.setPay_phone(memberDto.getOpt_phone());
 			payDto.setPay_memo((String)session.getAttribute("memo"));
 			payDto.setPay_count(((Integer)session.getAttribute("ea")).intValue());
+			payDto.setPay_total(Integer.parseInt(session.getAttribute("totalPrice").toString()));
 			
 			
 			int point =  Integer.parseInt(session.getAttribute("point").toString());
@@ -362,7 +366,13 @@ public class OptPayController extends HttpServlet {
 			
 			for(BasketDto basketDto : basketList){
 				
+				ItemDto itemDto = biz.itemSelect(basketDto.getBasket_item_no());
+				
+				
 				PaymentDto payDto = new PaymentDto();
+				
+				
+				
 				payDto.setOpt_no_seq(memberDto.getOpt_no_seq());				
 				payDto.setItem_num(basketDto.getBasket_item_no());
 				payDto.setPay_recipient_name(memberDto.getOpt_name());
@@ -370,6 +380,8 @@ public class OptPayController extends HttpServlet {
 				payDto.setPay_phone(memberDto.getOpt_phone());
 				payDto.setPay_memo((String)session.getAttribute("memo"));
 				payDto.setPay_count(basketDto.getBasket_item_count());
+				payDto.setPay_total(Integer.parseInt(itemDto.getItem_price()) * basketDto.getBasket_item_count());
+				
 				
 				biz.insertPayment(payDto);
 				biz.deleteBasket(basketDto.getBasket_no_seq());

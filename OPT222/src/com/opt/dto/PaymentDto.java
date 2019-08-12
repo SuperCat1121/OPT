@@ -12,12 +12,8 @@ public class PaymentDto {
 	private String pay_memo; 
 	private int pay_count;
 	private Date pay_date;
-	public Date getPay_date() {
-		return pay_date;
-	}
-	public void setPay_date(Date pay_date) {
-		this.pay_date = pay_date;
-	}
+	private int pay_total;
+	
 	public int getOpt_no_seq() {
 		return opt_no_seq;
 	}
@@ -66,5 +62,19 @@ public class PaymentDto {
 	public void setPay_count(int pay_count) {
 		this.pay_count = pay_count;
 	}
+	public Date getPay_date() {
+		return pay_date;
+	}
+	public void setPay_date(Date pay_date) {
+		this.pay_date = pay_date;
+	}
+	public int getPay_total() {
+		return pay_total;
+	}
+	public void setPay_total(int pay_total) {
+		this.pay_total = pay_total;
+	}
+	
+	
 	
 }

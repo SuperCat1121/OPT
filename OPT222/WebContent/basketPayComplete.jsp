@@ -10,9 +10,15 @@
 <head>
 <meta charset="UTF-8">
 <title>결제 완료</title>
+<link href="css/payment.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
+	<div >
+		<jsp:include page="header.jsp"></jsp:include>
+	</div>
+
+	<div class="paymentMain">
 	<h1>결제가 완료되었습니다.</h1>
 	<hr>
 		<h2>결제정보</h2>
@@ -67,9 +73,11 @@
 		</table>
 	<hr>
 	<br>
-	<input type="button" value="쇼핑 계속하기" onclick="location.href='item.do?command=itemlist&page=1'"/>&nbsp; 
-	<input type="button" value="주문 상세보기" onclick="location.href='opt.do?command=mypage'"/>
-	
+	<input type="button" value="쇼핑 계속하기" class="paymentBtn" onclick="location.href='item.do?command=itemlist&page=1'"/>&nbsp; 
+	<input type="button" value="주문 상세보기" class="paymentBtn" onclick="location.href='opt.do?command=mypage'"/>
+	</div>
+
+	<%@ include file="./footer.jsp" %>	
 		
 
 </body>
