@@ -85,10 +85,10 @@ a {
 	font-size: 25px;
 }
 .deliver_contents_aera{
-	margin:0 auto;
+    margin: 0 auto;
     padding-top: 10px;
-    width: 80%;
-    padding-left: 120px;
+    width: 1400px;
+    padding-left: 190px;
 }
 .deliver_content{
 	width: 68%;
@@ -235,12 +235,12 @@ input:focus{
 
 /* 추가된 부분 */
 .line-wrapper {
-  cursor:pointer;
-  width:56px;
-  height:35px;
-  position:relative;
-  top:52.5px;
-  left: 82px;
+     cursor: pointer;
+    width: 56px;
+    height: 35px;
+    position: relative;
+    top: 60.5px;
+    left: 247px;
 }
 
 /* 추가된 부분 */

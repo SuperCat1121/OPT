@@ -42,6 +42,12 @@
 function goData(){
 	var queryString = $("form[name=fr]").serialize();
 
+	var start = $("#datepicker").val();
+	var end = $("#datepicker2").val();
+	if(start > end){
+		alert("시작일보다 종료일이 적습니다 다시입력해주세요!");
+		return false;
+	}
 	$.ajax({
         type : 'post',
         url : 'opt.do?command=cal_insert',

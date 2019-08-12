@@ -85,10 +85,10 @@ a {
     text-align: center;
 }
 .mypage_content{
-	width: 1200px;
+	width: 1400px;
     margin: 0 auto;
     padding-bottom: 80px;
-    padding-left: 15%;
+    padding-left: 13%;
 }    
 .mypage_welcome{
     height: 380px;
@@ -255,12 +255,12 @@ color: #575757;
 
 /* 추가된 부분 */
 .line-wrapper {
-  cursor:pointer;
-  width:56px;
-  height:35px;
-  position:relative;
-  top:52.5px;
-  left:47px;
+     cursor: pointer;
+    width: 56px;
+    height: 35px;
+    position: relative;
+    top: 52.5px;
+    left: 147px;
 }
 
 /* 추가된 부분 */

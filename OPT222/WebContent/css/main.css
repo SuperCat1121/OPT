@@ -125,18 +125,16 @@ html, body {
 
 .innerMenu { /*상단 메뉴바 안에 들어가는 컨텐츠 부분의 div*/
 	z-index: 70;
-	width: 1200px; /*가운데정렬을 위해 고정으로 길이줌*/
-	height: 80px;
-	position: fixed;
-	
-	/* 전체 가운데 정렬, fixed일 경우는 이렇게 가운데 정렬*/
-    left: 50%;
+    width: 1200px;
+    height: 80px;
+    position: fixed;
+    left: 51%;
     transform: translate(-50%);
 }
 
 .menulogo{ /*로고부분 (따로뺌)*/
-	float : left;
-	margin-right : 60px;
+	float: left;
+    margin-right: 55px;
 }
 .menulist { /*메뉴 리스트 a링크들 / 로고와 구분하려고 따로 줌 */
 	float: left;

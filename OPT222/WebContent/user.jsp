@@ -58,9 +58,17 @@ $(document).ready(function(){
 
 
 function updateForm(){
-	var url = "updateUser.jsp";
-	var prop = "top=200px,left=600px,width=500px,height=500px";
-    window.open(url, "", prop);
+	cw = screen.availWidth;
+	ch = screen.availHeight;
+		
+	sw=1024;    //띄울 창의 넓이
+	sh=800;    //띄울 창의 높이
+
+	ml = (cw - sw) / 2;
+	mt = (ch - sh) / 2;
+
+	var url = encodeURI("updateUser.jsp");
+	window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
 }
 
 </script>

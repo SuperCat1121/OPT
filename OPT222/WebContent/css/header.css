@@ -60,8 +60,9 @@ a {
    margin: 11px 0 -3px;
 }    
 .hd_logo{
-   float: left;
-    padding-left: 35px;
+    float: left;
+    position: relative;
+    right: 70px;
 }
 
 .hd_logo a > img{

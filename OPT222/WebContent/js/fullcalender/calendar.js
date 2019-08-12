@@ -137,9 +137,8 @@ $(function() { // document ready
 					//var title = event.title;
 					//var color = event.color;
 					var id = event.id;
-					var start = moment(event.start).format('YYYY-MM-DD');
-					var end = moment(event.end).format('YYYY-MM-DD');
-
+					var start = moment(event.start).format('YYYY-MM-DD ');
+					var end = moment(event.end).format('YYYY-MM-DD ');
 					$.ajax({
 						error : function() {
 							alert("전송실패")
@@ -168,8 +167,8 @@ $(function() { // document ready
 				eventClick : function(event) { //이벤트 클릭시
 					var title = event.title;
 					var id = event.id;
-					var start = event.start;
-					var end = event.end;
+					var start = moment(event.start).format('YYYY-MM-DD');
+					var end = moment(event.end).format('YYYY-MM-DD');
 					var color = event.color;
 					
 					cw = screen.availWidth;

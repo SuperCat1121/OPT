@@ -93,12 +93,12 @@ a {
 
 /* 추가된 부분 */
 .line-wrapper {
-  cursor:pointer;
-  width:56px;
-  height:35px;
-  position:relative;
-  top:52.5px;
-  left:47px;
+       cursor: pointer;
+    width: 56px;
+    height: 35px;
+    position: relative;
+    top: 52.5px;
+    left: 136px;
 }
 
 /* 추가된 부분 */
@@ -121,10 +121,9 @@ a {
 
 
 .postboxContent {
-	width: 1030px;
+    width: 1200px;
     margin: 0 auto;
     padding-bottom: 80px;
-    padding-left: 100px;
 }    
 
 
