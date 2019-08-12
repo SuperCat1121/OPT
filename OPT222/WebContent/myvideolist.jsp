@@ -112,8 +112,8 @@
 	color: white;
 	font-weight: bold;
 	position: absolute;
-	top: 200px;
-	left: 1254px;
+	top: 197px;
+	left: 1313px;
 	cursor: pointer;
 }
 
