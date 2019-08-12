@@ -118,8 +118,8 @@ function updateForm(){
 		
 		<dd>
 		<p></p>
-			<a class="link" onclick="updateForm()">개인정보 수정</a>
-			<a href="" class="link">일정관리</a>
+			<a class="link" onclick="updateForm()" style="cursor: pointer;">개인정보 수정</a>
+			<a href="calendar.jsp" class="link">일정관리</a>
 		</dd>	
 		</dl>
 		<div class="coupon_box">
