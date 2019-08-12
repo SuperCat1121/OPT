@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html;charset=UTF-8");
@@ -42,38 +44,123 @@
 		});
 	});
 </script>
+<style type="text/css">
+.pageHeader {
+	text-align: center
+}
+
+.videoSearch {
+	margin-left: 30%;
+	margin-bottom: 30px;
+}
+
+.videoList {
+	margin-left: 33%;
+}
+
+.videoContent {
+	padding-left: 40px;
+	position: absolute;
+	width: 533px;
+	height: 243px;
+	overflow: hidden;
+}
+
+.videoPaging {
+	margin-left: 50%
+}
+
+.searchoption {
+	width: 92px;
+	height: 36px;
+}
+
+.searchtext {
+	width: 300px;
+	height: 30px;
+	font-weight: bold
+}
+
+.searchBtn {
+	height: 36px;
+	width: 85px;
+	background: rgb(105, 1, 143);
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.videotitle {
+	font-size: 1.5em;
+	margin-top: 1px;
+}
+
+.searchBar {
+	border: none;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.videofile {
+	padding-bottom: 15px;
+}
+
+.deleteBtn {
+	height: 36px;
+	width: 85px;
+	background: rgb(105, 1, 143);
+	color: white;
+	font-weight: bold;
+	position: absolute;
+	top: 200px;
+	left: 1254px;
+	cursor: pointer;
+}
+
+.videolistbar {
+	text-align: center;
+}
+</style>
+
 </head>
 <body>
 	<div>
 		<jsp:include page="header.jsp"></jsp:include>
 	</div>
-	<h1>동영상 게시판</h1>
-	<form action="video.do">
+	<h1 class="pageHeader">나의 동영상 게시판</h1>
+	<form class="videoSearch" action="video.do">
 		<input type="hidden" name="command" value="searchVideo" /> <input
 			type="hidden" name="page" value="1" />
-		<table style="border: none; margin-top: 20px; margin-bottom: 20px;">
+		<table class="searchBar">
 			<tr>
-				<td><select name="searchoption">
-						<option value="opt_id">아이디</option>
+				<td><select class="searchoption" name="searchoption">
 						<option value="video_title">제목</option>
 						<option value="video_content">내용</option>
 				</select></td>
-				<td><input type="text" name="searchtext"> <input
-					type="submit" value="검색하기"> <input type="button"
-					value="업로드" onclick="location.href='videoupload.jsp'"> <input
-					type="button" value="목록"
+				<td><input class="searchtext" type="text" name="searchtext">
+					<input class="searchBtn" type="submit" value="검색하기"> <input
+					class="searchBtn" type="button" value="업로드"
+					onclick="location.href='videoupload.jsp'"> <input
+					class="searchBtn" type="button" value="목록"
 					onclick="location.href='video.do?command=videoList&page=1&videoarea=main'"></td>
 			</tr>
 		</table>
 	</form>
-	<form action="video.do" method="get" id="muldelform">
+	<form class="videoList" action="video.do" method="get" id="muldelform">
 		<input type="hidden" name="command" value="multiDel" />
 		<table>
-			<tr>
-
+			<colgroup>
+				<col>
+				<col width="426">
+				<col>
+				<col>
+			</colgroup>
+			<tr class="videolistbar">
 				<td><input type="checkbox" name="all"
-					onclick="allChk(this.checked);" /> <input type="submit"
-					value="전체삭제"></td>
+					onclick="allChk(this.checked);" /></td>
+				<td><b>비디오</b></td>
+				<td><b>내용</b></td>
+				<td><input class="deleteBtn" type="submit" value="전체삭제"></td>
 			</tr>
 			<c:choose>
 				<c:when test="${empty list }">
@@ -98,13 +185,12 @@
 									</c:choose></td>
 								<td style="padding-left: 20px; padding-bottom: 130px;"
 									onclick=""><h4>${videoDto.video_title }${videoDto.video_no_seq}</h4>
-									조회수 : ${videoDto.video_views_no }<br /> 등록시간 :
-									${videoDto.video_regdate }<br />
-									<h1>1111${videoDto.opt_id}</h1> <br />
-									${videoDto.video_content }</td>
-								<td><input type="button" value="수정"
+									조회수 : ${videoDto.video_views_no }<br /> 등록시간 : <fmt:formatDate
+										value="${videoDto.video_regdate }" pattern="yyyy-MM-dd HH:mm" /><br />
+									${videoDto.video_content } <br> <input class="searchBtn"
+									type="button" value="수정"
 									onclick="location.href='video.do?command=updatevideo&videoseq=${videoDto.video_no_seq }'">
-									<input type="button" value="삭제"
+									<input class="searchBtn" type="button" value="삭제"
 									onclick="location.href='video.do?command=deletevideo&videoseq=${videoDto.video_no_seq }'">
 								</td>
 							</tr>
@@ -114,7 +200,7 @@
 			</c:choose>
 		</table>
 	</form>
-	<table>
+	<table class="videoPaging">
 		<tr>
 			<td><c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
 				<c:choose>

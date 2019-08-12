@@ -41,7 +41,7 @@ $(function(){
 }
 
 .videoSearch {
-	margin-left: 37%;
+	margin-left: 30%;
 	margin-bottom: 30px;
 }
 
@@ -60,6 +60,45 @@ $(function(){
 .videoPaging {
 	margin-left: 50%
 }
+
+.searchoption {
+	width: 92px;
+	height: 36px;
+}
+
+.searchtext {
+	width: 300px;
+	height: 30px;
+	font-weight: bold
+}
+
+.searchBtn {
+	height: 36px;
+	width: 85px;
+	background: rgb(105, 1, 143);
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.videotitle {
+	font-size: 1.5em;
+	margin-top: 1px;
+}
+
+.searchBar {
+	border: none;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.videofile {
+	padding-bottom: 15px;
+}
+
+.messageBtn {
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -70,21 +109,19 @@ $(function(){
 	<form class="videoSearch" action="video.do">
 		<input type="hidden" name="command" value="searchVideo" /> <input
 			type="hidden" name="page" value="1" />
-		<table style="border: none; margin-top: 20px; margin-bottom: 20px;">
+		<table class="searchBar">
 			<tr>
-				<td><select name="searchoption"
-					style="width: 92px; height: 36px;">
+				<td><select class="searchoption" name="searchoption">
 						<option value="opt_id">아이디</option>
 						<option value="video_title">제목</option>
 						<option value="video_content">내용</option>
 				</select></td>
-				<td><input type="text" name="searchtext"
-					style="width: 300px; height: 30px; font-weight: bold"> <input
-					type="submit" value="검 색"
-					style="height: 36px; width: 76px; background: rgb(105, 1, 143); color: white; font-weight: bold;"></td>
-				<td class="myvedioBtn"><input type="button" value="나의 동영상"
+				<td><input class="searchtext" type="text" name="searchtext">
+					<input class="searchBtn" type="submit" value="검 색"></td>
+				<td class="myvedioBtn"><input class="searchBtn" type="button"
+					value="나의 동영상"
 					onclick="location.href='video.do?command=videoList&page=1&videoarea=my'">
-					<input type="button" value="업로드"
+					<input class="searchBtn" type="button" value="업로드"
 					onclick="location.href='videoupload.jsp'"></td>
 			</tr>
 		</table>
@@ -98,7 +135,7 @@ $(function(){
 				<c:forEach items="${list }" var="videoDto">
 					<tr>
 						<c:set var="videourl" value="${videoDto.video_url }" />
-						<td style="padding-bottom: 15px;"><c:choose>
+						<td class="videofile"><c:choose>
 								<c:when test="${fn:startsWith(videourl, 'h')}">
 									<iframe width="426" height="245" src=${videoDto.video_url }></iframe>
 								</c:when>
@@ -108,9 +145,10 @@ $(function(){
 								</c:otherwise>
 							</c:choose></td>
 						<td class="videoContent">
-							<h4 style="font-size: 1.5em; margin-top: 1px;"
+							<h4 class="videotitle"
 								onclick="location.href='video.do?command=videoDetail&videoseq=${videoDto.video_no_seq}&page=${page }'">${videoDto.video_title }</h4>
-							<span onclick="videoMessage('${videoDto.opt_id}')">${videoDto.opt_id}</span>
+							<span class="messageBtn"
+							onclick="videoMessage('${videoDto.opt_id}')"><b>${videoDto.opt_id}</b></span>
 							<span>조회수 : ${videoDto.video_views_no }</span> <span> 등록시간
 								: <fmt:formatDate value="${videoDto.video_regdate }"
 									pattern="yyyy-MM-dd HH:mm" /><br>
