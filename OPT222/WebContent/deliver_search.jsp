@@ -149,7 +149,7 @@ $(document).ready(function(){
 	<jsp:include page="header.jsp"></jsp:include>
 
 	<div class="deliver_title">
-		<h1>운송장번호조회</h1>
+		<h1>운송장 번호 조회</h1>
 	</div>
 	
 	<!-- side menu -->

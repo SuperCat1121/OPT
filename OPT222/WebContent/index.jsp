@@ -46,8 +46,8 @@
     color: #fff;
     width: 120px;
     margin-left: 27px;
-    margin-right: -4px;
-    font-size: 20px;
+    margin-right: 11px;
+    font-size: 24px;
     display: block;
     text-align: center;
     text-shadow: -1px 0 #545252, 0 1px #545252, 1px 0 #545252, 0 -1px #545252;
@@ -119,7 +119,7 @@
 			<div class ="innerMenu">
 				<ul class="topmenu">
 					<li>
-						<a class = "menulogo" href="main3.html" title="OPT 메인으로 이동">
+						<a class = "menulogo" href="#" title="OPT 메인으로 이동">
 							<img alt="main" src="image/logo2_w.png" width=120px;>
 						</a> 
 						<a class = "menulist" href="video.do?command=videoList&page=1&videoarea=main">OPT</a>

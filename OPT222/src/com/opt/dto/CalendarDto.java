@@ -10,8 +10,23 @@ public class CalendarDto {
 	private String calendar_enddate;
 	private String calendar_url;
 	private Date calendar_regdate;
+	private int count;
+	private String nextDate;
 	
 	
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public String getNextDate() {
+		return nextDate;
+	}
+	public void setNextDate(String nextDate) {
+		this.nextDate = nextDate;
+	}
 	public int getCalendar_no_seq() {
 		return calendar_no_seq;
 	}

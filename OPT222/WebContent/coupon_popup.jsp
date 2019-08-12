@@ -16,11 +16,11 @@
 	<div class="coupon_list">
 			<table summary="쿠폰번호 쿠폰이름 쿠폰내용 유효기간 할인가격">
 				<colgroup>
-					<col width="70">
+					<col width="80">
 					<col width="180">
 					<col width="*">
 					<col width="180">
-					<col width="70">
+					<col width="80">
 				</colgroup>
 				<thead>
 					<tr>

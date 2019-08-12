@@ -19,12 +19,15 @@ a {
 	text-decoration: none;
 }
 
+input{
+	outline: none;
+}
 .update_content{
 	width: 70%;
     margin: 0 auto;
     margin-top: 40px;
 }
-.update_content h2{
+.update_content h2,h4{
 	text-align: center;
     color: #888;
     font-style: normal;
@@ -35,7 +38,7 @@ a {
 	
 }
 table{
-	width: 60%;
+	width: 61%;
     /* border-collapse: collapse; */
     /* border-spacing: 0; */
     /* table-layout: fixed; */

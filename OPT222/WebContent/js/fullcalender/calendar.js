@@ -121,14 +121,17 @@ $(function() { // document ready
 					var id = event.id;
 					var start = moment(event.start).format('YYYY-MM-DD');
 					var end = moment(event.end).format('YYYY-MM-DD');
+					var date = new Date(end);
+					var end_date = moment(date.setDate(date.getDate()-1)).format('YYYY-MM-DD');
 					//var title = event.title;
 					//var color = event.color;
 					$.ajax({
+						url: "opt.do?command=updateDrop&idx=" + id + "&start=" + start + "&end=" + end_date,
 						error : function() {
-							alert("전송실패")
+							alert("전송실패");
 						},
 						success : function() {
-							location.href = "opt.do?command=updateDrop&idx=" + id + "&start=" + start + "&end=" + end;
+							window.location.reload();
 						}
 					});
 				},
@@ -139,12 +142,16 @@ $(function() { // document ready
 					var id = event.id;
 					var start = moment(event.start).format('YYYY-MM-DD ');
 					var end = moment(event.end).format('YYYY-MM-DD ');
+					var date = new Date(end);
+					var end_date = moment(date.setDate(date.getDate()-1)).format('YYYY-MM-DD');
+					//console.log(date.toLocaleString());
 					$.ajax({
+						url : "opt.do?command=updateResize&idx=" + id + "&start=" + start + "&end=" + end_date,
 						error : function() {
-							alert("전송실패")
+							alert("전송실패");
 						},
 						success : function() {
-							location.href = "opt.do?command=updateResize&idx=" + id + "&start=" + start + "&end=" + end;
+							window.location.reload();
 						}
 					});
 				},
@@ -200,17 +207,24 @@ $(function() { // document ready
 							var start = [];
 							var end = [];
 							var id = [];
-							
+							var nextDate = "";
+							var count = 0;
 							for (var i = 0; i < data.cal.length; i++) {
 								title[i] = data.cal[i].title;
 			                    start[i] = data.cal[i].start;
 			                    end[i] = data.cal[i].end;
 			                    id[i] = data.cal[i].id;
+			                    count = data.cal[i].count;
+			                    if(count != 0) {
+			                    	nextDate = moment(data.cal[i].nextdate).format('YYYY-MM-DD');
+			                    } else {
+			                    	nextDate = data.cal[i].end;
+			                    }
 
 								events.push({
 									"title" : title[i],
 									"start" : start[i],
-									"end" : end[i],
+									"end" : nextDate,
 									"id" : id[i]
 								});
 							}

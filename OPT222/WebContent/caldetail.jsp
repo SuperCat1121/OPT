@@ -43,6 +43,7 @@
 		<c:otherwise>
 			<form method="post" name="fr">
 			<input type="hidden" name="idx" value="${caldto.calendar_no_seq }"/>
+			<input type="hidden" name="command" id="command" value=""/>
 			<div class="cal_content">
 			<div class="cal_text">일정제목 : <input type="text" name="cal_title" value="${caldto.calendar_title }"></div>
     		<div class="cal_text">일정시작일: <input type="text" id="datepicker" name="cal_start" value="${caldto.calendar_startday}"></div>
@@ -59,6 +60,7 @@
 	</c:choose>
 <script>
 			function updateBtn(){
+				$("#command").val("cal_update");
 				var queryString = $("form[name=fr]").serialize();
 				
 				var start = $("#datepicker").val();
@@ -69,7 +71,7 @@
 				}
 				$.ajax({
 			        type : 'post',
-			        url : 'opt.do?command=cal_update',
+			        url : 'opt.do',
 			        data : queryString,
 			        error: function(xhr, status, error){
 			            alert(error);
@@ -86,11 +88,12 @@
 			}
 			 
 			function deleteBtn(){
+				$("#command").val("cal_delete");
 				var queryString = $("form[name=fr]").serialize();
 
 				$.ajax({
 			        type : 'post',
-			        url : 'opt.do?command=cal_delete',
+			        url : 'opt.do',
 			        data : queryString,
 			        error: function(xhr, status, error){
 			            alert(error);

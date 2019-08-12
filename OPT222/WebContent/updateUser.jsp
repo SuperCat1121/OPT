@@ -11,6 +11,7 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <!-- 달력 api -->
+<link href="css/updateuser.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>register</title>
 </head>
@@ -169,62 +170,57 @@
 	})
 </script>
 <body>
-	<h1>개인정보 수정</h1>
-	<h3>개인정보를 수정하려면 비밀번호와 이메일 인증이 필수입니다</h3>
-	<form action="login.do" id="updateFrm" method="post" name="update"
-		onsubmit="return validate()">
-		<input type="hidden" name="command" value="updateUser" /> <input
-			type="hidden" name="opt_id" value="${memdto.opt_id }" /> <input
-			type="hidden" id="userEmail" value="${memdto.opt_email }" /> <input
-			type="hidden" name="opt_gender" value="${memdto.opt_gender }" />
+	<div class="update_content">
+	<h2>개인정보 수정</h2>
+	<h4>개인정보를 수정하려면 비밀번호와 이메일 인증이 필수입니다</h4>
+	<form action="login.do" id="updateFrm" method="post" name="update" onsubmit="return validate()">
+		<input type="hidden" name="command" value="updateUser" /> 
+		<input type="hidden" name="opt_id" value="${memdto.opt_id }" /> 
+		<input type="hidden" id="userEmail" value="${memdto.opt_email }" /> 
+		<input type="hidden" name="opt_gender" value="${memdto.opt_gender }" />
+		<div class="update_area">
 		<table>
 			<tr>
 				<td><b>비밀번호</b></td>
-				<td><input type="password" id="opt_pw" name="opt_pw" size="25"
-					placeholder="비밀번호를 입력해주세요"></td>
+				<td><input type="password" id="opt_pw" class="input_text" name="opt_pw" size="25" placeholder="비밀번호를 입력해주세요"></td>
 			</tr>
 			<tr>
 				<td><b>이 름</b></td>
-				<td><input type="text" id="opt_name" name="opt_name" size="25"
-					value="${memdto.opt_name }"></td>
+				<td><input type="text" id="opt_name" class="input_text"  name="opt_name" size="25" value="${memdto.opt_name }"></td>
 			</tr>
 			<tr>
 				<td><b>생년월일</b></td>
-				<td><input type="text" id="opt_birth" name="opt_birth"
-					size="25" value="${memdto.opt_birth }"></td>
+				<td><input type="text" id="opt_birth" class="input_text" name="opt_birth" size="25" value="${memdto.opt_birth }"></td>
 			</tr>
 			<tr>
 				<td><b>전화번호</b></td>
-				<td><input type="text" id="opt_phone" name="opt_phone"
-					size="25" value="${memdto.opt_phone }"></td>
+				<td><input type="text" id="opt_phone" class="input_text"  name="opt_phone" size="25" value="${memdto.opt_phone }"></td>
 			</tr>
 			<tr>
 				<td><b>주 소</b></td>
-				<td><input type="text" id="postcode" name="postcode"
-					placeholder="우편번호" readonly="readonly" size="25"> <input
-					type="button" value="우편번호 찾기" onclick="DaumPostcode()"><br>
-					<input type="text" id="roadAddress" name="roadAddress"
-					placeholder="도로명주소" readonly="readonly" size="25"> <input
-					type="text" name="opt_addr" checked="checked" placeholder="상세주소"
-					size="25" /></td>
+				<td><input type="text" id="postcode" class="post_text margin-bottom-5px" name="postcode" placeholder="우편번호" readonly="readonly" size="25" >
+				 	<input type="button" value="우편번호 찾기" class="btn post_btn" onclick="DaumPostcode()">
+					<input type="text" id="roadAddress" class="input_text margin-bottom-5px" name="roadAddress" placeholder="도로명주소" readonly="readonly" size="25">
+					<input type="text" name="opt_addr" class="input_text" checked="checked" placeholder="상세주소" size="25" /></td>
 			</tr>
 			<tr>
 				<td><b>이메일</b></td>
-				<td><input type="text" id="opt_email" name="opt_email"
-					value="${memdto.opt_email }"> <input type="button"
-					value="이메일 인증" onclick="emailChk()"> <span id="emailSpan"></span></td>
+				<td><input type="text" id="opt_email" name="opt_email" class="email_text" value="${memdto.opt_email }"> 
+					<input type="button" value="이메일 인증" onclick="emailChk()" class="btn email_btn"> 
+					<span id="emailSpan"></span>
+				</td>
 			</tr>
 			<tr>
 				<td><b>인증번호</b></td>
-				<td><input type="text" id="emailConfirm" size="25"> <input
-					type="button" value="확인" onclick="emailCon()"> <span
-					id="emailConSpan"></span></td>
+				<td><input type="text" id="emailConfirm" class="confrim_text" size="25">
+					<input type="button" value="확인" onclick="emailCon()" class="btn confrim_btn"> 
+					<span id="emailConSpan"></span></td>
 			</tr>
-			<tr>
-				<td><input type="submit" value="정보수정"> <input
-					type="reset" value="다시입력"></td>
-			</tr>
+		
 		</table>
+				<input type="submit" value="정보수정" class="update_btn">
+		</div>
 	</form>
+	</div>
 </body>
 </html>

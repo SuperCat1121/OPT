@@ -82,7 +82,7 @@ a {
 	
 }
 .deliver_title h1{
-	font-size: 25px;
+	font-size: 30px;
 }
 .deliver_contents_aera{
     margin: 0 auto;
@@ -110,7 +110,7 @@ a {
 #tekbeCompnayName, #invoiceNumber{
   font-weight: bold; 
   margin-right: 20px;
-  font-size: 18px;
+  font-size: 21px;
 }
 
 #myButton1 {
@@ -169,7 +169,7 @@ input:focus{
 }
 .foot_area_wrap{
 	position: relative;
-    top: 29%;
+    top: 34%;
 }
 
 /* 사이드바 */

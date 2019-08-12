@@ -2,7 +2,7 @@
     width: 500px;
    	height: 450px;
     padding-top: 100px;
-    margin-left: 38%;
+    margin-left: 42%;
 } 
 /*추가 */
 input:focus{
@@ -58,6 +58,7 @@ input[type=text]{
     border-top: none;
     border-left: none;
     border-right: none;
+    FONT-SIZE: 16PX;
     
 }
 .pw_area input{

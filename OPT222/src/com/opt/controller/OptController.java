@@ -145,6 +145,8 @@ public class OptController extends HttpServlet {
 				jobject.put("title",callist.get(i).getCalendar_title());
 				jobject.put("start",callist.get(i).getCalendar_startday());
 				jobject.put("end",callist.get(i).getCalendar_enddate());
+				jobject.put("count",callist.get(i).getCount());
+				jobject.put("nextdate", callist.get(i).getNextDate());
 				Jarray.add(jobject);
 			}
 			
