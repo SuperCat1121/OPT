@@ -7,20 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/payment.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-
-<style type="text/css">
-	
-	.user_table{	
-    	
-    	border-top-width: 2px;
-    	
-    	
-	}
-	
-
-</style>
-
 <script type="text/javascript">
 
 
@@ -136,20 +124,24 @@
 </head>
 <body>
 
+	<div>
+		<jsp:include page="header.jsp"></jsp:include>
+	</div>
+	
+	<div class="paymentMain">
 	<h1>결제하기</h1>
-	<hr/>
 	<br/>
 	
 	<h3>구매자 정보</h3>
 	<hr/>
 	<form action="pay.do" method="post" id="form" onsubmit="return false;">
 	<input type="hidden" name="command" value="basketReady" />	
-	<input type="text" name="partner_order_id" value="123" />
-	<input type="text" name="partner_user_id" value="12" />
-	<input type="text" name="item_name" value=" " />
-	<input type="text" name="quantity" value="0" />
-	<input type="text" name="total_amount" value="0" />
-	<input type="text" name="tax_free_amount" value="0" />	
+	<input type="hidden" name="partner_order_id" value="123" />
+	<input type="hidden" name="partner_user_id" value="12" />
+	<input type="hidden" name="item_name" value=" " />
+	<input type="hidden" name="quantity" value="0" />
+	<input type="hidden" name="total_amount" value="0" />
+	<input type="hidden" name="tax_free_amount" value="0" />	
 	<input type="hidden" value="TC0ONETIME" name="cid" readonly="readonly" />
 	<input type="hidden" value="http://localhost:8787/OPT222/basketPaySuccess.jsp" name="approval_url" readonly="readonly" />
 	<input type="hidden" value="http://localhost:8787/OPT222/payCancel.jsp" name="cancel_url" readonly="readonly" />
@@ -183,7 +175,7 @@
 			<tr>
 				<td>배송주소</td>
 				<td id="addr">${memdto.opt_addr}</td>
-				<td><input type="button" value="배송지 변경" onclick="addrChange()"></td>
+				<td><input type="button" class="paymentBtn" value="배송지 변경" onclick="addrChange()"></td>
 			</tr>
 			<tr>
 				<td>요청사항</td>
@@ -263,12 +255,13 @@
 			</tr>		  
 		</table>
 		<br/>
-		<img alt="" src="image/kakaoPay.png" onclick="submit();"/>
+		<img alt="" src="image/kakaoPay.png" onclick="submit();" style="cursor: pointer;"/>
 		<input type="hidden" name="coupon_no_seq" value="0" />
 		<input type="hidden" name="coupon_sale" value="0" />		
 		<input type="hidden" id="addrForm" name="addr" value="${memdto.opt_addr}"/>		
 	</form>
 	<br/>
+	</div>
 	
 	
 	<%@ include file="./footer.jsp" %>

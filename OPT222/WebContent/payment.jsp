@@ -11,17 +11,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<link href="css/payment.css" rel="stylesheet" type="text/css">
 
-<style type="text/css">
-	
-	.user_table{	
-    	
-    	border-top-width: 2px;    	
-    	
-	}
-	
 
-</style>
 
 <script type="text/javascript">
 
@@ -34,6 +26,8 @@
 	  var regexp = /\B(?=(\d{3})+(?!\d))/g;
 	  return num.toString().replace(regexp, ',');
 	}
+	
+	
 	
 
 	$(document).ready(function(){
@@ -107,8 +101,7 @@
 		});
 		
 		function submit(){			
-		
-			
+					
 			$('#form').submit();
 		}
 		
@@ -122,20 +115,24 @@
 </head>
 <body>
 
-	<h1>결제하기</h1>
-	<hr/>
+	<div>
+		<jsp:include page="header.jsp"></jsp:include>
+	</div>
+	
+	<div class="paymentMain">
+	<h1>결제하기</h1>	
 	<br/>
 	
 	<h3>구매자 정보</h3>
 	<hr/>
 	<form action="pay.do" method="post" id="form" onsubmit="return false;">
 	<input type="hidden" name="command" value="ready" />	
-	<input type="text" name="partner_order_id" value="123" />
-	<input type="text" name="partner_user_id" value="12" />
-	<input type="text" name="item_name" value="${itemDto.item_name }" />
-	<input type="text" name="quantity" value="${ea }" />
-	<input type="text" name="total_amount" value="${itemDto.item_price * ea + post}" />
-	<input type="text" name="tax_free_amount" value="${itemDto.item_price * ea + post}" />
+	<input type="hidden" name="partner_order_id" value="123" />
+	<input type="hidden" name="partner_user_id" value="12" />
+	<input type="hidden" name="item_name" value="${itemDto.item_name }" />
+	<input type="hidden" name="quantity" value="${ea }" />
+	<input type="hidden" name="total_amount" value="${itemDto.item_price * ea + post}" />
+	<input type="hidden" name="tax_free_amount" value="${itemDto.item_price * ea + post}" />
 	<input type="hidden" name="command" value="ready" />
 	<input type="hidden" value="TC0ONETIME" name="cid" readonly="readonly" />
 	<input type="hidden" value="http://localhost:8787/OPT222/paySuccess.jsp" name="approval_url" readonly="readonly" />
@@ -168,12 +165,12 @@
 			<col width="200px" />
 			<tr>
 				<td>배송주소</td>
-				<td id="addr">${memdto.opt_addr}</td>
-				<td><input type="button" value="배송지 변경" onclick="addrChange()"></td>
+				<td id="addr" width="500px">${memdto.opt_addr}</td>
+				<td><input type="button" class="paymentBtn" value="배송지 변경" onclick="addrChange()"></td>
 			</tr>
 			<tr>
 				<td>요청사항</td>
-				<td><input type="text" name="memo" placeholder="30자 미만으로 적어주세요" maxlength="30" size="50"/></td>
+				<td width="500px"><input type="text" name="memo" placeholder="30자 미만으로 적어주세요" maxlength="30" size="50"/></td>
 			</tr>
 		</table>
 		<br/>
@@ -186,7 +183,7 @@
 			<col width="200px" />
 			<tr>
 				<td>상품이름</td>
-				<td>${itemDto.item_name }</td>
+				<td width="500px">${itemDto.item_name }</td>
 			</tr>
 			<tr>
 				<td>수량</td>
@@ -245,12 +242,15 @@
 			</tr>		  
 		</table>
 		<br/>
-		<img alt="" src="image/kakaoPay.png" onclick="submit();"/>
+		<br/>
+		<br/>
+		<img alt="" src="image/kakaoPay.png" onclick="submit();" style="cursor: pointer;"/>
 		<input type="hidden" name="coupon_no_seq" value="0" />
 		<input type="hidden" name="coupon_sale" value="0" />		
 		<input type="hidden" id="addrForm" name="addr" value="${memdto.opt_addr}"/>	
 	</form>
 	<br/>
+	</div>
 	
 	
 	<%@ include file="./footer.jsp" %>

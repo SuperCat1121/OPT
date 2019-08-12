@@ -264,7 +264,7 @@
 					</span>
 				</div>
 				<div class="pw_area">
-					<input type="text" placeholder="비밀번호" name="pw"
+					<input type="password" placeholder="비밀번호" name="pw"
 						onkeyup="checkData('pw');" class="id_pw"> <span
 						id="pwCheck" style="display: none" class="idchk_span"></span>
 				</div>

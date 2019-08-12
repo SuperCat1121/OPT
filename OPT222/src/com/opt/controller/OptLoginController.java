@@ -59,8 +59,7 @@ public class OptLoginController extends HttpServlet {
 
 			String hidden_chk = request.getParameter("hidden_chk");	//체크시 on 안되면 null
 			MemberDto login = biz.login(id, pw); // 로그인 시도
-			System.out.println(login.getOpt_id());
-			System.out.println(login.getOpt_enabled());
+			
 			// 로그인 안됨, 아이디, 비밀번호 미입력
 			if(login == null && id.equals("") && pw.equals("")) {
 				response.sendRedirect("opt.do?command=login");
