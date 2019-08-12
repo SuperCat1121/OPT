@@ -379,7 +379,10 @@ public class OPTBizImpl implements OPTBiz {
 	public int deleteVideo(int video_no_seq) {
 		return dao.deleteVideo(video_no_seq);
 	}
-
+	@Override
+	public boolean multiDelVideoComment(String[] seq) {
+		return dao.multiDelVideoComment(seq);
+	}
 	@Override
 	public boolean multiDelVideo(String[] seq) {
 		return dao.multiDelVideo(seq);

@@ -26,18 +26,99 @@
     	position: relative;
     	top: 50px;
     }
+    
+    
+body{
+	margin:0;
+	padding:0;
+	border:0;
+	
+}
+
+ul,li{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+setion {
+	display:block;
+}
+
+a {
+	text-decoration: none;
+}
+.content_wrap{
+	width: 1200px;
+    margin: 0 auto;
+
+}
+.opt_title h2{
+width:auto;
+	text-align: center;
+	background: rgb(105, 1, 143);
+	color: white;
+	font-weight: bold;
+	padding: 70px;
+	font-size: 2em;
+}
+
+.contentTitle{
+    font-size: 2em;
+    font-weight: 700;
+}
+.titleSub{
+    font-size: 1.5em;
+    font-weight: 500;
+}
+.content{
+    font-size: 18px;
+    font-weight: 500;
+}
+.contentwrap{
+ 	height: 100px;
+	padding: 20px;
+}
+.busiTitle{
+	font-size: 25px;
+    font-weight: 500;
+
+}
+::selection{
+background: rgb(242, 207, 255);
+}
 </style>
-<link href="css/opt_brand.css" rel="stylesheet" type="text/css">
+<!-- <link href="css/opt_brand.css" rel="stylesheet" type="text/css"> -->
 </head>
 <body>
 	
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="content_wrap">
 	<div class="opt_title">
-		<h2>Online Personal Trainning</h2>
+		<h2>OPT는<br> 우리의 가치, 창조의 가치<br> 그리고 성취의 가치를 중요시 합니다.</h2>
 	</div>	
+	<div class="contentwrap">
+	<span class="contentTitle">OPT의 비전</span> <span class="titleSub"> (Vision)</span> <br> 
+	<span class="content">누군가의 꿈이 현실로 이루어지면서 세상은 더 좋은 곳으로 발전하고 있습니다. <br> 
+	운동에서 시작하여 다양한 문화의 영역에서 무한한 상상을 현실로 만드는 창조집단, 그것이 OPT의 비전입니다.<br> </span>
+	</div>
+	<hr>
+	<div class="contentwrap">
+	<span class="contentTitle">OPT의 핵심가치</span> <span class="titleSub"> (Core values of OPT)</span><br> 
+	<span class="content">OPT는 회사의 이름 그 자체가 회사가 추구하는 핵심 가치를 내포하고 있습니다. <br> 
+	Oline과 Personal Trainning의 조합인 OPT는 공간과 비용을 절감하여 우리 모두를 행복하게  만든다라는 뜻으로 기업 행위의 주체, 행위의 내용 그리고 행위의 결과를 암시합니다. <br> 
+	그  무엇이든지 될 수 있지만 그 대상이 갖춰야 할 필수 가치를 한정하는 형태로 이루어져 있습니다.<br></span>
+	</div>
+	<br>
+	<hr>	
+	<div  class="contentwrap">
+		<span class="contentTitle">사업영역</span><br>
+	<span class="busiTitle">O(Online)</span> <span class="content">  : PT 동영상 제공 및 트레이너 매칭</span><br>
+	<span class="busiTitle" >P(Personal)</span> <span class="content">: 개인별 식단 추천 및 운동법 제공</span><br>
+	<span class="busiTitle">T(Training)</span> <span class="content">: 지속적인 운동 욕구 자극</span><br>
+	</div>
 
-	<div id="map" style="width:600px;height:350px;"></div>
+<!-- 	<div id="map" style="width:600px;height:350px;"></div>
+ -->	
 	</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=166c35471279ee679a666dea66875cae&libraries=services"></script>
 <script>
@@ -98,7 +179,7 @@ function closeOverlay() {
 </script>
 <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script> -->
-		
+
 		<div class="footer_wrap_area">
 		<jsp:include page="footer.jsp"></jsp:include>
 		</div>

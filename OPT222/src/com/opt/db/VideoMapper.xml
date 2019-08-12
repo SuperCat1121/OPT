@@ -151,7 +151,16 @@
 		OPT_VIDEO_CLIP
 		WHERE VIDEO_NO_SEQ = #{video_no_seq}
 	</delete>
-
+	
+	<delete id="multiDelVideoComment" parameterType="map">
+		DELETE FROM OPT_VIDEO_COMMENT
+		WHERE VIDEO_NO_SEQ IN
+		<foreach collection="seq" item="seqs" open="(" separator=","
+			close=")">
+			#{seqs}
+		</foreach>
+	</delete>
+	
 	<delete id="multiDel" parameterType="map">
 		DELETE FROM OPT_VIDEO_CLIP
 		WHERE VIDEO_NO_SEQ IN

@@ -43,6 +43,8 @@ public interface OPTBiz {
 	public int deleteVideo(int video_no_seq);
 	public int deleteVideoComment(int video_no_seq);
 	public boolean multiDelVideo(String[] seq);
+	public boolean multiDelVideoComment(String[] seq);
+
 	
 	//비디오 댓글
 	public List<VideoComment> videoCommentList(int no);

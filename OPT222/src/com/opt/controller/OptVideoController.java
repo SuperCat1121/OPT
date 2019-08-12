@@ -157,7 +157,8 @@ public class OptVideoController extends HttpServlet {
 			}
 		} else if (command.equals("multiDel")) {
 			String[] seq = request.getParameterValues("chk");
-
+			biz.multiDelVideoComment(seq);
+			
 			if (biz.multiDelVideo(seq)) {
 				alert("삭제성공", "video.do?command=videoList&page=1&videoarea=my", response);
 			} else {
