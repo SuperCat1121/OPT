@@ -7,8 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/basket.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+
+	function closeNav() {
+		document.getElementById('mysidenav').style.width = '0';
+	}
+	
+
+
 
 
 function allChk(bool){
@@ -77,6 +85,19 @@ function allChk(bool){
 			
 		});
 		
+		
+		$(".line-wrapper").click(function(){
+			
+			if($("#mysidenav").hasClass('abc') == true) {
+			
+				$("#mysidenav").removeClass('abc');
+				$("#mysidenav").width('0px');
+			} else {
+			$("#mysidenav").addClass('abc');
+			$("#mysidenav").width('250px');
+			}
+		});
+		
 	});
 
 
@@ -87,11 +108,44 @@ function allChk(bool){
 </head>
 <body>
 
+	<div>
+	<jsp:include page="header.jsp"></jsp:include>
+	</div>
+	
+	
+	<div class="page_title">
 	<h1>장바구니</h1>
+	</div>
+		<!-- side menu -->
+	<nav class="side_menu_nav">
+	<div id="mysidenav" class="sidenav">
+		<div style="width : 250px;">
+		<a href="#" class="closebtn" onclick='closeNav()'>x</a>
+		<a href="deliver_search.jsp">운송장번호 조회</a>
+		<a href="postbox.do?command=recivePostbox&page=1">마이쪽지함</a>
+		<a href="calendar.jsp">일정관리</a>
+		<a href="basket.do?command=basketlist">장바구니</a>
+		<a onclick="coupon_popup();">내쿠폰함</a>
+		<a href="#">고객센터</a>		
+		</div>
+	</div>
+	<div class="openmenu_btn">
+	</div>
+	</nav>
+	<!-- 햄버거 -->
+		<div class="wrapper">
+  <!-- 추가된 부분 -->
+		  <div class="line-wrapper">
+		    <div class="line"></div>
+		    <div class="line"></div>
+		    <div class="line"></div>
+		  </div>
+		</div>
+		<!-- ************ -->	
+	<div class="basketContent">
+	<form action="basket.do" method="post" name="myform" id="multiDelForm" onsubmit="return false;">
 
-<form action="basket.do" method="post" name="myform" id="multiDelForm" onsubmit="return false;">
-
-		<table border="1">
+		<table border="1" class="basketTable">
 
 			<tr>
 				<th>전체선택<input type="checkbox" name="all" onclick="allChk(this.checked);"></th>
@@ -129,15 +183,21 @@ function allChk(bool){
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
-			<tr>
-				<td>
-					<input type="button" value="구매하기" id="payment" onclick="basketPayment();" />
-					<input type="button" value="삭제하기" id="delete" onclick="muldel();" />					
-				</td>
-			</tr>
 		</table>
+		<br />
+		<div class="basketBtn">
+		<input type="button" class="btn" value="구매하기" id="payment" onclick="basketPayment();" />
+		<input type="button" class="btn" value="삭제하기" id="delete" onclick="muldel();" />
+		<input type="button" value="상품목록" class="btn" id="List" onclick="location.href='item.do?command=itemlist&page=1'" />
+		</div>
 	</form>
+	</div>
 
-<input type="button" value="상품목록" id="List" onclick="location.href='item.do?command=itemlist&page=1'">
+
+
+<div>
+	<jsp:include page="footer.jsp"></jsp:include>
+</div>
+	
 </body>
 </html>
