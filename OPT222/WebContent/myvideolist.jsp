@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품페이지</title>
+<title></title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
@@ -184,7 +184,7 @@
 										</c:otherwise>
 									</c:choose></td>
 								<td style="padding-left: 20px; padding-bottom: 130px;"
-									onclick=""><h4>${videoDto.video_title }${videoDto.video_no_seq}</h4>
+									onclick=""><h4>${videoDto.video_title }</h4>
 									조회수 : ${videoDto.video_views_no }<br /> 등록시간 : <fmt:formatDate
 										value="${videoDto.video_regdate }" pattern="yyyy-MM-dd HH:mm" /><br />
 									${videoDto.video_content } <br> <input class="searchBtn"

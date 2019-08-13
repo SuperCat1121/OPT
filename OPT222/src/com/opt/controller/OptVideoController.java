@@ -33,52 +33,103 @@ public class OptVideoController extends HttpServlet {
 		System.out.println("[ video.do?" + command + " ]");
 		OPTBizImpl biz = new OPTBizImpl();
 		PrintWriter out = response.getWriter();
+		
 		if (command.equals("videoList")) {
+			HttpSession session = request.getSession();
 			System.out.println(Integer.parseInt(request.getParameter("page")));
-			String videoarea = request.getParameter("videoarea");
+			String videoarea = request.getParameter("videoarea");			
 			int page = Integer.parseInt(request.getParameter("page"));
-			int allCount = biz.selectVideoList().size();
-			int listCount = 10;
-			int totalPage = (allCount - 1) / listCount + 1;
-			int blockCount = 5;
-			int absolutePage = 0;
-			int endPage = 0;
-
-			if (page < 1) {
-				page = 1;
-
-			} else if (page > totalPage) {
-				page = totalPage;
-			}
-
-			if (page % 5 == 0) {
-				absolutePage = ((page / 5) * 5) - 4;
-				endPage = (page / 5) * 5;
-
-			} else {
-				absolutePage = ((page / 5) * 5) + 1;
-				endPage = ((page / 5) * 5) + 5;
-			}
-
-			if (endPage > totalPage) {
-				endPage = totalPage;
-			}
-
-			int start = (page - 1) * listCount + 1;
-			int end = page * listCount;
-			System.out.println("start >> " + start);
-			System.out.println("end >> " + end);
-			request.setAttribute("list", biz.videoListPage(start, end));
-			request.setAttribute("page", page);
-			request.setAttribute("blockCount", blockCount);
-			request.setAttribute("totalPage", totalPage);
-			request.setAttribute("absolutePage", absolutePage);
-			request.setAttribute("endPage", endPage);
+			MemberDto memberDto = (MemberDto)session.getAttribute("memdto");
+			
+			
+			
 			if (videoarea.equals("main")) {
+				int allCount = biz.selectVideoList().size();
+				int listCount = 10;
+				int totalPage = (allCount - 1) / listCount + 1;
+				int blockCount = 5;
+				int absolutePage = 0;
+				int endPage = 0;
+
+				if (page < 1) {
+					page = 1;
+
+				} else if (page > totalPage) {
+					page = totalPage;
+				}
+
+				if (page % 5 == 0) {
+					absolutePage = ((page / 5) * 5) - 4;
+					endPage = (page / 5) * 5;
+
+				} else {
+					absolutePage = ((page / 5) * 5) + 1;
+					endPage = ((page / 5) * 5) + 5;
+				}
+
+				if (endPage > totalPage) {
+					endPage = totalPage;
+				}
+
+				int start = (page - 1) * listCount + 1;
+				int end = page * listCount;
+				System.out.println("start >> " + start);
+				System.out.println("end >> " + end);
+				request.setAttribute("list", biz.videoListPage(start, end));
+				request.setAttribute("page", page);
+				request.setAttribute("blockCount", blockCount);
+				request.setAttribute("totalPage", totalPage);
+				request.setAttribute("absolutePage", absolutePage);
+				request.setAttribute("endPage", endPage);
+				
 				dispatch(request, response, "videoboard.jsp");
+			
 			} else {
+				
+				int allCount = biz.myVideolist(memberDto.getOpt_no_seq()).size();
+				int listCount = 10;
+				int totalPage = (allCount - 1) / listCount + 1;
+				int blockCount = 5;
+				int absolutePage = 0;
+				int endPage = 0;
+
+				if (page < 1) {
+					page = 1;
+
+				} else if (page > totalPage) {
+					page = totalPage;
+				}
+
+				if (page % 5 == 0) {
+					absolutePage = ((page / 5) * 5) - 4;
+					endPage = (page / 5) * 5;
+
+				} else {
+					absolutePage = ((page / 5) * 5) + 1;
+					endPage = ((page / 5) * 5) + 5;
+				}
+
+				if (endPage > totalPage) {
+					endPage = totalPage;
+				}
+
+				int start = (page - 1) * listCount + 1;
+				int end = page * listCount;
+				System.out.println("start >> " + start);
+				System.out.println("end >> " + end);
+				request.setAttribute("list", biz.myVideoListPage(memberDto.getOpt_no_seq(), start, end));
+				request.setAttribute("page", page);
+				request.setAttribute("blockCount", blockCount);
+				request.setAttribute("totalPage", totalPage);
+				request.setAttribute("absolutePage", absolutePage);
+				request.setAttribute("endPage", endPage);
+				
 				dispatch(request, response, "myvideolist.jsp");
 			}
+			
+			
+			
+			
 		} else if (command.equals("searchVideo")) {
 			String searchoption = request.getParameter("searchoption");
 			String searchtext = request.getParameter("searchtext");

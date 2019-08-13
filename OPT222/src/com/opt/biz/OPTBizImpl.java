@@ -387,6 +387,16 @@ public class OPTBizImpl implements OPTBiz {
 	public boolean multiDelVideo(String[] seq) {
 		return dao.multiDelVideo(seq);
 	}
+	
+	@Override
+	public List<VideoClipDto> myVideolist(int no){
+		return dao.myVideolist(no);
+	}
+	
+	@Override
+	public List<VideoClipDto> myVideoListPage(int no, int start, int end){
+		return dao.myVideoListPage(no, start, end);
+	}
 
 	@Override
 	public int updateVideo(VideoClipDto VideoClipDto) {

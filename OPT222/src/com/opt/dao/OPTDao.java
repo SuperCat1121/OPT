@@ -1111,6 +1111,29 @@ public PostboxDto postboxDetail(int post_no) {
 		}
 		return res;
 	}
+	
+	public boolean multiDelVideoComment(String[] seq) {
+		SqlSession session = null;
+		int cnt = 0;
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("seq", seq);
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			cnt = session.delete("VideoMapper.multiDelVideoComment", map);
+			if (cnt == seq.length) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		return cnt == seq.length ? true : false;
+	}
+	
 
 	public boolean multiDelVideo(String[] seq) {
 		SqlSession session = null;
@@ -1265,6 +1288,45 @@ public PostboxDto postboxDetail(int post_no) {
 			session.close();
 		}
 		return res;
+	}
+	
+	
+	public List<VideoClipDto> myVideolist(int no){		
+		SqlSession session = null;
+		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("VideoMapper.myVideolist", no);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return list;
+		
+	}
+	
+	public List<VideoClipDto> myVideoListPage(int no, int start, int end){
+		SqlSession session = null;
+		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("no", no);
+		map.put("start", start);
+		map.put("end", end);
+		
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("VideoMapper.myVideoListPage", map);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return list;
 	}
 	
 
