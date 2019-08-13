@@ -461,5 +461,10 @@ public class OPTBizImpl implements OPTBiz {
 	public List<CustomerServiceDto> customerPaging(int start, int end) {
 		return dao.customerPaging(start, end);
 	}
+
+	@Override
+	public int insertCustomerBoard(CustomerServiceDto customerServiceDto) {
+		return dao.insertCustomerBoard(customerServiceDto);
+	}
 	
 }

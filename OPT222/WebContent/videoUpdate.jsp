@@ -103,9 +103,9 @@
 	</table>
 	<form id="videoFrm" action="video.do" method="post"
 		enctype="multipart/form-data">
-		<input type="hidden" name="command" value="videoupdateres"> <input
-			type="hidden" name="videoarea" value="main">
-
+		<input type="hidden" name="command" value="videoupdateres"> 
+		<input	type="hidden" name="videoarea" value="main">
+		<input	type="hidden" name="videoseq" value="${videoDto.video_no_seq }">
 		<table class="videoupload">
 			<tr class="uploadrow">
 				<th>비디오 제목</th>

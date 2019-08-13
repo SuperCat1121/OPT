@@ -77,6 +77,21 @@ public class OptServiceController extends HttpServlet {
 			
 			
 			dispatch(request, response, "customer.jsp");
+		} else if (command.equals("insertres")) {
+			int opt_no_seq = Integer.parseInt(request.getParameter("opt_no_seq"));
+			String customer_title = request.getParameter("customer_title");
+			String customer_content = request.getParameter("customer_content");
+			CustomerServiceDto customerServiceDto = new CustomerServiceDto();
+			customerServiceDto.setOpt_no_seq(opt_no_seq);
+			customerServiceDto.setCustomer_title(customer_title);
+			customerServiceDto.setCustomer_content(customer_content);
+			int res = biz.insertCustomerBoard(customerServiceDto);
+			if (res > 0) {
+				dispatch(request, response, "service.do?command=servicelist&page=0");
+			} else {
+				dispatch(request, response, "customerwrite.jsp");
+			}
+
 		}
 	
 	

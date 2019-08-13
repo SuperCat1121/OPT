@@ -131,4 +131,5 @@ public interface OPTBiz {
 	public List<CustomerServiceDto> customerList();
 	//고객센터 페이징
 	public List<CustomerServiceDto> customerPaging(int start , int end);
+	public int insertCustomerBoard(CustomerServiceDto customerServiceDto);
 }

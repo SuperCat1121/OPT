@@ -102,8 +102,11 @@ $(document).ready(function(){
 			</c:forEach>
 			</c:otherwise>
 		</c:choose>			
-		 </ul>
-		
+		 <li>
+		<input type="button" value="글작성"
+							onclick="location.href='customerwrite.jsp'" />
+			</li>				
+							</ul>
 		</div>	
 	</div>
 	<div class="paging">

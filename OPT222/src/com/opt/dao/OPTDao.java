@@ -1360,5 +1360,43 @@ public PostboxDto postboxDetail(int post_no) {
 		return list;
 	}
 	
+	public List<VideoClipDto> myVideoListPage(int no, int start, int end){
+		SqlSession session = null;
+		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("no", no);
+		map.put("start", start);
+		map.put("end", end);
+		
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("VideoMapper.myVideoListPage", map);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return list;
+	}
+	public int insertCustomerBoard(CustomerServiceDto customerServiceDto) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.insert("CustomerMapper.insertCustomerBoard", customerServiceDto);
+			if (res > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
 
 }
