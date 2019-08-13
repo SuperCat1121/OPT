@@ -51,7 +51,7 @@ function allChk(bool){
 			
 			for(var i=0; i < $("input[name=chk]:checked").length; i++ ){			
 				
-				arr.push($("input[name=chk]:checked").eq(i).parent().siblings().eq(3).children().val());
+				arr.push($("input[name=chk]:checked").eq(i).parent().siblings().eq(2).children().val());
 			
 			}
 			
@@ -125,7 +125,7 @@ function allChk(bool){
 		<a href="postbox.do?command=recivePostbox&page=1">마이쪽지함</a>
 		<a href="calendar.jsp">일정관리</a>
 		<a href="basket.do?command=basketlist">장바구니</a>
-		<a onclick="coupon_popup();">내쿠폰함</a>
+		<a onclick="coupon_popup();" style="cursor: pointer;">내쿠폰함</a>
 		<a href="#">고객센터</a>		
 		</div>
 	</div>
