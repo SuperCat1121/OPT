@@ -17,6 +17,7 @@
 		<typeAlias type="com.opt.dto.VideoComment" alias="VideoCommentDto" />
 		<typeAlias type="com.opt.dto.ItemCommentDto" alias="ItemCommentDto" />
 		<typeAlias type="com.opt.dto.CustomerServiceDto" alias="CustomerDto"/>
+		<typeAlias type="com.opt.dto.FaqDto" alias="faqDto"/>
 		<typeAlias type="com.opt.dto.AdminAnswerDto" alias="AdminanswerDto"/>
 				
 	</typeAliases>

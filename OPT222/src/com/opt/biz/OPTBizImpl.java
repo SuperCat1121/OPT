@@ -9,6 +9,7 @@ import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.CustomerServiceDto;
+import com.opt.dto.FaqDto;
 import com.opt.dto.ItemCommentDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
@@ -472,6 +473,36 @@ public class OPTBizImpl implements OPTBiz {
 	@Override
 	public List<AdminAnswerDto> adminanswerList() {
 		return dao.adminanswerList();
+	}
+	
+	//FAQ 리스트
+	@Override
+	public List<FaqDto> faqList() {
+		return dao.faqList();
+	}
+
+	//FAQ 리스트 페이징	
+	@Override
+	public List<FaqDto> faqListPage(int start, int end) {
+		return dao.faqListPage(start, end);
+	}
+
+	//FAQ 글쓰기
+	@Override
+	public int insertFaq(FaqDto faqDto) {
+		return dao.insertFaq(faqDto);
+	}
+
+	//FAQ 수정하기
+	@Override
+	public int updateFaq(FaqDto faqDto) {
+		return dao.updateFaq(faqDto);
+	}
+	
+	//FAQ 삭제하기
+	@Override
+	public int deleteFaq(int faq_no_seq) {
+		return dao.deleteFaq(faq_no_seq);
 	}
 	
 }

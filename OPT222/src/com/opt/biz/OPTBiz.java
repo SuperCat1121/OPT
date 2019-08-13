@@ -8,6 +8,7 @@ import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.CustomerServiceDto;
+import com.opt.dto.FaqDto;
 import com.opt.dto.ItemCommentDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
@@ -136,4 +137,11 @@ public interface OPTBiz {
 	
 	//관리자 답변 리스트
 	public List<AdminAnswerDto> adminanswerList();
+	
+	//FAQ (자주묻는질문) 게시판
+		public List<FaqDto> faqList();
+		public List<FaqDto> faqListPage(int start, int end);	
+		public int insertFaq(FaqDto faqDto);
+		public int updateFaq(FaqDto faqDto);
+		public int deleteFaq(int faq_no_seq);
 }

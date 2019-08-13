@@ -31,4 +31,42 @@
 	
 	
 	
+	
+	
+	
+	
+	<select id="faqList" resultType="faqDto">
+	SELECT * FROM OPT_FAQ		
+	</select>
+	
+	<select id="faqListPage" parameterType="map" resultType="faqDto">
+	SELECT R, FAQ_NO_SEQ, FAQ_TITLE, FAQ_CONTENT, FAQ_REGDATE
+	FROM (SELECT ROWNUM AS R, FAQ_NO_SEQ, FAQ_TITLE, FAQ_CONTENT, FAQ_REGDATE
+	FROM (SELECT FAQ_NO_SEQ, FAQ_TITLE, FAQ_CONTENT, FAQ_REGDATE
+	FROM OPT_FAQ
+	ORDER BY FAQ_NO_SEQ DESC))
+	WHERE R BETWEEN #{start} AND #{end}
+	</select>
+	
+	<insert id="insertFaq" parameterType="faqDto">
+	INSERT INTO OPT_FAQ VALUES(
+	FAQSEQ.NEXTVAL,
+	#{faq_title},
+	#{faq_content},
+	SYSDATE
+	)	
+	</insert>
+	
+	<update id="updateFaq" parameterType="faqDto">
+	UPDATE OPT_FAQ SET
+	FAQ_TITLE = #{faq_title}, FAQ_CONTENT = #{faq_content}
+	WHERE FAQ_NO_SEQ = #{faq_no_seq}	
+	</update>
+	
+	<delete id="deleteFaq" parameterType="int">
+	DELETE FROM OPT_FAQ
+	WHERE FAQ_NO_SEQ =  #{faq_no_seq}	
+	</delete>
+	
+	
 </mapper>

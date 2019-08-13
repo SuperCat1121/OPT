@@ -3,11 +3,13 @@ package com.opt.dto;
 import java.sql.Date;
 
 public class FaqDto {
-	
+
 	private int faq_no_seq;
 	private String faq_title;
 	private String faq_content;
 	private Date faq_regdate;
+	private int r;
+	
 	
 	public int getFaq_no_seq() {
 		return faq_no_seq;
@@ -33,13 +35,13 @@ public class FaqDto {
 	public void setFaq_regdate(Date faq_regdate) {
 		this.faq_regdate = faq_regdate;
 	}
-	
+	public int getR() {
+		return r;
+	}
+	public void setR(int r) {
+		this.r = r;
+	}
 	
 	
 
-	
-	
-	
-	
-	
 }

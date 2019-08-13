@@ -13,6 +13,7 @@ import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.CustomerServiceDto;
+import com.opt.dto.FaqDto;
 import com.opt.dto.ItemCommentDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
@@ -1361,26 +1362,7 @@ public PostboxDto postboxDetail(int post_no) {
 		return list;
 	}
 	
-	public List<VideoClipDto> myVideoListPage(int no, int start, int end){
-		SqlSession session = null;
-		List<VideoClipDto> list = new ArrayList<VideoClipDto>();
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("no", no);
-		map.put("start", start);
-		map.put("end", end);
-		
-		try {
-			session = getsqlSessionFactory().openSession(false);
-			list = session.selectList("VideoMapper.myVideoListPage", map);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-		
-		return list;
-	}
+
 	public int insertCustomerBoard(CustomerServiceDto customerServiceDto) {
 		SqlSession session = null;
 		int res = 0;
@@ -1399,6 +1381,7 @@ public PostboxDto postboxDetail(int post_no) {
 		}
 		return res;
 	}
+	
 	//관리자 답변 리스트
 	public List<AdminAnswerDto> adminanswerList() {
 		SqlSession session = null;
@@ -1412,5 +1395,99 @@ public PostboxDto postboxDetail(int post_no) {
 			session.close();
 		}
 		return list;
+	}
+
+	//FAQ 리스트
+	public List<FaqDto> faqList() {
+		SqlSession session = null;
+		List<FaqDto> list = new ArrayList<FaqDto>();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("CustomerMapper.faqList");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	//FAQ 리스트 페이징	
+	public List<FaqDto> faqListPage(int start, int end) {
+		SqlSession session = null;
+		List<FaqDto> list = new ArrayList<FaqDto>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("start", start);
+		map.put("end",end);
+		
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("CustomerMapper.faqListPage", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	//FAQ 글쓰기
+	public int insertFaq(FaqDto faqDto) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.insert("CustomerMapper.insertFaq", faqDto);
+			if (res > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+
+	//FAQ 수정하기
+	public int updateFaq(FaqDto faqDto) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.update("CustomerMapper.updateFaq", faqDto);
+			if (res > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+	
+	//FAQ 삭제하기
+	public int deleteFaq(int faq_no_seq) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.delete("CustomerMapper.updateFaq", faq_no_seq);
+			if (res > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
 	}
 }
