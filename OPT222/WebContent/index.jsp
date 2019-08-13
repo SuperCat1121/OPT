@@ -123,11 +123,11 @@
 						<a class = "menulogo" href="#" title="OPT 메인으로 이동">
 							<img alt="main" src="image/logo2_w.png" width=120px;>
 						</a> 
-						<a class = "menulist" href="video.do?command=videoList&page=1&videoarea=main">OPT</a>
+						<a class = "menulist" href="opt_brand.jsp">OPT</a>
 					</li>
 					<li>
-						<a class = "menulist" href="">PT받기</a>
-						<a class = "menulist" href="item.do?command=itemlist&page=1">FOOD</a>
+						<a class = "menulist" href="video.do?command=videoList&page=1&videoarea=main">O-Tube</a>
+						<a class = "menulist" href="item.do?command=itemlist&page=1">O-Food</a>
 					</li>
 					<li>
 						<a class = "menulist" href="">고객지원</a>
@@ -150,45 +150,45 @@
 		<section class="section1">
 			<div class="section_background"></div>
 			<div class="section_title">
-				<span>어디서나 함께하는</span>
+				<span>어디서나 함께하는 OPT</span>
 				<p>
-					<strong>운동 친구</strong>
+					<strong>Solutions Are Often Closer Than You Think</strong>
 				</p>					
 			</div>
 		</section>
 		<section class="section2">
 			<div class="section_background"></div>
 			<div class="section_title">
-				<span>미쳐라</span>
+				<span>시작했다면 포기하지 마세요</span>
 				<p>
-					<strong>It`s only crazy until you do it</strong>
+					<strong>It`s Only Crazy Until You Do It</strong>
 				</p>				
 			</div>
 		</section>
 		<section class="section3">
 			<div class="section_background"></div>
 			<div class="section_title">
-				<span>철저한</span>
+				<span>체중 감량은 허황된 꿈이 아니다</span>
 				<p>
-					<strong>식단 관리</strong>
+					<strong>Weight Loss In No Pie In The Sky</strong>
 				</p>					
 			</div>
 		</section>
 		<section class="section4">
 			<div class="section_background"></div>
 			<div class="section_title">
-				<span>맛있게 드세요</span>
+				<span>신선한 음식을 제공합니다</span>
 				<p>
-					<strong>저희가 준비한 걸로</strong>
+					<strong>Now Available On OPT</strong>
 				</p>					
 			</div>
 		</section>
 		<section class="section5">
 			<div class="section_background"></div>
 			<div class="section_title">
-				<span>OPT가</span>
+				<span>여러분의 건강을 책임집니다</span>
 				<p>
-					<strong>여러분의 건강을 책임집니다.</strong>
+					<strong>A Sound Mind In A Sound Body</strong>
 				</p>				
 			</div>
 		</section>
