@@ -21,7 +21,7 @@
     border-top: 1px solid #ebebeb;
     padding: 11px 0;
     margin-top: 18px;
-    padding-left: 23px;
+    padding-left: 36px;
 	}
 	.costomer_img{
 	width: 26px;
@@ -33,7 +33,24 @@
     height: 26px;
     background: url(./image/ico_a.png) no-repeat;
 	}
-
+	#faq_div{
+	cursor: pointer;
+	}
+	
+	.coupon_list {
+    height: 630px;
+    margin-top: 30px;
+	}
+	.service_content_wrap {
+    margin: 0 auto;
+    padding-top: 10px;
+    width: 1400px;
+    height: 900px;
+	}
+	
+	.paging{
+		margin-top: 20px;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
@@ -41,13 +58,13 @@
 $(document).ready(function(){
     //$("#costomer_text").hide();
     // $("ul > li:first-child a").next().show();
-    $("#faq a").click(function(){
+    $("#faq #faq_div").click(function(){
       $(this).next().slideToggle(300);
       // $(this).next().slideDown(300);
-      $("#faq a").not(this).next().slideUp(300);
+      $("#faq #faq_div").not(this).next().slideUp(300);
       return false;
     });
-    $("#faq a").eq(0).trigger("click");
+    $("#faq #faq_div").eq(0).trigger("click");
   });
 	
 </script>
@@ -61,7 +78,7 @@ $(document).ready(function(){
 	<div class="category_menu">
 		<ul>
 			<li>
-				<a href="customer_often_FAQ.jsp">자주묻는질문</a>
+				<a href="service.do?command=faqlist&page=1">자주묻는질문</a>
 			</li>
 			<li>
 				<a href="#">고객 QNA</a>
@@ -102,11 +119,12 @@ $(document).ready(function(){
 		<c:otherwise>
 			<c:forEach items="${customerdto }" var="dto">
 					<li id="faq">
-						<a id="qna_a" href="#">
-						<span class="costomer_span_one">${dto.customer_no_seq }</span>
-						<span class="costomer_span_two"> ${dto.customer_title }</span>
-						<span class="costomer_span_three"> ${dto.opt_id }</span> 
-						<span class="costomer_span_four"><fmt:formatDate value="${dto.customer_regdate}" pattern="yyyy-MM-dd" /></span></a>
+						<div id="faq_div">
+						<p class="costomer_p_one">${dto.customer_no_seq }</p>
+						<p class="costomer_p_two"> ${dto.customer_title }</p>
+						<p class="costomer_p_three"> ${dto.opt_id }</p> 
+						<p class="costomer_p_four"><fmt:formatDate value="${dto.customer_regdate}" pattern="yyyy-MM-dd" /></p>
+						</div>
 					 	<div id="costomer_text">
 					 	<div class="costomer_img"></div>
 					 	<div class="text_area"><p class="cosutomer_textcontent">${dto.customer_content }</p></div>

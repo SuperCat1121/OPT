@@ -17,7 +17,7 @@ setion {
 	margin: 0 auto;
     padding-top: 10px;
     width: 1400px;
-    height: 800px;
+    height: 850px;
 }
 .service_content_wrap h3{
 	text-align: center;
@@ -68,7 +68,7 @@ table{
     margin-right: 43px;
 }
 .coupon_list{
-	height: 500px;
+	height: 590px;
     margin-top: 30px;
 	
 }
@@ -133,22 +133,32 @@ color: #575757;
  
  }
  .costomer_list_ul li{
-     padding: 18px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #e6e6e6;
     font-size: 16px;
  }
- .costomer_span_one{
- 	margin-left: 35px;
+  .costomer_p_one{
+ 	display: inline-block;
+    width: 100px;
+    text-align: center;
  }
- .costomer_span_two{
- 	margin-left: 340px;
+ .costomer_p_two{
+    display: inline-block;
+    width: 797px;
+    text-align: center;
+    color: #646161;
+    font-weight: 500;
  }
- .costomer_span_three{
- 	margin-left: 348px;
+ .costomer_p_three{
+ 	display: inline-block;
+    width: 100px;
+    text-align: center;
  }
- .costomer_span_four{
-     margin-left: 71px;
- }
+ .costomer_p_four{
+    text-align: center;
+    display: inline-block;
+    width: 160px;
+ } 
  
 .btn {
 	background-color: #cbb795;

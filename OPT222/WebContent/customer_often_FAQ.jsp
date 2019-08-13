@@ -21,14 +21,16 @@
     border-top: 1px solid #ebebeb;
     padding: 11px 0;
     margin-top: 18px;
-    padding-left: 23px;
+    padding-left: 36px;
 	}
 	.costomer_img{
 	width: 26px;
     height: 26px;
-    background: url(./image/ico_q.png) no-repeat;
+    background: url(./image/ico_a.png) no-repeat;
 	}
-
+	#faq_div{
+	cursor: pointer;
+	}
 	
 	
 </style>
@@ -38,13 +40,13 @@
 $(document).ready(function(){
 	  //$("#costomer_text").hide();
 	  // $("ul > li:first-child a").next().show();
-	  $("#faq a").click(function(){
+	  $("#faq #faq_div").click(function(){
 	    $(this).next().slideToggle(300);
 	    // $(this).next().slideDown(300);
-	    $("#faq a").not(this).next().slideUp(300);
+	    $("#faq #faq_div").not(this).next().slideUp(300);
 	    return false;
 	  });
-	  $("#faq a").eq(0).trigger("click");
+	  $("#faq #faq_div").eq(0).trigger("click");
 	});
 	
 </script>
@@ -65,7 +67,7 @@ $(document).ready(function(){
 				<a href="#">자주묻는질문</a>
 			</li>
 			<li>
-				<a href="customer.jsp">고객 QNA</a>
+				<a href="service.do?command=servicelist&page=1">고객 QNA</a>
 			</li>
 		</ul>
 	</div>
@@ -103,14 +105,16 @@ $(document).ready(function(){
 		<c:otherwise>
 			<c:forEach items="${list }" var="dto">
 					<li id="faq">
-						<a href="#">
-						<span class="costomer_span_one">${dto.faq_no_seq }</span>
-						<span class="costomer_span_two"> ${dto.faq_title }</span>
-						<span class="costomer_span_three">ADMIN</span>
-						<span class="costomer_span_four"><fmt:formatDate value="${dto.faq_regdate }" pattern="yyyy-MM-dd" /></span></a>
+						<div id="faq_div">
+						<p class="costomer_p_one">${dto.faq_no_seq }</p>
+						<p class="costomer_p_two"> ${dto.faq_title }</p>
+						<p class="costomer_p_three">ADMIN</p>
+						<p class="costomer_p_four"><fmt:formatDate value="${dto.faq_regdate }" pattern="yyyy-MM-dd" /></p>
+						</div>
 					 	<div id="costomer_text">
 					 	<div class="costomer_img"></div>
-					 	<div class="text_area"><p class="cosutomer_textcontent">${dto.faq_content }</p></div>					 	
+					 	<div class="text_area"><p class="cosutomer_textcontent">${dto.faq_content }</p>
+					 	</div>					 	
 					 	</div>
 					</li>
 			</c:forEach>

@@ -306,12 +306,14 @@ CREATE SEQUENCE FAQSEQ;
 CREATE TABLE OPT_FAQ(
 	FAQ_NO_SEQ	NUMBER		PRIMARY KEY,
 	FAQ_TITLE	VARCHAR2(500)	NOT NULL,
+	FAQ_ID VARCHAR2(500) NOT NULL,
 	FAQ_CONTENT	VARCHAR2(4000)	NOT NULL,
 	FAQ_REGDATE	DATE		NOT NULL
 );
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'당일 배송 되나요',
+	'ADMIN',
 	'평일 오후 2시 이전 결제완료 시, 당일 출고되며, 출고일로부터 1~3일 정도의 배송기간이 소요됩니다. (지역별 택배 물량에 따라서 차이가 있을수 있습니다.)',
 	SYSDATE
 );
@@ -320,6 +322,7 @@ INSERT INTO OPT_FAQ VALUES(
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'회원 아이디를 변경 할수 있나요?',
+	'ADMIN',
 	'아이디는 변경하실수 없습니다.',
 	SYSDATE
 );
@@ -327,6 +330,7 @@ INSERT INTO OPT_FAQ VALUES(
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'결제는 어떻게 해야하나요?',
+	'ADMIN',
 	'OPT의 결제시스템은 카카오페이를 지원하고 있습니다',
 	SYSDATE
 );
@@ -334,6 +338,7 @@ INSERT INTO OPT_FAQ VALUES(
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'개인정보를 변경하려면 어떻게 해야하나요?',
+	'ADMIN',
 	'로그인후 마이페이지에서 변경이 가능합니다',
 	SYSDATE
 );
@@ -341,6 +346,7 @@ INSERT INTO OPT_FAQ VALUES(
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'개인정보를 변경하려면 어떻게 해야하나요?',
+	'ADMIN',
 	'로그인후 마이페이지에서 변경이 가능합니다',
 	SYSDATE
 );
@@ -348,6 +354,7 @@ INSERT INTO OPT_FAQ VALUES(
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'포인트나 쿠폰은 어떻게 사용해야 하나요?',
+	'ADMIN',
 	'포인트나 쿠폰의 경우 상품 결제 페이지에서 사용하실수 있습니다',
 	SYSDATE
 );
@@ -356,6 +363,7 @@ INSERT INTO OPT_FAQ VALUES(
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'아이디와 비밀번호를 잊어버렸어요',
+	'ADMIN',
 	'로그인페이지에서 아이디찾기나 비밀번호 찾기 메뉴를 이용하시면 됩니다 가입했던 e-mail로 확인이 가능합니다',
 	SYSDATE
 );
@@ -364,6 +372,7 @@ INSERT INTO OPT_FAQ VALUES(
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'아이디와 비밀번호를 잊어버렸어요',
+	'ADMIN',
 	'로그인페이지에서 아이디찾기나 비밀번호 찾기 메뉴를 이용하시면 됩니다 가입했던 e-mail로 확인이 가능합니다',
 	SYSDATE
 );
@@ -371,6 +380,7 @@ INSERT INTO OPT_FAQ VALUES(
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'아이디와 비밀번호를 잊어버렸어요',
+	'ADMIN',
 	'로그인페이지에서 아이디찾기나 비밀번호 찾기 메뉴를 이용하시면 됩니다 가입했던 e-mail로 확인이 가능합니다',
 	SYSDATE
 );
@@ -378,6 +388,7 @@ INSERT INTO OPT_FAQ VALUES(
 INSERT INTO OPT_FAQ VALUES(
 	FAQSEQ.NEXTVAL,
 	'직접 방문해서 구매 가능한가요?',
+	'ADMIN',
 	'방문 구매의 경우 방문 전 직접수령 가능한 재고확인 후 내방해주시길 바랍니다. 회사소개 페이지에 상세 주소가 적혀있습니다',
 	SYSDATE
 );

@@ -8,9 +8,17 @@ public class FaqDto {
 	private String faq_title;
 	private String faq_content;
 	private Date faq_regdate;
+	private String faq_id;
 	private int r;
 	
 	
+	
+	public String getFaq_id() {
+		return faq_id;
+	}
+	public void setFaq_id(String faq_id) {
+		this.faq_id = faq_id;
+	}
 	public int getFaq_no_seq() {
 		return faq_no_seq;
 	}
