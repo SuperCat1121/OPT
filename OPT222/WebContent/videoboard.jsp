@@ -84,6 +84,7 @@ $(function(){
 .videotitle {
 	font-size: 1.5em;
 	margin-top: 1px;
+	cursor: pointer;
 }
 
 .searchBar {
@@ -98,6 +99,11 @@ $(function(){
 
 .messageBtn {
 	cursor: pointer;
+}
+.foot_area_wrap{
+	position: relative;
+	top: 55px;
+	
 }
 </style>
 </head>

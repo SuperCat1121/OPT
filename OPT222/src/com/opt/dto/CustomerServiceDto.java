@@ -8,7 +8,30 @@ public class CustomerServiceDto {
 	private String customer_title;
 	private String customer_content;
 	private Date customer_regdate;
+	private String customer_category;
+	private int r;
+	private String opt_id;
 	
+	
+	
+	public String getOpt_id() {
+		return opt_id;
+	}
+	public void setOpt_id(String opt_id) {
+		this.opt_id = opt_id;
+	}
+	public String getCustomer_category() {
+		return customer_category;
+	}
+	public void setCustomer_category(String customer_category) {
+		this.customer_category = customer_category;
+	}
+	public int getR() {
+		return r;
+	}
+	public void setR(int r) {
+		this.r = r;
+	}
 	public int getCustomer_no_seq() {
 		return customer_no_seq;
 	}

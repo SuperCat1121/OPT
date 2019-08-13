@@ -6,6 +6,7 @@ import java.util.Map;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
+import com.opt.dto.CustomerServiceDto;
 import com.opt.dto.ItemCommentDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
@@ -126,4 +127,8 @@ public interface OPTBiz {
 	public boolean muliteReadDel(String[] post_no);
 	public int sendPost(int opt_no, String id, String title, String content);
 	
+	//고객센터 리스트
+	public List<CustomerServiceDto> customerList();
+	//고객센터 페이징
+	public List<CustomerServiceDto> customerPaging(int start , int end);
 }

@@ -16,6 +16,7 @@
 		<typeAlias type="com.opt.dto.VideoClipDto" alias="VideoClipDto" />
 		<typeAlias type="com.opt.dto.VideoComment" alias="VideoCommentDto" />
 		<typeAlias type="com.opt.dto.ItemCommentDto" alias="ItemCommentDto" />
+		<typeAlias type="com.opt.dto.CustomerServiceDto" alias="CustomerDto"/>
 		
 				
 	</typeAliases>
@@ -43,6 +44,7 @@
 		<mapper resource="com/opt/db/PostboxMapper.xml"/>
 		<mapper resource="com/opt/db/VideoMapper.xml"/>
 		<mapper resource="com/opt/db/ItemCommentMapper.xml"/>
+		<mapper resource="com/opt/db/CustomerServiceMapper.xml"/>
 	</mappers>
 
 

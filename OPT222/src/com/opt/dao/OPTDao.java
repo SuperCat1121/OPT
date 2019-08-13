@@ -11,6 +11,7 @@ import com.opt.dto.ItemDto;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
+import com.opt.dto.CustomerServiceDto;
 import com.opt.dto.ItemCommentDto;
 import com.opt.dto.MemberDto;
 import com.opt.dto.OrderListDto;
@@ -1289,7 +1290,37 @@ public PostboxDto postboxDetail(int post_no) {
 		}
 		return res;
 	}
-	
+	//고객센터 리스트
+	public List<CustomerServiceDto> customerList() {
+		SqlSession session = null;
+		List<CustomerServiceDto> list = new ArrayList<CustomerServiceDto>();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("CustomerMapper.customerList");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	//고객센터 리스트 페이징
+	public List<CustomerServiceDto> customerPaging(int start, int end) {
+		SqlSession session = null;
+		List<CustomerServiceDto> list = new ArrayList<CustomerServiceDto>();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("CustomerMapper.customerPaging", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 	
 	public List<VideoClipDto> myVideolist(int no){		
 		SqlSession session = null;

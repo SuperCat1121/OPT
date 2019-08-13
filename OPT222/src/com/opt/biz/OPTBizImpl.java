@@ -7,6 +7,7 @@ import com.opt.dao.OPTDao;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
+import com.opt.dto.CustomerServiceDto;
 import com.opt.dto.ItemCommentDto;
 import com.opt.dto.ItemDto;
 import com.opt.dto.MemberDto;
@@ -450,6 +451,15 @@ public class OPTBizImpl implements OPTBiz {
 	public int deleteItemComment(int item_comment_no_seq) {
 		return dao.deleteItemComment(item_comment_no_seq);
 	}
-	
+	//고객센터 리스트
+	@Override
+	public List<CustomerServiceDto> customerList() {
+		return dao.customerList();
+	}
+	//고객센터 리스트 페이징
+	@Override
+	public List<CustomerServiceDto> customerPaging(int start, int end) {
+		return dao.customerPaging(start, end);
+	}
 	
 }

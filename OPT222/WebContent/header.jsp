@@ -45,7 +45,7 @@
 								<a href="item.do?command=itemlist&page=1">PRODUCT</a>
 							</li>
 							<li>
-								<a href="#">COUSTOMER SERVICE</a>
+								<a href="service.do?command=servicelist&page=1">COUSTOMER SERVICE</a>
 							</li>
 						</ul>
 					</div>
