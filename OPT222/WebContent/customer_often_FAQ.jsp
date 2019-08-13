@@ -1,64 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="css/customer.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
+<link href="css/customer.css" rel="stylesheet" type="text/css">
 <style type="text/css">
+	
 	.foot_wrap_area{
 		position: relative;
 		top: 54px;
 	}
-	
-	.td_text {
-		width: 700px;
-		height: 50px;
-		border: 1px solid black;
-	}
-	
-	.td_content:hover {
-		cursor: pointer;
-	}
-	
-	.td_text {
-		display: none;
-	}
 </style>
-<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-<script type="text/javascript">
-
-	/* document.ready(function(){
-		)
-		$(".num").attr('class', )
-	}); */
-$(function() {
-	/* $("#tr").on("click", ".td_content", function() {
-		$(this).next().css("background", "lime").slideToggle(300);
-	}); */
-	$(".td_content").click(function(){
-		$(".td_text").css("background", "lime").slideToggle(300);
-	});
-});
-</script>
 </head>
 <body>
 	
 	<jsp:include page="header.jsp"></jsp:include>
-
+	
+	
+	
 	
 	<div class="service_content_wrap">
-		<h3>고객 QNA</h3>
+		<h3>자주묻는질문</h3>
 	<div class="category_menu">
 		<ul>
 			<li>
-				<a href="customer_often_FAQ.jsp">자주묻는질문</a>
+				<a href="#">자주묻는질문</a>
 			</li>
 			<li>
-				<a href="#">고객 QNA</a>
+				<a href="customer.jsp">고객 QNA</a>
 			</li>
 		</ul>
 	</div>
@@ -87,7 +58,7 @@ $(function() {
 					</tr>
 				</thead>
 	 			<tbody>
-		<c:choose>
+		<%-- <c:choose>
 		<c:when test="${empty customerdto }">
 			<tr>
 				<td colspan="5">----------------내용이없습니다-------</td>
@@ -96,22 +67,19 @@ $(function() {
 		<c:otherwise>
 			<c:forEach items="${customerdto }" var="dto">
 					<tr>
-						<td><div class="td_content num">${dto.customer_no_seq }</div></td>
-						<td><div class="td_content num">${dto.customer_title }</div></td>					
-						<td><div class="td_content num">${dto.opt_id }</div></td>
-						<td><div class="td_content num"><fmt:formatDate value="${dto.customer_regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></div></td>
+						<td><div class="td_content">${dto.customer_no_seq }</div></td>
+						<td><div class="td_content">${dto.customer_title }</div></td>					
+						<td><div class="td_content">${dto.opt_id }</div></td>
+						<td><div class="td_content"><fmt:formatDate value="${dto.customer_regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></div></td>
 					</tr>
-					<tr>
-						<td><div class="td_text">${dto.customer_content }</div></td>
-					</tr>	
 			</c:forEach>
 			</c:otherwise>
-		</c:choose>			
+		</c:choose>			 --%>
 		</tbody>	 
 			</table>
 		</div>	
 	</div>
-	<div class="paging">
+	<%-- <div class="paging">
 			<ul class="paging_ul">
 			<c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
 			<c:choose>
@@ -143,7 +111,8 @@ $(function() {
 			</c:choose>
 			</ul>
 		</div>
-	
+	 --%>
+
 	
 	<div class="foot_wrap_area">
 		<jsp:include page="footer.jsp"></jsp:include>
