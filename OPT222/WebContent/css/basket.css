@@ -128,11 +128,12 @@ a {
 }
 
 .basketBtn{
-	text-align: center;
+	text-align: center;	
 }
 
 .basketTable{
 	width: -webkit-fill-available;
+	text-align: center;
 }
 
 .btn{
@@ -141,4 +142,13 @@ a {
     width: 100px;
     height: 40px;
     cursor: pointer;
+}
+
+.footer_areawrap{
+    position: relative;
+    top: 278px;
+}
+
+tr{
+	height: 30px;
 }

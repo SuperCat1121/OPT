@@ -171,7 +171,7 @@
 	</div>
 	</div>
 
-	<div>
+	<div class="footer_areawrap">
 	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 	<script>roundTable("ta1");</script>

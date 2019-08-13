@@ -81,7 +81,7 @@ function allChk(bool){
 				$(this).val(100);
 			}				
 			
-			$(this).parent().siblings().eq(4).children().html(addComma($('.price').val() * $(this).val())+"원");
+			$(this).parent().siblings().eq(3).children().html(addComma($('.price').val() * $(this).val())+"원");
 			
 		});
 		
@@ -114,7 +114,7 @@ function allChk(bool){
 	
 	
 	<div class="page_title">
-	<h1>장바구니</h1>
+	<h2>장바구니</h2>
 	</div>
 		<!-- side menu -->
 	<nav class="side_menu_nav">
@@ -145,18 +145,16 @@ function allChk(bool){
 	<div class="basketContent">
 	<form action="basket.do" method="post" name="myform" id="multiDelForm" onsubmit="return false;">
 
-		<table border="1" class="basketTable">
+		<table class="basketTable">
 
 			<tr>
-				<th>전체선택<input type="checkbox" name="all" onclick="allChk(this.checked);"></th>
-				<th width="200">장바구니 번호</th>
+				<th width="50"><input type="checkbox" name="all" onclick="allChk(this.checked);"></th>				
 				<th width="200">상품이미지</th>
 				<th width="200">상품명</th>
-				<th width="200">수량</th>
+				<th width="50">수량</th>
 				<th width="200">상품금액</th>
-				
-
 			</tr>
+			<tr></tr>
 
 			<c:choose>
 				<c:when test="${empty basketList}">
@@ -171,20 +169,18 @@ function allChk(bool){
 					<input type="hidden" class="price" value="${dto.basket_item_price }" />
 						<tr>
 							<td><input type="checkbox" onclick="" name="chk"
-								value="${dto.basket_no_seq }"></td>
-							<td>${dto.basket_no_seq }</td>
+								value="${dto.basket_no_seq }"></td>							
 							<td><a href="item.do?command=itemdetail&no=${dto.basket_item_no }&page=1"><img
-									alt="" src="${dto.basket_item_url }" width="100" height="100" ></a></td>
-							<td>${dto.basket_item_name }</td>
+									alt="" src="${dto.basket_item_url }" width="150" height="150" ></a></td>							<td>${dto.basket_item_name }</td>
 							<td><input type="number" style="width: 40px" id="ea" class="ea"
 								value="${dto.basket_item_count }"  min="1" max="100" onkeydown="javascript: return event.keyCode == 110 ? false : true"></td>
 							<td><strong id="totalPrice" class="totalPrice"><fmt:formatNumber value="${dto.basket_item_price * dto.basket_item_count }" pattern="#,##0" />원</strong></td>
 						</tr>
+						<tr></tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
-		</table>
-		<br />
+		</table>		
 		<div class="basketBtn">
 		<input type="button" class="btn" value="구매하기" id="payment" onclick="basketPayment();" />
 		<input type="button" class="btn" value="삭제하기" id="delete" onclick="muldel();" />
@@ -195,9 +191,9 @@ function allChk(bool){
 
 
 
-<div>
+	<div class="footer_areawrap">
 	<jsp:include page="footer.jsp"></jsp:include>
-</div>
+	</div>
 	
 </body>
 </html>

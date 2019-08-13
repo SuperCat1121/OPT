@@ -158,5 +158,10 @@ a {
 #ta1{
 	width: 523px;
 }
-	
+
+.footer_areawrap{
+    position: relative;
+    top: 113px;
+}
+
 
