@@ -1,3 +1,6 @@
+<%@page import="java.sql.Date"%>
+<%@page import="com.opt.dto.FaqDto"%>
+<%@page import="com.opt.dto.CustomerServiceDto"%>
 <%@page import="com.opt.dto.AdminAnswerDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -21,7 +24,7 @@
     border-top: 1px solid #ebebeb;
     padding: 11px 0;
     margin-top: 18px;
-    padding-left: 36px;
+    padding-left: 23px;
 	}
 	.costomer_img{
 	width: 26px;
@@ -33,24 +36,7 @@
     height: 26px;
     background: url(./image/ico_a.png) no-repeat;
 	}
-	#faq_div{
-	cursor: pointer;
-	}
-	
-	.coupon_list {
-    height: 630px;
-    margin-top: 30px;
-	}
-	.service_content_wrap {
-    margin: 0 auto;
-    padding-top: 10px;
-    width: 1400px;
-    height: 900px;
-	}
-	
-	.paging{
-		margin-top: 20px;
-	}
+
 </style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
@@ -58,17 +44,21 @@
 $(document).ready(function(){
     //$("#costomer_text").hide();
     // $("ul > li:first-child a").next().show();
-    $("#faq #faq_div").click(function(){
+    $("#faq a").click(function(){
       $(this).next().slideToggle(300);
       // $(this).next().slideDown(300);
-      $("#faq #faq_div").not(this).next().slideUp(300);
+      $("#faq a").not(this).next().slideUp(300);
       return false;
     });
-    $("#faq #faq_div").eq(0).trigger("click");
+    $("#faq a").eq(0).trigger("click");
   });
 	
 </script>
 </head>
+<%
+	List<CustomerServiceDto> customerList = (List)session.getAttribute("customerdto");	
+	List<AdminAnswerDto> answerList = (List)session.getAttribute("answerList");
+%>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 
@@ -110,33 +100,45 @@ $(document).ready(function(){
 				</table>
 	 		<div class="costomer_list_div">
 	 			<ul class="costomer_list_ul">
-		<c:choose>
-		<c:when test="${empty customerdto }">
+<%
+	if(customerList == null){
+%>
 			<li>
 				----------------내용이없습니다-------
+			</li>			
+<%		
+	}else{
+		for(int i=0; i<customerList.size(); i++){
+%>
+			<li id="faq">
+				<a id="qna_a" href="#">
+				<span class="costomer_span_one"><%=customerList.get(i).getCustomer_no_seq() %></span>
+				<span class="costomer_span_two"><%=customerList.get(i).getCustomer_title() %></span>
+				<span class="costomer_span_three"><%=customerList.get(i).getOpt_id() %></span> 
+				<span class="costomer_span_four"><fmt:formatDate value="<%=customerList.get(i).getCustomer_regdate() %>" pattern="yyyy-MM-dd" /></span></a>
+			 	<div id="costomer_text">
+			 	<div class="costomer_img"></div>
+			 	<div class="text_area"><p class="cosutomer_textcontent"><%=customerList.get(i).getCustomer_content() %></p></div>			
+<%			
+			for(int j=0; j<answerList.size(); j++){
+				if(answerList.get(j).getCustomer_no_seq() == customerList.get(i).getCustomer_no_seq()){
+%>
+				<div class="answer_area">
+				<div class="answer_img"></div>
+				<div class="answer_area"><p class="answer_textcontent"><%=answerList.get(j).getAdmin_answer_content() %></div>
+				</div>			
+<%					
+				}
+			}
+%>
+				</div>
 			</li>
-		</c:when>
-		<c:otherwise>
-			<c:forEach items="${customerdto }" var="dto">
-					<li id="faq">
-						<div id="faq_div">
-						<p class="costomer_p_one">${dto.customer_no_seq }</p>
-						<p class="costomer_p_two"> ${dto.customer_title }</p>
-						<p class="costomer_p_three"> ${dto.opt_id }</p> 
-						<p class="costomer_p_four"><fmt:formatDate value="${dto.customer_regdate}" pattern="yyyy-MM-dd" /></p>
-						</div>
-					 	<div id="costomer_text">
-					 	<div class="costomer_img"></div>
-					 	<div class="text_area"><p class="cosutomer_textcontent">${dto.customer_content }</p></div>
-					 	<div class="answer_area">
-					 	<div class="answer_img"></div>
-					 	<div class="answer_area"><p class="answer_textcontent">${dto.admin_answer_content }</div>
-					 	</div>
-					 	</div>
-					</li>
-			</c:forEach>
-			</c:otherwise>
-		</c:choose>			
+<%		
+		
+		}
+	}
+%>	 			
+
 			</ul>
 			<input type="button" class="btn" value="글작성"	onclick="location.href='customerwrite.jsp'" />
 		</div>	

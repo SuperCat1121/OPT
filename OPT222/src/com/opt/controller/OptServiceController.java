@@ -69,6 +69,8 @@ public class OptServiceController extends HttpServlet {
 			System.out.println("start >> " + start);
 			System.out.println("end >> " + end);
 			List<CustomerServiceDto> list = biz.customerPaging(start, end);
+			
+			
 			//request.setAttribute("list", list);
 			session.setAttribute("customerdto", list);
 			request.setAttribute("page", page);
@@ -77,8 +79,8 @@ public class OptServiceController extends HttpServlet {
 			request.setAttribute("absolutePage", absolutePage);
 			request.setAttribute("endPage", endPage);
 			
-			List<AdminAnswerDto> answerlist = biz.adminanswerList();
-			session.setAttribute("adminanswerdto", answerlist);
+			List<AdminAnswerDto> answerList = biz.adminanswerList();			
+			session.setAttribute("answerList", answerList);
 			
 			dispatch(request, response, "customer.jsp");
 			

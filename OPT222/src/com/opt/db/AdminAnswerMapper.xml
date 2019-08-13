@@ -3,9 +3,7 @@
 <mapper namespace="AdminAnswerMapper">
 	
 	<select id="adminanswerList" resultType="AdminanswerDto">
-	SELECT * 
-	FROM OPT_ADMIN_ANSWER A , OPT_CUSTOMER_SERVICE S
-	WHERE A.CUSTOMER_NO_SEQ = S.CUSTOMER_NO_SEQ
+	SELECT * FROM OPT_ADMIN_ANSWER	
 	</select>
 
 
