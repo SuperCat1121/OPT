@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link href="css/header.css" rel="stylesheet" type="text/css">
 </head>
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <body>
 
 	<div class="head_area">
@@ -38,7 +39,7 @@
 								<a href="opt_brand.jsp">BRAND</a>
 							</li>
 							<li>
-								<a href="#">MEDIA</a>
+								<a href="video.do?command=videoList&page=1&videoarea=main">MEDIA</a>
 							</li>
 							<li>
 								<a href="item.do?command=itemlist&page=1">PRODUCT</a>
