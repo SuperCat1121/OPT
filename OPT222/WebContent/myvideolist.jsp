@@ -50,12 +50,12 @@
 }
 
 .videoSearch {
-	margin-left: 30%;
+	margin-left: 32%;
 	margin-bottom: 30px;
 }
 
 .videoList {
-	margin-left: 33%;
+	margin-left: 35%;
 }
 
 .videoContent {
@@ -99,6 +99,7 @@
 	border: none;
 	margin-top: 20px;
 	margin-bottom: 20px;
+	cursor: pointer;
 }
 
 .videofile {
@@ -113,11 +114,50 @@
 	font-weight: bold;
 	position: absolute;
 	top: 197px;
-	left: 1313px;
+	left: 64%;
 	cursor: pointer;
 }
 
 .videolistbar {
+	padding-left: 50px;
+}
+
+.paging {
+	width: 138px;
+	margin: 0 auto;
+	height: 300px;
+	/* margin-top: 40px; */
+	position: relative;
+	top: 120px;
+}
+
+.paging_ul {
+	float: left;
+	display: inline;
+}
+
+.paging_ul li {
+	float: left;
+}
+
+.paging_ul li a {
+	float: left;
+	padding: 4px;
+	margin-right: 3px;
+	width: 21px;
+	color: #000;
+	font: bold 12px tahoma;
+	border: 1px solid #eee;
+	text-align: center;
+	text-decoration: none;
+}
+
+.paging_ul li a:hover, .paging_ul li a:focus {
+	color: #fff;
+	border: 1px solid #f40;
+	background-color: #f40;
+}
+.chkbox_td{
 	text-align: center;
 }
 </style>
@@ -150,16 +190,16 @@
 		<input type="hidden" name="command" value="multiDel" />
 		<table>
 			<colgroup>
-				<col>
+				<col width="100">
 				<col width="426">
-				<col>
-				<col>
+				<col width="100">
+				<col width="">
 			</colgroup>
 			<tr class="videolistbar">
-				<td><input type="checkbox" name="all"
-					onclick="allChk(this.checked);" /></td>
-				<td><b>비디오</b></td>
-				<td><b>내용</b></td>
+				<th><input type="checkbox" name="all"
+					onclick="allChk(this.checked);" /></th>
+				<th><b>비디오</b></th>
+				<th><b>내용</b></th>
 				<td><input class="deleteBtn" type="submit" value="전체삭제"></td>
 			</tr>
 			<c:choose>
@@ -170,7 +210,7 @@
 					<c:forEach items="${list }" var="videoDto">
 						<c:if test="${videoDto.opt_no_seq == memdto.opt_no_seq }">
 							<tr>
-								<td><input type="checkbox" name="chk"
+								<td class="chkbox_td"><input type="checkbox" name="chk"
 									value="${videoDto.video_no_seq }" /></td>
 								<c:set var="videourl" value="${videoDto.video_url }" />
 								<td><c:choose>
@@ -183,8 +223,8 @@
 												controls="controls"></video>
 										</c:otherwise>
 									</c:choose></td>
-								<td style="padding-left: 20px; padding-bottom: 130px;"
-									onclick=""><h4>${videoDto.video_title }</h4>
+								<td class="videoContent"><h4 class="videotitle"
+										onclick="location.href='video.do?command=videoDetail&videoseq=${videoDto.video_no_seq}&page=${page }'">${videoDto.video_title }</h4>
 									조회수 : ${videoDto.video_views_no }<br /> 등록시간 : <fmt:formatDate
 										value="${videoDto.video_regdate }" pattern="yyyy-MM-dd HH:mm" /><br />
 									${videoDto.video_content } <br> <input class="searchBtn"
@@ -200,39 +240,44 @@
 			</c:choose>
 		</table>
 	</form>
-	<table class="videoPaging">
-		<tr>
-			<td><c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
+
+	<div class="paging">
+		<ul class="paging_ul">
+			<c:set var="prevPage" value="${absolutePage-blockCount}"></c:set>
+			<c:choose>
+				<c:when test="${prevPage >0}">
+					<li><a
+						href="video.do?command=videoList&page=${prevPage }&videoarea=my">◀</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="video.do?command=videoList&page=1&videoarea=my">◀</a></li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach begin="${absolutePage }" end="${endPage }" var="i">
 				<c:choose>
-					<c:when test="${prevPage >0}">
-						<a
-							href="video.do?command=videoList&page=${prevPage }&videoarea=my">◀</a>
+					<c:when test="${i eq page}">
+						<li><a
+							href="video.do?command=videoList&page=${i}&videoarea=my">${ i }</a></li>
 					</c:when>
 					<c:otherwise>
-						<a href="video.do?command=videoList&page=1&videoarea=my">◀</a>
+						<li><a
+							href="video.do?command=videoList&page=${i}&videoarea=my">${ i }</a></li>
 					</c:otherwise>
-				</c:choose> <c:forEach begin="${absolutePage }" end="${endPage }" var="i">
-					<c:choose>
-						<c:when test="${i eq page}">
-							<a href="video.do?command=videoList&page=${i}&videoarea=my"><strong>[${ i }]</strong></a>
-						</c:when>
-						<c:otherwise>
-							<a href="video.do?command=videoList&page=${i}&videoarea=my">[${ i }]</a>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach> <c:set var="nextPage" value="${absolutePage+blockCount }"></c:set>
-				<c:choose>
-					<c:when test="${nextPage < totalPage}">
-						<a
-							href="video.do?command=videoList&page=${nextPage }&videoarea=my">▶</a>
-					</c:when>
-					<c:otherwise>
-						<a
-							href="video.do?command=videoList&page=${totalPage}&videoarea=my">▶</a>
-					</c:otherwise>
-				</c:choose></td>
-		</tr>
-	</table>
+				</c:choose>
+			</c:forEach>
+			<c:set var="nextPage" value="${absolutePage+blockCount }"></c:set>
+			<c:choose>
+				<c:when test="${nextPage < totalPage}">
+					<li><a
+						href="video.do?command=videoList&page=${nextPage }&videoarea=my">▶</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a
+						href="video.do?command=videoList&page=${totalPage}&videoarea=my">▶</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</div>
 	<div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
