@@ -105,7 +105,7 @@ color: #575757;
 	float:left;
 }
 .paging_ul li > a {
-	    float: left;
+	float: left;
     padding: 4px;
     margin-right: 3px;
     width: 27px;
@@ -121,4 +121,43 @@ color: #575757;
 	border:1px solid #f40;
 	background-color:#f40;
 }
- */
+
+ 
+.costomer_list_div{
+    width: 85%;
+    margin: 0 auto;
+    margin-right: 43px;
+}
+.costomer_list_ul{
+ 
+ }
+ .costomer_list_ul li{
+     padding: 18px 0;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 16px;
+ }
+ .costomer_span_one{
+ 	margin-left: 35px;
+ }
+ .costomer_span_two{
+ 	margin-left: 340px;
+ }
+ .costomer_span_three{
+ 	margin-left: 348px;
+ }
+ .costomer_span_four{
+     margin-left: 71px;
+ }
+ 
+.btn {
+	background-color: #cbb795;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 30px;
+    float: right;
+    margin-right: 20px;
+}

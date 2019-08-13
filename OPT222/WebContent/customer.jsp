@@ -13,26 +13,31 @@
 		position: relative;
 		top: 54px;
 	}
-	
-	.td_text {
-		width: 700px;
-		height: 50px;
-		border: 1px solid black;
+	#costomer_text{
+	width: 98%;
+    margin: 0 auto;
+    border-top: 1px solid #ebebeb;
+    padding: 11px 0;
+    margin-top: 18px;
+    padding-left: 23px;
 	}
-	
-	.td_content:hover {
-		cursor: pointer;
+	.costomer_img{
+	width: 26px;
+    height: 26px;
+    background: url(./image/ico_q.png) no-repeat;
 	}
-	
-	.td_text {
-		display: none;
+	.answer_img{
+	width: 26px;
+    height: 26px;
+    background: url(./image/ico_a.png) no-repeat;
 	}
+
 </style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
-	  $("p").hide();
+	  $("#costomer_text").hide();
 	  // $("ul > li:first-child a").next().show();
 	  $("ul li a").click(function(){
 	    $(this).next().slideToggle(300);
@@ -70,7 +75,6 @@ $(document).ready(function(){
 					<col width="100">
 					<col width="180">
 				</colgroup>
-				
 					<tr>
 						<th>
 							<div class="th_title">글 번호</div>
@@ -86,7 +90,8 @@ $(document).ready(function(){
 						</th>
 					</tr>
 				</table>
-	 			<ul>
+	 		<div class="costomer_list_div">
+	 			<ul class="costomer_list_ul">
 		<c:choose>
 		<c:when test="${empty customerdto }">
 			<li>
@@ -96,17 +101,25 @@ $(document).ready(function(){
 		<c:otherwise>
 			<c:forEach items="${customerdto }" var="dto">
 					<li>
-						<a href="#">${dto.customer_no_seq } ${dto.customer_title } ${dto.customer_title } ${dto.opt_id } <fmt:formatDate value="${dto.customer_regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
-					 	<p>${dto.customer_content }</p>
+						<a id="qna_a" href="#">
+						<span class="costomer_span_one">${dto.customer_no_seq }</span>
+						<span class="costomer_span_two"> ${dto.customer_title }</span>
+						<span class="costomer_span_three"> ${dto.opt_id }</span> 
+						<span class="costomer_span_four"><fmt:formatDate value="${dto.customer_regdate}" pattern="yyyy-MM-dd" /></span></a>
+					 	<div id="costomer_text">
+					 	<div class="costomer_img"></div>
+					 	<div class="text_area"><p class="cosutomer_textcontent">${dto.customer_content }</p></div>
+					 	<div class="answer_area">
+					 	<div class="answer_img"></div>
+					 	<div class="answer_area"><p class="answer_textcontent">${dto.admin_answer_content }</div>
+					 	</div>
+					 	</div>
 					</li>
 			</c:forEach>
 			</c:otherwise>
 		</c:choose>			
-		 <li>
-		<input type="button" value="글작성"
-							onclick="location.href='customerwrite.jsp'" />
-			</li>				
-							</ul>
+			</ul>
+			<input type="button" class="btn" value="글작성"	onclick="location.href='customerwrite.jsp'" />
 		</div>	
 	</div>
 	<div class="paging">
@@ -141,7 +154,7 @@ $(document).ready(function(){
 			</c:choose>
 			</ul>
 		</div>
-	
+	</div>
 	
 	<div class="foot_wrap_area">
 		<jsp:include page="footer.jsp"></jsp:include>

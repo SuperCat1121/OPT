@@ -11,9 +11,14 @@ public class CustomerServiceDto {
 	private String customer_category;
 	private int r;
 	private String opt_id;
+	private String admin_answer_content;
 	
-	
-	
+	public String getAdmin_answer_content() {
+		return admin_answer_content;
+	}
+	public void setAdmin_answer_content(String admin_answer_content) {
+		this.admin_answer_content = admin_answer_content;
+	}
 	public String getOpt_id() {
 		return opt_id;
 	}
