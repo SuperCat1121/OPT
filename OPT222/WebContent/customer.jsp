@@ -31,18 +31,18 @@
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
-	/* document.ready(function(){
-		)
-		$(".num").attr('class', )
-	}); */
-$(function() {
-	/* $("#tr").on("click", ".td_content", function() {
-		$(this).next().css("background", "lime").slideToggle(300);
-	}); */
-	$(".td_content").click(function(){
-		$(".td_text").css("background", "lime").slideToggle(300);
+$(document).ready(function(){
+	  $("p").hide();
+	  // $("ul > li:first-child a").next().show();
+	  $("ul li a").click(function(){
+	    $(this).next().slideToggle(300);
+	    // $(this).next().slideDown(300);
+	    $("ul li a").not(this).next().slideUp(300);
+	    return false;
+	  });
+	  $("ul li a").eq(0).trigger("click");
 	});
-});
+	
 </script>
 </head>
 <body>
@@ -70,7 +70,7 @@ $(function() {
 					<col width="100">
 					<col width="180">
 				</colgroup>
-				<thead>
+				
 					<tr>
 						<th>
 							<div class="th_title">글 번호</div>
@@ -85,30 +85,25 @@ $(function() {
 							<div class="th_title">글 작성일</div>
 						</th>
 					</tr>
-				</thead>
-	 			<tbody>
+				</table>
+	 			<ul>
 		<c:choose>
 		<c:when test="${empty customerdto }">
-			<tr>
-				<td colspan="5">----------------내용이없습니다-------</td>
-			</tr>
+			<li>
+				----------------내용이없습니다-------
+			</li>
 		</c:when>
 		<c:otherwise>
 			<c:forEach items="${customerdto }" var="dto">
-					<tr>
-						<td><div class="td_content num">${dto.customer_no_seq }</div></td>
-						<td><div class="td_content num">${dto.customer_title }</div></td>					
-						<td><div class="td_content num">${dto.opt_id }</div></td>
-						<td><div class="td_content num"><fmt:formatDate value="${dto.customer_regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></div></td>
-					</tr>
-					<tr>
-						<td><div class="td_text">${dto.customer_content }</div></td>
-					</tr>	
+					<li>
+						<a href="#">${dto.customer_no_seq } ${dto.customer_title } ${dto.customer_title } ${dto.opt_id } <fmt:formatDate value="${dto.customer_regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
+					 	<p>${dto.customer_content }</p>
+					</li>
 			</c:forEach>
 			</c:otherwise>
 		</c:choose>			
-		</tbody>	 
-			</table>
+		 </ul>
+		
 		</div>	
 	</div>
 	<div class="paging">

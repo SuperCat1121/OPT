@@ -247,7 +247,7 @@ CREATE TABLE OPT_CUSTOMER_SERVICE(      --고객센터 테이블
     CUSTOMER_TITLE      VARCHAR2(500)   NOT NULL,     --글 제목
     CUSTOMER_CONTENT    VARCHAR2(4000)  NOT NULL,     --글 내용
     CUSTOMER_REGDATE    DATE            NOT NULL,     --글 작성일 
-    CUSTOMER_CATEGORY   VARCHAR2(100)   NOT NULL	  --질문 카테고리 FAQ,배송,
+    CUSTOMER_CATEGORY   VARCHAR2(100)   	  --질문 카테고리 FAQ,배송,
 );
 
 INSERT INTO OPT_CUSTOMER_SERVICE VALUES(
@@ -256,7 +256,7 @@ INSERT INTO OPT_CUSTOMER_SERVICE VALUES(
     '도시락 금방오는편인가요??',
     '늦어도 모레까지는 받아야하는데 오늘 아침에 사면 언제쯤오나요?',
     SYSDATE,
-    '배송'
+    ' ' 
 );
 
 SELECT * FROM OPT_CUSTOMER_SERVICE;
