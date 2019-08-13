@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession; 
 
 import com.opt.dto.ItemDto;
+import com.opt.dto.AdminAnswerDto;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
@@ -1398,5 +1399,18 @@ public PostboxDto postboxDetail(int post_no) {
 		}
 		return res;
 	}
-
+	//관리자 답변 리스트
+	public List<AdminAnswerDto> adminanswerList() {
+		SqlSession session = null;
+		List<AdminAnswerDto> list = new ArrayList<AdminAnswerDto>();
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			list = session.selectList("AdminAnswerMapper.adminanswerList");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 }

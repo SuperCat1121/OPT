@@ -3,6 +3,7 @@ package com.opt.biz;
 import java.util.List;
 import java.util.Map;
 
+import com.opt.dto.AdminAnswerDto;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
@@ -132,4 +133,7 @@ public interface OPTBiz {
 	//고객센터 페이징
 	public List<CustomerServiceDto> customerPaging(int start , int end);
 	public int insertCustomerBoard(CustomerServiceDto customerServiceDto);
+	
+	//관리자 답변 리스트
+	public List<AdminAnswerDto> adminanswerList();
 }

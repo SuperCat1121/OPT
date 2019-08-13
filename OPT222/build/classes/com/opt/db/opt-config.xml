@@ -17,7 +17,7 @@
 		<typeAlias type="com.opt.dto.VideoComment" alias="VideoCommentDto" />
 		<typeAlias type="com.opt.dto.ItemCommentDto" alias="ItemCommentDto" />
 		<typeAlias type="com.opt.dto.CustomerServiceDto" alias="CustomerDto"/>
-		
+		<typeAlias type="com.opt.dto.AdminAnswerDto" alias="AdminanswerDto"/>
 				
 	</typeAliases>
 	<environments default="development">
@@ -45,6 +45,7 @@
 		<mapper resource="com/opt/db/VideoMapper.xml"/>
 		<mapper resource="com/opt/db/ItemCommentMapper.xml"/>
 		<mapper resource="com/opt/db/CustomerServiceMapper.xml"/>
+		<mapper resource="com/opt/db/AdminAnswerMapper.xml"/>
 	</mappers>
 
 

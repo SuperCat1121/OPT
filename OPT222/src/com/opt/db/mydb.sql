@@ -285,6 +285,12 @@ WHERE S.OPT_NO_SEQ = M.OPT_NO_SEQ
 AND S.OPT_NO_SEQ = A.OPT_NO_SEQ
 AND M.OPT_NO_SEQ = A.OPT_NO_SEQ ORDER BY CUSTOMER_NO_SEQ DESC))
 WHERE R BETWEEN 1 AND 5
+
+
+
+SELECT * 
+FROM OPT_ADMIN_ANSWER A , OPT_CUSTOMER_SERVICE S
+WHERE A.CUSTOMER_NO_SEQ = S.CUSTOMER_NO_SEQ;
 --------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -405,7 +411,9 @@ INSERT INTO OPT_ADMIN_ANSWER VALUES(
     SYSDATE
 );
 
-SELECT * FROM OPT_ADMIN_ANSWER;
+SELECT * 
+FROM OPT_ADMIN_ANSWER A , OPT_CUSTOMER_SERVICE S
+WHERE A.CUSTOMER_NO_SEQ = S.CUSTOMER_NO_SEQ;
 
 
 --------------------------------------------------------------------------------------------------------------------------------

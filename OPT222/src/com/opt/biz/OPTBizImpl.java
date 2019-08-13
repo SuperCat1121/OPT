@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.opt.dao.OPTDao;
+import com.opt.dto.AdminAnswerDto;
 import com.opt.dto.BasketDto;
 import com.opt.dto.CalendarDto;
 import com.opt.dto.CouponDto;
@@ -465,6 +466,12 @@ public class OPTBizImpl implements OPTBiz {
 	@Override
 	public int insertCustomerBoard(CustomerServiceDto customerServiceDto) {
 		return dao.insertCustomerBoard(customerServiceDto);
+	}
+
+	//관리자 답변 리스트
+	@Override
+	public List<AdminAnswerDto> adminanswerList() {
+		return dao.adminanswerList();
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.opt.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.opt.biz.OPTBiz;
 import com.opt.biz.OPTBizImpl;
+import com.opt.dto.AdminAnswerDto;
 import com.opt.dto.CouponDto;
 import com.opt.dto.CustomerServiceDto;
 
@@ -74,9 +76,12 @@ public class OptServiceController extends HttpServlet {
 			request.setAttribute("absolutePage", absolutePage);
 			request.setAttribute("endPage", endPage);
 			
-			
+			List<AdminAnswerDto> answerlist = biz.adminanswerList();
+			session.setAttribute("adminanswerdto", answerlist);
 			
 			dispatch(request, response, "customer.jsp");
+			
+			
 		} else if (command.equals("insertres")) {
 			int opt_no_seq = Integer.parseInt(request.getParameter("opt_no_seq"));
 			String customer_title = request.getParameter("customer_title");

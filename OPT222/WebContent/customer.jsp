@@ -1,3 +1,5 @@
+<%@page import="com.opt.dto.AdminAnswerDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
@@ -37,21 +39,20 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	  $("#costomer_text").hide();
-	  // $("ul > li:first-child a").next().show();
-	  $("ul li a").click(function(){
-	    $(this).next().slideToggle(300);
-	    // $(this).next().slideDown(300);
-	    $("ul li a").not(this).next().slideUp(300);
-	    return false;
-	  });
-	  $("ul li a").eq(0).trigger("click");
-	});
+    //$("#costomer_text").hide();
+    // $("ul > li:first-child a").next().show();
+    $("#faq a").click(function(){
+      $(this).next().slideToggle(300);
+      // $(this).next().slideDown(300);
+      $("#faq a").not(this).next().slideUp(300);
+      return false;
+    });
+    $("#faq a").eq(0).trigger("click");
+  });
 	
 </script>
 </head>
 <body>
-	
 	<jsp:include page="header.jsp"></jsp:include>
 
 	
@@ -100,7 +101,7 @@ $(document).ready(function(){
 		</c:when>
 		<c:otherwise>
 			<c:forEach items="${customerdto }" var="dto">
-					<li>
+					<li id="faq">
 						<a id="qna_a" href="#">
 						<span class="costomer_span_one">${dto.customer_no_seq }</span>
 						<span class="costomer_span_two"> ${dto.customer_title }</span>
