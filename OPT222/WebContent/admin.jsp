@@ -27,62 +27,37 @@
 	<div class="page_title">관리자님, 어서오세요</div>
 	<hr style="width: 68%;">
 	<div class="nav">
-		<table border="1">
-			<tr>
-				<th>INDEX</th>
-			</tr>
-			<tr>
-				<td> <a href="#" class="adminUserManager">유저관리</a> </td>
-			</tr>
-			<tr>
-				<td> <a href="#" class="adminItemManager">상품관리</a> </td>
-			</tr>
-			<tr>
-				<td> <a href="#">내 정보</a> </td>
-			</tr>
-		</table>
+		<ul>
+			<li class="nav_title">
+				Menu
+				<ul class="nav_list">
+					<li><a href="#" class="adminUserManager">유저관리</a></li>
+					<li><a href="#" class="adminItemManager">상품관리</a></li>
+					<li><a href="#" class="adminAnswer">고객센터 관리</a></li>
+				</ul>
+			</li>
+		</ul>
 	</div>
 	<div class="layer" style="display: none;"></div>
 	<div class="main">
-		<div class="first" style="margin-left: 65px;">
-			<p>판매진행현황</p>
-			<hr>
-			<svg style="width: 120px; height: 120px; margin-left: -15px;">
-				<circle cx="60" cy="60" r="60" fill="#ccc" />
-				<text x="40" y="60">배송중</text>
-				<text x="40" y="85">9건</text>
-			</svg>
-			<svg style="width: 120px; height: 120px; margin-left: 15px;">
-				<circle cx="60" cy="60" r="60" fill="#ccc" />
-				<text x="40" y="60">주문신청</text>
-				<text x="40" y="85">14건</text>
-			</svg>
-			<svg style="width: 120px; height: 120px; margin-left: 15px;">
-				<circle cx="60" cy="60" r="60" fill="#ccc" />
-				<text x="40" y="60">환불요청</text>
-				<text x="40" y="85">3건</text>
-			</svg>
-		</div>
-		<svg style="width: 3px; height: 150px; margin-left: 70px;">
-				<line x1="2" y1="0" x2="2" y2="150" style="stroke:#ccc; stroke-width:3;">
-		</svg>
-		<div class="first" style="position: relative; left: 70px;">
+		<div class="main_image" style="background-image: url('image/delivery.png');"></div>
+		<div class="first">
 			<p>판매실적/판매현황</p>
 			<hr>
 			<svg style="width: 120px; height: 120px; margin-left: -15px;">
-				<circle cx="60" cy="60" r="60" fill="#ccc" />
-				<text x="40" y="60">배송중</text>
-				<text x="40" y="85">9건</text>
+				<circle cx="60" cy="60" r="60" fill="#fddddd" />
+				<text x="25" y="60" style="fill: #64736e; font-weight: bold; font-size: 24px;">배송중</text>
+				<text x="47" y="85" style="fill: #7c9e76; font-weight: bold;">9건</text>
 			</svg>
 			<svg style="width: 120px; height: 120px; margin-left: 15px;">
-				<circle cx="60" cy="60" r="60" fill="#ccc" />
-				<text x="40" y="60">주문신청</text>
-				<text x="40" y="85">14건</text>
+				<circle cx="60" cy="60" r="60" fill="#fff7d5" />
+				<text x="15" y="60" style="fill: #64736e; font-weight: bold; font-size: 24px;">주문신청</text>
+				<text x="47" y="85" style="fill: #7c9e76; font-weight: bold;">14건</text>
 			</svg>
 			<svg style="width: 120px; height: 120px; margin-left: 15px;">
-				<circle cx="60" cy="60" r="60" fill="#ccc" />
-				<text x="40" y="60">환불요청</text>
-				<text x="40" y="85">3건</text>
+				<circle cx="60" cy="60" r="60" fill="#ffdbf6" />
+				<text x="15" y="60" style="fill: #64736e; font-weight: bold; font-size: 24px;">환불요청</text>
+				<text x="47" y="85" style="fill: #7c9e76; font-weight: bold;">3건</text>
 			</svg>
 		</div>
 		<div class="graph">
