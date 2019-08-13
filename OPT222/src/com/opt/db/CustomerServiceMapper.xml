@@ -17,4 +17,17 @@
 	WHERE S.OPT_NO_SEQ = M.OPT_NO_SEQ ORDER BY CUSTOMER_NO_SEQ DESC))
 	WHERE R BETWEEN #{start} AND #{end}
 	</select>
+	
+	<insert id="insertCustomerBoard" parameterType="CustomerDto">
+	INSERT INTO OPT_CUSTOMER_SERVICE
+		VALUES(
+		#{opt_no_seq},
+		CUSTOMERSEQ.NEXTVAL,
+		#{customer_title},
+		#{customer_content},
+		SYSDATE
+		)
+	</insert>
+	
+	
 </mapper>
