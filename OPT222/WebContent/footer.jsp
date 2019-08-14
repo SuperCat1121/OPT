@@ -28,7 +28,7 @@
 					<p class="copyright"><em>COPYRIGHT © OPT CO.,LTD. ALL RIGHTS RESERVED.</em></p>
 				</div>
 				<div class="sns_list">
-					<a href="https://www.naver.com" title="opt_facebook">
+					<a href="https://www.facebook.com/" title="opt_facebook">
 						<img alt="" src="./footer_img/facebook.png" onmouseover="this.src='./footer_img/facebook3.png'"
 						onmouseout="this.src='./footer_img/facebook.png'">
 					</a>
@@ -36,11 +36,11 @@
 						<img alt="" src="./footer_img/instagram.png" onmouseover="this.src='./footer_img/instagram2.png'"
 						onmouseout="this.src='./footer_img/instagram.png'">
 					</a>
-					<a href="https://www.naver.com" title="opt_blog">
+					<a href="https://section.blog.naver.com/BlogHome.nhn" title="opt_blog">
 						<img alt="" src="./footer_img/naver.png" onmouseover="this.src='./footer_img/naver3.png'"
 						onmouseout="this.src='./footer_img/naver.png'">
 					</a>
-					<a href="https://www.naver.com" title="opt_youtube">
+					<a href="https://www.youtube.com/" title="opt_youtube">
 						<img alt="" src="./footer_img/youtube.png" onmouseover="this.src='./footer_img/youtube3.png'"
 						onmouseout="this.src='./footer_img/youtube.png'">
 					</a>

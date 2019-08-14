@@ -68,7 +68,7 @@ function updateForm(){
 	mt = (ch - sh) / 2;
 
 	var url = encodeURI("updateUser.jsp");
-	window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+	window.open(url, '회원정보수정', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
 }
 
 </script>
@@ -92,7 +92,7 @@ function updateForm(){
 		<a href="calendar.jsp">일정관리</a>
 		<a href="basket.do?command=basketlist">장바구니</a>
 		<a onclick="coupon_popup();" style="cursor: pointer;">내쿠폰함</a>
-		<a href="#">고객센터</a>		
+		<a href="service.do?command=faqlist&page=1">고객센터</a>		
 		</div>
 	</div>
 	<div class="openmenu_btn">

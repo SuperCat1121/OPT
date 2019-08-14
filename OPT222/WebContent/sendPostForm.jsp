@@ -93,6 +93,19 @@
 		
 		
 	});
+	function coupon_popup(){
+		cw = screen.availWidth;
+		ch = screen.availHeight;
+			
+		sw=1024;    //띄울 창의 넓이
+		sh=550;    //띄울 창의 높이
+
+		ml = (cw - sw) / 2;
+		mt = (ch - sh) / 2;
+
+		var url = encodeURI("coupon.do?command=couponlist&page=1");
+		window.open(url, '내쿠폰함', 'width=' + sw + ',height=' + sh + ',top=' + mt + ',left=' + ml);
+	  }
 
 
 </script>
@@ -116,7 +129,7 @@
 		<a href="calendar.jsp">일정관리</a>
 		<a href="basket.do?command=basketlist">장바구니</a>
 		<a onclick="coupon_popup();" style="cursor: pointer;">내쿠폰함</a>
-		<a href="#">고객센터</a>		
+		<a href="service.do?command=faqlist&page=1">고객센터</a>		
 		</div>
 	</div>
 	<div class="openmenu_btn">

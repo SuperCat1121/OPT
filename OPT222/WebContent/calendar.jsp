@@ -81,7 +81,7 @@ $(document).ready(function(){
 		<a href="calendar.jsp">일정관리</a>
 		<a href="basket.do?command=basketlist">장바구니</a>
 		<a onclick="coupon_popup();" style="cursor: pointer;">내쿠폰함</a>
-		<a href="#">고객센터</a>		
+		<a href="service.do?command=faqlist&page=1">고객센터</a>		
 		</div>
 	</div>
 	<div class="openmenu_btn">

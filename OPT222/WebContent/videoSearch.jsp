@@ -131,7 +131,7 @@ $(function(){
 
 .foot_area_wrap{
 	position: relative;
-	top: 55px;
+	top: 164px;
 }
 </style>
 </head>

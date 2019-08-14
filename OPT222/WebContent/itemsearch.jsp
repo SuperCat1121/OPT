@@ -12,6 +12,13 @@
 <title>상품페이지</title>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <link href="css/item_list.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+	#myButton1{
+	    cursor: pointer;
+	}
+
+</style>
 <script type="text/javascript">
 
 	function addComma(num) {
