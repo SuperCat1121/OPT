@@ -42,6 +42,51 @@
 	.menu_li a{
 		background-color: #ebebeb;
 	}
+	
+	
+	.ans_Btn{
+	    background-color: #cbb795;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px;
+    font-size: 15px;
+    margin-top: 30px;
+    border-radius: 10px;
+    position: relative;
+    left: 1040px;
+    bottom: 100px;
+	}
+	.answer_area{
+	    height: 100px;
+	}
+	
+	.service_content_wrap {
+    height: 1100px;
+	}
+	
+	/* .answer_area{
+	 border-top: 1px solid #ebebeb;
+    position: relative;
+    top: 36px;
+    padding-right: 25px;
+	} */
+	.answer_wrap{
+	
+	}
+	hr{
+	position: relative;
+        bottom: 30px;
+    right: 12px;
+    border-style: solid;
+    border-color: #ebebeb;
+    }
+    .answer{
+    position: relative;
+    top: 54px;
+    
+    }
 </style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
@@ -145,16 +190,19 @@ function adminAnswerDelete(admin_answer_no_seq) {
 			 	<div id="costomer_text">
 			 	<div class="costomer_img"></div>
 			 	<div class="text_area"><p class="cosutomer_textcontent"><%=customerList.get(i).getCustomer_content() %></p></div>
-			 	<div class="answerBtn" style="display: none"><input type="button" value="답변하기" onclick="adminAnswer(<%=customerList.get(i).getCustomer_no_seq() %>);"></div>			 				
+			 	<div class="answerBtn answer" style="display: none"><input type="button" class="ans_Btn" value="답변하기" onclick="adminAnswer(<%=customerList.get(i).getCustomer_no_seq() %>);"></div>			 				
 <%			
 			for(int j=0; j<answerList.size(); j++){
 				if(answerList.get(j).getCustomer_no_seq() == customerList.get(i).getCustomer_no_seq()){
-%>
+%>	
+				<hr>
+				<div class="answer_wrap">
 				<div class="answer_area">
 				<div class="answer_img"></div>
 				<div class="answer_area"><p class="answer_textcontent"><%=answerList.get(j).getAdmin_answer_content() %></div>				
-				<div class="answerBtn" style="display: none"><input type="button" value="삭제하기" onclick="adminAnswerDelete(<%=answerList.get(j).getAdmin_answer_no_seq() %>);"></div>
+				<div class="answerBtn delebtn" style="display: none"><input type="button" class="ans_Btn" value="삭제하기" onclick="adminAnswerDelete(<%=answerList.get(j).getAdmin_answer_no_seq() %>);"></div>
 				</div>			
+				</div>
 <%					
 				}
 			}
