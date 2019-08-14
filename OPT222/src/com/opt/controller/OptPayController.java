@@ -254,7 +254,11 @@ public class OptPayController extends HttpServlet {
 			params.put("partner_order_id", partner_order_id);
 			params.put("partner_user_id", partner_user_id);
 			
-			String string_params = new String();			
+			String string_params = new String();
+			for(Map.Entry<String, String> elem : params.entrySet()) {
+				string_params += (elem.getKey() + "=" + elem.getValue() + "&");
+			}
+			
 			OutputStream out = con.getOutputStream();
 			out.write(string_params.getBytes());
 			out.flush();
