@@ -114,8 +114,8 @@
 	color: white;
 	font-weight: bold;
 	position: absolute;
-	top: 200px;
-    left: 68%;
+	top: 197px;
+    left: 70.5%;
 	cursor: pointer;
 }
 

@@ -180,7 +180,7 @@
  	 		var naverLogin = new naver.LoginWithNaverId(
  	 				{
  	 					clientId: "lcTrrWMiQvKel6vICKwB",
- 	 					callbackUrl: "http://localhost:8787/OPT222/login.jsp?Flag=0",
+ 	 					callbackUrl: "http://192.168.10.33:8787/OPT222/login.jsp?Flag=0",
  	 					isPopup: false, 
  	 					loginButton: {color: "green", type: 2, height: 47} 
  	 				}
