@@ -44,7 +44,13 @@
 			var item_name = "${Itemdto.item_name }";
 			var item_price = ${Itemdto.item_price };
 			var item_url = "${Itemdto.item_url }";
-			var opt_no = 0 + 0${memdto.opt_no_seq };
+			
+			if(${empty memdto}){
+				var opt_no = 0;
+			}else{
+				var opt_no = "${memdto.opt_no_seq }";
+			}
+			
 			
 			
 			
