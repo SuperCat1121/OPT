@@ -25,7 +25,8 @@
 		CUSTOMERSEQ.NEXTVAL,
 		#{customer_title},
 		#{customer_content},
-		SYSDATE
+		SYSDATE,
+		' '
 		)
 	</insert>
 	

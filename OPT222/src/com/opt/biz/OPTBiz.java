@@ -137,6 +137,8 @@ public interface OPTBiz {
 	
 	//관리자 답변 리스트
 	public List<AdminAnswerDto> adminanswerList();
+	public int adminAnswer(AdminAnswerDto adminDto);
+	public int adminAnswerDelete(int admin_answer_no_seq);
 	
 	//FAQ (자주묻는질문) 게시판
 		public List<FaqDto> faqList();

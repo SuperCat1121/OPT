@@ -505,4 +505,15 @@ public class OPTBizImpl implements OPTBiz {
 		return dao.deleteFaq(faq_no_seq);
 	}
 	
+	//관리자 답변 인서트
+	@Override
+	public int adminAnswer(AdminAnswerDto adminDto) {
+		return dao.adminAnswer(adminDto);
+	}
+
+	@Override
+	public int adminAnswerDelete(int admin_answer_no_seq) {
+		return dao.adminAnswerDelete(admin_answer_no_seq);
+	}
+	
 }

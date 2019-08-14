@@ -1490,4 +1490,46 @@ public PostboxDto postboxDetail(int post_no) {
 		}
 		return res;
 	}
+	
+	
+	//관리자 답변 인서트
+	public int adminAnswer(AdminAnswerDto adminDto) {
+		
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.insert("AdminAnswerMapper.adminAnswerInsert", adminDto);
+			if (res > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+	
+	public int adminAnswerDelete(int admin_answer_no_seq) {
+		SqlSession session = null;
+		int res = 0;
+		try {
+			session = getsqlSessionFactory().openSession(false);
+			res = session.delete("AdminAnswerMapper.adminAnswerDelete", admin_answer_no_seq);
+			if (res > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+	
 }

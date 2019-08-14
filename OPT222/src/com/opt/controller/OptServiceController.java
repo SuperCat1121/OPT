@@ -1,6 +1,7 @@
 package com.opt.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class OptServiceController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[ service.do?" + command + " ]");
 		OPTBiz biz = new OPTBizImpl();
+		PrintWriter out = response.getWriter();
 		if(command.equals("servicelist")) {
 			HttpSession session = request.getSession();
 
@@ -85,10 +87,10 @@ public class OptServiceController extends HttpServlet {
 			customerServiceDto.setCustomer_title(customer_title);
 			customerServiceDto.setCustomer_content(customer_content);
 			int res = biz.insertCustomerBoard(customerServiceDto);
-			if (res > 0) {
-				dispatch(request, response, "service.do?command=servicelist&page=0");
-			} else {
-				dispatch(request, response, "customerwrite.jsp");
+			if(res > 0) {
+				out.print("<script> alert('작성성공');  opener.location.reload(); close();</script>");
+			}else {
+				out.print("<script> alert('작성실패'); opener.location.reload(); close();</script>");
 			}
 		} else if (command.equals("faqlist")) {
 			HttpSession session = request.getSession();
@@ -132,9 +134,43 @@ public class OptServiceController extends HttpServlet {
 			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("absolutePage", absolutePage);
 			request.setAttribute("endPage", endPage);
-			
+
 			dispatch(request, response, "customer_often_FAQ.jsp");
+
+		} else if(command.equals("adminanswer")) {
+			int opt_no_seq = Integer.parseInt(request.getParameter("opt_no_seq"));
+			int customer_no_seq = Integer.parseInt(request.getParameter("customer_no_seq"));
+			String admin_answer_content = request.getParameter("admin_answer_content");
+			
+			System.out.println(opt_no_seq);
+			System.out.println(customer_no_seq);
+			System.out.println(admin_answer_content);
+			
+			AdminAnswerDto adminDto = new AdminAnswerDto();
+			adminDto.setCustomer_no_seq(customer_no_seq);
+			adminDto.setOpt_no_seq(opt_no_seq);
+			adminDto.setAdmin_answer_content(admin_answer_content);
+			
+			
+			int res = biz.adminAnswer(adminDto);
+			
+			if(res > 0) {
+				out.print("<script> alert('작성성공');  opener.location.reload(); close();</script>");
+			}else {
+				out.print("<script> alert('작성실패'); opener.location.reload(); close();</script>");
+			}
+			
+			
+		} else if(command.equals("adminAnswerDelete")) {
+			int admin_answer_no_seq = Integer.parseInt(request.getParameter("admin_answer_no_seq"));
+			int res = biz.adminAnswerDelete(admin_answer_no_seq);
+			if(res > 0) {
+				alert("삭제성공","service.do?command=servicelist&page=1", response);
+			}else {
+				alert("삭제실패","service.do?command=servicelist&page=1", response);
+			}
 		}
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -145,5 +181,10 @@ public class OptServiceController extends HttpServlet {
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);
 		dispatch.forward(request, response);
 	}
+	
+	public void alert(String msg, String url, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		out.print("<script> alert('" + msg + "'); location.href='" + url + "'; </script>");
+	}	
 	
 }

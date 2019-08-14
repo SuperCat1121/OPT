@@ -56,7 +56,31 @@ $(document).ready(function(){
       return false;
     });
     $("#faq #faq_div").eq(0).trigger("click");
+    
+	if("${memdto.opt_role}" == "admin"){
+		$(".answerBtn").attr("style","display:'';");
+	}else{
+		$(".answerBtn").attr("style","display:none;");
+	}
+    
   });
+
+function userWrite() {
+	
+	open("customerwrite.jsp","","width:850px;height:380px;")
+}
+
+
+function adminAnswer(customer_no_seq) {
+	
+	open("adminReply.jsp?customer_no_seq="+customer_no_seq,"","width:850px;height:380px;")
+}
+
+
+function adminAnswerDelete(admin_answer_no_seq) {
+	
+	location.href="service.do?command=adminAnswerDelete&admin_answer_no_seq="+admin_answer_no_seq;
+}
 	
 </script>
 </head>
@@ -124,14 +148,16 @@ $(document).ready(function(){
 				</div>
 			 	<div id="costomer_text">
 			 	<div class="costomer_img"></div>
-			 	<div class="text_area"><p class="cosutomer_textcontent"><%=customerList.get(i).getCustomer_content() %></p></div>			
+			 	<div class="text_area"><p class="cosutomer_textcontent"><%=customerList.get(i).getCustomer_content() %></p></div>
+			 	<div class="answerBtn" style="display: none"><input type="button" value="답변하기" onclick="adminAnswer(<%=customerList.get(i).getCustomer_no_seq() %>);"></div>			 				
 <%			
 			for(int j=0; j<answerList.size(); j++){
 				if(answerList.get(j).getCustomer_no_seq() == customerList.get(i).getCustomer_no_seq()){
 %>
 				<div class="answer_area">
 				<div class="answer_img"></div>
-				<div class="answer_area"><p class="answer_textcontent"><%=answerList.get(j).getAdmin_answer_content() %></div>
+				<div class="answer_area"><p class="answer_textcontent"><%=answerList.get(j).getAdmin_answer_content() %></div>				
+				<div class="answerBtn" style="display: none"><input type="button" value="삭제하기" onclick="adminAnswerDelete(<%=answerList.get(j).getAdmin_answer_no_seq() %>);"></div>
 				</div>			
 <%					
 				}
@@ -146,7 +172,7 @@ $(document).ready(function(){
 %>	 			
 
 			</ul>
-			<input type="button" class="btn" value="글작성"	onclick="location.href='customerwrite.jsp'" />
+			<input type="button" class="btn" value="글작성"	onclick="userWrite();" />
 		</div>	
 	</div>
 	<div class="paging">
