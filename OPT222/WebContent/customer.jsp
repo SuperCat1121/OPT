@@ -65,10 +65,6 @@ $(document).ready(function(){
     
   });
 
-function userWrite() {
-	
-	open("customerwrite.jsp","","width:850px;height:380px;")
-}
 
 
 function adminAnswer(customer_no_seq) {
@@ -172,7 +168,7 @@ function adminAnswerDelete(admin_answer_no_seq) {
 %>	 			
 
 			</ul>
-			<input type="button" class="btn" value="글작성"	onclick="userWrite();" />
+			<input type="button" class="btn" value="글작성"	onclick="location.href='customerwrite.jsp'"/>
 		</div>	
 	</div>
 	<div class="paging">

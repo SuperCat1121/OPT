@@ -88,9 +88,9 @@ public class OptServiceController extends HttpServlet {
 			customerServiceDto.setCustomer_content(customer_content);
 			int res = biz.insertCustomerBoard(customerServiceDto);
 			if(res > 0) {
-				out.print("<script> alert('작성성공');  opener.location.reload(); close();</script>");
+				response.sendRedirect("service.do?command=servicelist&page=1");
 			}else {
-				out.print("<script> alert('작성실패'); opener.location.reload(); close();</script>");
+				response.sendRedirect("service.do?command=servicelist&page=1");
 			}
 		} else if (command.equals("faqlist")) {
 			HttpSession session = request.getSession();
