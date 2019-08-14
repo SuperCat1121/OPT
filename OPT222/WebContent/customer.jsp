@@ -75,13 +75,7 @@
 	.answer_wrap{
 	
 	}
-	hr{
-	position: relative;
-        bottom: 30px;
-    right: 12px;
-    border-style: solid;
-    border-color: #ebebeb;
-    }
+	
     .answer{
     position: relative;
     top: 54px;
@@ -195,7 +189,6 @@ function adminAnswerDelete(admin_answer_no_seq) {
 			for(int j=0; j<answerList.size(); j++){
 				if(answerList.get(j).getCustomer_no_seq() == customerList.get(i).getCustomer_no_seq()){
 %>	
-				<hr>
 				<div class="answer_wrap">
 				<div class="answer_area">
 				<div class="answer_img"></div>

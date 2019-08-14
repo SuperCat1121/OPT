@@ -35,6 +35,11 @@
 	.menu_li a{
 		background-color: #ebebeb;
 	}
+	.paging{
+    position: relative;
+    top: 40px;
+    padding-left: 111px;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
