@@ -61,6 +61,7 @@ setion {
 	width: 1600px;
 	padding-left: 100px;
 	position: relative;
+	height: 1000px;
 }
 
 a {
