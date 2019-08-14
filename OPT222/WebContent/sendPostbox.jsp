@@ -13,7 +13,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/postList.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	.foot_wrap_area{
+		position: relative;
+		top: 94px;
+	}
 
+</style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
@@ -256,7 +262,7 @@ function closeNav() {
 		</div>
 	</div>
 	
-	<div>
+	<div class="foot_wrap_area">
 	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 

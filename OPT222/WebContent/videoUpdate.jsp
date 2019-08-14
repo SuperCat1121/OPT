@@ -79,6 +79,10 @@
 	position: relative;
 	left: 33%;
 }
+.foot_area_wrap{
+	position: relative;
+	top:55px;
+}
 </style>
 </head>
 <body>
@@ -140,7 +144,7 @@
 			</tr>
 		</table>
 	</form>
-	<div>
+	<div class="foot_area_wrap">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>

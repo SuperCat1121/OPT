@@ -64,6 +64,11 @@
 .uploadrow {
 	font-size: 1.5em;
 }
+
+.foot_area_wrap{
+	position: relative;
+    top: 55px;
+}
 </style>
 </head>
 
@@ -115,7 +120,7 @@
 		</table>
 	</form>
 
-	<div>
+	<div class="foot_area_wrap">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>

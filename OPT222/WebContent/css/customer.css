@@ -94,9 +94,10 @@ color: #575757;
 
 /****페이징 버튼*****/
  .paging{
-    width: 180px;
+    width: 305px;
     margin: 0 auto;
     height: 40px;
+    padding-left: 60px;
 }
 .paging_ul {
 	float:left;

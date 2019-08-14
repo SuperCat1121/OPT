@@ -153,7 +153,7 @@
 			ch = screen.availHeight;
 				
 			sw=300;    //띄울 창의 넓이
-			sh=300;    //띄울 창의 높이
+			sh=380;    //띄울 창의 높이
 
 			ml = (cw - sw) / 2;
 			mt = (ch - sh) / 2;
@@ -166,7 +166,7 @@
 			ch = screen.availHeight;
 				
 			sw=300;    //띄울 창의 넓이
-			sh=300;    //띄울 창의 높이
+			sh=380;    //띄울 창의 높이
 
 			ml = (cw - sw) / 2;
 			mt = (ch - sh) / 2;

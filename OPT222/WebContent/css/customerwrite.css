@@ -1,0 +1,23 @@
+
+body,html{
+	margin:0;
+	padding:0;
+	border:0;
+	color: #888;
+    font-style: normal;
+    font-size: 16px;
+}
+
+
+
+.content_wrap{
+	margin: 0 auto;
+    padding-top: 10px;
+    width: 1400px;
+    height: 660px;
+    margin-top: 30px;
+}
+.content_wrap h3{
+	text-align: center;
+    font-size: 30px;
+}

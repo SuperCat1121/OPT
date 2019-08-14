@@ -10,6 +10,14 @@
 <head>
 <meta charset="UTF-8">
 <title>결제 완료</title>
+<style type="text/css">
+
+	.foot_area_wrap{
+		position: relative;
+		top:55px;
+	}
+
+</style>
 <link href="css/payment.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -77,8 +85,9 @@
 	<input type="button" value="주문 상세보기" class="paymentBtn" onclick="location.href='opt.do?command=mypage'"/>
 	</div>
 
+	<div class="foot_area_wrap">
 	<%@ include file="./footer.jsp" %>	
-		
+	</div>
 
 </body>
 </html>

@@ -10,6 +10,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.foot_area_wrap{
+	position: relative;
+	top: 55px;
+}
+
+</style>
+
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <link href="css/payment.css" rel="stylesheet" type="text/css">
 
@@ -252,9 +260,9 @@
 	<br/>
 	</div>
 	
-	
+	<div class="foot_area_wrap">
 	<%@ include file="./footer.jsp" %>
-
+	</div>
 <script type="text/javascript">
 	function formSubmit(){
 		ml = (screen.availWidth - 800) / 2;

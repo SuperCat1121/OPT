@@ -76,10 +76,13 @@ color: #575757;
 
 /****페이징 버튼*****/
 .paging{
-    width: 138px;
+    width: 320px;
     margin: 0 auto;
-    height: 40px;
-    margin-top: 40px;
+    height: 300px;
+    /* margin-top: 40px; */
+    position: relative;
+    top: 20px;
+    padding-left: 173px;
 }
 ul {
 	float:left;

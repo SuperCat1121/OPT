@@ -13,6 +13,13 @@
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 <title>상품 상세페이지</title>
+<style type="text/css">
+	.foot_area_wrap{
+		position: relative;
+		top:55px;
+	}
+
+</style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
@@ -275,8 +282,8 @@
 	</div>
 
 
-
+	<div class="foot_area_wrap">
 	<%@ include file="./footer.jsp"%>
-
+	</div>
 </body>
 </html>

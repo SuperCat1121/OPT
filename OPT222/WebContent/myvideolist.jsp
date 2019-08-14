@@ -113,8 +113,8 @@
 	color: white;
 	font-weight: bold;
 	position: absolute;
-	top: 197px;
-	left: 64%;
+	top: 200px;
+    left: 68%;
 	cursor: pointer;
 }
 
@@ -123,12 +123,13 @@
 }
 
 .paging {
-	width: 138px;
-	margin: 0 auto;
-	height: 300px;
-	/* margin-top: 40px; */
-	position: relative;
-	top: 120px;
+	width: 320px;
+    margin: 0 auto;
+    height: 300px;
+    /* margin-top: 40px; */
+    position: relative;
+    top: 120px;
+    padding-left: 250px;
 }
 
 .paging_ul {
@@ -160,6 +161,12 @@
 .chkbox_td{
 	text-align: center;
 }
+
+.foot_area_wrap{
+	position: relative;
+    top: 55px;
+}
+
 </style>
 
 </head>
@@ -278,7 +285,7 @@
 			</c:choose>
 		</ul>
 	</div>
-	<div>
+	<div class="foot_area_wrap">
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
