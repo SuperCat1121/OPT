@@ -46,7 +46,7 @@ $(function(){
 }
 
 .videoList {
-	margin-left: 35%;
+	margin-left: 24%;
 }
 
 .videoContent {

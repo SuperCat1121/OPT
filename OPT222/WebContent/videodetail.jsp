@@ -68,10 +68,10 @@ a {
 
 .side_nav_video {
 	width: 500px;
-	height: 1280px;
-	position: relative;
-	top: -1760px;
-	left: 1100px;
+    height: 1262px;
+    position: absolute;
+    top: 120px;
+    left: 1270px;
 }
 
 hr {
@@ -257,10 +257,10 @@ hr {
 								<c:set var="videourl" value="${videoDto.video_url }" />
 								<td><c:choose>
 										<c:when test="${fn:startsWith(videourl, 'h')}">
-											<iframe width="426" height="245" src=${videoDto.video_url }></iframe>
+											<iframe width="400" height="200" src=${videoDto.video_url }></iframe>
 										</c:when>
 										<c:otherwise>
-											<video width="426" height="245"
+											<video width="400" height="200"
 												src="./video/${videoDto.video_url }" controls="controls"></video>
 										</c:otherwise>
 									</c:choose></td>

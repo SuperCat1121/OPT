@@ -465,6 +465,288 @@ INSERT INTO OPT_VIDEO_CLIP VALUES(
     0
 );
 
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/fkCCJ2Pqq4U',
+    '[혼자서 하는 셀프 PT] 초급자 1, 1급레벨 전체동작',
+    '초급자용 프로그램은 체력과 운동 수행능력이 약한 사람에게 초점을 두었
+	다. 맨몸으로 하는 동작 중에서 자신의 체중과 근지구력을 컨트롤하기 어
+	려운 사람들이 부상의 위험이 적고 더욱더 안정적인 효과를 얻기 위한 기
+	본적인 단순 동작과, 반동을 이용해 체력과 운동 수행능력을 높일 수 있게 
+	구성했다.
+	초급자용 프로그램 동작들은 운동을 처음 하거나 많이 접하지 않은 사람들
+	, 혹은 운동을 오래 쉬었다가 다시 하는 사람들이 부담 없이 컨트롤할 수 
+	있는 프로그램이다.
+	각기 다른 세 부분을 연속으로 운동해서 자극을 주는 프로그램으로, 근육 
+	범핑에 대한 부담이 적고, 체지방 연소와 근력 높이기에 좋은 프로그램이 
+	초급자용 프로그램 1이다.
+	',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/Rjv7hnHkgXE',
+
+'앉기. (허리만 세운다고 되는게 아님)',
+
+'앉는 자세만 고쳐도 웬만한 허리 질병은 거의 다 예방이 가능합니다.꼭 명심해 주세요.',
+    SYSDATE,
+    0
+);
+
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/aoH7qNedO8k',
+
+'푸쉬업 해도 몸변화가 없는 이유 [운동의 정석]',
+
+'#운동 #다이어트 #헬스
+푸쉬업을 해도 몸에 변화가 없으신가요?
+운동의 정석 - 푸쉬업  -
+빡빡이 아저씨의 본격 뇌피셜 푸쉬업 강의.avI',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/14w0rm0A_IY',
+
+'(Ep2/90.9kg) 이영광 3대 500 만들기 2주차',
+
+'#운동 #다이어트 #헬스
+■극헬린이 이영광 PD의 3대 500 도전기
+□ (2019.7.18) 97.4kg
+□ (2019.7.24) 93.2kg
+□ (2019.7.31) 90.9kg
+235프로젝트'
+,    SYSDATE,
+    0
+);
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/qMtyhDDmJ-U',
+
+'50만명이 효과를 본 라운드숄더 교정루틴 A (by 호주물리치료사)',
+
+'굽은 등, 라운드숄더 체형은 가장 흔한 체형 중 하나로 여러가지 문제를 유발하는 체형입니다.
+이 체형을 교정하는 방법은 정말 간단합니다.
+이 루틴을 매일 꾸준히 3개월만 해주시면 됩니다.
+정말 놀라운 변화가 나타날 것입니다.'
+,    SYSDATE,
+    0
+);
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/-rRmu0wfeYU',
+
+'어깨 통증? 뼈소리? (매일 10분만 따라해보세요)',
+
+'이번시간에는 Internal impingement에 대해서 이야기 해보겠습니다.'
+,    SYSDATE,
+    0
+);
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/wYu5XrY5A2A',
+
+'제발 하지 마세요! 어깨 망치는 최악의 마사지.',
+
+'항상 어깨가 뻐근하다고 하는 사람들에게 반드시 알려줘야 할 정보입니다. 
+어깨 통증 때문에 스트레스 받는 어르신분들에게 꼭 꼭 공유해 주세요.'
+,    SYSDATE,
+    0
+);
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/5IBhz4c2D4o',
+
+'절대로 하면 안되는 복근 운동',
+
+'척추탈출넘버원 Ep2 - 레그레이즈 편 -'
+,    SYSDATE,
+    0
+);
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/Fn1KWahfHnU',
+
+'운동 전에 이걸 해보세요! 초간단 워밍업 (패시브 웜업 테크닉)',
+
+'운동 전에 워밍업, 귀찮지만 꼭 해줘야 하는 일이죠.
+그렇지만 이건 전혀 귀찮지도 않고 매우 간단한 방법입니다.'
+,    SYSDATE,
+    0
+);
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/1yJwleqY73s',
+
+'과학적으로 검증된 족저근막염 탈출하는 방법',
+
+'논문에 의하면 이 마사지와 운동법은 족저근막에 매우 효과적이라고 합니다. 
+족저근막으로 고생하고 있는 분들에게 공유해 주세요!'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/JijbvAl75-A',
+
+'오래 서 있는 사람들을 위한 다리 붓기(부기) 빼주는 시원한 테크닉, 빡빡이 아저씨가 알려줄게-13',
+
+
+'오래 서 있는 사람들, 하이힐을 주로 신는 사람들, 오래 걷는 사람들을 위한 최고의 마사지 방법입니다.'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/2Kd4xhyxmDE',
+
+'고중량. 손목 약한 사람들 꼭 보십쇼!!!!!! l TFCC 마사지 l 손목 통증',
+
+'고중량 벤치프레스 하는 사람들도 꼭 보세요!
+TFCC가 다치면 손목 안쪽이 아프고 손목에 힘을 과도하게 주는 경우 특히 뻑뻑하거나 무거운 문을 돌려서 열 때 통증이 더 심해지는데요.
+이런 경우에는 마사지를 통해서 회복 속도를 훨씬 빠르게 촉진시켜줄 수가 있습니다.'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/qGGd2rL-gMQ',
+
+'몸 만드는 "반박불가" 습관 2가지',
+
+'기본적으로 다이어트를 실패하는 가장 큰 이유 중 하나는 바로 필요 이상으로 먹는 겁니다.
+이제 필요 이상으로 먹는 이유는 여러 가지가 있는데 이건 딱 2가지 생활습관만 고쳐주면 훨씬 좋아지게 될 겁니다'
+,    SYSDATE,
+    0
+);
+
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/KzGmjwCJTXo',
+
+'걷기만 잘해도, 최악은 막는다 (바르다 빡선생)',
+
+'누구나 만족하는 생활자세. 바르다 빡선생이 만들겠습니다'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/q22grJuVOz4',
+
+'빡저씨가 폼롤러를 쓰는 이유 (빡리뷰 Ep1)',
+
+'이 피트니스 용품들을 구체적으로 조금 알아보는 콘텐츠!
+본격 피트니스 용품 리뷰 콘텐츠!'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/AvHuwXWVHFo',
+
+'0.1%만 알고 있는 골반 통증 꿀팁 (고관절 찝힘)',
+
+'정말 많은 사람들이 여기 고관절이 아플 때, 여기 고관절 부위를 마사지 해주는데 이건 굉장히 안 좋은 방법입니다'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/EBjYQeeBI-0',
+
+'완벽한 데드리프트 강의 [운동의 정석]',
+
+'운동의 정석 Ep3 - 데드리프트 -
+데드리프트, 잘 하고 계신가요?
+빡빡이 아저씨의 본격 뇌피셜 데드리프트 강의.avi'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/0DsXTSHo3lU',
+
+'완벽한 벤치프레스 강의 [운동의 정석]',
+
+'운동의 정석 Ep4 - 벤치프레스 -
+벤치프레스, 잘 하고 계신가요?
+빡빡이 아저씨의 본격 뇌피셜 벤치프레스 강의.avi'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/6zsHvi7aqjE',
+
+'유산소 도우미. 지루하지 않게 달리는 법 l 잠실 한강공원 l 페이스 메이커',
+
+'빡빡이 아저씨와 함께 운동해요! 유산소 운동'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/p-S1Pjagbmo',
+
+'고중량 스쿼트 워밍업 (핵꿀팁)',
+
+'고중량 훈련을 하고 있거나 무릎이나 발목이 흔들리는 사람들에게 정말 유익한 운동입니다.'
+,    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+ VIDEOCLIPSEQ.NEXTVAL,
+'https://www.youtube.com/embed/piTKJeo6RSs',
+
+'30초만 해도 효과 보는 라운드숄더(굽은 등) 스트레칭',
+
+'굉장히 시원한 굽은 등 스트레칭입니다.
+굽은 등이 있다면 꼭 해보시고 공유해 주세요.
+언제 어디서든 할 수 있는 꿀 스트레칭/운동'
+,    SYSDATE,
+    0
+);
+
 SELECT * FROM OPT_VIDEO_CLIP;
 
 --------------------------------------------------------------------------------------------------------------------------------
