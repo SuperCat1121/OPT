@@ -229,7 +229,8 @@ public class OptVideoController extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("videoList", biz.videoListPage(1, 5));
 
-			dispatch(request, response, "videodetail2.jsp");
+			dispatch(request, response, "videodetail.jsp");
+
 		} else if (command.equals("videoAnswerinsert")) {
 			HttpSession session = request.getSession();
 			MemberDto memdto = (MemberDto) session.getAttribute("memdto");
