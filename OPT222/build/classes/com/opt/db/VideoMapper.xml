@@ -109,9 +109,8 @@
 	<select id="videoSelectOne" parameterType="int"
 		resultType="VideoClipDto">
 		SELECT *
-		FROM OPT_VIDEO_CLIP
-		WHERE VIDEO_NO_SEQ =
-		#{video_no_seq}
+		FROM OPT_VIDEO_CLIP A, OPT_MEMBER B
+		WHERE A.VIDEO_NO_SEQ = #{video_no_seq} AND A.OPT_NO_SEQ = B.OPT_NO_SEQ
 	</select>
 
 	<select id="search" parameterType="map"

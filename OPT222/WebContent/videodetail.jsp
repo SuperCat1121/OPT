@@ -178,12 +178,12 @@ hr {
 		</div>
 		<hr>
 		<div class="content">
-			<div>${videoDto.video_content }</div>
+			<div style="width: 1050px;">${videoDto.video_content }</div>
 			<br>
 			<div>
 				<span> 게시일 : <fmt:formatDate
 						value="${videoDto.video_regdate }" pattern="yyyy-MM-dd HH:mm" /><br><br>
-				</span>11111${videoDto.opt_id}222
+				</span>${videoDto.opt_id}
 			</div>
 			<br>
 		</div>

@@ -176,9 +176,14 @@ DELETE FROM OPT_VIDEO_CLIP WHERE VIDEO_NO_SEQ =5;
 INSERT INTO OPT_VIDEO_CLIP VALUES(
     3,
     VIDEOCLIPSEQ.NEXTVAL,
-    'https://www.youtube.com/embed/XsX3ATc3FbA?list=RD2BlwXXVCAFM',
-    '방탄소년단1',
-    '작은것들의 시',
+    'https://www.youtube.com/embed/oMOmp397z3U',
+    '헬스장 처음이면 뭘 어떻게 할까요?초보자를 위한 완벽가이드 영상',
+    '안녕하세요 여러분~~~
+	이번 영상은 날 것 그대로의 영상이라 많이 부끄럽기도 하고
+	영상으로 마주하니 열심히 해서 참 뿌듯하기도 하네요ㅋㅋㅋㅋㅋㅋ
+	저의 첫 영상에서 말했듯이 훗날 이 영상을 보면서 저럴 때도 있었지 하고
+	추억할 수 있길 바라봅니다
+	..화이팅...! ㅎ_ㅎ',
     SYSDATE,
     0
 );
@@ -186,9 +191,276 @@ INSERT INTO OPT_VIDEO_CLIP VALUES(
 INSERT INTO OPT_VIDEO_CLIP VALUES(
     3,
     VIDEOCLIPSEQ.NEXTVAL,
-    'https://www.youtube.com/embed/ml_0KpFAEhY?list=RD2BlwXXVCAFM',
-    '아이즈원2',
-    '비올레타',
+    'https://www.youtube.com/embed/3VouSaW_LPw',
+    '전신 다이어트 유산소운동 [홈트레이닝]',
+    '안녕하세요, 땅끄와 오드리 입니다! 연휴동안 쉬면서 몸에 지방이 필요이
+	상으로 많이 붙어버린듯 합니다. 집에서도 쉽게 할 수 있는 강도높은 다이
+	어트 운동 프로그램을 계획하고 해보던중 저희끼리만 하기보다 많은 분들
+	과 함께 서로 동기부여하며 할 수 있는 방법으로 본 영상까지 찍게 되었습
+	니다. 최대한 집에서도 손쉽게 따라하실 수 있는 층간소음이 적은 동작들
+	로 구성하였으며, 동시에 칼로리 소모가 많은 운동 중심 그리고 더 나아가 
+	복근을 포함한 여러가지 근육들을 사용하여 몸을 탄력있게 만들 수 있는 
+	운동들로 준비해 보았습니다. 원래 이전에도 이와 비슷한 전신 유산소 다
+	이어트 운동 영상을 찍은것이 있으나, 그것보다도 조금 더 길게(20분) 그
+	리고 조금 더 다양한 운동과 강도로 그리고 이전에 댓글로 요구해 주셨던 
+	운동설명, 효과음, 음악 등을 더 보완하여 이번 영상을 만들어보게 되었습
+	니다. 본 영상에 나오는 운동들과 구성, 순서등은 오드리가 실제로 집에서 
+	홈트레이닝을 할때에 했던 운동들을 중심으로 국내외 유명 피트니스 칼로
+	리 소모 많은 운동 영상들을 참고로 하여 구성하였으며 그만큼 효과 또한 
+	검증되었다고도 말할 수 있습니다. 이점 참고하시어 다이어트 하시는데 조
+	금이라도 도움이 되었으면 합니다.',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/XN9IKLEppR0',
+    '짐볼을 이용한 하루 10분 전신 유산소 다이어트 운동 [딩고PT]',
+    '솔찌키 집에 짐볼 나만 쳐 박혀있는 거 아니지?
+	오늘부터 당장 짐볼로 전신운동ㄱㄱ
+	ㅋㅋㅋ쉬운 건 줄 알고 샀는데 쉬운게 아니여써.....',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/YWRbuyneaXI',
+    '무조건 PT받는게 옳은가?! 개인트레이닝 받기 전 꼭 봐야할 영상!! [지피티TV]',
+    '구독과 좋아요! 공유 부탁드립니다!영상을 통해 많은 도움이 되셨으면 좋겠습니다!
+	프로틴팩트 서포터즈 (인터넷에 프로틴팩트 검색)
+	↓               ↓                 ↓
+	https://proteinfact.co.kr/
+	프로틴팩트 사이트에서 보충제 따로 구매하실때 구매 메모작성란에
+	지피티 추천 이렇게 작성해주시면 유기농 카카오파우더를 추가로 증정해드린
+	다고 합니다!  많은 애용부탁드립니다! :)',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/wR2bHEcum3E',
+    'PT 다이어트 헬스 브이로그 | 운동하는 날 Vlog',
+    '해-하!썬지에요!
+	오늘은 운동을 하러 헬스장에 갔다왔어요!
+	체력이 안 좋아서ㅠㅠ 
+	완전 지옥의 트레이닝이었어욥ㅋㅋ
+	오늘 영상도 재밌게 봐주시고
+	다음에 또 마나용!
+	해-바!',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/pJAAMXIAtqQ',
+    '사기 PT 호구 안당하는 방법 (헬스 PT) 실태',
+    '한국의 모든 헬린이들이 눈탱이 안맞는그날까지 
+	PT를 받아본분 , 받으려는분 , 받고있는분
+	현직트레이너 , 모두가 봐야할 영상입니다 
+	부디 올바른 판단력을 기르시기를 기원하면서 
+	없는실력으로 힘들게 영상 만들어 보았습니다
+	모두들 정직하고 실력있는 지도자를 만나시기를 
+	바랍니다',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/pqM7oK08HEU',
+    '헬스초보! 첫 헬스장 어디로 가야할까???',
+    '헬스장 관장이 알려드리는 헬린이 분들을 위한 첫 헬스장 선택 가이드!!!
+	[미트리 닭가슴살] 아래 링크를 타고 들어가 회원가입하고 구매하면 추가 
+	할인된 가격으로 구매하실 수 있습니다',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/5QX6jAyTc20',
+    '비키니 입기 위해 개인PT 시작했습니다 운동하는여자, 몸짱녀 될거야',
+    '안녕하세요 존경하는 구독자 여러분!
+	제가 인복이 있는지, 어느분의 도움으로 운동을 시작하게 되었습니다^^
+	(그 썰은 제가 차츰 풀겠습니다.)
+	더군다나 한번도 안받아본 개인PT 기회가 주어져
+	어제 처음 근력테스트 받고 왔는데요!
+	간절하게 손꼽아 기다렸던 기회라서, 개인적으로 무척 기뻐요~
+	조금 가볍게 운동하는 모습과 눈바디를 사진&영상으로
+	남길 생각인데, 여러분에게도 공유 하고 싶어 영상 만듭니다!
+	돌아올 여름을 위해 조금 멋진 몸을 만들고싶더라구요
+	마지막 버킷리스트 처럼!!
+	올해 초부터 생각했던건데, 이제서야 실행 할 수 있게 되었어요
+	재밌게보세요^^',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/VNQpP6C1fJg',
+    '집에서 하는 유산소운동 다이어트 [칼소폭]',
+    '안녕하세요, 땅끄와 오드리 입니다! 저희가 운동을 할 때 가장 중점을 두
+	고 생각하는 것은 바로 시간 대비 운동효율 입니다. 그래서 저희가 소개
+	시켜드린 영상 대부분은 최대한 단시간 고효율을 목표로한 운동 루틴으로 
+	구성되었고 그렇게하여 탄생한 영상들은 대부분은 10분 내외의 BEST 동
+	작 영상등으로 여러분들께 소개되어 졌습니다. 오늘은 단시간 고효율 동작
+	들을 모두 종합한 칼로리 소모 폭탄 운동 [칼소폭]을 준비해 보았습니다. 
+	본 운동 영상은 초보자 분들도 집에서 쉽게 따라하실 수 있도록 아무런 도
+	구없이 맨몸으로 하실 수 있는 동작들과 더불어 최대한 여러가지 다양한 
+	근육무리를 사용하여 칼로리 소모에 특화된 동작들로만 선별하여 구성하
+	였습니다. 영상에서 소개시켜 드리는 운동 및 효과는 다음과 같습니다.',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/eC2RTE8lQXk',
+    '다이어트는 PT가 정답! 4개월만에 바디프로필까지!',
+    '경도비만에서 체지방이 부족한 지경에 이르기 까지
+	복부비만에서 복근이 생기기까지 전신사진은 찍지도 않았는데 바디프로필을 찍기까지
+	4개월 동안 PT받으며 체지방 7kg 감량하고 다이어트에 성공한 저의 이야기를 담았습니다',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/Flx0PdzplMM',
+    '평범한 사람이 헬스장에서 피티를 받으면 어떻게 될까? (헬스 PT)',
+    '40일 동안 열심히 먹고 운동하고 느낀점을 기록해봤습니다.
+	여름 대비해서 헬스장에서 PT받을 예정이신 분들께 도움이 되었으면 좋겠어요.
+	내 돈 66만원....
+	.
+	.
+	.
+	문의 및 러브레터 : jungsungkwon@gmail.com
+	Instagram : kimeptony',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/MlXGsjt7M7g',
+    '웨이트 트레이닝 입문 하기전 꼭 해야되는 6가지 운동',
+    '헬린이 특집 #2 
+	웨이트 트레이닝 입문 하기전 꼭 해야되는 6가지 운동 
+	이것만 제대로 연습하고 간다면 
+	헬스장 적응 무지무지 쉬워요 
+	헬린이 여러분 화이팅 !!',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/cIjvH7epOmY',
+    'PT 2주차 인바디 충격적인 변화! PT 운동 2주차 상체운동 기록 운동의 중요성',
+    '안녕하세요~ 오늘은 인바디 결과랑 PT 운동 2주차 상체운동 기록이에요!
+	호호...인바디 결과가 만족스러워서 기분이 좋은데요!!!
+	요즘 운동이 힘들기도 하고 식단도 어떻게 해야할지 고민스럽기도 하고 그렇습니당
+	항상 응원해주시고 좋은댓글 좋아요 눌러주시는 분들 모두 감사합니다',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/bwER2gjNnNs',
+    '많이 부족하지만 재밌게 봐주세용~~',
+    '안녕하세요~ 오늘은 인바디 결과랑 PT 운동 2주차 상체운동 기록이에요!
+	호호...인바디 결과가 만족스러워서 기분이 좋은데요!!!
+	요즘 운동이 힘들기도 하고 식단도 어떻게 해야할지 고민스럽기도 하고 그렇습니당
+	항상 응원해주시고 좋은댓글 좋아요 눌러주시는 분들 모두 감사합니다',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/2hg1U8BdtuQ',
+    '헬스PT가격, 헬스장 알아보기 전에 좋은 PT가 뭔지부터!',
+    '안녕하세요, 올어바웃바디 대표 트레이너낙입니다.
+	곧 다가올 여름!
+	자기관리, 혹은 체형 교정을 위해
+	PT 신청을 생각하고 있진 않으신가요?
+	그러나 많은 분들이
+	제대로 된 지식 없이,
+	자극적인 문구와 사진 등에 끌려
+	무작정 PT를 등록하시고선
+	후회하는 경우가 많습니다.
+	그래서 이에 도움을 드리고자
+	제가 생각하는 PT의 정의와,
+	올바른 PT 고르는 팁을
+	영상을 통해 알려드리려 하는데요,
+	나에게 맞는, 올바른 PT!
+	어떻게 해야 제대로 고를 수 있을까요?
+	본 영상과 위의 블로그 링크에서
+	그 해답을 찾으실 수 있습니다.',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/UgKL-kfdw-I',
+    '[홍지원 & 김동호의 실전 PERSONAL TRAINING]',
+    '홍지원과 김동호 선생님께 직접 PT를 받는다 ! 
+	홍지원 선생님과 김동호 선생님께 직접 지도를 받으면서 
+	운동을 배우고 싶다면 1:1 퍼스널 트레이닝을 적극 추천!!
+	몸짱이 되는것과 건강을 관리하는것도 훨씬 더 쉬워질겁니다 ^^',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/7wu3b0B2EGk',
+    '[VLOG] 운동 브이로그 / 리아의 PT 일기 in BELIEVE PT STUDIO',
+    'BELIEVE PT STUDIO
+	서울특별시 강서구 화곡로 141 2층',
+    SYSDATE,
+    0
+);
+
+INSERT INTO OPT_VIDEO_CLIP VALUES(
+    3,
+    VIDEOCLIPSEQ.NEXTVAL,
+    'https://www.youtube.com/embed/fkCCJ2Pqq4U',
+    '[혼자서 하는 셀프 PT] 초급자 1, 1급레벨 전체동작',
+    '초급자용 프로그램은 체력과 운동 수행능력이 약한 사람에게 초점을 두었
+	다. 맨몸으로 하는 동작 중에서 자신의 체중과 근지구력을 컨트롤하기 어
+	려운 사람들이 부상의 위험이 적고 더욱더 안정적인 효과를 얻기 위한 기
+	본적인 단순 동작과, 반동을 이용해 체력과 운동 수행능력을 높일 수 있게 
+	구성했다.
+	초급자용 프로그램 동작들은 운동을 처음 하거나 많이 접하지 않은 사람들
+	, 혹은 운동을 오래 쉬었다가 다시 하는 사람들이 부담 없이 컨트롤할 수 
+	있는 프로그램이다.
+	각기 다른 세 부분을 연속으로 운동해서 자극을 주는 프로그램으로, 근육 
+	범핑에 대한 부담이 적고, 체지방 연소와 근력 높이기에 좋은 프로그램이 
+	초급자용 프로그램 1이다.
+	',
     SYSDATE,
     0
 );
