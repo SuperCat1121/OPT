@@ -29,7 +29,6 @@ public class OptItemController extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8"); 
 		
@@ -37,7 +36,6 @@ public class OptItemController extends HttpServlet {
 		System.out.println("[ item.do?" + command + " ]");
 		OPTBiz biz = new OPTBizImpl();
 		PrintWriter out = response.getWriter();
-		
 		
 		// 상품목록
 		if(command.equals("itemlist")) {
@@ -69,11 +67,8 @@ public class OptItemController extends HttpServlet {
 				endPage = totalPage;
 			}
 			
-			
 			int start = (page - 1)*listCount +1;
 			int end = page * listCount;
-			System.out.println("start >> " + start);
-			System.out.println("end >> " + end);
 			List<ItemDto> list = biz.itemPage(start, end);
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);
@@ -83,8 +78,6 @@ public class OptItemController extends HttpServlet {
 			request.setAttribute("endPage", endPage);
 			
 			dispatch(request, response, "itemlist.jsp");
-		
-			
 		//검색상품 목록	
 		}else if(command.equals("itemsearch")) {
 			String keyword = request.getParameter("keyword");
@@ -118,11 +111,8 @@ public class OptItemController extends HttpServlet {
 				endPage = totalPage;
 			}
 			
-			
 			int start = (page - 1)*listCount +1;
 			int end = page * listCount;
-			System.out.println("start >> " + start);
-			System.out.println("end >> " + end);
 			request.setAttribute("list", biz.itemSearchPage(keyword, msg, start, end));			
 			request.setAttribute("page", page);
 			request.setAttribute("blockCount", blockCount);
@@ -132,9 +122,7 @@ public class OptItemController extends HttpServlet {
 			request.setAttribute("keyword", keyword);
 			request.setAttribute("msg", msg);
 			
-			
 			dispatch(request, response, "itemsearch.jsp");
-			
 		// 상품 상세페이지	
 		}else if(command.equals("itemdetail")) {
 			int page = Integer.parseInt(request.getParameter("page"));
@@ -146,10 +134,7 @@ public class OptItemController extends HttpServlet {
 			request.setAttribute("Itemdto", Itemdto);
 			request.setAttribute("itemCommentList", itemCommentList);
 			
-			
 			dispatch(request, response, "itemdetail.jsp");			
-		
-			
 		// 상품결제 페이지	
 		}else if(command.equals("payment")) {
 			HttpSession session = request.getSession();
@@ -162,7 +147,6 @@ public class OptItemController extends HttpServlet {
 				response.sendRedirect("login.jsp?Flag=2&itemno="+itemNo+"&itemea="+itemEa);
 			}else {
 				MemberDto memdto = (MemberDto)session.getAttribute("memdto");
-				
 				List<CouponDto> couponList = biz.couponList(memdto.getOpt_no_seq());
 				ItemDto itemDto = biz.itemSelect(itemNo);
 				session.setAttribute("couponList", couponList);
@@ -170,21 +154,17 @@ public class OptItemController extends HttpServlet {
 				session.setAttribute("ea", itemEa);
 				session.setAttribute("post", post);
 				dispatch(request, response, "payment.jsp");
-				
 			}
-			
 		// 장바구니 결제페이지	
 		}else if(command.equals("basketpayment")) {
 			HttpSession session = request.getSession();	
 			MemberDto memdto = (MemberDto)session.getAttribute("memdto");			
 			List<CouponDto> couponList = biz.couponList(memdto.getOpt_no_seq());
 			
-			
 			List<BasketDto> list = new ArrayList<BasketDto>();
 			String[] seq = request.getParameterValues("chk");
 			String count = request.getParameter("countarr");			
 			String[] cnt = new String[seq.length];
-			
 			
 			for(int i=0; i<cnt.length; i++) {
 				cnt[i] = count.split(",")[i];
@@ -199,21 +179,16 @@ public class OptItemController extends HttpServlet {
 			
 			if(biz.updateBasket(list)) {
 				List<BasketDto> basketList = new ArrayList<BasketDto>();
-				
 				for(int i=0; i<seq.length; i++) {
 					BasketDto dto = biz.selectBasket(Integer.parseInt(seq[i]));
 					basketList.add(dto);
 				}
-				
 				request.setAttribute("couponList", couponList);
 				session.setAttribute("basketList", basketList);
 				dispatch(request, response, "basketpayment.jsp");
-				
 			}else {
 				alert("에러", "basket.do?command=basketlist", response);
 			}
-			
-			
 		}else if(command.equals("insertItemComment")) {
 			HttpSession session = request.getSession();
 			int itemPage = Integer.parseInt(request.getParameter("itemPage"));
@@ -232,7 +207,6 @@ public class OptItemController extends HttpServlet {
 			}else {
 				alert("댓글 작성 실패", "item.do?command=itemdetail&no="+itemNo+"&page="+itemPage, response);
 			}
-			
 		}else if(command.equals("deleteItemComment")) {
 			int itemPage = Integer.parseInt(request.getParameter("itemPage"));
 			int itemNo = Integer.parseInt(request.getParameter("itemNo"));
@@ -245,13 +219,10 @@ public class OptItemController extends HttpServlet {
 				alert("댓글 삭제 실패", "item.do?command=itemdetail&no="+itemNo+"&page="+itemPage, response);
 			}
 		}
-		
-		
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 	

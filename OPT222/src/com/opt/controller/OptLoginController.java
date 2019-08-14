@@ -42,11 +42,12 @@ public class OptLoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8"); 
+		
 		String command = request.getParameter("command");
 		System.out.println("[ login.do?" + command + " ]");
-		
 		OPTBiz biz = new OPTBizImpl();
 		PrintWriter out = response.getWriter();
+		
 		// 로그아웃
 		if(command.equals("logout")) {
 			HttpSession session = request.getSession();
@@ -177,14 +178,11 @@ public class OptLoginController extends HttpServlet {
 				e.printStackTrace();
 			}
 			out.print(JObject);
-			System.out.println(JObject);
 		}else if(command.equals("ChkEmail")) {
 			String email = request.getParameter("email");
-			System.out.println(email);
 			MemberDto dto = biz.emailChk(email);
 			if (dto != null) {
 				out.println(dto.getOpt_email());
-				System.out.println(dto.getOpt_email());
 			}
 		}else if(command.equals("sendEmail")) {
 			String email = request.getParameter("email");
@@ -237,13 +235,10 @@ public class OptLoginController extends HttpServlet {
 			String roadAddress = request.getParameter("roadAddress");
 			String detailAddress = request.getParameter("opt_addr");
 			String opt_addr = postcode + roadAddress + detailAddress;
-			System.out.println(opt_addr);
 			String email1 = request.getParameter("opt_email");
 			String email2 = request.getParameter("opt_email_addr");
 			String opt_email = email1 + email2;
-			System.out.println(opt_email);
 			String opt_gender = request.getParameter("opt_gender");
-			System.out.println();
 
 			MemberDto dto = new MemberDto();
 			dto.setOpt_id(opt_id);
@@ -254,10 +249,8 @@ public class OptLoginController extends HttpServlet {
 			dto.setOpt_phone(opt_phone);
 			dto.setOpt_email(opt_email);
 			dto.setOpt_gender(opt_gender);
-			System.out.println(dto.getOpt_birth());
 
 			int res = biz.insert(dto);
-			System.out.println(res);
 			if(res > 0) {
 				System.out.println("회원가입 성공");
 			}else {
@@ -290,7 +283,6 @@ public class OptLoginController extends HttpServlet {
 			dto.setOpt_gender(opt_gender);
 
 			int res = biz.update(dto);
-			System.out.println(res);
 			if(res > 0) {
 				out.print("<sctipt>alert('회원정보가 수정되었습니다')</script>");
 				System.out.println("회원정보수정 성공");
@@ -309,7 +301,6 @@ public class OptLoginController extends HttpServlet {
 					String pw = dto.getOpt_pw();
 					String url = "login.do?command=login&id=" + id + "&pw=" + pw + "&flag="+Flag;
 					dispatch(request, response, url);
-					System.out.println(dto.getOpt_email() + "환영합니다.");
 			}else {
 				String opt_pw = opt_id;
 				String opt_name = "sns";
@@ -338,19 +329,16 @@ public class OptLoginController extends HttpServlet {
 			}
 		}else if(command.equals("findId")) {
 			String email = request.getParameter("email");
-			System.out.println(email);
 			MemberDto dto = biz.findId(email);
 
-			System.out.println(dto.getOpt_id());
 			String id = dto.getOpt_id();
 			out.println(id);
-			System.out.println(dto.getOpt_email());
+			
 		}else if(command.equals("findPassword")) {
 
 			String email = request.getParameter("email");
 			MemberDto dto = biz.findId(email);
 			String pw = dto.getOpt_pw();
-			System.out.println(dto.getOpt_pw());
 
 			String from = "kode15333@gmail.com";
 			String to = email;

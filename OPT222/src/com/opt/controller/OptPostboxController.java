@@ -22,10 +22,8 @@ import com.opt.dto.PostboxDto;
 @WebServlet("/postbox.do")
 public class OptPostboxController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8"); 
 		
@@ -34,15 +32,12 @@ public class OptPostboxController extends HttpServlet {
 		OPTBiz biz = new OPTBizImpl();
 		PrintWriter out = response.getWriter();
 		
-		
 		// 받은 쪽지함
 		if(command.equals("recivePostbox")) {
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("id");
 			int page = Integer.parseInt(request.getParameter("page"));
 			int allCount = biz.recivePostboxList(id).size();			
-
-			
 			int listCount = 10;
 			int totalPage = (allCount -1) / listCount + 1;
 			int blockCount = 5;  
@@ -69,7 +64,6 @@ public class OptPostboxController extends HttpServlet {
 				endPage = totalPage;
 			}
 			
-			
 			int start = (page - 1)*listCount +1;
 			int end = page * listCount;			
 			request.setAttribute("list", biz.recivePostboxListPage(id, start, end));
@@ -81,15 +75,12 @@ public class OptPostboxController extends HttpServlet {
 			request.setAttribute("allCount", allCount);
 			
 			dispatch(request, response, "recivePostbox.jsp");
-			
-			
 		// 보낸 쪽지함	
 		}else if(command.equals("sendPostbox")) {
 			HttpSession session = request.getSession();
 			int opt_no = ((Integer)(session.getAttribute("opt_no"))).intValue();
 			int page = Integer.parseInt(request.getParameter("page"));
 			int allCount = biz.sendPostboxList(opt_no).size();			
-			
 			int listCount = 10;
 			int totalPage = (allCount -1) / listCount + 1;
 			int blockCount = 5;  
@@ -128,7 +119,6 @@ public class OptPostboxController extends HttpServlet {
 			request.setAttribute("allCount", allCount);
 			
 			dispatch(request, response, "sendPostbox.jsp");
-
 		// 받은쪽지 상세페이지
 		}else if(command.equals("recivePostdetail")) {
 			int post_no = Integer.parseInt(request.getParameter("post_no"));
@@ -142,7 +132,6 @@ public class OptPostboxController extends HttpServlet {
 			request.setAttribute("type", type);
 			
 			dispatch(request, response, "postdetail.jsp");
-			
 		// 보낸쪽지 상세페이지	
 		}else if(command.equals("sendPostdetail")) {
 			int post_no = Integer.parseInt(request.getParameter("post_no"));
@@ -155,64 +144,50 @@ public class OptPostboxController extends HttpServlet {
 			request.setAttribute("type", type);
 			
 			dispatch(request, response, "postdetail.jsp");
-			
 		// 쪽지 삭제
 		}else if(command.equals("delPost")) {
 			int post_no = Integer.parseInt(request.getParameter("post_no"));
 			int page = Integer.parseInt(request.getParameter("page"));
 			String type = request.getParameter("type");
-			
-			
 			if(type.equals("recivePostbox")) {
 				int res = biz.readDel(post_no);
 				biz.allDel();
-
 				if(res > 0) {
 					alert("삭제성공", "postbox.do?command=recivePostbox&page=" + page, response);
 				}else {
 					alert("삭제실패", "postbox.do?command=recivePostbox&page=" + page, response);
 				}
-				
 			}else if(type.equals("sendPostbox")) {
 				int res = biz.sendDel(post_no);
 				biz.allDel();
-				
 				if(res > 0) {
 					alert("삭제성공", "postbox.do?command=sendPostbox&page=" + page, response);
 				}else {
 					alert("삭제실패", "postbox.do?command=sendPostbox&page=" + page, response);
 				}
 			}
-		
 		// 체크된 쪽지 삭제
 		}else if(command.equals("multiDel")) {
-			
 			String[] post_no = request.getParameterValues("chk");
 			String type = request.getParameter("type");
 			int page = Integer.parseInt(request.getParameter("page"));
-			
 			if(type.equals("recivePostbox")) {
 				boolean res = biz.muliteReadDel(post_no);
 				biz.allDel();
-
 				if(res) {
 					alert("삭제성공", "postbox.do?command=recivePostbox&page=" + page, response);
 				}else {
 					alert("삭제실패", "postbox.do?command=recivePostbox&page=" + page, response);
 				}
-				
 			}else if(type.equals("sendPostbox")) {
 				boolean res = biz.muliteSendDel(post_no);
 				biz.allDel();
-				
 				if(res) {
 					alert("삭제성공", "postbox.do?command=sendPostbox&page=" + page, response);
 				}else {
 					alert("삭제실패", "postbox.do?command=sendPostbox&page=" + page, response);
 				}
 			}
-			
-		
 		// 쪽지답장 작성 페이지
 		}else if(command.equals("sendPostForm")) {
 			String type = request.getParameter("type");
@@ -224,10 +199,8 @@ public class OptPostboxController extends HttpServlet {
 			request.setAttribute("user", user);
 			
 			dispatch(request, response, "sendPostForm.jsp");
-		
 		// 작성된 쪽지 db에 추가
 		}else if(command.equals("sendPostRes")) {
-			
 			HttpSession session = request.getSession();
 			int opt_no = ((Integer)(session.getAttribute("opt_no"))).intValue();
 			String id = request.getParameter("user");
@@ -241,7 +214,6 @@ public class OptPostboxController extends HttpServlet {
 			}else {
 				alert("실패", "postbox.do?command=sendPostbox&page=1", response);
 			}
-
 		// 목록에서 쪽지 보내기
 		}else if(command.equals("writePost")) {
 			String type = request.getParameter("type");
@@ -249,8 +221,6 @@ public class OptPostboxController extends HttpServlet {
 			request.setAttribute("type", type);
 			request.setAttribute("page", page);
 			dispatch(request, response, "writePost.jsp");
-			
-		
 		// 목록에서 쪽지 보내기 결과
 		}else if(command.equals("writePostRes")) {			
 			HttpSession session = request.getSession();
@@ -268,15 +238,8 @@ public class OptPostboxController extends HttpServlet {
 			}else {
 				alert("해당 id가 존재하지 않습니다", "postbox.do?command=writePost&type=" + type + "&page=" + page, response);
 			}
-			
-			
 		}
-		
-		
-		
-	
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

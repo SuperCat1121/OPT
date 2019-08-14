@@ -31,9 +31,7 @@ public class OptServiceController extends HttpServlet {
 		System.out.println("[ service.do?" + command + " ]");
 		OPTBiz biz = new OPTBizImpl();
 		if(command.equals("servicelist")) {
-			//List<CustomerServiceDto> list = biz.customerList();
 			HttpSession session = request.getSession();
-			
 
 			int page = Integer.parseInt(request.getParameter("page")); //현재페이징번호
 			int allCount = biz.customerList().size(); //전체게시글개수
@@ -63,15 +61,10 @@ public class OptServiceController extends HttpServlet {
 				endPage = totalPage;
 			}
 			
-							
 			int start = (page - 1)*listCount +1;
 			int end = page * listCount;
-			System.out.println("start >> " + start);
-			System.out.println("end >> " + end);
 			List<CustomerServiceDto> list = biz.customerPaging(start, end);
 			
-			
-			//request.setAttribute("list", list);
 			session.setAttribute("customerdto", list);
 			request.setAttribute("page", page);
 			request.setAttribute("blockCount", blockCount);
@@ -83,8 +76,6 @@ public class OptServiceController extends HttpServlet {
 			session.setAttribute("answerList", answerList);
 			
 			dispatch(request, response, "customer.jsp");
-			
-			
 		} else if (command.equals("insertres")) {
 			int opt_no_seq = Integer.parseInt(request.getParameter("opt_no_seq"));
 			String customer_title = request.getParameter("customer_title");
@@ -99,8 +90,6 @@ public class OptServiceController extends HttpServlet {
 			} else {
 				dispatch(request, response, "customerwrite.jsp");
 			}
-
-		
 		} else if (command.equals("faqlist")) {
 			HttpSession session = request.getSession();
 			
@@ -131,7 +120,6 @@ public class OptServiceController extends HttpServlet {
 			if(endPage > totalPage) {
 				endPage = totalPage;
 			}
-			
 							
 			int start = (page - 1)*listCount +1;
 			int end = page * listCount;
@@ -146,17 +134,16 @@ public class OptServiceController extends HttpServlet {
 			request.setAttribute("endPage", endPage);
 			
 			dispatch(request, response, "customer_often_FAQ.jsp");
-			
 		}
-	
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+	
 	public void dispatch(HttpServletRequest request, HttpServletResponse response,String url) throws ServletException, IOException {
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);
 		dispatch.forward(request, response);
 	}
+	
 }

@@ -29,6 +29,7 @@ public class OptVideoController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		
 		String command = request.getParameter("command");
 		System.out.println("[ video.do?" + command + " ]");
 		OPTBizImpl biz = new OPTBizImpl();
@@ -36,12 +37,9 @@ public class OptVideoController extends HttpServlet {
 		
 		if (command.equals("videoList")) {
 			HttpSession session = request.getSession();
-			System.out.println(Integer.parseInt(request.getParameter("page")));
 			String videoarea = request.getParameter("videoarea");			
 			int page = Integer.parseInt(request.getParameter("page"));
 			MemberDto memberDto = (MemberDto)session.getAttribute("memdto");
-			
-			
 			
 			if (videoarea.equals("main")) {
 				int allCount = biz.selectVideoList().size();
@@ -53,7 +51,6 @@ public class OptVideoController extends HttpServlet {
 
 				if (page < 1) {
 					page = 1;
-
 				} else if (page > totalPage) {
 					page = totalPage;
 				}
@@ -61,7 +58,6 @@ public class OptVideoController extends HttpServlet {
 				if (page % 5 == 0) {
 					absolutePage = ((page / 5) * 5) - 4;
 					endPage = (page / 5) * 5;
-
 				} else {
 					absolutePage = ((page / 5) * 5) + 1;
 					endPage = ((page / 5) * 5) + 5;
@@ -73,8 +69,6 @@ public class OptVideoController extends HttpServlet {
 
 				int start = (page - 1) * listCount + 1;
 				int end = page * listCount;
-				System.out.println("start >> " + start);
-				System.out.println("end >> " + end);
 				request.setAttribute("list", biz.videoListPage(start, end));
 				request.setAttribute("page", page);
 				request.setAttribute("blockCount", blockCount);
@@ -83,9 +77,7 @@ public class OptVideoController extends HttpServlet {
 				request.setAttribute("endPage", endPage);
 				
 				dispatch(request, response, "videoboard.jsp");
-			
 			} else {
-				
 				int allCount = biz.myVideolist(memberDto.getOpt_no_seq()).size();
 				int listCount = 10;
 				int totalPage = (allCount - 1) / listCount + 1;
@@ -115,8 +107,6 @@ public class OptVideoController extends HttpServlet {
 
 				int start = (page - 1) * listCount + 1;
 				int end = page * listCount;
-				System.out.println("start >> " + start);
-				System.out.println("end >> " + end);
 				request.setAttribute("list", biz.myVideoListPage(memberDto.getOpt_no_seq(), start, end));
 				request.setAttribute("page", page);
 				request.setAttribute("blockCount", blockCount);
@@ -126,10 +116,6 @@ public class OptVideoController extends HttpServlet {
 				
 				dispatch(request, response, "myvideolist.jsp");
 			}
-			
-			
-			
-			
 		} else if (command.equals("searchVideo")) {
 			String searchoption = request.getParameter("searchoption");
 			String searchtext = request.getParameter("searchtext");
@@ -164,8 +150,6 @@ public class OptVideoController extends HttpServlet {
 
 			int start = (page - 1) * listCount + 1;
 			int end = page * listCount;
-			System.out.println("start >> " + start);
-			System.out.println("end >> " + end);
 			request.setAttribute("list", biz.searchVideoPage(searchoption, searchtext, start, end));
 			request.setAttribute("page", page);
 			request.setAttribute("blockCount", blockCount);
@@ -179,7 +163,6 @@ public class OptVideoController extends HttpServlet {
 			String video_title = request.getParameter("video_title");
 			String video_content = request.getParameter("video_content");
 			String video_url = request.getParameter("video_url");
-			System.out.println("실제주소" + video_url);
 			VideoClipDto dto = new VideoClipDto();
 			dto.setOpt_no_seq(opt_no_seq);
 			dto.setVideo_title(video_title);
@@ -216,14 +199,10 @@ public class OptVideoController extends HttpServlet {
 				alert("삭제실패", "video.do?command=videoList&page=1&videoarea=my", response);
 			}
 		} else if (command.equals("updatevideo")) {
-
 			int video_no_seq = Integer.parseInt(request.getParameter("videoseq"));
-			System.out.println(video_no_seq);
 			VideoClipDto videoDto = biz.videoSelectOne(video_no_seq);
-			System.out.println(videoDto);
 			request.setAttribute("videoDto", videoDto);
 			dispatch(request, response, "videoUpdate.jsp");
-
 		} else if (command.equals("videoupdateres")) {
 			int video_no_seq = Integer.parseInt(request.getParameter("videoseq"));
 			String video_title = request.getParameter("video_title");
@@ -239,41 +218,31 @@ public class OptVideoController extends HttpServlet {
 				dispatch(request, response, "video.do?command=videoList&page=1&videoarea=my");
 			} else {
 				dispatch(request, response, "video.do?command=updatevideo&videoseq=" + video_no_seq);
-
 			}
-
 		} else if (command.equals("videoDetail")) {
 			int no = Integer.parseInt(request.getParameter("videoseq"));
-			System.out.println(no);
-
 			biz.videoCount(no);
 
 			VideoClipDto videoDto = biz.videoSelectOne(no);
 			List<VideoComment> list = biz.videoCommentList(no);
-			System.out.println(list.toString());
 			request.setAttribute("videoDto", videoDto);
 			request.setAttribute("list", list);
 			request.setAttribute("videoList", biz.videoListPage(1, 5));
 
 			dispatch(request, response, "videodetail2.jsp");
-
 		} else if (command.equals("videoAnswerinsert")) {
 			HttpSession session = request.getSession();
 			MemberDto memdto = (MemberDto) session.getAttribute("memdto");
 			VideoComment videocomment = new VideoComment();
 
 			int video_no_seq = Integer.parseInt(request.getParameter("no"));
-			System.out.println(video_no_seq);
 			int opt_no = memdto.getOpt_no_seq();
-			System.out.println("awfafw" + opt_no);
 			String video_reple = request.getParameter("video_reple");
-			System.out.println("awfwafawfawf" + video_reple);
 			videocomment.setVideo_reple(video_reple);
 			videocomment.setOpt_no_seq(opt_no);
 			videocomment.setVideo_no_seq(video_no_seq);
 
 			int res = biz.insertVideocomment(videocomment);
-			System.out.println(res);
 			if (res > 0) {
 				System.out.println("작성성공!");
 				response.sendRedirect("video.do?command=videoDetail&videoseq=" + video_no_seq + "&page=1");
@@ -293,10 +262,8 @@ public class OptVideoController extends HttpServlet {
 			request.setAttribute("videoseq", videoseq);
 
 			dispatch(request, response, "videoAnswerUpdate.jsp");
-
 		} else if (command.equals("videoAnswerUpdateres")) {
 			int video_comment_seq = Integer.parseInt(request.getParameter("video_comment_seq"));
-			System.out.println(video_comment_seq);
 			int videoseq = Integer.parseInt(request.getParameter("videoseq"));
 			String video_reple = request.getParameter("video_reple");
 
@@ -309,7 +276,6 @@ public class OptVideoController extends HttpServlet {
 			if (res > 0) {
 				System.out.println("수정성공!");
 				response.sendRedirect("video.do?command=videoDetail&videoseq=" + videoseq + "&page=1");
-
 			} else {
 				System.out.println("수정 실패!");
 				response.sendRedirect("video.do?command=videoDetail&videoseq=" + videoseq + "&page=1");
@@ -319,7 +285,6 @@ public class OptVideoController extends HttpServlet {
 			int page = Integer.parseInt(request.getParameter("page"));
 			int video_no_seq = Integer.parseInt(request.getParameter("videoseq"));
 			int res = biz.videoCommentDelete(commentseq);
-			System.out.println(res);
 			if (res > 0) {
 				System.out.println("삭제 성공");
 				dispatch(request, response, "video.do?command=videoDetail&videoseq=" + video_no_seq + "&page=" + page);
@@ -332,14 +297,11 @@ public class OptVideoController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String tempSavePath = request.getSession().getServletContext().getRealPath("video");
-
 		String savePath = tempSavePath.replace('\\', '/');
 
 		File targetDir = new File(savePath);
 		if (!targetDir.exists()) {
-			System.out.println("폴더생성");
 			targetDir.mkdirs();
 		}
 
@@ -355,9 +317,7 @@ public class OptVideoController extends HttpServlet {
 			String video_title = multi.getParameter("video_title");
 			String video_content = multi.getParameter("video_content");
 			String video_url = multi.getFilesystemName("video_url");
-			System.out.println("실제주소" + video_url);
 			String m_fileFullPath = savePath + "/" + video_url;
-			System.out.println(m_fileFullPath);
 			VideoClipDto dto = new VideoClipDto();
 			dto.setOpt_no_seq(opt_no_seq);
 			dto.setVideo_title(video_title);
@@ -377,9 +337,7 @@ public class OptVideoController extends HttpServlet {
 			String video_title = multi.getParameter("video_title");
 			String video_content = multi.getParameter("video_content");
 			String video_url = multi.getFilesystemName("video_url");
-			System.out.println("실제주소" + video_url);
 			String m_fileFullPath = savePath + "/" + video_url;
-			System.out.println(m_fileFullPath);
 			VideoClipDto videoDto = new VideoClipDto();
 			videoDto.setVideo_no_seq(video_no_seq);
 			videoDto.setVideo_title(video_title);

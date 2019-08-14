@@ -33,19 +33,6 @@ import com.opt.dto.PaymentDto;
 @WebServlet("/pay.do")
 public class OptPayController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-//	params.put("cid", "TC0ONETIME");
-//	params.put("partner_order_id", "123");
-//	params.put("partner_user_id", "gorany");
-//	params.put("item_name", "초코파이");
-//	params.put("quantity", 1);
-//	params.put("total_amount", 10);
-//	params.put("tax_free_amount", 0);
-//	params.put("approval_url", "http://localhost:8088/KakaoPay/index.jsp");
-//	params.put("cancel_url", "http://localhost:8088/KakaoPay/index.jsp");
-//	params.put("fail_url", "http://localhost:8088/KakaoPay/index.jsp");
-	
- 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -78,7 +65,6 @@ public class OptPayController extends HttpServlet {
 			params.put("cancel_url", request.getParameter("cancel_url"));
 			params.put("fail_url", request.getParameter("fail_url"));
 			
-			
 			String string_params = new String(); // 보낼 파라미터
 			for(Map.Entry<String, String> elem : params.entrySet()) {
 				string_params += (elem.getKey() + "=" + elem.getValue() + "&"); // 파라미터 전송 준비
@@ -108,47 +94,21 @@ public class OptPayController extends HttpServlet {
 				session.setAttribute("memo", request.getParameter("memo"));
 				session.setAttribute("point", request.getParameter("point"));
 				session.setAttribute("totalPrice", request.getParameter("totalPrice"));
-				session.setAttribute("coupon_sale", request.getParameter("coupon_sale"));
-				
-				
-				System.out.println(successUrl);
-				System.out.println(tid);
-				
+				session.setAttribute("coupon_sale", request.getParameter("coupon_sale"));				
 			} catch (ParseException e) {
 				e.printStackTrace();
 			} finally {
 				in.close(); // 응답 스트림 닫기
 			}
-			
-			System.out.print(con.getResponseCode() + " ");
-			System.out.println(con.getResponseMessage());
-			System.out.println(con.getRequestMethod());
-			
-			/*
-			try {
-				dispatch(request, response, "success.jsp");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			*/
-			
-				
-			
-			
 			response.sendRedirect(successUrl); // 결제창으로 넘어가는 url
-			
-			
-		} else if(command.equals("approval")) { // 결제 승인 통신
+		// 결제 승인 통신
+		} else if(command.equals("approval")) {
 			HttpSession session = request.getSession();
 			String cid = "TC0ONETIME";
 			String tid = (String)session.getAttribute("tid");
 			String pg_token = request.getParameter("pg_token");
 			String partner_order_id = (String)session.getAttribute("partner_order_id");
-			System.out.println(partner_order_id);
 			String partner_user_id = (String)session.getAttribute("partner_user_id");
-			//System.out.println("pg_token" + " : " + pg_token);
-			//System.out.println("partner_order_id : " + partner_order_id);
-			//System.out.println("partner_user_id : " + partner_user_id);
 			URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("POST");
@@ -169,8 +129,6 @@ public class OptPayController extends HttpServlet {
 				string_params += (elem.getKey() + "=" + elem.getValue() + "&");
 			}
 			
-			System.out.println("string_params : " + string_params);
-			
 			OutputStream out = con.getOutputStream();
 			out.write(string_params.getBytes());
 			out.flush();
@@ -189,12 +147,7 @@ public class OptPayController extends HttpServlet {
 				in.close();
 			}
 			
-			System.out.print(con.getResponseCode() + " ");
-			System.out.println(con.getResponseMessage());
-			System.out.println(con.getRequestMethod());
-			
 			MemberDto memberDto = (MemberDto)session.getAttribute("memdto");
-			
 			ItemDto itemDto = (ItemDto)session.getAttribute("itemDto");
 			
 			PaymentDto payDto = new PaymentDto();
@@ -207,12 +160,8 @@ public class OptPayController extends HttpServlet {
 			payDto.setPay_count(((Integer)session.getAttribute("ea")).intValue());
 			payDto.setPay_total(Integer.parseInt(session.getAttribute("totalPrice").toString()));
 			
-			
 			int point =  Integer.parseInt(session.getAttribute("point").toString());
-			System.out.println(point);
 			int coupon_no_seq = Integer.parseInt(session.getAttribute("coupon_no_seq").toString());
-			System.out.println(coupon_no_seq);
-		
 			biz.updatePoint(memberDto.getOpt_no_seq(), point);
 			memberDto.setOpt_point(memberDto.getOpt_point() - point);
 			
@@ -220,15 +169,12 @@ public class OptPayController extends HttpServlet {
 			biz.insertPayment(payDto);			
 			request.setAttribute("approvalRes", res.toJSONString()); // 응답받은 json 파싱해서 request 속성 설정
 			session.setAttribute("memdto", memberDto);
-			
 			try {
 				dispatch(request, response, "payApprovalRes.jsp"); // 결제 승인 시 응답받은 json을 파싱한걸 가지고 forward
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
 		} else if(command.equals("basketReady")){
-			
 			URL url = new URL("https://kapi.kakao.com/v1/payment/ready"); // url 준비
 			HttpURLConnection con = (HttpURLConnection)url.openConnection(); // url로 통신 시작
 			con.setRequestMethod("POST"); // POST 방식으로 요청
@@ -279,44 +225,20 @@ public class OptPayController extends HttpServlet {
 				session.setAttribute("point", request.getParameter("point"));
 				session.setAttribute("totalPrice", request.getParameter("totalPrice"));
 				session.setAttribute("coupon_sale", request.getParameter("coupon_sale"));
-				
-				
-				System.out.println(successUrl);
-				System.out.println(tid);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			} finally {
 				in.close(); // 응답 스트림 닫기
 			}
-			
-			System.out.print(con.getResponseCode() + " ");
-			System.out.println(con.getResponseMessage());
-			System.out.println(con.getRequestMethod());
-			
-			/*
-			try {
-				dispatch(request, response, "success.jsp");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			*/
-			
-				
-			
-			
 			response.sendRedirect(successUrl); // 결제창으로 넘어가는 url
-		
 		}else if(command.equals("basketApproval")){
-			
 			HttpSession session = request.getSession();
 			String cid = "TC0ONETIME";
 			String tid = (String)session.getAttribute("tid");
 			String pg_token = request.getParameter("pg_token");
 			String partner_order_id = (String)session.getAttribute("partner_order_id");
 			String partner_user_id = (String)session.getAttribute("partner_user_id");
-			//System.out.println("pg_token" + " : " + pg_token);
-			//System.out.println("partner_order_id : " + partner_order_id);
-			//System.out.println("partner_user_id : " + partner_user_id);
+
 			URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("POST");
@@ -332,13 +254,7 @@ public class OptPayController extends HttpServlet {
 			params.put("partner_order_id", partner_order_id);
 			params.put("partner_user_id", partner_user_id);
 			
-			String string_params = new String();
-			for(Map.Entry<String, String> elem : params.entrySet()) {
-				string_params += (elem.getKey() + "=" + elem.getValue() + "&");
-			}
-			
-			System.out.println("string_params : " + string_params);
-			
+			String string_params = new String();			
 			OutputStream out = con.getOutputStream();
 			out.write(string_params.getBytes());
 			out.flush();
@@ -357,22 +273,11 @@ public class OptPayController extends HttpServlet {
 				in.close();
 			}
 			
-			System.out.print(con.getResponseCode() + " ");
-			System.out.println(con.getResponseMessage());
-			System.out.println(con.getRequestMethod());
-			
 			MemberDto memberDto = (MemberDto)session.getAttribute("memdto");			
 			List<BasketDto> basketList = (List)session.getAttribute("basketList");
-			
 			for(BasketDto basketDto : basketList){
-				
 				ItemDto itemDto = biz.itemSelect(basketDto.getBasket_item_no());
-				
-				
 				PaymentDto payDto = new PaymentDto();
-				
-				
-				
 				payDto.setOpt_no_seq(memberDto.getOpt_no_seq());				
 				payDto.setItem_num(basketDto.getBasket_item_no());
 				payDto.setPay_recipient_name(memberDto.getOpt_name());
@@ -382,17 +287,12 @@ public class OptPayController extends HttpServlet {
 				payDto.setPay_count(basketDto.getBasket_item_count());
 				payDto.setPay_total(Integer.parseInt(itemDto.getItem_price()) * basketDto.getBasket_item_count());
 				
-				
 				biz.insertPayment(payDto);
 				biz.deleteBasket(basketDto.getBasket_no_seq());
 				System.out.println(basketDto.getBasket_no_seq());
-				
 			}
-			
 			int point =  Integer.parseInt(session.getAttribute("point").toString());
 			int coupon_no_seq = Integer.parseInt(session.getAttribute("coupon_no_seq").toString());
-		
-		
 			biz.updatePoint(memberDto.getOpt_no_seq(), point);
 			memberDto.setOpt_point(memberDto.getOpt_point() - point);			
 			biz.deleteCoupon(coupon_no_seq);
@@ -405,16 +305,8 @@ public class OptPayController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
 		}
-		
 	}
-			
-		
-		
-		
-	
-	
 
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String url) throws Exception {
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);

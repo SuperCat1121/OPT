@@ -174,7 +174,6 @@ public class OptController extends HttpServlet {
 			caldto.setCalendar_title(cal_title);
 			caldto.setCalendar_startday(cal_start);
 			caldto.setCalendar_enddate(cal_end);
-			System.out.println(caldto.getCalendar_no_seq());
 			int res = biz.updateCalendar(caldto);
 			if(res > 0) {
 				System.out.println("update 성공!");

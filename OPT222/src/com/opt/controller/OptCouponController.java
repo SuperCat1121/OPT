@@ -36,7 +36,6 @@ public class OptCouponController extends HttpServlet {
 			HttpSession session = request.getSession();
 			MemberDto memdto = (MemberDto)session.getAttribute("memdto");
 			
-			
 			int page = Integer.parseInt(request.getParameter("page")); //현재페이징번호
 			int allCount = biz.couponList(memdto.getOpt_no_seq()).size(); //전체게시글개수
 			int listCount = 5; //한 화면에 뿌릴 데이터 개수
@@ -51,7 +50,6 @@ public class OptCouponController extends HttpServlet {
 			}else if(page > totalPage) {
 				page = totalPage;
 			}
-			
 			if(page%5 == 0) {
 				absolutePage = ((page/5) *5) -4;
 				endPage = (page / 5) * 5;
@@ -64,14 +62,10 @@ public class OptCouponController extends HttpServlet {
 			if(endPage > totalPage) {
 				endPage = totalPage;
 			}
-			
 							
 			int start = (page - 1)*listCount +1;
 			int end = page * listCount;
-			System.out.println("start >> " + start);
-			System.out.println("end >> " + end);
 			List<CouponDto> list = biz.couponPaging(memdto.getOpt_no_seq(), start, end);
-			//request.setAttribute("list", list);
 			request.setAttribute("coupondto", list);
 			request.setAttribute("page", page);
 			request.setAttribute("blockCount", blockCount);
@@ -79,14 +73,11 @@ public class OptCouponController extends HttpServlet {
 			request.setAttribute("absolutePage", absolutePage);
 			request.setAttribute("endPage", endPage);
 			
-			
-			
 			dispatch(request, response, "coupon_popup.jsp");
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	public void dispatch(HttpServletRequest request, HttpServletResponse response,String url) throws ServletException, IOException {

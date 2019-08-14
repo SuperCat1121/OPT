@@ -27,12 +27,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%
-	String Flag = request.getParameter("Flag");
-%>
-<%
-	System.out.print("Flag" + Flag);
-%>
+<% String Flag = request.getParameter("Flag"); %>
 <meta charset="UTF-8">
 <title>LOGIN</title>
 <meta name="google-signin-scope" content="profile email">

@@ -50,12 +50,8 @@ public class OptBasketController extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			int opt_no = ((Integer)(session.getAttribute("opt_no"))).intValue();
-			System.out.println(opt_no);
 			
 			List<BasketDto> basketList = biz.basketlist(opt_no);
-			for(int i=0; i<basketList.size(); i++) {
-				System.out.println(basketList.get(i).getBasket_item_name());				
-			}
 			request.setAttribute("basketList", basketList);
 			request.setAttribute("opt_no", opt_no);
 			dispatch(request, response, "basket.jsp");
