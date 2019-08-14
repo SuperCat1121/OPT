@@ -152,9 +152,9 @@ $(function() {
 	
 	// 네비게이션
 	$("body").on("mouseenter", ".nav_title", function() {
-		$(".nav_list").slideToggle(400);
+		$(".nav_list").slideToggle(200);
 	}).on("mouseleave", ".nav_title", function() {
-		$(".nav_list").slideToggle(400);
+		$(".nav_list").slideToggle(200);
 	});
 });
 
