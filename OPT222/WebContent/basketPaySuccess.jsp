@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>결제 요청중</title>
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <script type="text/javascript">
 
 	function approval() {

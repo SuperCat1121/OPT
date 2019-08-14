@@ -34,6 +34,7 @@
 <meta name="google-signin-client_id"
 	content="236084628267-j6u2itovr6ocvop0ae5jk52536vf2joq.apps.googleusercontent.com">
 <link href="css/login.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <style>
 	.abcRioButtonBlue {
 		height:45px !important;

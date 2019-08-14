@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <style type="text/css">
 
 .updatebtn{

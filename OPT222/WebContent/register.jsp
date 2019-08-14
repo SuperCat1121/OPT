@@ -12,6 +12,7 @@
 <link href="css/register.css" rel="stylesheet" type="text/css">
 <!-- 달력 api -->
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <title>register</title>
 <style type="text/css">
 	.foot_area_wrap{

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/postSend.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 

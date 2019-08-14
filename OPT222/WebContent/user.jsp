@@ -12,6 +12,7 @@
 	int coupon_count = Integer.parseInt(request.getParameter("coupon_count"));
 %>
 <link href="css/mypage.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 
 <script type="text/javascript">

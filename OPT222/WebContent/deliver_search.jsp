@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/deliver_search.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <title>Insert title here</title>
 </head>
 <script

@@ -12,6 +12,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
+	<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script>
 $(function(){

@@ -5,6 +5,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 <link href="css/admin_user_manager.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <div class="user_title">
 	유저관리<br>
 	<span class="user_title_mini">

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">

@@ -12,6 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+	<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <title>상품 상세페이지</title>
 <style type="text/css">
 	.foot_area_wrap{

@@ -82,6 +82,7 @@ input[type=text]{
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css"
 	rel="stylesheet">
+	<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 </head>

@@ -12,6 +12,7 @@
 <title>상품페이지</title>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <link href="css/item_list.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <style type="text/css">
 
 	#myButton1{

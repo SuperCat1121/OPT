@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 중복체크</title>
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <style type="text/css">
 .btn {
     cursor: pointer;

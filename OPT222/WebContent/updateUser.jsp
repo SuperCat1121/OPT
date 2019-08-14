@@ -12,6 +12,7 @@
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <!-- 달력 api -->
 <link href="css/updateuser.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <meta charset="UTF-8">
 <title>register</title>
 </head>

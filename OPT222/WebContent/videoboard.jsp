@@ -12,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품페이지</title>
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">

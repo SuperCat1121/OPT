@@ -9,6 +9,7 @@
 <link href="css/fullcalender/fullcalendar.print.css" rel="stylesheet" media="print" />
 <link href="css/fullcalender/scheduler.css" rel="stylesheet" />
 <link href="css/calendar.css" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <script>
 
 function closeNav() {

@@ -6,6 +6,7 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <style type="text/css">
 li {
 	list-style-type: none;

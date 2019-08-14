@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <title>Insert title here</title>
 <!-- 참고사이트 ssgblog.com/5 -->
  <style> 

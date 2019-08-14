@@ -9,6 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
 <title>결제 완료</title>
 <style type="text/css">
 	.foot_area_wrap{
