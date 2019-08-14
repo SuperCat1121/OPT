@@ -153,6 +153,11 @@ hr {
 .comment_one {
 	height: 40px;
 }
+
+.foot_wrap {
+	position: relative;
+	top: 270px;
+}
 </style>
 </head>
 <body>
