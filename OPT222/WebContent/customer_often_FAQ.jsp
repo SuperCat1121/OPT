@@ -32,7 +32,9 @@
 	cursor: pointer;
 	}
 	
-	
+	.menu_li a{
+		background-color: #ebebeb;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
@@ -63,7 +65,7 @@ $(document).ready(function(){
 		<h3>자주묻는질문</h3>
 	<div class="category_menu">
 		<ul>
-			<li>
+			<li class="menu_li">
 				<a href="#">자주묻는질문</a>
 			</li>
 			<li>

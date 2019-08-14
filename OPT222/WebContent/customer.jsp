@@ -24,7 +24,7 @@
     border-top: 1px solid #ebebeb;
     padding: 11px 0;
     margin-top: 18px;
-    padding-left: 23px;
+    padding-left: 36px;
 	}
 	.costomer_img{
 	width: 26px;
@@ -36,7 +36,12 @@
     height: 26px;
     background: url(./image/ico_a.png) no-repeat;
 	}
-
+	#faq_div{
+	cursor: pointer;
+	}
+	.menu_li a{
+		background-color: #ebebeb;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
@@ -44,13 +49,13 @@
 $(document).ready(function(){
     //$("#costomer_text").hide();
     // $("ul > li:first-child a").next().show();
-    $("#faq a").click(function(){
+    $("#faq #faq_div").click(function(){
       $(this).next().slideToggle(300);
       // $(this).next().slideDown(300);
-      $("#faq a").not(this).next().slideUp(300);
+      $("#faq #faq_div").not(this).next().slideUp(300);
       return false;
     });
-    $("#faq a").eq(0).trigger("click");
+    $("#faq #faq_div").eq(0).trigger("click");
   });
 	
 </script>
@@ -70,7 +75,7 @@ $(document).ready(function(){
 			<li>
 				<a href="service.do?command=faqlist&page=1">자주묻는질문</a>
 			</li>
-			<li>
+			<li class="menu_li">
 				<a href="#">고객 QNA</a>
 			</li>
 		</ul>
@@ -111,11 +116,12 @@ $(document).ready(function(){
 		for(int i=0; i<customerList.size(); i++){
 %>
 			<li id="faq">
-				<a id="qna_a" href="#">
-				<span class="costomer_span_one"><%=customerList.get(i).getCustomer_no_seq() %></span>
-				<span class="costomer_span_two"><%=customerList.get(i).getCustomer_title() %></span>
-				<span class="costomer_span_three"><%=customerList.get(i).getOpt_id() %></span> 
-				<span class="costomer_span_four"><fmt:formatDate value="<%=customerList.get(i).getCustomer_regdate() %>" pattern="yyyy-MM-dd" /></span></a>
+				<div id="faq_div">
+				<p class="costomer_p_one"><%=customerList.get(i).getCustomer_no_seq() %></p>
+				<p class="costomer_p_two"><%=customerList.get(i).getCustomer_title() %></p>
+				<p class="costomer_p_three"><%=customerList.get(i).getOpt_id() %></p> 
+				<p class="costomer_p_four"><fmt:formatDate value="<%=customerList.get(i).getCustomer_regdate() %>" pattern="yyyy-MM-dd" /></p>
+				</div>
 			 	<div id="costomer_text">
 			 	<div class="costomer_img"></div>
 			 	<div class="text_area"><p class="cosutomer_textcontent"><%=customerList.get(i).getCustomer_content() %></p></div>			
