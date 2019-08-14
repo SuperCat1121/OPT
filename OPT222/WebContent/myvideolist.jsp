@@ -212,7 +212,7 @@
 			</tr>
 			<c:choose>
 				<c:when test="${empty list }">
-						<tr><td>------등록된 상품이 없습니다------</td></tr>
+						<tr><td colspan="4">------등록된 상품이 없습니다------</td></tr>
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${list }" var="videoDto">

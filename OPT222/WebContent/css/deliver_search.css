@@ -156,6 +156,7 @@ tr:nth-child(even) {
     margin: 0 auto;
     position: relative;
     top: 50px;
+    margin-left: 8px;
 }
 input[type=text]{
     width: 300px;
