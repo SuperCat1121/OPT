@@ -143,9 +143,9 @@
 	<input type="hidden" name="tax_free_amount" value="${itemDto.item_price * ea + post}" />
 	<input type="hidden" name="command" value="ready" />
 	<input type="hidden" value="TC0ONETIME" name="cid" readonly="readonly" />
-	<input type="hidden" value="http://localhost:8787/OPT222/paySuccess.jsp" name="approval_url" readonly="readonly" />
-	<input type="hidden" value="http://localhost:8787/OPT222/payCancel.jsp" name="cancel_url" readonly="readonly" />
-	<input type="hidden" value="http://localhost:8787/OPT222/payFail.jsp" name="fail_url" readonly="readonly" />
+	<input type="hidden" value="http://192.168.10.33:8787/OPT222/paySuccess.jsp" name="approval_url" readonly="readonly" />
+	<input type="hidden" value="http://192.168.10.33:8787/OPT222/payCancel.jsp" name="cancel_url" readonly="readonly" />
+	<input type="hidden" value="http://192.168.10.33:8787/OPT222/payFail.jsp" name="fail_url" readonly="readonly" />
 		<table class="user_table">
 			<col width="200px" />
 			<col width="200px" />
