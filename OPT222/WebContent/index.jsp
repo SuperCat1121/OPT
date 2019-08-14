@@ -133,7 +133,6 @@
 						<a class = "menulist" href="service.do?command=faqlist&page=1">고객지원</a>
 					</li> 						
 					<li>
-						<c:out value="${memdto.opt_id}"/>
 					<% if(session.getAttribute("memdto") == null) { %>
 							<a class="menulist" href="login.jsp?Flag=0">로그인</a>
 					<% } else {%>
