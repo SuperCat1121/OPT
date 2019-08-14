@@ -23,10 +23,8 @@
 		font-size: 40px;
 		color: #ffa7a7;
 		display: inline-block;
-		position: relative;
-		left: 746px;
 		top: -3px;
-		margin: 0;
+		margin-left: 710px;
 	}
 	
 	.userManagerPopupClose:hover {

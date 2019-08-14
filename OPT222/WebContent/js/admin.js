@@ -156,6 +156,10 @@ $(function() {
 	}).on("mouseleave", ".nav_title", function() {
 		$(".nav_list").slideToggle(200);
 	});
+	
+	$("body").on("click", ".adminAnswer", function() {
+		$($(location).attr("href", "service.do?command=servicelist&page=1"));
+	})
 });
 
 
