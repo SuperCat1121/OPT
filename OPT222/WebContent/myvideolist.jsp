@@ -56,7 +56,7 @@
 }
 
 .videoList {
-	margin-left: 35%;
+	margin-left: 20%;
 }
 
 .videoContent {
@@ -114,8 +114,8 @@
 	color: white;
 	font-weight: bold;
 	position: absolute;
-	top: 197px;
-    left: 70.5%;
+	top: 199px;
+    left: 68.2%;
 	cursor: pointer;
 }
 
